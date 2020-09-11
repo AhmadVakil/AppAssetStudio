@@ -153,7 +153,7 @@ var socket = io.connect('127.0.0.1:5001')
     })
 
     socket.on('configChanger', function (data) {
-      console.log(data.fields)
+      console.log(data)
       var globalConfig
 
       socket.on('CurrentConfigs', function (data) {

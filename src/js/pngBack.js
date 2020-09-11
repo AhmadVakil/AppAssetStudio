@@ -49,25 +49,25 @@ var pixelColor
 var appIconName
 var targetRepository
 var currentSharedConfigJson
-
+/*
 io.sockets.on('connection', function (socket){
-    socket.on('openThisRepo', function (data) {
-            targetRepository = data.repoNames
-            TargetRepoName = targetRepository
-            console.log('REPOOO====>>>'+TargetRepoName);
-            // read json
 
-            let sharedConfigJson = fs.readFileSync('Cloned_Git_Repositories/'+TargetRepoName+'/Resources/Modules/shared/configuration/global_config.json');
-            currentSharedConfigJson = JSON.parse(sharedConfigJson);
-            //console.log(json.primaryColor);
-            //socket.emit('repoSharedConfig', currentSharedConfigJson)
-            //console.log('REPOOO====>>>'+data.repoNames);
 })
-})
-
+*/
 io.sockets.on('connection', function(socket){
-    var delivery = dl.listen(socket);
+    socket.on('openThisRepo', function (data) {
+                targetRepository = data.repoNames
+                TargetRepoName = targetRepository
+                console.log('REPOOO====>>>'+TargetRepoName);
+                // read json
+                let sharedConfigJson = fs.readFileSync('Cloned_Git_Repositories/'+TargetRepoName+'/Resources/Modules/shared/configuration/global_config.json');
+                currentSharedConfigJson = JSON.parse(sharedConfigJson);
+                console.log(currentSharedConfigJson);
 
+                socket.emit('configChanger', currentSharedConfigJson)
+                //console.log('REPOOO====>>>'+data.repoNames);
+    })
+    var delivery = dl.listen(socket);
 
     jsonfile.readFile('Cloned_Git_Repositories/'+TargetRepoName+'/Resources/Modules/shared/configuration/global_config.json', function(err, obj) {
         socket.emit('CurrentConfigs', obj);
@@ -113,7 +113,7 @@ var server = http.createServer();
 server.on('request', request);
 server.listen(port);
 console.log('RUNNING SERVER.....');
-console.log('INFOMAKER SERVER IS ON NOW....... :)');
+console.log('SERVER IS UP & RUNNING....... :)');
 function request(request, response) {
     var store = '';
     var object
