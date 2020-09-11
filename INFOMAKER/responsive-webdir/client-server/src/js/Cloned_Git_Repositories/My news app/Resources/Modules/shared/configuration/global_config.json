@@ -1,0 +1,26 @@
+{
+  "primaryColor": "123456",
+  "primaryColorDark": "123456",
+  "secondaryColor": "123456",
+  "accentColor": "123456",
+  "moduleBackgroundColor": "123456",
+  "textColor": "123456",
+  "blackStatusBarStyle": true,
+  "remoteNotification": {
+    "pubdateKey": "123456",
+    "titleKey": "JustATest",
+    "subtitleKey": "JustATest",
+    "contentIdKey": "JustATest"
+  },
+  "conceptField": "RelatedConceptTagsUuid",
+  "storyField": "JustATest",
+  "authorField": "Authors",
+  "productId": "9",
+  "loginURL": "http://stage.im-epaper.se",
+  "pushApplication": {
+    "android": "arn:aws:sns:eu-west-1:123123123:app/GCM/InfomakerDemo",
+    "ios": "arn:aws:sns:eu-west-1:123123123:app/APNS/InfomakerDemo"
+  },
+  "pushTopic": "arn:aws:sns:eu-west-1:123123123:InfomakerDemo",
+  "pushRegisterURL": "https://push.infomaker.io/api/register"
+}

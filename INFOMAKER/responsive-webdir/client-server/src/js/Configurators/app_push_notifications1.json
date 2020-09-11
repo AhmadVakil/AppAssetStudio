@@ -1,0 +1,59 @@
+{
+    "title": "Push notifications 1",
+    "path" : "Resources/Modules/shared/configuration/global_config.json",
+    "fields": [
+       
+        {
+            "title": "Time key",
+            "Description": "Key for notification date and time (example: PubStart)",
+            "jsonKeyPath": "remoteNotification.pubdateKey",
+            "type": "text",
+			"subPath" : true
+        },
+        {
+            "title": "Title key",
+            "Description": "Key for notification title text (example: TeaserHeadline)",
+            "jsonKeyPath": "remoteNotification.titleKey",
+            "type": "text",
+			"subPath" : true
+        },
+        {
+            "title": "Body key",
+            "Description": "Key for publication body text (example: TeaserText)",
+            "jsonKeyPath": "remoteNotification.subtitleKey",
+            "type": "text",
+			"subPath" : true
+        },
+        {
+            "title": "Content ID key",
+            "Description": "Key for getting linked content (example: uuid)",
+            "jsonKeyPath": "remoteNotification.contentIdKey",
+            "type": "text",
+			"subPath" : true
+        },
+        {
+            "title": "Android SNS Application",
+            "description": "SNS Application (example arn:aws:sns:eu-west-1:...)",
+            "jsonKeyPath": "pushApplication.android",
+            "type": "text",
+			"subPath" : true
+            
+        },
+		{
+            "title": "IOS SNS Application",
+            "description": "SNS Application (example arn:aws:sns:eu-west-1:...)",
+            "jsonKeyPath": "pushApplication.ios",
+            "type": "text",
+			"subPath" : true
+            
+        },
+        {
+            "title": "SNS Topic",
+            "description": "SNS Topic (example arn:aws:sns:eu-west-1:...)",
+            "jsonKeyPath": "pushTopic",
+            "type": "text",
+			"subPath" : true
+        }
+    ]
+}
+

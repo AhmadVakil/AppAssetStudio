@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+        <head>
+                        <title>Infomaker</title>
+                        <meta charset="utf-8">
+                        <meta name="csrf-token" content="XYZ123">
+                        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
+                        <script src="http://malsup.github.com/jquery.form.js"></script> 
+                        <script src="js/dropzone.js"></script>
+                        <link rel="stylesheet" href="css/dropzone.css">
+                        <script src="js/socket.io.js"></script>
+                        <link rel="stylesheet" type="text/css" href="css/index.css">
+
+   
+        </head>
+
+
+        
+        
+        <body class="body">
+              <!--  <div id="logo-section">
+                        <img src="image/infomaker-logo-black.png" alt="Infomaker" id="logo">
+                </div>
+
+                <nav>
+                        <label for="drop" class="toggle" >Menu</label>
+                        <input type="checkbox" id="drop"/>
+                </nav>
+        -->
+        <div class="wrapper">
+                
+        
+                
+                  
+               
+                <div class="parent-part">
+                    <br>
+                Select one of the followings to change
+                                <div class="btn-group btn-group-lg">
+                                        <button type="button" class="groupButtons" id="view-json" onclick="myFunction()">Json</button>
+                                        <button type="button" class="groupButtons" id="view-icon-picker" onclick="iconPicker()">App Icon</button>
+                                        <button type="button" class="groupButtons" id="view-handles" onclick="handles()">Handles Colors</button>
+                                </div>
+                        <hr>
+                    <h3>Modify and create your own project</h3>
+
+                    <div id="resource-picker" class="part">
+                        <br>
+                            <h3>Select the local repository folder</h3>
+                            <hr>
+                            <h5>Resource folder should be selected here, please select from the excisting repositories</h5>
+                            <select id="repositories"></select>
+                    </div>
+
+                    <br>
+                    <div id="file-drop-part" class="part" style="display:none;">
+                        <br><br>
+                        <form>
+                            Choose you image file
+                            <div class="fallback">
+                                <input type="file" id="file">
+                            </div>
+                        </form>
+                        <br><br>
+                        Pick a frame:
+                        <select name="frame-picker" id="cars">
+                            <option value="round-square">Rounded Square</option>
+                            <option value="circle">Circle</option>
+                        </select>
+                        <br><br>
+                    </div>
+
+                    <div id="Color-changer-part" class="part" style="display:none;">
+                        <h3>Select Your Primary Color</h3>
+                        <hr>
+                        Paste your HEX color here to generate app handles and to change primary colors in configuration files. <br><br>
+                        <input id="colorTextInput" type="text"><br><br>
+                        Or click to pick a color:
+                        <input id="colorPicker" type="color"><br><br>
+                        <hr> 
+                         Examples:
+                        <div id="canvas"></div>
+                        <div id="canvas2"></div><br>
+                    </div>
+                    
+                    <div id="global-json-changer" class="part" style="display:none;">
+                            <h3>Customize all Json files</h3>
+                          
+                           <hr>
+                           
+
+
+                           
+                            
+                            
+
+
+                            
+                    </div>
+                   
+                    <button class="button" id="button">
+                                Submit
+                    </button>
+
+                </div>
+
+
+
+                </div>
+
+                <!--
+                <div class="phone-viewer">
+
+                                <div class="android">
+                                        <img src="image/Android-Phone.png" alt="Infomaker" id="logo">
+                                </div>
+                </div>
+        -->
+
+
+
+
+
+
+
+
+
+
+                
+        </body>
+        <script src="js/app.js"></script>
+        <script src="js/require.js"></script>
+        <script src="js/delivery.js"></script>
+        
+</html>

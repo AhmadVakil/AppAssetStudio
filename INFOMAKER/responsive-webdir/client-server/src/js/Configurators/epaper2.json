@@ -1,0 +1,13 @@
+{
+    "title": "ePaper 2",
+    "path" : "Resources/Modules/Shared/configuration/EpaperHybrid_config.json",
+    "fields": [
+        {
+            "title": "PsPdf License Key",
+            "description": "License Key for PsPdf renderer",
+            "jsonKeyPath": "pdfLicenseKey",
+            "type": "password",
+			"subPath" : true
+        }
+    ]
+}

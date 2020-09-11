@@ -1,0 +1,763 @@
+/*MAKING GOOD LOOKING COLUMN (Note:Columns are responsive. See media queries for more details)*/
+
+#drop-zone {
+    /*Sort of important*/
+    width: 300px;
+    /*Sort of important*/
+    height: 200px;
+    position:absolute;
+    left:50%;
+    top:100px;
+    margin-left:-150px;
+    border: 2px dashed rgba(0,0,0,.3);
+    border-radius: 20px;
+    font-family: Arial;
+    text-align: center;
+    position: relative;
+    line-height: 180px;
+    font-size: 20px;
+    color: rgba(0,0,0,.3);
+}
+
+.json-div{
+	background-color: rgb(23, 114, 175);
+	
+	background-size: cover;
+    color: rgb(255, 255, 255); 
+	width: 700px; 
+	text-align: center;
+	
+	box-shadow: 0px 0px 20px #000000;
+   
+	border-radius: 15px;
+	transition: 2s;
+}
+
+    #drop-zone input {
+        /*Important*/
+        position: absolute;
+        /*Important*/
+        cursor: pointer;
+        left: 0px;
+        top: 0px;
+        /*Important This is only comment out for demonstration purposes.
+        opacity:0; */
+    }
+
+    /*Important*/
+    #drop-zone.mouse-over {
+        border: 2px dashed rgba(0,0,0,.5);
+        color: rgba(0,0,0,.5);
+    }
+
+#head-logo{
+	background:url("../image/infomaker-logo-black.jpg") ;
+}
+.button-holder{
+	text-align: center;
+	
+	
+}
+.button {
+	border-radius: 4px;
+	background-color: #6484ec;
+	border: none;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 28px;
+	padding: 20px;
+	width: inherit;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
+	box-shadow: 0px 0px 15px #ffffff;
+	margin-top: 50px;
+  }
+
+  .groupButtons {
+	border-radius: 4px;
+	background-color: #6484ec;
+	border: none;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 18px;
+	padding: 5px;
+	width: inherit;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
+	box-shadow: 0px 0px 15px #ffffff;
+	margin-top: 50px;
+	transition: all 1s;
+  }
+
+  
+
+  .button span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+  }
+  
+  .button span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+  }
+  
+  .button:hover span {
+	padding-right: 25px;
+  }
+  
+  .button:hover span:after {
+	opacity: 1;
+	right: 0;
+  }
+
+.col {
+	display: block;
+	float:left;
+    margin: 1% 0% 5% 1.6%;
+    padding:  1% 1% 2% 1%;
+    
+}
+
+#memoGameIcon{
+    transition: all 0.5s;
+    animation: fadein 2s;
+}
+
+.col:first-child {
+	 margin-left: 0;
+}
+
+
+/*  GROUPING  */
+.group:before,
+.group:after {
+	content:"";
+    display:table;
+}
+
+.group:after {
+    clear:both;
+}
+
+.group {
+    zoom:1; /* For IE 6/7 */
+    color: #050404;
+    
+	background:url("../image/infomaker.jpg") ;
+	background-size: cover;
+ 	border-radius: 50px;
+	padding: 0% 0% 2% 7%;
+	margin: 2px;
+	
+}
+
+.span_1_of_3 {
+	
+	background-color: rgb(63, 51, 60);
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+	
+	background-size: cover;
+    color: rgb(255, 255, 255); 
+    width: 28%; 
+	
+	box-shadow: 0px 0px 20px #000000;
+   
+	border-radius: 15px;
+	margin: 1%;
+}
+
+.sectionsDivider {
+	
+	background-color: rgb(150, 56, 56);
+	
+	background-size: cover;
+    color: rgb(255, 255, 255); 
+	width: 700px; 
+	height: 130px;
+	text-align: center;
+	
+	box-shadow: 0px 0px 20px #000000;
+   
+	border-radius: 15px;
+	margin: 1%;
+}
+
+.SmartButtons{
+	border-radius: 4px;
+	background-color: #ff0000;
+	border: none;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 15px;
+	padding: 2px;
+	
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
+	box-shadow: 0px 0px 15px #ffffff;
+	margin-top: 50px;
+}
+
+
+
+.part{
+	background-color:rgb(79, 94, 114);
+	
+	background-size: cover;
+    color: rgb(255, 255, 255); 
+	width: 700px; 
+	text-align: center;
+	
+	box-shadow: 0px 0px 20px #000000;
+   
+	border-radius: 15px;
+	margin-left: 100px;
+	
+}
+
+.wrapper{
+	margin: 0;
+}
+
+.phone-viewer{
+	background-color: rgb(69, 40, 97);
+	background-size: cover;
+    color: rgb(255, 255, 255); 
+	width: 900px; 
+	height: 900px;
+	text-align: center;
+	box-shadow: 0px 0px 20px #000000;
+	border-radius: 15px;
+	float:left;
+	width:49%;
+	overflow:hidden;
+	margin: 1px;
+	
+}
+
+#logo{
+	width: 30%;
+	height: 30%;
+	text-align: center;
+	
+}
+
+#logo-section{
+	text-align: center;
+	width: 100%;
+}
+
+.android{
+
+	text-align: center;
+
+}
+
+.parent-part{
+	background-color: rgb(69, 40, 97);
+	background-size: cover;
+    color: rgb(255, 255, 255); 
+	width: 900px; 
+	text-align: center;
+	box-shadow: 0px 0px 20px #000000;
+	border-radius: 15px;
+	float:left;
+	width:900px;
+	overflow:hidden;
+	margin: 1px;
+	
+}
+
+#help{
+	background-color: rgb(255, 0, 0);
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+	
+	background-size: cover;
+    color: rgb(255, 255, 255); 
+    width: 28%; 
+	
+	box-shadow: 0px 0px 20px #000000;
+   
+	border-radius: 15px;
+	margin: 1%;
+}
+
+#convert{
+	background-color: rgb(43, 44, 145);
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+	
+	background-size: cover;
+    color: rgb(255, 255, 255); 
+    width: 28%; 
+	
+	box-shadow: 0px 0px 20px #000000;
+   
+	border-radius: 15px;
+	margin: 1%;
+}
+
+
+
+/*A GIF BANNER(HEADER)*/
+div#head {
+    width:100%;
+    height:200px; /* height of the background image? */
+    background:url(https://cdn.weasyl.com/~fluffkevlar/submissions/30165/efb64790c6059bf9f32f9922bdfd36fad18bdd135aff5f67e99a7f0f29749042/fluffkevlar-starfield-gif.gif) repeat-x 0 0;
+    text-align:center;
+   }
+
+/*WORKING ON BODY DESIGN*/
+body {
+	background:url("../image/infomaker.jpg") ;
+	font-size:22px;
+	line-height: 32px;
+	color: #ffffff;
+	margin: 0;
+	padding: 0;
+	word-wrap:break-word !important;
+	font-family: Garamond;
+}
+
+h3 {
+	font-size: 30px;
+	line-height: 34px;
+	text-align: center;
+	color: #FFF;
+	text-shadow: 1px 1px 5px black, 0 0 25px #FFFFFF, 0 0 5px darkblue;
+}
+
+h3 a {
+	color: #FFF;
+}
+
+a {
+	color: #FFF;
+}
+
+h1 {
+	
+	text-align:center;
+	font-size:35px;
+	line-height: 70px;
+	text-shadow: 1px 1px 5px black, 0 0 25px rgb(255, 0, 0), 0 0 5px darkblue;
+	}
+
+h5{
+	text-align: center;
+	color: rgb(255, 255, 255);
+	text-shadow: 1px 1px 5px black, 0 0 25px #FFFFFF, 0 0 5px darkblue;
+	font-size: 25px
+	
+}
+
+#container {
+	margin: 0 auto;
+	max-width: 890px;
+}
+
+p {
+	text-align: left;
+	text-shadow: 1px 1px 5px black, 0 0 25px #000000, 0 0 5px darkblue;
+}
+
+.toggle,
+[id^=drop] {
+	display: none;
+}
+
+/* NAV PROPERTIES, MENU WILL BE RESPONSIVE AND WILL CHANGE TO DRPDOWN MENU IN SMALL SIZE */
+nav { 
+	margin:0;
+	padding: 0;
+	background-color: #254441;
+	text-shadow: 1px 1px 5px black, 0 0 25px #000000, 0 0 5px darkblue;
+ 	box-shadow: 20px 0px 70px #170909;
+}
+
+#logo {
+	display: block;
+	padding: 0 30px;
+	float: left;
+	font-size:20px;
+	line-height: 60px;
+}
+
+/* Since we'll have the "ul li" "float:left"
+ * we need to add a clear after the container. */
+nav:after {
+	content:"";
+	display:table;
+	clear:both;
+}
+
+/* Removing padding, margin and "list-style" from the "ul",
+ * and adding "position:reltive" */
+nav ul {
+    float: left;
+    padding:0;
+	margin:0;
+	list-style:none;
+	position: relative;
+}
+	
+/* Positioning the navigation items inline */
+nav ul li {
+	margin: 0px;
+	display:inline-block;
+	background-color: #254441;
+}
+
+/* Styling the links */
+nav a {
+	display:block;
+	padding:14px 20px;	
+	color:#FFF;
+	font-size:17px;
+    text-decoration:none;
+}
+
+/*Hover effect for nav or menu*/
+nav ul li ul li:hover { background: #000000; }
+nav a:hover { 
+	background-color: #000000; 
+}
+
+/* Hide Dropdowns by Default
+ * and giving it a position of absolute */
+nav ul ul {
+	display: none;
+	position: absolute; 
+	/* has to be the same number as the "line-height" of "nav a" */
+	top: 60px; 
+}
+	
+/* Display Dropdowns on Hover */
+nav ul li:hover > ul {
+	display:inherit;
+}
+	
+/* Fisrt Tier Dropdown */
+nav ul ul li {
+	width:170px;
+	float:none;
+	display:list-item;
+	position: relative;
+}
+
+/* Second, Third and more Tiers	
+ * We move the 2nd and 3rd etc tier dropdowns to the left
+ * by the amount of the width of the first tier.
+*/
+nav ul ul ul li {
+	position: relative;
+	top:-60px;
+	/* has to be the same number as the "width" of "nav ul ul li" */ 
+	left:170px; 
+}
+	
+/* Change ' +' in order to change the Dropdown symbol, I need it later:
+li > a:after { content:  ' +'; }
+li > a:only-child:after { content: ''; }
+*/
+
+/* Media Queries
+--------------------------------------------- */
+@media all and (max-width : 5000px) {
+	.blogAside {
+		width: 20%; 
+		display: inline-block; 
+}
+
+	.posts {
+		width: 77%; 
+		display: inline-block; 
+	}
+
+	.contactForm {
+		width: 77%; 
+		display: inline-block; 
+	}
+
+	#form{
+		margin: 0% 40%;
+	}
+
+	
+
+	
+}
+
+@media all and (max-width : 768px) {
+	nav {
+        margin: 0;
+	}
+	
+
+
+/*  GO FULL WIDTH AT LESS THAN 480 PIXELS, This media query and others will handle the the responsive function.*/
+@media only screen and (max-width: 480px) {
+	.col { margin: 1% 0 1% 0%; }
+	.span_1_of_3 { width: 90%;}
+	
+}
+
+	/*SIDE BAR PROPERTIES IN "CONTACT ME" AND "BLOG" PAGE HTML5*/
+	.blogAside {
+		width: 95%; 
+		display: block; 
+	}
+	
+	/*THIS IS WHERE AN ARTICLES AND OTHER CONTENT OF PAGE WILL BE SHOWN.*/
+	.posts {
+		width: 95%; 
+		display: block;
+	}
+
+	/*EXACTLY SAME AS THE ABOVE BUT I SEPARATE THEM BECAUSE I NEED TO WRITE MEDIA QUERY AND CHANGE IT'S MARGIN*/
+	/*THIS IS THE PLACE THAT THE HTTP POST FORM IS LOCATED*/
+	.contactForm {
+		width: 95%; 
+		display: block;
+	}
+
+	/*THIS IS THE CONTACT FORM*/
+	#form{
+		margin: 0% 40%;
+	}
+
+
+	/* Hide the navigation menu by default */
+	.toggle + a,
+	.menu {
+		display: none;
+		
+	}
+
+	/* Styling the toggle lable */
+	.toggle {
+		display: block;
+		background-color: #254441;
+		padding:14px 20px;	
+		color:#FFF;
+		font-size:17px;
+		text-decoration:none;
+		border:none;
+	}
+
+	.toggle:hover {
+		background-color: #000000;
+	}
+
+	/* Display Dropdown when clicked on Parent Lable */
+	[id^=drop]:checked + ul {
+		display: block;
+	}
+
+	/* Change menu item's width to 100% */
+	nav ul li {
+		display: block;
+		width: 100%;
+		}
+
+	nav ul ul .toggle,
+	nav ul ul a {
+		padding: 0 40px;
+	}
+
+	nav ul ul ul a {
+		padding: 0 80px;
+	}
+
+	nav a:hover,
+ 	nav ul ul ul a {
+		background-color: #000000;
+	}
+  
+	nav ul li ul li .toggle,
+	nav ul ul a,
+  	nav ul ul ul a{
+		padding:14px 20px;	
+		color:#FFF;
+		font-size:17px; 
+	}
+  
+  
+	nav ul li ul li .toggle,
+	nav ul ul a {
+		background-color: #212121; 
+	}
+
+	/* Hide Dropdowns by Default */
+	nav ul ul {
+		float: none;
+		position:static;
+		color: #ffffff;
+		/* has to be the same number as the "line-height" of "nav a" */
+	}
+		
+	/* Hide menus on hover */
+	nav ul ul li:hover > ul,
+	nav ul li:hover > ul {
+		display: none;
+	}
+		
+	/* Fisrt Tier Dropdown */
+	nav ul ul li {
+		display: block;
+		width: 100%;
+	}
+
+	nav ul ul ul li {
+		position: static;
+		/* has to be the same number as the "width" of "nav ul ul li" */ 
+	}
+
+}
+
+@media all and (max-width : 330px) {
+
+	nav ul li {
+		display:block;
+		width: 94%;
+	}
+	.blogAside {width: 95%; display: block; }
+	.posts {width: 95%; display: block; }
+	.contactForm {width: 95%; display: block; }
+
+	/*Form is changed responsive at 330px*/
+	#form{
+		margin: 0% 1%;
+	}
+}
+
+/*QUOTES OF THE DAY PROPERTIES*/
+#quotes {
+	font-family: Garamond; 
+	font-size: 30px;
+	color: yellow;
+	text-shadow: 1px 1px 5px black, 0 0 25px #FFFFFF, 0 0 5px darkblue;
+	text-align: center;
+}
+
+/*PROPERTIES FOR THE NAME OF THE AUTHOR ONLY*/
+#author {
+	font-size: 15px;
+	color: #000000;
+	text-shadow: 2px 2px 4px #000000;
+	text-align: center;
+}
+
+/*EACH PAGE LIGHT UP IT'S OWN LINK TO YELLOW*/
+#homepage{
+	color: yellow;
+}
+
+#blog{
+	color: yellow;
+}
+
+#about{
+	color: yellow;
+}
+
+#contact{
+	color: yellow;
+}
+
+.video-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+.video-responsive video{
+    left:0;
+    top:0;
+    height:98%;
+    width:98%;
+	position:absolute;
+	
+}
+
+/*BLOG SECTION*/
+section{
+	background:url(http://ubuntu.damianvila.com/material/haron-blue-2048x1536.jpg) repeat-y;
+	border: 1px solid #FFE600;
+	border-radius: 10px;
+	margin:5px;
+	position: relative;
+	box-shadow: 20px 0px 70px #000000;
+}
+
+#blogArticle {
+	color: #FFFFFF;
+	background: #3E3D3C;
+	text-align: center;
+	border: 3px solid #FFE600;
+	border-radius: 10px;
+	margin:10px;
+}
+
+.posts{
+	display:inline-block;
+	background:url(https://wallpapercave.com/wp/FjnZ25X.jpg) repeat-y;
+	/*margin: 10px 10px;
+	padding-block-start: 10%;
+	width:  70%*/
+	border: 1px solid #010101;
+	border-radius: 10px;
+	/*position: relative;*/
+	vertical-align: top;
+	margin: 10px 2px 2px 2px;
+	box-shadow: 20px 0px 70px #B400FF;
+}
+
+.blogAside{
+	display:inline-block;
+	background:url(http://ubuntu.damianvila.com/material/haron-blue-2048x1536.jpg) repeat-y;
+	border: 1px solid #FFE600;
+	border-radius: 10px;
+	/*margin:  10px 0px;
+	width: 20%;
+	position: relative;*/
+	vertical-align: top;
+	margin: 20px 2px 2px 2px;
+	box-shadow: 20px 0px 70px #170909;
+}
+
+#blogFooter{
+	width: 99%;
+	border: 1px solid #FFE600;
+	border-radius: 10px;
+	box-shadow: 20px 0px 70px #170909;
+}
+
+#answers{
+	text-align: left;
+	
+}
+
+.contactForm{
+	display:inline-block;
+	background:url(https://wallpapercave.com/wp/FjnZ25X.jpg) repeat-y;
+	/*margin: 10px 10px;
+	padding-block-start: 10%;
+	width:  70%*/
+	border: 1px solid #010101;
+	border-radius: 10px;
+	/*position: relative;*/
+	vertical-align: top;
+	margin: 10px 2px 2px 2px;
+	box-shadow: 20px 0px 70px #B400FF;
+}

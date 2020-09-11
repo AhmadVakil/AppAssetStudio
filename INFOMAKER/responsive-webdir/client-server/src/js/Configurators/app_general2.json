@@ -1,0 +1,12 @@
+{
+    "title": "General 2",
+    "path" : "Resources/Modules/shared/configuration/MyProfile_config.json",
+    "fields": [
+        {
+            "title": "FAQ URL in Profile (optional)",
+            "description": "(example: https://example.com/faq?app=myapp)",
+            "jsonKeyPath": "profileSections[title=links].objects[title=faq].url",
+            "type": "text"
+        }
+    ]
+}

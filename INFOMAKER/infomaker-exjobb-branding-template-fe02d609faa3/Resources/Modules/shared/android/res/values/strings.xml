@@ -1,0 +1,7 @@
+<resources>
+    // Location picker
+    <string name="continue_text">Lägg till område</string>
+    <string name="search_in_progress_text">Söker artiklar...</string>
+    <string name="result_text">artiklar publicerade senaste månaden i detta område</string>
+    <string name="no_result_text">Inga artiklar publicerade senaste månaden i området.</string>
+</resources>

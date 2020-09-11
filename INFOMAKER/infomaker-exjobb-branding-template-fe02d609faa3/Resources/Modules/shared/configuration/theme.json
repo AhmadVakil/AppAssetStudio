@@ -1,0 +1,36 @@
+{
+  "color": {
+    "primary": "#1a1a1a",
+    "indicatorSelected": "#1a1a1a",
+    "indicatorUnselected": "#ffffff",
+    "highlight": "#ffffff",
+    "pageIndicator": "#ff0000",
+    "background": "#303030",
+    "textDefault": "#ffffff",
+    "button": "#ffffff"
+  },
+  "size": {
+    "medium": 16,
+    "large": 24
+  },
+  "font": {
+    "regular": "Lato-Regular.ttf"
+  },
+  "text": {
+    "promotionSubtitle": {
+      "size": "medium",
+      "font": "regular",
+      "color": "textDefault"
+    },
+    "promotionTitle": {
+      "size": "large",
+      "font": "regular",
+      "color": "textDefault"
+    },
+    "buttonText": {
+      "size": "medium",
+      "font": "regular",
+      "color": "textDefault"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+    "title": "General 3",
+    "path" : "Resources/Modules/shared/configuration/Settings_config.json",
+    "fields": [
+        {
+            "title": "Privacy Policy URL",
+            "description": "URL to Privacy Policy for Android (example: https://example.com/privacy?app=myapp)",
+            "jsonKeyPath": "policyUrl",
+            "type": "text"
+            //LATER: "validate": "/^https*:\/\/.+$/"
+        }
+    ]
+}

@@ -1,0 +1,424 @@
+/*MAKING GOOD LOOKING COLUMN (Note:Columns are responsive. See media queries for more details)*/
+.section group{
+    background-image: url("images\infomaker_background.jpg");
+}
+#back_left{
+    background: #EAE7E7;
+}
+.col {
+   
+    background-image: url("images\infomaker_background.jpg");
+
+	display: block;
+	float:none;
+    margin: 1% 0% 5% 1.6%;
+    padding:  1% 1% 2% 1%;
+    
+}
+
+.col:first-child {
+     margin-left: 0;
+}
+
+
+/*  GROUPING  */
+.group:before,
+.group:after {
+	content:"";
+    display:table;
+}
+
+.group:after {
+    clear:both;
+}
+
+.group {
+    
+    
+    zoom:1; /* For IE 6/7 */
+    color: #050404;
+    border: 2px solid #080000;
+    border-radius: 10px;
+	padding: 2% 0% 2% 7%;
+	box-shadow: 20px 0px 70px #170909;
+}
+
+.span_1_of_3 {
+   
+    color: #EAE7E7; 
+    width: 28%; 
+	border: 1px solid #FFE600;
+	box-shadow: 10px 10px 5px #000000;
+    border-radius: 15px;
+}
+
+/*A GIF BANNER(HEADER)*/
+div#head {
+    width:100%;
+    height:200px; /* height of the background image? */
+    text-align:center;
+   }
+
+/*WORKING ON BODY DESIGN*/
+body {
+    background-image: url("images\infomaker_background.jpg");
+	font-size:22px;
+	line-height: 32px;
+	color: #ffffff;
+	margin: 0;
+	padding: 0;
+	word-wrap:break-word !important;
+	font-family: Garamond;
+    }
+    
+
+h3 {
+	font-size: 30px;
+	line-height: 34px;
+	text-align: center;
+	color: #FFF;
+	text-shadow: 1px 1px 5px black, 0 0 25px #FFFFFF, 0 0 5px darkblue;
+}
+
+h3 a {
+	color: #FFF;
+}
+
+a {
+	color: #FFF;
+}
+
+h1 {
+	margin-top: 100px;
+	text-align:center;
+	font-size:60px;
+	line-height: 70px;
+	text-shadow: 1px 1px 5px black, 0 0 25px #FFFFFF, 0 0 5px darkblue;
+	}
+
+h5{
+	color: red;
+	text-shadow: 1px 1px 5px black, 0 0 25px #FFFFFF, 0 0 5px darkblue;
+}
+
+#container {
+	margin: 0 auto;
+    max-width: 890px;
+}
+
+p {
+	text-align: left;
+	text-shadow: 1px 1px 5px black, 0 0 25px #000000, 0 0 5px darkblue;
+}
+
+.toggle,
+[id^=drop] {
+	display: none;
+}
+
+/* NAV PROPERTIES, MENU WILL BE RESPONSIVE AND WILL CHANGE TO DRPDOWN MENU IN SMALL SIZE */
+nav { 
+	margin:0;
+	padding: 0;
+	background-color: #254441;
+	text-shadow: 1px 1px 5px black, 0 0 25px #000000, 0 0 5px darkblue;
+ 	box-shadow: 20px 0px 70px #170909;
+}
+
+#logo {
+	display: block;
+	padding: 0 30px;
+	float: left;
+	font-size:20px;
+	line-height: 60px;
+}
+
+/* Since we'll have the "ul li" "float:left"
+ * we need to add a clear after the container. */
+nav:after {
+	content:"";
+	display:table;
+	clear:both;
+}
+
+/* Removing padding, margin and "list-style" from the "ul",
+ * and adding "position:reltive" */
+nav ul {
+    float: left;
+    padding:0;
+	margin:0;
+	list-style:none;
+	position: relative;
+}
+	
+/* Positioning the navigation items inline */
+nav ul li {
+	margin: 0px;
+	display:inline-block;
+	background-color: #254441;
+}
+
+/* Styling the links */
+nav a {
+	display:block;
+	padding:14px 20px;	
+	color:#FFF;
+	font-size:17px;
+    text-decoration:none;
+}
+
+/*Hover effect for nav or menu*/
+nav ul li ul li:hover { background: #000000; }
+nav a:hover { 
+	background-color: #000000; 
+}
+
+/* Hide Dropdowns by Default
+ * and giving it a position of absolute */
+nav ul ul {
+	display: none;
+	position: absolute; 
+	/* has to be the same number as the "line-height" of "nav a" */
+	top: 60px; 
+}
+	
+/* Display Dropdowns on Hover */
+nav ul li:hover > ul {
+	display:inherit;
+}
+	
+/* Fisrt Tier Dropdown */
+nav ul ul li {
+	width:170px;
+	float:none;
+	display:list-item;
+	position: relative;
+}
+
+/* Second, Third and more Tiers	
+ * We move the 2nd and 3rd etc tier dropdowns to the left
+ * by the amount of the width of the first tier.
+*/
+nav ul ul ul li {
+	position: relative;
+	top:-60px;
+	/* has to be the same number as the "width" of "nav ul ul li" */ 
+	left:170px; 
+}
+	
+/* Change ' +' in order to change the Dropdown symbol, I need it later:
+li > a:after { content:  ' +'; }
+li > a:only-child:after { content: ''; }
+*/
+
+/* Media Queries
+--------------------------------------------- */
+@media all and (max-width : 5000px) {
+	.blogAside {
+		width: 20%; 
+		display: inline-block; 
+}
+
+	.posts {
+		width: 77%; 
+		display: inline-block; 
+	}
+
+	.contactForm {
+		width: 77%; 
+		display: inline-block; 
+	}
+
+	#form{
+		margin: 0% 40%;
+	}
+}
+
+@media all and (max-width : 768px) {
+	nav {
+        margin: 0;
+	}
+
+/*  GO FULL WIDTH AT LESS THAN 480 PIXELS, This media query and others will handle the the responsive function.*/
+@media only screen and (max-width: 480px) {
+	.col { margin: 1% 0 1% 0%; }
+	.span_1_of_3 { width: 90%;}
+}
+
+	/*SIDE BAR PROPERTIES IN "CONTACT ME" AND "BLOG" PAGE HTML5*/
+	.blogAside {
+		width: 95%; 
+		display: block; 
+	}
+	
+	/*THIS IS WHERE AN ARTICLES AND OTHER CONTENT OF PAGE WILL BE SHOWN.*/
+	.posts {
+		width: 95%; 
+		display: block;
+	}
+
+	/*EXACTLY SAME AS THE ABOVE BUT I SEPARATE THEM BECAUSE I NEED TO WRITE MEDIA QUERY AND CHANGE IT'S MARGIN*/
+	/*THIS IS THE PLACE THAT THE HTTP POST FORM IS LOCATED*/
+	.contactForm {
+		width: 95%; 
+		display: block;
+	}
+
+	/*THIS IS THE CONTACT FORM*/
+	#form{
+		margin: 0% 40%;
+	}
+
+
+	/* Hide the navigation menu by default */
+	.toggle + a,
+	.menu {
+		display: none;
+		
+	}
+
+	/* Styling the toggle lable */
+	.toggle {
+		display: block;
+		background-color: #254441;
+		padding:14px 20px;	
+		color:#FFF;
+		font-size:17px;
+		text-decoration:none;
+		border:none;
+	}
+
+	.toggle:hover {
+		background-color: #000000;
+	}
+
+	/* Display Dropdown when clicked on Parent Lable */
+	[id^=drop]:checked + ul {
+		display: block;
+	}
+
+	/* Change menu item's width to 100% */
+	nav ul li {
+		display: block;
+		width: 100%;
+		}
+
+	nav ul ul .toggle,
+	nav ul ul a {
+		padding: 0 40px;
+	}
+
+	nav ul ul ul a {
+		padding: 0 80px;
+	}
+
+	nav a:hover,
+ 	nav ul ul ul a {
+		background-color: #000000;
+	}
+  
+	nav ul li ul li .toggle,
+	nav ul ul a,
+  	nav ul ul ul a{
+		padding:14px 20px;	
+		color:#FFF;
+		font-size:17px; 
+	}
+  
+  
+	nav ul li ul li .toggle,
+	nav ul ul a {
+		background-color: #212121; 
+	}
+
+	/* Hide Dropdowns by Default */
+	nav ul ul {
+		float: none;
+		position:static;
+		color: #ffffff;
+		/* has to be the same number as the "line-height" of "nav a" */
+	}
+		
+	/* Hide menus on hover */
+	nav ul ul li:hover > ul,
+	nav ul li:hover > ul {
+		display: none;
+	}
+		
+	/* Fisrt Tier Dropdown */
+	nav ul ul li {
+		display: block;
+		width: 100%;
+	}
+
+	nav ul ul ul li {
+		position: static;
+		/* has to be the same number as the "width" of "nav ul ul li" */ 
+	}
+
+}
+
+@media all and (max-width : 330px) {
+
+	nav ul li {
+		display:block;
+		width: 94%;
+	}
+	.blogAside {width: 95%; display: block; }
+	.posts {width: 95%; display: block; }
+	.contactForm {width: 95%; display: block; }
+
+	/*Form is changed responsive at 330px*/
+	#form{
+		margin: 0% 1%;
+	}
+}
+
+/*QUOTES OF THE DAY PROPERTIES*/
+#quotes {
+	font-family: Garamond; 
+	font-size: 30px;
+	color: yellow;
+	text-shadow: 1px 1px 5px black, 0 0 25px #FFFFFF, 0 0 5px darkblue;
+	text-align: center;
+}
+
+/*PROPERTIES FOR THE NAME OF THE AUTHOR ONLY*/
+#author {
+	font-size: 15px;
+	color: #000000;
+	text-shadow: 2px 2px 4px #000000;
+	text-align: center;
+}
+
+/*EACH PAGE LIGHT UP IT'S OWN LINK TO YELLOW*/
+#homepage{
+	color: yellow;
+}
+
+#blog{
+	color: yellow;
+}
+
+#about{
+	color: yellow;
+}
+
+#contact{
+	color: yellow;
+}
+
+.video-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+.video-responsive video{
+    left:0;
+    top:0;
+    height:98%;
+    width:98%;
+	position:absolute;
+	
+}

@@ -1,0 +1,14 @@
+{
+  "name": "webdir",
+  "version": "1.0.0",
+  "description": "Examensarbete",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ahmadreza Vakilalroayayi",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^0.11.1"
+  }
+}

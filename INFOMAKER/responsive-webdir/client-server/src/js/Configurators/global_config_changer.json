@@ -1,0 +1,116 @@
+{
+	"title": "App globals",
+	"path" : "outPutImages/Resources/Modules/shared/configuration/global_config.json",
+	"fields": [
+		{
+			"title": "Primary Color",
+			"jsonKeyPath": "primaryColor",
+			"type": "color"
+		},
+		{
+			"title": "Primary Color Dark",
+			"jsonKeyPath": "primaryColorDark",
+			"type": "color"
+		},
+		{
+			"title": "Secondary Color",
+			"jsonKeyPath": "secondaryColor",
+			"type": "color"
+		},
+		{
+			"title": "Accent Color",
+			"jsonKeyPath": "accentColor",
+			"type": "color"
+		},
+		{
+			"title": "Module Background Color",
+			"jsonKeyPath": "moduleBackgroundColor",
+			"type": "color"
+		},
+		{
+			"title": "Text Color",
+			"jsonKeyPath": "textColor",
+			"type": "color"
+		},
+		{
+			"title": "Black Status Bar Style",
+			"jsonKeyPath": "blackStatusBarStyle",
+			"type": "boolean"
+		},
+        {
+			"title": "Pubdate Key",
+			"jsonKeyPath": "remoteNotification.pubdateKey",
+			"object": "remoteNotification",
+			"property" : "pubdateKey",
+			"subPath": true,
+			"type": "text"
+		},
+		{
+			"title": "Title Key",
+			"jsonKeyPath": "remoteNotification.titleKey",
+			"subPath": true,
+			"type": "text"
+		},
+		{
+			"title": "Subtitle Key",
+			"jsonKeyPath": "remoteNotification.subtitleKey",
+			"subPath": true,
+			"type": "text"
+		},
+		{
+			"title": "Content Id Key",
+			"jsonKeyPath": "remoteNotification.contentIdKey",
+			"subPath": true,
+			"type": "text"
+		},
+		{
+			"title": "Concept Field",
+			"jsonKeyPath": "conceptField",
+			"type": "text"
+		},
+		{
+			"title": "Story Field",
+			"jsonKeyPath": "storyField",
+			"type": "text"
+		},
+		
+		{
+			"title": "Author Field",
+			"jsonKeyPath": "authorField",
+			"type": "text"
+		},
+		{
+			"title": "Product Id",
+			"jsonKeyPath": "productId",
+			"type": "number"
+		},
+		{
+			"title": "Login URL",
+			"jsonKeyPath": "loginURL",
+			"type": "text"
+		},
+		{
+			"title": "Android Publish Application",
+			"jsonKeyPath": "pushApplication.android",
+			"subPath": true,
+			"type": "text"
+		},
+		{
+			"title": "iOS Publish Application",
+			"jsonKeyPath": "pushApplication.ios",
+			"subPath": true,
+			"type": "text"
+		},
+		{
+			"title": "Push Topic",
+			"jsonKeyPath": "pushTopic",
+			"type": "text"
+		},
+		{
+			"title": "Push Register URL",
+			"jsonKeyPath": "pushRegisterURL",
+			"type": "text"
+		}
+		
+	]
+}

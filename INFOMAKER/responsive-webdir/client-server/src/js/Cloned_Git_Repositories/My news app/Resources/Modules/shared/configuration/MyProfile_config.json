@@ -1,0 +1,153 @@
+{
+  "profileSections": {
+    "android": [
+      {
+        "title": "",
+        "objects": [
+          {
+            "type": "authentication",
+            "loggedInTitle": "Not logged in",
+            "loggedOutTitle": "Logged in"
+          }
+        ]
+      },
+      {
+        "title": "",
+        "objects": [
+          {
+            "type": "urlButton",
+            "title": "Infomaker.se - about us in Swedish",
+            "url": "https://www.infomaker.se"
+          },
+          {
+            "type": "version",
+            "title": ""
+          },
+          {
+            "type": "licenses",
+            "title": "Acknowledgements"
+          }
+        ]
+      },
+      {
+        "title": "Big thanks for sponsoring us with free ePaper issues",
+        "objects": [
+          {
+            "type": "urlButton",
+            "title": "Dagens Industri",
+            "url": "https://www.di.se"
+          },
+          {
+            "type": "urlButton",
+            "title": "Dagens Nyheter",
+            "url": "https://www.dn.se"
+          },
+          {
+            "type": "urlButton",
+            "title": "Helsingborgs dagblad",
+            "url": "https://www.hd.se"
+          },
+          {
+            "type": "urlButton",
+            "title": "Nationen",
+            "url": "http://www.nationen.no"
+          },
+          {
+            "type": "urlButton",
+            "title": "Nya Wermlands-Tidningen",
+            "url": "https://nwt.se"
+          },
+          {
+            "type": "urlButton",
+            "title": "Jönköpings-Posten",
+            "url": "https://www.jp.se/"
+          },
+          {
+            "type": "urlButton",
+            "title": "Sydsvenskan",
+            "url": "https://www.sydsvenskan.se"
+          }
+        ]
+      }
+    ],
+    "ios": [
+      {
+        "title": "",
+        "objects": [
+          {
+            "type": "authentication",
+            "loggedInTitle": "unauthenticated",
+            "loggedOutTitle": "authenticated"
+          }
+        ]
+      },
+      {
+        "title": "About Infomaker and this app",
+        "objects": [
+          {
+            "type": "urlButton",
+            "title": "Infomaker.se - about us in Swedish",
+            "url": "https://www.infomaker.se"
+          },
+          {
+            "type": "version",
+            "title": ""
+          },
+          {
+            "type": "licenses",
+            "title": "acknowledge"
+          }
+        ]
+      },
+      {
+        "title": "Big thanks for sponsoring us with free ePaper issues",
+        "objects": [
+          {
+            "type": "urlButton",
+            "title": "Dagens Industri",
+            "url": "https://www.di.se"
+          },
+          {
+            "type": "urlButton",
+            "title": "Dagens Nyheter",
+            "url": "https://www.dn.se"
+          },
+          {
+            "type": "urlButton",
+            "title": "Helsingborgs dagblad",
+            "url": "https://www.hd.se"
+          },
+          {
+            "type": "urlButton",
+            "title": "Nationen",
+            "url": "http://www.nationen.no"
+          },
+          {
+            "type": "urlButton",
+            "title": "Nya Wermlands-Tidningen",
+            "url": "https://nwt.se"
+          },
+          {
+            "type": "urlButton",
+            "title": "Jönköpings-Posten",
+            "url": "https://www.jp.se/"
+          },
+          {
+            "type": "urlButton",
+            "title": "Sydsvenskan",
+            "url": "https://www.sydsvenskan.se"
+          }
+        ]
+      },
+      {
+        "title": "",
+        "objects": [
+          {
+            "type": "settings",
+            "title": "settings"
+          }
+        ]
+      }
+    ]
+  }
+}

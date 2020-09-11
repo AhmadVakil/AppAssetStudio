@@ -1,0 +1,13 @@
+{
+    "title": "Push notifications 2",
+    "path" : "Resources/project_config.json",
+    "fields": [
+        {
+            "title": "GCM Sender ID",
+            "description": "Google Cloud Messaging ID",
+            "jsonKeyPath": "gcmSenderID.android",
+            "type": "text",
+			"subPath" : true
+        }
+    ]
+}

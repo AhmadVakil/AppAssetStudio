@@ -1,0 +1,79 @@
+{
+  "paper": {
+    "browseBetweenParts": true,
+    "fitPageToScreenWidth": false,
+    "showSpreads": false,
+    "showSelectPartBeforeFirstPage": true,
+    "showSelectPartAfterLastPage": true
+  },
+  "topBar": {
+    "visible": true,
+    "color": "#2c2c2c",
+    "bottomBorderColor": "#2c2c2c",
+    "bottomBorderVisible": false,
+    "showNavigationBackIcon": true,
+    "shareAction": {
+      "visible": true,
+      "showInOverflow": true
+    },
+    "printAction": {
+      "visible": true,
+      "showInOverflow": true
+    },
+    "label": {
+        "visible": true,
+        "text": "Parts",
+        "pageZeroText": "Archive",
+        "color": "#ffffff"
+    },
+    "goToReaderAction": {
+      "visible": true,
+      "order": 4,
+      "title": "",
+      "titleVisible": false
+    },
+    "toggleSpreadAndFitWidthAction": {
+      "visible": true,
+      "order": 2,
+      "title": "",
+      "titleVisible": false
+    }
+  },
+  "pageOverview": {
+    "title": "Page",
+    "itemOverlayVisible": true
+  },
+  "partOverview": {
+    "title": "Parts",
+    "itemOverlayVisible": true
+  },
+  "issueOverview": {
+    "itemOverlayVisible": true
+  },
+  "landscape": {
+    "paper": {
+      "fitPageToScreenWidth": false,
+      "showSpreads": true
+    },
+    "pageButtons": {
+      "visible": false,
+      "normalColor": "#20000000",
+      "pressedColor": "#60000000"
+    }
+  },
+  "portrait": {
+    "topBar": {
+      "toggleSpreadAndFitWidthAction": {
+        "visible": false
+      }
+    }
+  },
+  "phone": {
+    "landscape": {},
+    "portrait": {}
+  },
+  "tablet": {
+    "landscape": {},
+    "portrait": {}
+  }
+}

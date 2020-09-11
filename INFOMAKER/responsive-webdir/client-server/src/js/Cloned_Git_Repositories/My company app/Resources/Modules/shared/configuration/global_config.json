@@ -1,0 +1,26 @@
+{
+  "primaryColor": "true",
+  "primaryColorDark": "1a1a1a",
+  "secondaryColor": "ffffff",
+  "accentColor": "true",
+  "moduleBackgroundColor": "303030",
+  "textColor": "000000",
+  "blackStatusBarStyle": true,
+  "remoteNotification": {
+    "pubdateKey": "123488",
+    "titleKey": "TeaserHeadline",
+    "subtitleKey": "TeaserText",
+    "contentIdKey": "uuid"
+  },
+  "conceptField": "RelatedConceptTagsUuid",
+  "storyField": "RelatedConceptStoriesUuid",
+  "authorField": "Authors",
+  "productId": "9",
+  "loginURL": "http://stage.im-epaper.se",
+  "pushApplication": {
+    "android": "ABCD",
+    "ios": "arn:aws:sns:eu-west-1:123123123:app/APNS/InfomakerDemo"
+  },
+  "pushTopic": "infomaker",
+  "pushRegisterURL": "Infomaker"
+}
