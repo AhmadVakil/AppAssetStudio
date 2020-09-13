@@ -19,6 +19,7 @@ let BR=document.createElement('BR')
   x.id = 'hexColor'
   x.style.borderRadius = '5px'
   x.value='#'
+  var jsonButton = document.getElementById('view-json')
 
 var repos = document.getElementById('repositories')
 var repoName
@@ -27,16 +28,7 @@ var configuration
 repos.addEventListener('change', myfunction2)
 
 
-var moduleBackgroundColor = document.getElementById('moduleBackgroundColor-hex')
-var primaryColorDark = document.getElementById('primaryColorDark-hex')
-var secondaryColor = document.getElementById('secondaryColor-hex')
-var accentColor = document.getElementById('accentColor-hex')
-var textColor = document.getElementById('textColor-hex')
-var jsonButton = document.getElementById('view-json')
-var appIconButton = document.getElementById('view-icon-picker')
-var handlesChanger = document.getElementById('view-handles')
-
-  function myFunction() {
+function myFunction() {
         var x = document.getElementById("global-json-changer");
         if (x.style.display === "none") {
             x.style.display = "block";
@@ -44,6 +36,19 @@ var handlesChanger = document.getElementById('view-handles')
         } else {
             x.style.display = "none";
             jsonButton.style.backgroundColor = '#6484ec'
+        }
+    }
+
+
+function viewJsonDivs(jsonDivName) {
+        var x = document.getElementById(jsonDivName+'-div');
+        var pressedButton = document.getElementById(jsonDivName)
+        if (x.style.display === "none") {
+            x.style.display = "inline";
+            pressedButton.style.backgroundColor = 'red'
+        } else {
+            x.style.display = "none";
+            pressedButton.style.backgroundColor = '#6484ec'
         }
     }
 
@@ -134,17 +139,23 @@ var socket = io.connect('127.0.0.1:5001')
 
    function myfunction2(){
         repoName = repos.value
-        console.log('reponame======>>>> '+repoName)
-        configuration = { repoNames : repoName }
-        //var delivery = new Delivery(socket)
+        if (repoName != "Select Repository"){
+                configuration = { repoNames : repoName }
+                //var delivery = new Delivery(socket)
 
-          // console.log(file.files[0].name)
-        socket.emit('openThisRepo', { repoNames : repoName });
-        console.log(repoName)
+                console.log(configuration.repoNames)
+                socket.emit('openThisRepo', { repoNames : repoName });
+                console.log(repoName)
+
+        }
+
       }
 
     socket.on('Repositories', function (data){
         var repoList = document.getElementById("repositories")
+        var defaultOption = document.createElement('option')
+        defaultOption.innerHTML = "Select Repository"
+        repoList.appendChild(defaultOption)
         for (var i=0; i<data.length; i++){
          var tempOption = document.createElement('option')
          tempOption.innerHTML = data[i]
@@ -152,108 +163,218 @@ var socket = io.connect('127.0.0.1:5001')
         }
     })
 
-    socket.on('configChanger', function (data) {
-      console.log(data)
-      var globalConfig
+    function appDesignOne() {
+        configFileName = 'appDesignOne'
+        socket.emit('appDesignOne', { configName : configFileName });
+        console.log('clicked')
+    }
 
-      socket.on('CurrentConfigs', function (data) {
-        console.log(data.primaryColor)
-        globalConfig = data
-        x.value ='#'+data.primaryColor
-        /*primaryColorDark.value = data.primaryColorDark
-        secondaryColor.value =data.secondaryColor
-        accentColor.value = data.accentColor
-        moduleBackgroundColor.value = data.moduleBackgroundColor
-        textColor.value = data.textColor*/
+    function appDesignTwo() {
+        configFileName = 'appDesignTwo'
+        socket.emit('appDesignTwo', { configName : configFileName });
+    }
 
-        x.addEventListener('change', myfunction)
-        function myfunction(){
-          if (x.value != data.primaryColor){
-            x.style.backgroundColor = 'green'
-          } else {
-            x.style.backgroundColor = 'white'
+    function appSettingsOne () {
+        configFileName = 'appSettingsOne'
+        socket.emit('appSettingsOne', { configName : configFileName });
+    }
+
+    function appSettingsTwo() {
+        configFileName = 'appSettingsTwo'
+                socket.emit('appSettingsTwo', { configName : configFileName });
+    }
+
+    function appSettingsThree() {
+        configFileName = 'appSettingsThree'
+                socket.emit('appSettingsThree', { configName : configFileName });
+    }
+
+    function appSettingsFour() {
+        configFileName = 'appSettingsFour'
+                socket.emit('appSettingsFour', { configName : configFileName });
+    }
+
+    function appNotificationOne() {
+        configFileName = 'appNotificationOne'
+                socket.emit('appNotificationOne', { configName : configFileName });
+    }
+
+    function appNotificationTwo() {
+        configFileName = 'appNotificationTwo'
+                socket.emit('appNotificationTwo', { configName : configFileName });
+    }
+
+    function appLogin() {
+        configFileName = 'appLogin'
+                socket.emit('appLogin', { configName : configFileName });
+    }
+
+    function customModuleOne() {
+        configFileName = 'customModuleOne'
+                socket.emit('customModuleOne', { configName : configFileName });
+    }
+
+    function customModuleTwo() {
+        configFileName = 'customModuleTwo'
+                socket.emit('customModuleTwo', { configName : configFileName });
+    }
+
+    function customModuleThree() {
+        configFileName = 'customModuleThree'
+                socket.emit('customModuleThree', { configName : configFileName });
+    }
+
+        socket.on('configChanger', function (data) {
+        //myFunction()
+          console.log(data.fields)
+          //var globalConfig
+          console.log('============>>>>'+data.title)
+          viewJsonDivs(data.title)
+
+
+          for (var i=0; i<data.fields.length;i++){
+            var allJsonHolder= document.getElementById(data.title+'-div')
+            var fancyLine = document.createElement('hr')
+            var lineBreaker = document.createElement('br')
+
+            var jsonDiv = document.createElement('div')
+            jsonDiv.id = data.fields[i].jsonKeyPath+'-div'
+            jsonDiv.className = 'json-div'
+            jsonDiv.innerHTML = data.fields[i].title+'<br>'
+
+            /*var radioOne= document.createElement('input')
+            radioOne.type='radio'
+            radioOne.innerHTML = 'Use HEX number'*/
+            var textInputOne= document.createElement('input')
+            var textInputTwo= document.createElement('input')
+            if (data.fields[i].type === 'color'){
+                textInputOne.type='text'
+                textInputOne.id=data.fields[i].jsonKeyPath+'-hex'
+
+                textInputTwo.type='color'
+                textInputTwo.id=data.fields[i].jsonKeyPath+'-picker'
+
+                // Inserting values
+                /*var jsonPath = data.fields[i].jsonKeyPath
+                console.log(jsonPath)
+                textInputOne.value = globalConfig.*/
+
+                jsonDiv.appendChild(textInputOne)
+                jsonDiv.appendChild(textInputTwo)
+            }
+
+            if (data.fields[i].type === 'number'){
+              textInputOne.type='number'
+              textInputOne.id=data.fields[i].jsonKeyPath+'-number'
+              textInputOne.style.width = '50px'
+              jsonDiv.appendChild(textInputOne)
+            }
+
+            if (data.fields[i].type === 'text'){
+              textInputOne.type='text'
+              textInputOne.id=data.fields[i].jsonKeyPath+'-text'
+              jsonDiv.appendChild(textInputOne)
+            }
+
+            if (data.fields[i].type === 'boolean'){
+              var booleanSelector = document.createElement('select')
+              var yes = document.createElement('option')
+              yes.innerHTML = 'Yes'
+              var no = document.createElement('option')
+              no.innerHTML = 'No'
+
+              booleanSelector.appendChild(yes)
+              booleanSelector.appendChild(no)
+              jsonDiv.appendChild(booleanSelector)
+
+            }
+
+
+            /*var radioTwo= document.createElement('input')
+            radioTwo.type='radio'
+            radioTwo.insertAdjacentHTML = 'AAAA' */
+
+
+           // jsonDiv.appendChild(radioOne)
+
+           // jsonDiv.appendChild(lineBreaker)
+           // jsonDiv.appendChild(radioTwo)
+
+
+
+            allJsonHolder.appendChild(jsonDiv)
+            allJsonHolder.appendChild(fancyLine)
+
           }
-        }
+        })
 
-        //document.getElementById('colorTextInput').innerHTML = data.primaryColor
-       // socket.emit('my other event', { my: 'data' });
-      });
+/*
+    socket.on('CurrentConfigs', function (data) {
+            var primaryColor = document.getElementById('primaryColor-hex')
+            var moduleBackgroundColor = document.getElementById('moduleBackgroundColor-hex')
+            var primaryColorDark = document.getElementById('primaryColorDark-hex')
+            var secondaryColor = document.getElementById('secondaryColor-hex')
+            var accentColor = document.getElementById('accentColor-hex')
+            var textColor = document.getElementById('textColor-hex')
 
-      for (var i=0; i<data.fields.length;i++){
-        var allJsonHolder= document.getElementById('global-json-changer')
-        var fancyLine = document.createElement('hr')
-        var lineBreaker = document.createElement('br')
+            var remoteNotificationIdKey = document.getElementById('remoteNotification.contentIdKey-div')
+            var remoteNotificationPubdateKey = document.getElementById('remoteNotification.pubdateKey-text')
+            var remoteNotificationSubtitleKey = document.getElementById('remoteNotification.subtitleKey-div')
+            var remoteNotificationTitleKey = document.getElementById('remoteNotification.titleKey-div')
+            var conceptField = document.getElementById('conceptField-div')
+            var storyField = document.getElementById('storyField-div')
+            var authorField = document.getElementById('authorField-div')
+            var productId = document.getElementById('productId-div')
+            var loginURL = document.getElementById('loginURL-div')
+            var pushApplicationAndroid = document.getElementById('pushApplication.android-div')
+            var pushApplicationIos = document.getElementById('pushApplication.ios-div')
+            var pushTopic = document.getElementById('pushTopic-div')
+            var pushRegisterURL = document.getElementById('pushRegisterURL-div')
+            var appIconButton = document.getElementById('view-icon-picker')
+            var handlesChanger = document.getElementById('view-handles')
+/*
+remoteNotificationIdKey.value = data.
+remoteNotificationPubdateKey.value = data.
+remoteNotificationSubtitleKey.value = data.
+remoteNotificationTitleKey.value = data.
+conceptField.value = data.
+storyField.value = data.
+authorField.value = data.
+productId.value = data.
+loginURL.value = data.
+pushApplicationAndroid.value = data.
+pushApplicationIos.value = data.
+pushTopic.value = data.
+pushRegisterURL.value = data.
+appIconButton.value = data.
+handlesChanger.value = data.
 
-        var jsonDiv = document.createElement('div')
-        jsonDiv.id = data.fields[i].jsonKeyPath+'-div'
-        jsonDiv.className = 'json-div'
-        jsonDiv.innerHTML = data.fields[i].title+'<br>'
+            console.log('data=========>> '+data.primaryColorDark);
+            //data = JSON.parse(data)
+            //globalConfig = data
+            x.value ='#'+data.primaryColor
+            //var prim = document.getElementById('primaryColorDark-hex')
+            primaryColor.value = data.primaryColor
+            primaryColorDark.value = data.primaryColorDark
+            secondaryColor.value =data.secondaryColor
+            accentColor.value = data.accentColor
+            moduleBackgroundColor.value = data.moduleBackgroundColor
+            textColor.value = data.textColor
 
-        /*var radioOne= document.createElement('input')
-        radioOne.type='radio'
-        radioOne.innerHTML = 'Use HEX number'*/
-        var textInputOne= document.createElement('input')
-        var textInputTwo= document.createElement('input')
-        if (data.fields[i].type === 'color'){
-            textInputOne.type='text'
-            textInputOne.id=data.fields[i].jsonKeyPath+'-hex'
+            x.addEventListener('change', myfunction)
+            function myfunction(){
+              if (x.value != data.primaryColor){
+                x.style.backgroundColor = 'green'
+              } else {
+                x.style.backgroundColor = 'white'
+              }
+            }
 
-            textInputTwo.type='color'
-            textInputTwo.id=data.fields[i].jsonKeyPath+'-picker'
+            //document.getElementById('colorTextInput').innerHTML = data.primaryColor
+           // socket.emit('my other event', { my: 'data' });
+          });
+*/
 
-            // Inserting values
-            /*var jsonPath = data.fields[i].jsonKeyPath
-            console.log(jsonPath)
-            textInputOne.value = globalConfig.*/
-
-            jsonDiv.appendChild(textInputOne)
-            jsonDiv.appendChild(textInputTwo)
-        }
-
-        if (data.fields[i].type === 'number'){
-          textInputOne.type='number'
-          textInputOne.id=data.fields[i].jsonKeyPath+'-number'
-          textInputOne.style.width = '50px'
-          jsonDiv.appendChild(textInputOne)
-        }
-
-        if (data.fields[i].type === 'text'){
-          textInputOne.type='text'
-          textInputOne.id=data.fields[i].jsonKeyPath+'-text'
-          jsonDiv.appendChild(textInputOne)
-        }
-
-        if (data.fields[i].type === 'boolean'){
-          var booleanSelector = document.createElement('select')
-          var yes = document.createElement('option')
-          yes.innerHTML = 'Yes'
-          var no = document.createElement('option')
-          no.innerHTML = 'No'
-
-          booleanSelector.appendChild(yes)
-          booleanSelector.appendChild(no)
-          jsonDiv.appendChild(booleanSelector)
-
-        }
-
-
-        /*var radioTwo= document.createElement('input')
-        radioTwo.type='radio'
-        radioTwo.insertAdjacentHTML = 'AAAA' */
-
-
-       // jsonDiv.appendChild(radioOne)
-
-       // jsonDiv.appendChild(lineBreaker)
-       // jsonDiv.appendChild(radioTwo)
-
-
-
-        allJsonHolder.appendChild(jsonDiv)
-        allJsonHolder.appendChild(fancyLine)
-
-      }
-    })
 
     /*<div id="primaryColorDark-div" class="json-div">
                            <input type="checkbox" name="primaryColorDark" id="primaryColorDark">Change Accent Color:<br><br>
@@ -276,7 +397,7 @@ var socket = io.connect('127.0.0.1:5001')
             var delivery = new Delivery(socket)
 
              delivery.on('delivery.connect',function(delivery){
-              console.log('TEST')
+              //console.log('TEST')
               //$("input[type=submit]").click(
                 //file()
                // function file(evt){
@@ -316,16 +437,17 @@ var socket = io.connect('127.0.0.1:5001')
         }
         AARRGGBB+='ff'
         console.log(AARRGGBB)
-
+        var conf='Customer-X'
+        moduleBackgroundColor.value = '147258'
         $.ajax
               ({
                 type: "POST",
                 url: "http://localhost:8000",
                 crossDomain:true,
                 dataType: "json",
-                data:JSON.stringify({colorShortHex: AARRGGBB , color: hexColor.value , colorNoHashTag: noTag, iconName: file.files[0].name, targetRepo: repoNames, moduleBackgroundColor: moduleBackgroundColor.value, primaryColorDark:primaryColorDark.value, secondaryColor:secondaryColor.value, accentColor:accentColor.value, textColor: textColor.value })
+                data:JSON.stringify({colorShortHex: AARRGGBB , color: hexColor.value , colorNoHashTag: noTag, iconName: file.files[0].name, targetRepo: conf, moduleBackgroundColor: moduleBackgroundColor.value, primaryColorDark:primaryColorDark.value, secondaryColor:secondaryColor.value, accentColor:accentColor.value, textColor: textColor.value })
               }).done(function ( data ) {
                 console.log(configuration.repoNames)
-                    /*alert("Your requested color is successfully sent.");*/
+                    alert("Your requested color is successfully sent.");
                 })
       })

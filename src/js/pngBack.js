@@ -21,7 +21,7 @@ var globalMasker
 var globalAppIcon
 var globalShadow
 
-const clonedRepos = './Cloned_Git_Repositories/';
+const testFolder = './Cloned_Git_Repositories/';
 const fs = require('fs');
 
 // Change depending on this Json file
@@ -47,39 +47,127 @@ jsonfile.readFile(Json_Configurator, function(err, obj) {
 var gm = require('gm')
 var pixelColor
 var appIconName
-var targetRepository
-var currentSharedConfigJson
 /*
 io.sockets.on('connection', function (socket){
 
 })
 */
 io.sockets.on('connection', function(socket){
+
+
+    /*jsonfile.readFile(Json_Configurator+"", function(err, obj) {
+        socket.emit('configChanger', obj);
+    })*/
+
+    socket.on('appDesignOne', function (data){
+        console.log(data.configName)
+        jsonfile.readFile('Configurators/app-design1.json'+"", function(err, obj) {
+                socket.emit('configChanger', obj);
+        })
+        //socket.emit()
+    })
+
+    socket.on('appDesignTwo', function (data){
+            console.log(data.configName)
+            jsonfile.readFile('Configurators/app-design2.json'+"", function(err, obj) {
+                    socket.emit('configChanger', obj);
+            })
+            //socket.emit()
+        })
+
+        socket.on('appSettingsOne', function (data){
+                console.log(data.configName)
+                jsonfile.readFile('Configurators/app-settings1.json'+"", function(err, obj) {
+                        socket.emit('configChanger', obj);
+                })
+                //socket.emit()
+            })
+
+            socket.on('appSettingsTwo', function (data){
+                    console.log(data.configName)
+                    jsonfile.readFile('Configurators/app-settings2.json'+"", function(err, obj) {
+                            socket.emit('configChanger', obj);
+                    })
+                    //socket.emit()
+                })
+
+                socket.on('appSettingsThree', function (data){
+                        console.log(data.configName)
+                        jsonfile.readFile('Configurators/app-settings3.json'+"", function(err, obj) {
+                                socket.emit('configChanger', obj);
+                        })
+                        //socket.emit()
+                    })
+
+                    socket.on('appSettingsFour', function (data){
+                            console.log(data.configName)
+                            jsonfile.readFile('Configurators/app-settings4.json'+"", function(err, obj) {
+                                    socket.emit('configChanger', obj);
+                            })
+                            //socket.emit()
+                        })
+
+                        socket.on('appNotificationOne', function (data){
+                            console.log(data.configName)
+                            jsonfile.readFile('Configurators/app-notification1.json'+"", function(err, obj) {
+                                    socket.emit('configChanger', obj);
+                            })
+                            //socket.emit()
+                        })
+
+                        socket.on('appNotificationTwo', function (data){
+                                console.log(data.configName)
+                                jsonfile.readFile('Configurators/app-notification2.json'+"", function(err, obj) {
+                                        socket.emit('configChanger', obj);
+                                })
+                                //socket.emit()
+                            })
+
+                     socket.on('customModuleOne', function (data){
+                         console.log(data.configName)
+                         jsonfile.readFile('Configurators/custom-module1.json'+"", function(err, obj) {
+                                 socket.emit('configChanger', obj);
+                         })
+                         //socket.emit()
+                     })
+
+                     socket.on('customModuleTwo', function (data){
+                                              console.log(data.configName)
+                                              jsonfile.readFile('Configurators/custom-module2.json'+"", function(err, obj) {
+                                                      socket.emit('configChanger', obj);
+                                              })
+                                              //socket.emit()
+                                          })
+
+                     socket.on('customModuleThree', function (data){
+                       console.log(data.configName)
+                       jsonfile.readFile('Configurators/custom-module3.json'+"", function(err, obj) {
+                               socket.emit('configChanger', obj);
+                       })
+                       //socket.emit()
+                   })
+
+
     socket.on('openThisRepo', function (data) {
-                targetRepository = data.repoNames
-                TargetRepoName = targetRepository
-                console.log('REPOOO====>>>'+TargetRepoName);
-                // read json
-                let sharedConfigJson = fs.readFileSync('Cloned_Git_Repositories/'+TargetRepoName+'/Resources/Modules/shared/configuration/global_config.json');
-                currentSharedConfigJson = JSON.parse(sharedConfigJson);
-                console.log(currentSharedConfigJson);
+                console.log(data.repoNames);
+                jsonfile.readFile('Cloned_Git_Repositories/'+data.repoNames+'/Resources/Modules/shared/configuration/global_config.json'+"", function(err, obj) {
+                          socket.emit('CurrentConfigs', obj);
+                })
 
-                socket.emit('configChanger', currentSharedConfigJson)
-                //console.log('REPOOO====>>>'+data.repoNames);
-    })
+     })
     var delivery = dl.listen(socket);
+    //let sharedConfigJson = fs.readFileSync('Cloned_Git_Repositories/Customer-X/Resources/Modules/shared/configuration/global_config.json');
 
-    jsonfile.readFile('Cloned_Git_Repositories/'+TargetRepoName+'/Resources/Modules/shared/configuration/global_config.json', function(err, obj) {
-        socket.emit('CurrentConfigs', obj);
 
-        jsonfile.readFile(Json_Configurator+"", function(err, obj) {
-            socket.emit('configChanger', obj);
-        })
 
-        fs.readdir(clonedRepos, (err, files) => {
-            socket.emit('Repositories', files)
-        })
-    })
+    fs.readdir(testFolder, (err, files) => {
+        socket.emit('Repositories', files)
+      })
+
+      /*jsonfile.readFile('Cloned_Git_Repositories/Customer-X/Resources/Modules/shared/configuration/global_config.json'+"", function(err, obj) {
+          socket.emit('CurrentConfigs', obj);
+      })*/
+
 
 
     delivery.on('receive.success',function(file){
@@ -93,10 +181,6 @@ io.sockets.on('connection', function(socket){
           console.log('Error: Icon file could not received by the server.');
         }else{
           console.log('Icon file received by the server.');
-          fs.rename(appIconName, 'images/'+appIconName, (err) => {
-            if (err) throw err;
-            console.log('Rename complete!');
-          });
           changeAppIcon()
         };
       });
@@ -113,7 +197,7 @@ var server = http.createServer();
 server.on('request', request);
 server.listen(port);
 console.log('RUNNING SERVER.....');
-console.log('SERVER IS UP & RUNNING....... :)');
+console.log('SERVER IS ON NOW....... :)');
 function request(request, response) {
     var store = '';
     var object
@@ -125,12 +209,12 @@ function request(request, response) {
 
         store += data
         object = JSON.parse(store)
-        console.log('Data Received!! We Process it now!')
+        console.log('Data Received!! We Proccess it now!')
     });
     request.on('end', function()
     {
         receivedColor = parseInt(object.colorShortHex)
-        TargetRepoName = targetRepository
+        TargetRepoName = object.targetRepo
         console.log(TargetRepoName)
         transparentIconCreator()
         /*console.log(receivedColor);
@@ -291,7 +375,7 @@ file = editJsonFile(`jsOutput/gc.json`, {
 }
 
 function changeAppIcon(){
- Jimp.read('images/'+appIconName, function (err, appIcon) {
+ Jimp.read(appIconName, function (err, appIcon) {
     if (err) throw err;
 
     // Roman_Square_1.png
@@ -306,7 +390,7 @@ function changeAppIcon(){
     // IOS Icon
     appIcon.resize(1024, 1024)
     appIcon.write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/App Icon/ios/Icon.png")
-    console.log('Repo Name ====>>>>>'+TargetRepoName)
+
     appIcon.resize(1024, 1024)
     for (var y=0; y<1024; y++){
         for (var x=0; x<1024; x++){
@@ -359,4 +443,3 @@ function changeAppIcon(){
 
 })
 }
-
