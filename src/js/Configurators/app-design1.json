@@ -2,10 +2,7 @@
     "title": "app-design1",
     "path" : "Resources/Modules/shared/configuration/global_config.json",
     
-    "fields": [
-
-    
-        {
+    "fields": [{
             "title": "Primary Color",
             "description": "Main color used all over the app (example: 1a1a1a)",
             "jsonKeyPath": "primaryColor",
