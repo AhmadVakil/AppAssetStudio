@@ -3,9 +3,26 @@ var jsonfile = require('jsonfile')
 
 // check all the keys
 function checkTheType(obj, key) {
-    if (key.toLowerCase().includes('color')) {
-        console.log(obj.key)
-    }
+  /*if (key.toLowerCase().includes('color')) {
+          //console.log(obj.key)
+  }*/
+var RegExp = /^#[0-9A-F]{6}$/i;
+
+isHexColor = hex => typeof hex === 'string' && hex.length === 6 && !isNaN(Number('0x' + hex))
+
+if (isHexColor(obj[key]) || RegExp.test(obj[key])) {
+        // Create color elements here
+        console.log(key+" ====>> "+obj[key] + "  Color")
+} else if (typeof obj[key] === "number"){
+        // Create number elements here
+        console.log(key+" ====>> "+obj[key] + "  Number")
+} else if (typeof obj[key] === "boolean"){
+        // Create boolean elements here
+        console.log(key+" ====>> "+obj[key] + "  Boolean")
+} else if (typeof obj[key] === "string"){
+        // Create text field here
+        console.log(key+" ====>> "+obj[key] + "  String")
+}
 
 }
 //
@@ -13,6 +30,9 @@ function getDeepKeys(obj) {
     var keys = [];
     for(var key in obj) {
     checkTheType(obj, key)
+    //var attr = JSON.parse(key)
+
+
     //console.log(key) print all keys
         keys.push(key);
         if(typeof obj[key] === "object") {
@@ -44,12 +64,23 @@ function fromDir(startPath,filter){
             console.log('-- found: ',filename);
             jsonfile.readFile(filename+"", function(err, jsonFile) {
                    getDeepKeys(jsonFile)
+                  // console.log('json-files=====>>> ')
             })
 
         };
     };
 };
 
-fromDir('Cloned_Git_Repositories/Customer-X','.json');
+fromDir('Cloned_Git_Repositories/My-news-app','.json');
 
 //console.log('astringNice'.toLowerCase().includes('nice')) //true
+
+// regular function
+
+function isHexColor (hex) {
+  return typeof hex === 'string'
+      && hex.length === 6
+      && !isNaN(Number('0x' + hex))
+}
+
+// or as arrow function (ES6+)

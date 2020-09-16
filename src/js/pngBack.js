@@ -1,5 +1,8 @@
 var Jimp = require("jimp");
 var jsonfile = require('jsonfile')
+var path = require('path')
+var jsonfile = require('jsonfile')
+
 //var http = require('http')
 var io  = require('socket.io').listen(5001)
 var dl  = require('delivery')
@@ -44,14 +47,51 @@ jsonfile.readFile(Json_Configurator, function(err, obj) {
 
 })
 
+
+
 var gm = require('gm')
 var pixelColor
 var appIconName
+var text
 /*
 io.sockets.on('connection', function (socket){
 
 })
+
 */
+
+function fromDir(startPath,filter, socket){
+
+        if (!fs.existsSync(startPath)){
+            console.log("no dir ",startPath);
+            return;
+        }
+
+        var files=fs.readdirSync(startPath);
+        for(var i=0;i<files.length;i++){
+            var filePath=path.join(startPath,files[i]);
+            var stat = fs.lstatSync(filePath);
+            if (stat.isDirectory()){
+                fromDir(filePath,filter); //recurse
+            } else if (filePath.indexOf(filter)>=0) {
+                console.log('-- found: ',filePath);
+
+                io.emit('foundJson', { path : filePath, name : path.basename(filePath)});
+                //console.log(filePath)
+                /*jsonfile.readFile(filePath, function(err, jsonFile) {
+                console.log("************************************ sent!")
+                       jsonFile["filePath"] = filePath
+                       jsonFile["fileName"] = path.basename(filePath)
+                       //console.log(jsonFile.filePath)
+                       //console.log(jsonFile.fileName)
+                       io.emit('CurrentConfigs', jsonFile);
+                       //getDeepKeys(jsonFile)
+                })*/
+
+            };
+        };
+};
+
 io.sockets.on('connection', function(socket){
 
 
@@ -59,100 +99,15 @@ io.sockets.on('connection', function(socket){
         socket.emit('configChanger', obj);
     })*/
 
-    socket.on('appDesignOne', function (data){
-        console.log(data.configName)
-        jsonfile.readFile('Configurators/app-design1.json'+"", function(err, obj) {
-                socket.emit('configChanger', obj);
-        })
-        //socket.emit()
-    })
-
-    socket.on('appDesignTwo', function (data){
-            console.log(data.configName)
-            jsonfile.readFile('Configurators/app-design2.json'+"", function(err, obj) {
-                    socket.emit('configChanger', obj);
-            })
-            //socket.emit()
-        })
-
-        socket.on('appSettingsOne', function (data){
-                console.log(data.configName)
-                jsonfile.readFile('Configurators/app-settings1.json'+"", function(err, obj) {
-                        socket.emit('configChanger', obj);
-                })
-                //socket.emit()
-            })
-
-            socket.on('appSettingsTwo', function (data){
-                    console.log(data.configName)
-                    jsonfile.readFile('Configurators/app-settings2.json'+"", function(err, obj) {
-                            socket.emit('configChanger', obj);
-                    })
-                    //socket.emit()
-                })
-
-                socket.on('appSettingsThree', function (data){
-                        console.log(data.configName)
-                        jsonfile.readFile('Configurators/app-settings3.json'+"", function(err, obj) {
-                                socket.emit('configChanger', obj);
-                        })
-                        //socket.emit()
-                    })
-
-                    socket.on('appSettingsFour', function (data){
-                            console.log(data.configName)
-                            jsonfile.readFile('Configurators/app-settings4.json'+"", function(err, obj) {
-                                    socket.emit('configChanger', obj);
-                            })
-                            //socket.emit()
-                        })
-
-                        socket.on('appNotificationOne', function (data){
-                            console.log(data.configName)
-                            jsonfile.readFile('Configurators/app-notification1.json'+"", function(err, obj) {
-                                    socket.emit('configChanger', obj);
-                            })
-                            //socket.emit()
-                        })
-
-                        socket.on('appNotificationTwo', function (data){
-                                console.log(data.configName)
-                                jsonfile.readFile('Configurators/app-notification2.json'+"", function(err, obj) {
-                                        socket.emit('configChanger', obj);
-                                })
-                                //socket.emit()
-                            })
-
-                     socket.on('customModuleOne', function (data){
-                         console.log(data.configName)
-                         jsonfile.readFile('Configurators/custom-module1.json'+"", function(err, obj) {
-                                 socket.emit('configChanger', obj);
-                         })
-                         //socket.emit()
-                     })
-
-                     socket.on('customModuleTwo', function (data){
-                                              console.log(data.configName)
-                                              jsonfile.readFile('Configurators/custom-module2.json'+"", function(err, obj) {
-                                                      socket.emit('configChanger', obj);
-                                              })
-                                              //socket.emit()
-                                          })
-
-                     socket.on('customModuleThree', function (data){
-                       console.log(data.configName)
-                       jsonfile.readFile('Configurators/custom-module3.json'+"", function(err, obj) {
-                               socket.emit('configChanger', obj);
-                       })
-                       //socket.emit()
-                   })
 
 
     socket.on('openThisRepo', function (data) {
-                console.log(data.repoNames);
-                jsonfile.readFile('Cloned_Git_Repositories/'+data.repoNames+'/Resources/Modules/shared/configuration/global_config.json'+"", function(err, obj) {
+                //fromDir = new fromDir(socket)
+                fromDir('Cloned_Git_Repositories/'+data.repoNames,'.json', socket)
+                //console.log(data.repoNames);
+                /*jsonfile.readFile('Cloned_Git_Repositories/'+data.repoNames+'/Resources/Modules/shared/configuration/global_config.json'+"", function(err, obj) {
                           socket.emit('CurrentConfigs', obj);
-                })
+                })*/
 
      })
     var delivery = dl.listen(socket);
@@ -443,3 +398,4 @@ function changeAppIcon(){
 
 })
 }
+

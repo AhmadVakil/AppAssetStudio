@@ -7,7 +7,7 @@ var paddingAmount
 var childSection = document.createElement('div')
 childSection.style.margin = '25px'
 childSection.style.textAlign = 'center'
-    document.body.style.backgroundImage = "url('js/infomaker.jpg')"
+    document.body.style.backgroundImage = "url('../image/grey.jpg')"
 
 var fileSection = document.createElement('div')
 fileSection.style.margin = '25px'

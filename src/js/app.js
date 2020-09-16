@@ -5,7 +5,7 @@ let BR=document.createElement('BR')
     var childSection = document.createElement("div")
     childSection.style.margin = '25px'
     childSection.style.textAlign = 'center';
-    document.body.style.backgroundImage = "url('js/infomaker.jpg')"
+    document.body.style.backgroundImage = "url('../image/grey.jpg')"
 
     var fileSection = document.createElement("div")
     fileSection.style.margin = '25px'
@@ -37,7 +37,7 @@ function myFunction() {
             x.style.display = "none";
             jsonButton.style.backgroundColor = '#6484ec'
         }
-    }
+}
 
 
 function viewJsonDivs(jsonDivName) {
@@ -138,6 +138,7 @@ var ImageIsSent = false
 var socket = io.connect('127.0.0.1:5001')
 
    function myfunction2(){
+        document.getElementById("jsonButtons").innerHTML = ''
         repoName = repos.value
         if (repoName != "Select Repository"){
                 configuration = { repoNames : repoName }
@@ -308,6 +309,8 @@ var socket = io.connect('127.0.0.1:5001')
           }
         })
 
+
+
 /*
     socket.on('CurrentConfigs', function (data) {
             var primaryColor = document.getElementById('primaryColor-hex')
@@ -451,3 +454,90 @@ handlesChanger.value = data.
                     alert("Your requested color is successfully sent.");
                 })
       })
+
+function createElements(obj, key) {
+  /*if (key.toLowerCase().includes('color')) {
+          //console.log(obj.key)
+  }*/
+
+
+
+    var RegExp = /^#[0-9A-F]{6}$/i;
+
+    isHexColor = hex => typeof hex === 'string' && hex.length === 6 && !isNaN(Number('0x' + hex))
+
+    if (isHexColor(obj[key]) || RegExp.test(obj[key])) {
+            // Create color elements here
+            console.log(key+" ====>> "+obj[key] + "  Color")
+    } else if (typeof obj[key] === "number"){
+            // Create number elements here
+            console.log(key+" ====>> "+obj[key] + "  Number")
+    } else if (typeof obj[key] === "boolean"){
+            // Create boolean elements here
+            console.log(key+" ====>> "+obj[key] + "  Boolean")
+    } else if (typeof obj[key] === "string"){
+            // Create text field here
+            console.log(key+" ====>> "+obj[key] + "  String")
+    }
+
+}
+
+function isHexColor (hex) {
+  return typeof hex === 'string'
+      && hex.length === 6
+      && !isNaN(Number('0x' + hex))
+}
+
+function getDeepKeys(obj) {
+    var keys = [];
+    for(var key in obj) {
+    createElements(obj, key)
+    //var attr = JSON.parse(key)
+
+    if (typeof obj[key] === "object"){
+    //console.log(key +' : ')
+    } else {
+    //console.log('   '+key +' : '+obj[key])
+    }
+    //console.log(key) print all keys
+        keys.push(key);
+        if(typeof obj[key] === "object") {
+            var subkeys = getDeepKeys(obj[key]);
+            keys = keys.concat(subkeys.map(function(subkey) {
+                return key + "." + subkey;
+            }));
+        }
+    }
+    return keys;
+}
+
+socket.on('foundJson', function (file) {
+        console.log(file.path)
+        console.log(file.name)
+        var jsonFileButton = document.createElement("BUTTON");
+        var fancyIcon = document.createElement("i")
+        fancyIcon.className = "fa fa-cog"
+        fancyIcon.aria = "true"
+
+        jsonFileButton.className = "groupButtons"
+        var buttonText = document.createTextNode(" "+file.name);
+        jsonFileButton.appendChild(fancyIcon)
+        jsonFileButton.appendChild(buttonText);
+        jsonFileButton.id = file.path
+        var buttonGroupDiv = document.getElementById("jsonButtons");
+        buttonGroupDiv.appendChild(jsonFileButton)
+
+        var jsonDivMain = document.getElementById("global-json-changer");
+        jsonDivMain.appendChild(buttonGroupDiv)
+
+        jsonFileButton.addEventListener("click", function() {
+                  console.log(jsonFileButton.id)
+        });
+
+        //getDeepKeys(file)
+       //console.log(file.fileName)
+
+       //console.log(file.filePath)
+       //console.log(file)
+});
+

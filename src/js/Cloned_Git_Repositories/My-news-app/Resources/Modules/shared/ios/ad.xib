@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Graphik-Regular-App.ttf">
+            <string>GraphikApp-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AdCellIdentifier" rowHeight="448" id="Sas-Nb-Wle" userLabel="Cell" customClass="LiveContentTableViewAdCell" customModule="LiveContentUI">
+            <rect key="frame" x="0.0" y="0.0" width="573" height="448"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sas-Nb-Wle" id="fVu-UX-Hdq">
+                <rect key="frame" x="0.0" y="0.0" width="573" height="447.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0zT-L2-7bQ" userLabel="Ad Container">
+                        <rect key="frame" x="0.0" y="26" width="573" height="375"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="375" id="sLR-xk-uvn"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7dA-0B-pKo" userLabel="Separator">
+                        <rect key="frame" x="0.0" y="439" width="573" height="8"/>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="8" id="lQj-jh-mvA"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="260" misplaced="YES" text="Ad" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIO-gW-6lv" userLabel="Title Label">
+                        <rect key="frame" x="126" y="8" width="320" height="10"/>
+                        <fontDescription key="fontDescription" name="GraphikApp-Regular" family="Graphik App" pointSize="10"/>
+                        <color key="textColor" red="0.60775345749999998" green="0.63529411759999999" blue="0.63010273419999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="7dA-0B-pKo" secondAttribute="trailing" id="0zC-zY-lrz"/>
+                    <constraint firstItem="7dA-0B-pKo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="0zT-L2-7bQ" secondAttribute="bottom" constant="8" id="1FA-yf-ceu"/>
+                    <constraint firstItem="0zT-L2-7bQ" firstAttribute="top" secondItem="vIO-gW-6lv" secondAttribute="bottom" constant="8" id="2rl-zm-qVR"/>
+                    <constraint firstAttribute="trailing" secondItem="vIO-gW-6lv" secondAttribute="trailing" constant="8" id="Ani-nN-Yev"/>
+                    <constraint firstAttribute="trailing" secondItem="0zT-L2-7bQ" secondAttribute="trailing" id="Jgo-gC-Hzz"/>
+                    <constraint firstAttribute="bottom" secondItem="7dA-0B-pKo" secondAttribute="bottom" id="PU2-TD-cwg"/>
+                    <constraint firstItem="0zT-L2-7bQ" firstAttribute="leading" secondItem="fVu-UX-Hdq" secondAttribute="leading" id="XLK-kT-ubW"/>
+                    <constraint firstAttribute="leading" secondItem="7dA-0B-pKo" secondAttribute="leading" id="Xat-Xh-zJD"/>
+                    <constraint firstItem="vIO-gW-6lv" firstAttribute="leading" secondItem="fVu-UX-Hdq" secondAttribute="leading" constant="8" id="e66-NK-31v"/>
+                    <constraint firstItem="vIO-gW-6lv" firstAttribute="top" secondItem="fVu-UX-Hdq" secondAttribute="top" constant="8" id="ipq-Hf-YHO"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outlet property="adContainer" destination="0zT-L2-7bQ" id="Gl8-Dg-6OH"/>
+                <outlet property="contentHeight" destination="sLR-xk-uvn" id="gI5-F4-5fv"/>
+                <outlet property="titleLabel" destination="vIO-gW-6lv" id="1WT-UI-wV9"/>
+            </connections>
+            <point key="canvasLocation" x="615.5" y="266"/>
+        </tableViewCell>
+    </objects>
+</document>

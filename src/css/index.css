@@ -18,6 +18,12 @@
     font-size: 20px;
     color: rgba(0,0,0,.3);
 }
+.footer-part {
+text-align: center;
+}
+#resource-picker {
+
+}
 
 .json-div{
 	background-color: rgb(23, 114, 175);
@@ -86,9 +92,9 @@
 	transition: all 0.5s;
 	cursor: pointer;
 	margin: 5px;
-	box-shadow: 0px 0px 15px #ffffff;
-	margin-top: 50px;
-	transition: all 1s;
+	box-shadow: 0px 0px 3px #ffffff;
+	margin-top: 40px;
+	transition: all 2s;
   }
 
   
@@ -151,7 +157,7 @@
     zoom:1; /* For IE 6/7 */
     color: #050404;
     
-	background:url("../image/infomaker.jpg") ;
+	background:url("../image/grey.jpg") ;
 	background-size: cover;
  	border-radius: 50px;
 	padding: 0% 0% 2% 7%;
@@ -207,20 +213,20 @@
 	margin-top: 50px;
 }
 
-
-
 .part{
 	background-color:rgb(79, 94, 114);
-	
+
 	background-size: cover;
-    color: rgb(255, 255, 255); 
-	width: 700px; 
+    color: rgb(0, 0, 0);
+
 	text-align: center;
-	
+
 	box-shadow: 0px 0px 20px #000000;
-   
+
 	border-radius: 15px;
 	margin-left: 100px;
+	margin-right: 100px;
+	text-align: center;
 	
 }
 
@@ -263,19 +269,10 @@
 }
 
 .parent-part{
-	background-color: rgb(69, 40, 97);
-	background-size: cover;
-    color: rgb(255, 255, 255); 
-	width: 900px; 
 	text-align: center;
-	box-shadow: 0px 0px 20px #000000;
-	border-radius: 15px;
-	float:left;
-	width:900px;
-	overflow:hidden;
-	margin: 1px;
-	
 }
+
+
 
 #help{
 	background-color: rgb(255, 0, 0);
@@ -319,7 +316,7 @@ div#head {
 
 /*WORKING ON BODY DESIGN*/
 body {
-	background:url("../image/infomaker.jpg") ;
+	background:url("../image/grey.jpg") ;
 	font-size:22px;
 	line-height: 32px;
 	color: #ffffff;
