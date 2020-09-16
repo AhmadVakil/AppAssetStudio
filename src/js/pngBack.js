@@ -101,6 +101,13 @@ io.sockets.on('connection', function(socket){
 
 
 
+    socket.on('fetchConfigFile', function (obj) {
+          jsonfile.readFile(obj.configPath, function(err, configData) {
+              socket.emit('configData', configData);
+              console.log(configData)
+          })
+
+    })
     socket.on('openThisRepo', function (data) {
                 //fromDir = new fromDir(socket)
                 fromDir('Cloned_Git_Repositories/'+data.repoNames,'.json', socket)

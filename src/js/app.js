@@ -310,47 +310,7 @@ var socket = io.connect('127.0.0.1:5001')
         })
 
 
-
 /*
-    socket.on('CurrentConfigs', function (data) {
-            var primaryColor = document.getElementById('primaryColor-hex')
-            var moduleBackgroundColor = document.getElementById('moduleBackgroundColor-hex')
-            var primaryColorDark = document.getElementById('primaryColorDark-hex')
-            var secondaryColor = document.getElementById('secondaryColor-hex')
-            var accentColor = document.getElementById('accentColor-hex')
-            var textColor = document.getElementById('textColor-hex')
-
-            var remoteNotificationIdKey = document.getElementById('remoteNotification.contentIdKey-div')
-            var remoteNotificationPubdateKey = document.getElementById('remoteNotification.pubdateKey-text')
-            var remoteNotificationSubtitleKey = document.getElementById('remoteNotification.subtitleKey-div')
-            var remoteNotificationTitleKey = document.getElementById('remoteNotification.titleKey-div')
-            var conceptField = document.getElementById('conceptField-div')
-            var storyField = document.getElementById('storyField-div')
-            var authorField = document.getElementById('authorField-div')
-            var productId = document.getElementById('productId-div')
-            var loginURL = document.getElementById('loginURL-div')
-            var pushApplicationAndroid = document.getElementById('pushApplication.android-div')
-            var pushApplicationIos = document.getElementById('pushApplication.ios-div')
-            var pushTopic = document.getElementById('pushTopic-div')
-            var pushRegisterURL = document.getElementById('pushRegisterURL-div')
-            var appIconButton = document.getElementById('view-icon-picker')
-            var handlesChanger = document.getElementById('view-handles')
-/*
-remoteNotificationIdKey.value = data.
-remoteNotificationPubdateKey.value = data.
-remoteNotificationSubtitleKey.value = data.
-remoteNotificationTitleKey.value = data.
-conceptField.value = data.
-storyField.value = data.
-authorField.value = data.
-productId.value = data.
-loginURL.value = data.
-pushApplicationAndroid.value = data.
-pushApplicationIos.value = data.
-pushTopic.value = data.
-pushRegisterURL.value = data.
-appIconButton.value = data.
-handlesChanger.value = data.
 
             console.log('data=========>> '+data.primaryColorDark);
             //data = JSON.parse(data)
@@ -459,16 +419,28 @@ function createElements(obj, key) {
   /*if (key.toLowerCase().includes('color')) {
           //console.log(obj.key)
   }*/
-
-
-
     var RegExp = /^#[0-9A-F]{6}$/i;
 
     isHexColor = hex => typeof hex === 'string' && hex.length === 6 && !isNaN(Number('0x' + hex))
-
+    var jsonDiv = document.createElement('div')
+    //jsonDiv.id = obj[key]+'-div'
+    jsonDiv.className = 'json-div'
+    jsonDiv.innerHTML = key+'<br>'
+    var fancyLine = document.createElement('hr')
+    var textInputOne= document.createElement('input')
+    var textInputTwo= document.createElement('input')
+    var allJsonHolder= document.getElementById('global-json-changer')
     if (isHexColor(obj[key]) || RegExp.test(obj[key])) {
             // Create color elements here
             console.log(key+" ====>> "+obj[key] + "  Color")
+            textInputOne.type='text'
+            textInputOne.id=obj[key]+'-hex'
+            textInputTwo.type='color'
+            textInputTwo.id=obj[key]+'-picker'
+            jsonDiv.appendChild(textInputOne)
+            jsonDiv.appendChild(textInputTwo)
+            allJsonHolder.appendChild(jsonDiv)
+            allJsonHolder.appendChild(fancyLine)
     } else if (typeof obj[key] === "number"){
             // Create number elements here
             console.log(key+" ====>> "+obj[key] + "  Number")
@@ -490,15 +462,16 @@ function isHexColor (hex) {
 
 function getDeepKeys(obj) {
     var keys = [];
+    //alert(obj[key].length)
     for(var key in obj) {
     createElements(obj, key)
     //var attr = JSON.parse(key)
-
-    if (typeof obj[key] === "object"){
+    console.log("keyyyy===> "+'   '+key +' : '+obj[key])
+    /*if (typeof obj[key] === "object"){
     //console.log(key +' : ')
     } else {
     //console.log('   '+key +' : '+obj[key])
-    }
+    }*/
     //console.log(key) print all keys
         keys.push(key);
         if(typeof obj[key] === "object") {
@@ -512,8 +485,8 @@ function getDeepKeys(obj) {
 }
 
 socket.on('foundJson', function (file) {
-        console.log(file.path)
-        console.log(file.name)
+        //console.log(file.path)
+        //console.log(file.name)
         var jsonFileButton = document.createElement("BUTTON");
         var fancyIcon = document.createElement("i")
         fancyIcon.className = "fa fa-cog"
@@ -531,7 +504,8 @@ socket.on('foundJson', function (file) {
         jsonDivMain.appendChild(buttonGroupDiv)
 
         jsonFileButton.addEventListener("click", function() {
-                  console.log(jsonFileButton.id)
+              //console.log(jsonFileButton.id)
+              socket.emit('fetchConfigFile', { configPath : jsonFileButton.id });
         });
 
         //getDeepKeys(file)
@@ -539,5 +513,10 @@ socket.on('foundJson', function (file) {
 
        //console.log(file.filePath)
        //console.log(file)
+});
+
+socket.on('configData', function (configData) {
+    //console.log(configData)
+    getDeepKeys(configData)
 });
 
