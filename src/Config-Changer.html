@@ -9,6 +9,7 @@
                         <script src="http://malsup.github.com/jquery.form.js"></script> 
                         <script src="js/dropzone.js"></script>
                         <link rel="stylesheet" href="css/dropzone.css">
+                        <link rel="stylesheet" href="css/index.css">
                         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                         <script src="js/socket.io.js"></script>
                         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -36,23 +37,24 @@
                   
                
                 <div class="parent-part">
-                <br>
-                What would you like to change:
-                                <div class="btn-group btn-group-lg">
-                                        <button type="button" class="groupButtons" id="view-json" onclick="myFunction()">Json</button>
-                                        <button type="button" class="groupButtons" id="view-icon-picker" onclick="iconPicker()">App Icon</button>
-                                        <button type="button" class="groupButtons" id="view-handles" onclick="handles()">Handles Colors</button>
-                                </div>
-                        <hr>
-                    <h3>Modify and create your own project</h3>
 
+                    <hr>
                     <div id="resource-picker" class="part">
                         <br>
-                            <h3>Select the local repository folder</h3>
-                            <hr>
-                            <h5>Resource folder should be selected here, please select from the excisting repositories</h5>
-                            <select id="repositories"></select>
+
                     </div>
+                <br>
+
+                                <div id="repo-buttons" style="display:none;">
+
+                                        <button type="button" class="groupButtons" id="view-json" onclick="myFunction()"><i class="fa fa-cog" aria-hidden="true"></i> Edit Json Files</button>
+                                        <button type="button" class="groupButtons" id="view-icon-picker" onclick="iconPicker()"><i class="fa fa-paint-brush" aria-hidden="true"></i> Change App Icon</button>
+                                        <button type="button" class="groupButtons" id="view-handles" onclick="handles()"><i class="fa fa-paint-brush" aria-hidden="true"></i> Edit Handles Colors</button>
+                                </div>
+                        <hr>
+                    <h3 id="bigNotification" style="display:none;">Failed to load repositories!</h3>
+
+
 
                     <br>
                     <div id="file-drop-part" class="part" style="display:none;">
@@ -73,7 +75,7 @@
                     </div>
 
                     <div id="Color-changer-part" class="part" style="display:none;">
-                        <h3>Select Your Primary Color</h3>
+                        <h3>Select Your Primary Cresource-pickerolor</h3>
                         <hr>
                         Paste your HEX color here to generate app handles and to change primary colors in configuration files. <br><br>
                         <input id="colorTextInput" type="text"><br><br>
@@ -90,6 +92,7 @@
                         Choose target configuration(s)
                         <div id="jsonButtons"></div>
                         <div id="config-viewer">
+
                         </div>
 <!--                            <button type="button" class="groupButtons" id="app-design1" onclick="appDesignOne()"><i class="fa fa-paint-brush" aria-hidden="true"></i> App Design 1.1</button>
                             <button type="button" class="groupButtons" id="app-design2" onclick="appDesignTwo()"><i class="fa fa-paint-brush" aria-hidden="true"></i> App Design 1.2</button>
@@ -145,15 +148,52 @@
 
 
 
+
+
 <div class="footer-part">
-    <i class="fas fa-cloud">Follow me on Github</i>
+    <hr>
+    <a href="https://github.com/AhmadVakil"><i class="fab fa-github"><br> Follow me on Github</i></a>
+</div><br>
+
+<div class="box">
+  <a class="button" href="#popup1">    <i class="fas fa-bug"></i> Report bug or get help
+  </a>
+</div>
+
+<div id="popup1" class="overlay">
+  <div class="popup">
+      <h2>Feedback</h2>
+      <a class="close" href="#">&times;</a>
+      <div class="content">
+          Most of the HTML elements in this web application created on the fly. Therefore, if you see a problem or a bug please report it here.
+          <div class="feedbackForm">
+              <div class="container">
+                  <input type="text" id="firstname" name="firstname" placeholder="Your name..">
+                  <input type="text" id="lastname" name="lastname" placeholder="Your last name..">
+                  <textarea id="feedback" name="subject" placeholder="Write your feedback here.." style="height:200px"></textarea>
+                  <input type="submit" value="Submit" onclick="sendFeedBack()">
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<a id="closeFeedback" href="#popup2"></a>
+<div id="popup2" class="overlay">
+  <div class="popup">
+      <h2>Feedback Received</h2>
+      <a class="close" href="#">&times;</a>
+      <div class="content">
+          Thank you!<br>We have received your feedback!<br>You can close this window now.
+      </div>
+  </div>
 </div>
 
 
-                
-        </body>
-        <script src="js/app.js"></script>
-        <script src="js/require.js"></script>
-        <script src="js/delivery.js"></script>
+
+</body>
+<script src="js/app.js"></script>
+<script src="js/require.js"></script>
+<script src="js/delivery.js"></script>
         
 </html>

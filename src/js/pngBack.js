@@ -1,7 +1,6 @@
 var Jimp = require("jimp");
 var jsonfile = require('jsonfile')
 var path = require('path')
-var jsonfile = require('jsonfile')
 
 //var http = require('http')
 var io  = require('socket.io').listen(5001)
@@ -98,8 +97,18 @@ io.sockets.on('connection', function(socket){
     /*jsonfile.readFile(Json_Configurator+"", function(err, obj) {
         socket.emit('configChanger', obj);
     })*/
+    socket.on('feedBack', function (obj) {
+       var datetime = new Date();
+       fs.appendFile('../feedbacks/feedbacks.log', 'Feedback----------------------' + datetime + '\n' +
+                                                   'Firstname:' + obj.firstname + '\n' +
+                                                   'Lastname:' + obj.lastname + '\n' +
+                                                   'Feedback:' + obj.feedback + '\n\n', function (err) {
+         if (err) throw err;
+         console.log('Feedback Saved!');
+         socket.emit('feedbackSaved');
+       });
 
-
+    })
 
     socket.on('fetchConfigFile', function (obj) {
           jsonfile.readFile(obj.configPath, function(err, configData) {

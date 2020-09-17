@@ -25,18 +25,22 @@ var repos = document.getElementById('repositories')
 var repoName
 var configuration
 //var socket = io.connect('127.0.0.1:5001')
-repos.addEventListener('change', myfunction2)
 
+
+function popUp() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
+}
 
 function myFunction() {
-        var x = document.getElementById("global-json-changer");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-            jsonButton.style.backgroundColor = 'red'
-        } else {
-            x.style.display = "none";
-            jsonButton.style.backgroundColor = '#6484ec'
-        }
+    var x = document.getElementById("global-json-changer");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+        jsonButton.style.backgroundColor = 'red'
+    } else {
+        x.style.display = "none";
+        jsonButton.style.backgroundColor = '#6484ec'
+    }
 }
 
 
@@ -138,30 +142,59 @@ var ImageIsSent = false
 var socket = io.connect('127.0.0.1:5001')
 
    function myfunction2(){
+        var repoButtons = document.getElementById("repo-buttons")
+        //repoButtons.innerHTML = ''
+        var repos = document.getElementById("repositories")
+
         document.getElementById("jsonButtons").innerHTML = ''
         repoName = repos.value
-        if (repoName != "Select Repository"){
-                configuration = { repoNames : repoName }
-                //var delivery = new Delivery(socket)
+        if (repoName === "Select Repository"){
+            repoButtons.style.display = "none";
 
-                console.log(configuration.repoNames)
-                socket.emit('openThisRepo', { repoNames : repoName });
-                console.log(repoName)
-
+        } else if (repoName != "Select Repository"){
+            repoButtons.style.display = "block";
+            configuration = { repoNames : repoName }
+            //var delivery = new Delivery(socket)
+            console.log(configuration.repoNames)
+            socket.emit('openThisRepo', { repoNames : repoName });
+            console.log(repoName)
         }
 
       }
 
     socket.on('Repositories', function (data){
-        var repoList = document.getElementById("repositories")
-        var defaultOption = document.createElement('option')
-        defaultOption.innerHTML = "Select Repository"
-        repoList.appendChild(defaultOption)
-        for (var i=0; i<data.length; i++){
-         var tempOption = document.createElement('option')
-         tempOption.innerHTML = data[i]
-         repoList.appendChild(tempOption)
+    var repoInfoText = document.createElement("h4")
+    var error = document.createElement("i")
+    var bigNotification = document.getElementById("bigNotification")
+
+    error.className = "fas fa-exclamation-triangle"
+    repoInfoText.innerHTML = "It's seems like there is no mobile application repository on the system. Please clone or contact your system administrator.<br><br>"
+    var resourceDiv = document.getElementById("resource-picker")
+
+        if (data.length!==0){
+            bigNotification.style.display = "none"
+            repoInfoText.innerHTML = "Resource folder should be selected here, please select from the excisting repositories"
+            var repositoriesMenu = document.createElement("select")
+            repositoriesMenu.addEventListener('change', myfunction2)
+
+            repositoriesMenu.id = "repositories"
+            var defaultOption = document.createElement('option')
+            defaultOption.innerHTML = "Select Repository"
+            repositoriesMenu.appendChild(defaultOption)
+            for (var i=0; i<data.length; i++){
+                 var tempOption = document.createElement('option')
+                 tempOption.innerHTML = data[i]
+                 repositoriesMenu.appendChild(tempOption)
+             }
+        resourceDiv.appendChild(repoInfoText)
+        resourceDiv.appendChild(repositoriesMenu)
+        } else {
+        bigNotification.style.display = "block"
+        resourceDiv.appendChild(error)
+        resourceDiv.appendChild(repoInfoText)
         }
+
+
     })
 
     function appDesignOne() {
@@ -423,6 +456,8 @@ function createElements(obj, key) {
 
     isHexColor = hex => typeof hex === 'string' && hex.length === 6 && !isNaN(Number('0x' + hex))
     var jsonDiv = document.createElement('div')
+    //jsonDiv.style.width = '50%'
+    jsonDiv.style.textAlign = 'center'
     //jsonDiv.id = obj[key]+'-div'
     jsonDiv.className = 'json-div'
     jsonDiv.innerHTML = key+'<br>'
@@ -430,6 +465,7 @@ function createElements(obj, key) {
     var textInputOne= document.createElement('input')
     var textInputTwo= document.createElement('input')
     var allJsonHolder= document.getElementById('global-json-changer')
+    allJsonHolder.style.textAlign = 'center'
     if (isHexColor(obj[key]) || RegExp.test(obj[key])) {
             // Create color elements here
             console.log(key+" ====>> "+obj[key] + "  Color")
@@ -520,3 +556,17 @@ socket.on('configData', function (configData) {
     getDeepKeys(configData)
 });
 
+function sendFeedBack(){
+    socket.emit('feedBack', { firstname : document.getElementById("firstname").value,
+                              lastname : document.getElementById("lastname").value,
+                              feedback : document.getElementById("feedback").value});
+}
+
+socket.on('feedbackSaved', function () {
+    //console.log(configData)
+    document.getElementById('closeFeedback').click();
+    document.getElementById("firstname").value = ''
+    document.getElementById("lastname").value = ''
+    document.getElementById("feedback").value = ''
+    console.log("Feedback saved by the server")
+});
