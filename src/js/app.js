@@ -453,29 +453,31 @@ function createElements(obj, key) {
           //console.log(obj.key)
   }*/
     var RegExp = /^#[0-9A-F]{6}$/i;
-
+    var allJsonHolder= document.getElementById('global-json-changer')
     isHexColor = hex => typeof hex === 'string' && hex.length === 6 && !isNaN(Number('0x' + hex))
-    var jsonDiv = document.createElement('div')
+    var jsonP = document.createElement('p')
     //jsonDiv.style.width = '50%'
-    jsonDiv.style.textAlign = 'center'
+    jsonP.style.textAlign = 'center'
     //jsonDiv.id = obj[key]+'-div'
-    jsonDiv.className = 'json-div'
-    jsonDiv.innerHTML = key+'<br>'
+    //jsonDiv.className = 'json-div'
+    //allJsonHolder.innerHTML = key+'<br>'
     var fancyLine = document.createElement('hr')
     var textInputOne= document.createElement('input')
     var textInputTwo= document.createElement('input')
-    var allJsonHolder= document.getElementById('global-json-changer')
+    jsonP.innerHTML = key+'<br>'
     allJsonHolder.style.textAlign = 'center'
     if (isHexColor(obj[key]) || RegExp.test(obj[key])) {
             // Create color elements here
             console.log(key+" ====>> "+obj[key] + "  Color")
             textInputOne.type='text'
             textInputOne.id=obj[key]+'-hex'
+            textInputOne.style.width = '35%'
+            textInputOne.style.display = 'inline'
             textInputTwo.type='color'
             textInputTwo.id=obj[key]+'-picker'
-            jsonDiv.appendChild(textInputOne)
-            jsonDiv.appendChild(textInputTwo)
-            allJsonHolder.appendChild(jsonDiv)
+            jsonP.appendChild(textInputOne)
+            jsonP.appendChild(textInputTwo)
+            allJsonHolder.appendChild(jsonP)
             allJsonHolder.appendChild(fancyLine)
     } else if (typeof obj[key] === "number"){
             // Create number elements here
@@ -568,5 +570,6 @@ socket.on('feedbackSaved', function () {
     document.getElementById("firstname").value = ''
     document.getElementById("lastname").value = ''
     document.getElementById("feedback").value = ''
+    document.getElementById("popup2").style.display = 'block'
     console.log("Feedback saved by the server")
 });
