@@ -28,7 +28,7 @@ const fs = require('fs');
 
 // Change depending on this Json file
 var Json_Configurator = 'config_changer.json'
-var Shared_Global_Configuration_Path
+var Shared_Global_Configuration_Path/*
 jsonfile.readFile(Json_Configurator, function(err, obj) {
 
     // Path for global config
@@ -45,7 +45,7 @@ jsonfile.readFile(Json_Configurator, function(err, obj) {
     file.save();
 
 })
-
+*/
 
 
 var gm = require('gm')

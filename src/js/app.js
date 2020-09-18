@@ -19,9 +19,9 @@ let BR=document.createElement('BR')
   x.id = 'hexColor'
   x.style.borderRadius = '5px'
   x.value='#'
-  var jsonButton = document.getElementById('view-json')
+  var editJsonFilesbutton = document.getElementById('editJsonFilesButton')
 
-var repos = document.getElementById('repositories')
+var repos = document.getElementById('repositoriesDropDownMenu')
 var repoName
 var configuration
 //var socket = io.connect('127.0.0.1:5001')
@@ -32,14 +32,16 @@ function popUp() {
   popup.classList.toggle("show");
 }
 
-function myFunction() {
-    var x = document.getElementById("global-json-changer");
+function editJsonFilesButton() {
+    var x = document.getElementById("configFilesDiv");
     if (x.style.display === "none") {
         x.style.display = "block";
-        jsonButton.style.backgroundColor = 'red'
+        editJsonFilesbutton.style.backgroundColor = 'red'
     } else {
+        //x.innerHTML = ''
+
         x.style.display = "none";
-        jsonButton.style.backgroundColor = '#6484ec'
+        editJsonFilesbutton.style.backgroundColor = '#6484ec'
     }
 }
 
@@ -67,16 +69,17 @@ function viewJsonDivs(jsonDivName) {
     }
    }
 
-   function handles(){
+//Handles button must fix
+  /* function handles(){
     var x = document.getElementById("Color-changer-part");
     if (x.style.display === "none") {
         x.style.display = "block";
-        handlesChanger.style.backgroundColor = 'red'
+        document.getElementById.("view-handles").backgroundColor = 'red'
     } else {
         x.style.display = "none";
-        handlesChanger.style.backgroundColor = '#6484ec'
+        document.getElementById.("view-handles").backgroundColor = '#6484ec'
     }
-   }
+   }*/
 
       var canvas = document.getElementById('canvas')
       canvas.style.width = '88px'
@@ -106,17 +109,17 @@ function viewJsonDivs(jsonDivName) {
       canvas2.style.transition = 'all 1s'
 
       var closeIssue=document.createElement('img')
-      closeIssue.style.backgroundImage = "url('js/close.png')"
+      closeIssue.style.backgroundImage = "url('js/Input_Images/close.png')"
       closeIssue.style.width = '70%'
       closeIssue.style.height = '70%'
-      closeIssue.src = "js/close.png"
+      closeIssue.src = "js/Input_Images/close.png"
       closeIssue.style.verticalAlign = 'middle'
 
       var openIssue=document.createElement('img')
-      openIssue.style.backgroundImage = "url('js/open.png')"
+      openIssue.style.backgroundImage = "url('js/Input_Images/open.png')"
       openIssue.style.width = '70%'
       openIssue.style.height = '70%'
-      openIssue.src = "js/open.png"
+      openIssue.src = "js/Input_Images/open.png"
       openIssue.style.verticalAlign = 'middle'
 
       canvas.appendChild(closeIssue)
@@ -142,17 +145,17 @@ var ImageIsSent = false
 var socket = io.connect('127.0.0.1:5001')
 
    function myfunction2(){
-        var repoButtons = document.getElementById("repo-buttons")
-        //repoButtons.innerHTML = ''
-        var repos = document.getElementById("repositories")
+        var mainButtons = document.getElementById("main-buttons")
+        //mainButtons.innerHTML = ''
+        var repos = document.getElementById("repositoriesDropDownMenu")
 
-        document.getElementById("jsonButtons").innerHTML = ''
+        document.getElementById("configFilesDiv").innerHTML = ''
         repoName = repos.value
         if (repoName === "Select Repository"){
-            repoButtons.style.display = "none";
+            mainButtons.style.display = "none";
 
         } else if (repoName != "Select Repository"){
-            repoButtons.style.display = "block";
+            mainButtons.style.display = "block";
             configuration = { repoNames : repoName }
             //var delivery = new Delivery(socket)
             console.log(configuration.repoNames)
@@ -165,19 +168,21 @@ var socket = io.connect('127.0.0.1:5001')
     socket.on('Repositories', function (data){
     var repoInfoText = document.createElement("h4")
     var error = document.createElement("i")
-    var bigNotification = document.getElementById("bigNotification")
+    var failedToLoadRepoNotification = document.getElementById("failedToLoadRepoNotification")
+    var selectRepoNotification = document.getElementById("selectRepoNotification")
 
     error.className = "fas fa-exclamation-triangle"
     repoInfoText.innerHTML = "It's seems like there is no mobile application repository on the system. Please clone or contact your system administrator.<br><br>"
     var resourceDiv = document.getElementById("resource-picker")
 
         if (data.length!==0){
-            bigNotification.style.display = "none"
+            failedToLoadRepoNotification.style.display = "none"
             repoInfoText.innerHTML = "Resource folder should be selected here, please select from the excisting repositories"
             var repositoriesMenu = document.createElement("select")
+            //selectRepoNotification.style.display = 'block;'
             repositoriesMenu.addEventListener('change', myfunction2)
 
-            repositoriesMenu.id = "repositories"
+            repositoriesMenu.id = "repositoriesDropDownMenu"
             var defaultOption = document.createElement('option')
             defaultOption.innerHTML = "Select Repository"
             repositoriesMenu.appendChild(defaultOption)
@@ -189,199 +194,13 @@ var socket = io.connect('127.0.0.1:5001')
         resourceDiv.appendChild(repoInfoText)
         resourceDiv.appendChild(repositoriesMenu)
         } else {
-        bigNotification.style.display = "block"
+        failedToLoadRepoNotification.style.display = "block"
         resourceDiv.appendChild(error)
         resourceDiv.appendChild(repoInfoText)
         }
 
 
     })
-
-    function appDesignOne() {
-        configFileName = 'appDesignOne'
-        socket.emit('appDesignOne', { configName : configFileName });
-        console.log('clicked')
-    }
-
-    function appDesignTwo() {
-        configFileName = 'appDesignTwo'
-        socket.emit('appDesignTwo', { configName : configFileName });
-    }
-
-    function appSettingsOne () {
-        configFileName = 'appSettingsOne'
-        socket.emit('appSettingsOne', { configName : configFileName });
-    }
-
-    function appSettingsTwo() {
-        configFileName = 'appSettingsTwo'
-                socket.emit('appSettingsTwo', { configName : configFileName });
-    }
-
-    function appSettingsThree() {
-        configFileName = 'appSettingsThree'
-                socket.emit('appSettingsThree', { configName : configFileName });
-    }
-
-    function appSettingsFour() {
-        configFileName = 'appSettingsFour'
-                socket.emit('appSettingsFour', { configName : configFileName });
-    }
-
-    function appNotificationOne() {
-        configFileName = 'appNotificationOne'
-                socket.emit('appNotificationOne', { configName : configFileName });
-    }
-
-    function appNotificationTwo() {
-        configFileName = 'appNotificationTwo'
-                socket.emit('appNotificationTwo', { configName : configFileName });
-    }
-
-    function appLogin() {
-        configFileName = 'appLogin'
-                socket.emit('appLogin', { configName : configFileName });
-    }
-
-    function customModuleOne() {
-        configFileName = 'customModuleOne'
-                socket.emit('customModuleOne', { configName : configFileName });
-    }
-
-    function customModuleTwo() {
-        configFileName = 'customModuleTwo'
-                socket.emit('customModuleTwo', { configName : configFileName });
-    }
-
-    function customModuleThree() {
-        configFileName = 'customModuleThree'
-                socket.emit('customModuleThree', { configName : configFileName });
-    }
-
-        socket.on('configChanger', function (data) {
-        //myFunction()
-          console.log(data.fields)
-          //var globalConfig
-          console.log('============>>>>'+data.title)
-          viewJsonDivs(data.title)
-
-
-          for (var i=0; i<data.fields.length;i++){
-            var allJsonHolder= document.getElementById(data.title+'-div')
-            var fancyLine = document.createElement('hr')
-            var lineBreaker = document.createElement('br')
-
-            var jsonDiv = document.createElement('div')
-            jsonDiv.id = data.fields[i].jsonKeyPath+'-div'
-            jsonDiv.className = 'json-div'
-            jsonDiv.innerHTML = data.fields[i].title+'<br>'
-
-            /*var radioOne= document.createElement('input')
-            radioOne.type='radio'
-            radioOne.innerHTML = 'Use HEX number'*/
-            var textInputOne= document.createElement('input')
-            var textInputTwo= document.createElement('input')
-            if (data.fields[i].type === 'color'){
-                textInputOne.type='text'
-                textInputOne.id=data.fields[i].jsonKeyPath+'-hex'
-
-                textInputTwo.type='color'
-                textInputTwo.id=data.fields[i].jsonKeyPath+'-picker'
-
-                // Inserting values
-                /*var jsonPath = data.fields[i].jsonKeyPath
-                console.log(jsonPath)
-                textInputOne.value = globalConfig.*/
-
-                jsonDiv.appendChild(textInputOne)
-                jsonDiv.appendChild(textInputTwo)
-            }
-
-            if (data.fields[i].type === 'number'){
-              textInputOne.type='number'
-              textInputOne.id=data.fields[i].jsonKeyPath+'-number'
-              textInputOne.style.width = '50px'
-              jsonDiv.appendChild(textInputOne)
-            }
-
-            if (data.fields[i].type === 'text'){
-              textInputOne.type='text'
-              textInputOne.id=data.fields[i].jsonKeyPath+'-text'
-              jsonDiv.appendChild(textInputOne)
-            }
-
-            if (data.fields[i].type === 'boolean'){
-              var booleanSelector = document.createElement('select')
-              var yes = document.createElement('option')
-              yes.innerHTML = 'Yes'
-              var no = document.createElement('option')
-              no.innerHTML = 'No'
-
-              booleanSelector.appendChild(yes)
-              booleanSelector.appendChild(no)
-              jsonDiv.appendChild(booleanSelector)
-
-            }
-
-
-            /*var radioTwo= document.createElement('input')
-            radioTwo.type='radio'
-            radioTwo.insertAdjacentHTML = 'AAAA' */
-
-
-           // jsonDiv.appendChild(radioOne)
-
-           // jsonDiv.appendChild(lineBreaker)
-           // jsonDiv.appendChild(radioTwo)
-
-
-
-            allJsonHolder.appendChild(jsonDiv)
-            allJsonHolder.appendChild(fancyLine)
-
-          }
-        })
-
-
-/*
-
-            console.log('data=========>> '+data.primaryColorDark);
-            //data = JSON.parse(data)
-            //globalConfig = data
-            x.value ='#'+data.primaryColor
-            //var prim = document.getElementById('primaryColorDark-hex')
-            primaryColor.value = data.primaryColor
-            primaryColorDark.value = data.primaryColorDark
-            secondaryColor.value =data.secondaryColor
-            accentColor.value = data.accentColor
-            moduleBackgroundColor.value = data.moduleBackgroundColor
-            textColor.value = data.textColor
-
-            x.addEventListener('change', myfunction)
-            function myfunction(){
-              if (x.value != data.primaryColor){
-                x.style.backgroundColor = 'green'
-              } else {
-                x.style.backgroundColor = 'white'
-              }
-            }
-
-            //document.getElementById('colorTextInput').innerHTML = data.primaryColor
-           // socket.emit('my other event', { my: 'data' });
-          });
-*/
-
-
-    /*<div id="primaryColorDark-div" class="json-div">
-                           <input type="checkbox" name="primaryColorDark" id="primaryColorDark">Change Accent Color:<br><br>
-                                <input type="radio" value="Hex Color">Use HEX color:
-                                <input id="primaryColorDark-hex" type="text" value=""><br>
-
-                                <input type="radio" name="primaryColorDark-picker" value="Hex Color">Use color picker:
-                                <input id="primaryColorDark-picker" type="color"><br>
-                           </div>
-                           <hr>*/
-
 
 
       submit.addEventListener('click', function(){
@@ -453,20 +272,54 @@ function createElements(obj, key) {
           //console.log(obj.key)
   }*/
     var RegExp = /^#[0-9A-F]{6}$/i;
-    var allJsonHolder= document.getElementById('global-json-changer')
     isHexColor = hex => typeof hex === 'string' && hex.length === 6 && !isNaN(Number('0x' + hex))
-    var jsonP = document.createElement('p')
+    var jsonAllParagraphsKeeper= document.getElementById('jsonAllParagraphsKeeper')
+    var jsonAllKeysParagraph= document.getElementById('jsonAllKeysParagraph')
+    var jsonKeyParagraph = document.createElement('p')
     //jsonDiv.style.width = '50%'
-    jsonP.style.textAlign = 'center'
-    //jsonDiv.id = obj[key]+'-div'
-    //jsonDiv.className = 'json-div'
-    //allJsonHolder.innerHTML = key+'<br>'
-    var fancyLine = document.createElement('hr')
+    jsonKeyParagraph.style.textAlign = 'center'
+    jsonKeyParagraph.id = obj[key]+'-p'
+    //jsonKeyParagraph.className = 'json-div'
+    //jsonKeyParagraph.innerHTML = key+'<br>'
+   // var fancyLine = document.createElement('hr')
     var textInputOne= document.createElement('input')
     var textInputTwo= document.createElement('input')
-    jsonP.innerHTML = key+'<br>'
-    allJsonHolder.style.textAlign = 'center'
+    var verifyIconSpan = document.createElement('span')
+    verifyIconSpan.style.margin = '10px'
+    var verifyIcon = document.createElement('i')
+    jsonKeyParagraph.innerHTML = key+'<br>'
+    jsonAllParagraphsKeeper.style.textAlign = 'center'
     if (isHexColor(obj[key]) || RegExp.test(obj[key])) {
+            textInputOne.addEventListener('change', function(){
+            verifyIconSpan.innerHTML = ''
+                    if (RegExp.test(textInputOne.value)) {
+                            textInputTwo.value = textInputOne.value
+                            textInputTwo.value = '#'+textInputOne.value
+                            verifyIcon.className = "far fa-check-circle"
+                            verifyIcon.style.color = 'yellow'
+                            verifyIcon.title = "Color seems OK"
+                            verifyIconSpan.appendChild(verifyIcon)
+                           // console.log(textInputTwo.value)
+                       } else if (isHexColor(textInputOne.value)) {
+                            textInputTwo.value = '#'+textInputOne.value
+                            verifyIcon.className = "far fa-check-circle"
+                            verifyIcon.style.color = 'yellow'
+                            verifyIcon.title = "Color seems OK"
+                            verifyIconSpan.appendChild(verifyIcon)
+                       } else {
+                            //alert('The color for '+ key +' seems like wrong!\n Please fix this in your configuration manually or use the color picker to fix it from.')
+                            textInputOne.value=''
+                            verifyIcon.className = "fas fa-exclamation-triangle"
+                            verifyIcon.style.color = 'red'
+                            verifyIcon.title = "Check the color value!"
+                            verifyIconSpan.appendChild(verifyIcon)
+
+                       }
+                    })
+                textInputTwo.addEventListener('change', function(){
+                    textInputOne.value = textInputTwo.value
+                    //console.log(textInputTwo.value)
+                })
             // Create color elements here
             console.log(key+" ====>> "+obj[key] + "  Color")
             textInputOne.type='text'
@@ -475,10 +328,13 @@ function createElements(obj, key) {
             textInputOne.style.display = 'inline'
             textInputTwo.type='color'
             textInputTwo.id=obj[key]+'-picker'
-            jsonP.appendChild(textInputOne)
-            jsonP.appendChild(textInputTwo)
-            allJsonHolder.appendChild(jsonP)
-            allJsonHolder.appendChild(fancyLine)
+            jsonKeyParagraph.appendChild(verifyIconSpan)
+            jsonKeyParagraph.appendChild(textInputOne)
+            jsonKeyParagraph.appendChild(textInputTwo)
+
+            jsonAllKeysParagraph.appendChild(jsonKeyParagraph)
+            jsonAllParagraphsKeeper.appendChild(jsonAllKeysParagraph)
+            //jsonAllParagraphsKeeper.appendChild(fancyLine)
     } else if (typeof obj[key] === "number"){
             // Create number elements here
             console.log(key+" ====>> "+obj[key] + "  Number")
@@ -535,14 +391,18 @@ socket.on('foundJson', function (file) {
         jsonFileButton.appendChild(fancyIcon)
         jsonFileButton.appendChild(buttonText);
         jsonFileButton.id = file.path
-        var buttonGroupDiv = document.getElementById("jsonButtons");
+        jsonFileButton.title = file.path
+        var buttonGroupDiv = document.getElementById("configFilesDiv");
         buttonGroupDiv.appendChild(jsonFileButton)
 
-        var jsonDivMain = document.getElementById("global-json-changer");
-        jsonDivMain.appendChild(buttonGroupDiv)
+        /*var jsonDivMain = document.getElementById("jsonAllParagraphsKeeper");
+        jsonDivMain.appendChild(buttonGroupDiv)*/
 
         jsonFileButton.addEventListener("click", function() {
               //console.log(jsonFileButton.id)
+              var jsonAllKeysParagraph= document.getElementById('jsonAllKeysParagraph')
+              jsonAllKeysParagraph.innerHTML= ''
+              //jsonFileButton.style.backgroundColor = 'red'
               socket.emit('fetchConfigFile', { configPath : jsonFileButton.id });
         });
 

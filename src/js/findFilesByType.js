@@ -8,7 +8,7 @@ function checkTheType(obj, key) {
   }*/
 var RegExp = /^#[0-9A-F]{6}$/i;
 
-isHexColor = hex => typeof hex === 'string' && hex.length === 6 && !isNaN(Number('0x' + hex))
+//isHexColor = hex => typeof hex === 'string' && hex.length === 6 && !isNaN(Number('0x' + hex))
 
 if (isHexColor(obj[key]) || RegExp.test(obj[key])) {
         // Create color elements here
@@ -71,7 +71,7 @@ function fromDir(startPath,filter){
     };
 };
 
-fromDir('Cloned_Git_Repositories/My-news-app','.json');
+//fromDir('Cloned_Git_Repositories/My-news-app','.json');
 
 //console.log('astringNice'.toLowerCase().includes('nice')) //true
 
@@ -83,4 +83,5 @@ function isHexColor (hex) {
       && !isNaN(Number('0x' + hex))
 }
 
+console.log(isHexColor('ffffff'))
 // or as arrow function (ES6+)
