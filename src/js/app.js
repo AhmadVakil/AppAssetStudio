@@ -159,6 +159,7 @@ var socket = io.connect('127.0.0.1:5001')
             configuration = { repoNames : repoName }
             //var delivery = new Delivery(socket)
             console.log(configuration.repoNames)
+            document.getElementById('jsonAllKeysParagraph').innerHTML = ''
             socket.emit('openThisRepo', { repoNames : repoName });
             console.log(repoName)
         }
@@ -334,39 +335,39 @@ function createElements(obj, key) {
             textInputTwo.id=obj[key]+'-picker'
             textInputOne.value = obj[key]
             validateColor(obj, key, textInputOne, textInputTwo, verifyIcon, verifyIconSpan)
-textInputOne.addEventListener('change', function(){
-if (RegExp.test(textInputOne.value)) {
-                            textInputTwo.value = textInputOne.value
-                            //textInputTwo.value = '#'+textInputOne.value
-                            verifyIcon.className = "far fa-check-circle"
-                            verifyIcon.style.color = 'yellow'
-                            verifyIcon.title = "Color seems OK"
-                            verifyIconSpan.appendChild(verifyIcon)
-                           // console.log(textInputTwo.value)
-                       } else if (isHexColor(textInputOne.value)) {
-                            textInputTwo.value = '#'+textInputOne.value
-                            verifyIcon.className = "far fa-check-circle"
-                            verifyIcon.style.color = 'yellow'
-                            verifyIcon.title = "Color seems OK"
-                            verifyIconSpan.appendChild(verifyIcon)
-                       } else {
-                            //alert('The color for '+ key +' seems like wrong!\n Please fix this in your configuration manually or use the color picker to fix it from.')
-                            //textInputOne.value=''
-                            verifyIcon.className = "fas fa-exclamation-triangle"
-                            verifyIcon.style.color = 'red'
-                            verifyIcon.title = "Check the color value!"
-                            verifyIconSpan.appendChild(verifyIcon)
 
-                       }
-})
- textInputTwo.addEventListener('change', function(){
-                    textInputOne.value = textInputTwo.value
+            textInputOne.addEventListener('change', function(){
+                if (RegExp.test(textInputOne.value)) {
+                    textInputTwo.value = textInputOne.value
+                    //textInputTwo.value = '#'+textInputOne.value
+                    verifyIcon.className = "far fa-check-circle"
+                    verifyIcon.style.color = 'yellow'
+                    verifyIcon.title = "Color seems OK"
+                    verifyIconSpan.appendChild(verifyIcon)
+                   // console.log(textInputTwo.value)
+                } else if (isHexColor(textInputOne.value)) {
                     textInputTwo.value = '#'+textInputOne.value
                     verifyIcon.className = "far fa-check-circle"
                     verifyIcon.style.color = 'yellow'
                     verifyIcon.title = "Color seems OK"
                     verifyIconSpan.appendChild(verifyIcon)
-                })
+                } else {
+                    //alert('The color for '+ key +' seems like wrong!\n Please fix this in your configuration manually or use the color picker to fix it from.')
+                    //textInputOne.value=''
+                    verifyIcon.className = "fas fa-exclamation-triangle"
+                    verifyIcon.style.color = 'red'
+                    verifyIcon.title = "Check the color value!"
+                    verifyIconSpan.appendChild(verifyIcon)
+                }
+            })
+            textInputTwo.addEventListener('change', function(){
+                    textInputOne.value = textInputTwo.value
+                    //textInputTwo.value = '#'+textInputOne.value
+                    verifyIcon.className = "far fa-check-circle"
+                    verifyIcon.style.color = 'yellow'
+                    verifyIcon.title = "Color seems OK"
+                    verifyIconSpan.appendChild(verifyIcon)
+            })
             jsonKeyParagraph.appendChild(verifyIconSpan)
             jsonKeyParagraph.appendChild(textInputOne)
             jsonKeyParagraph.appendChild(textInputTwo)
@@ -376,12 +377,64 @@ if (RegExp.test(textInputOne.value)) {
             //jsonAllParagraphsKeeper.appendChild(fancyLine)
     } else if (typeof obj[key] === "number"){
             // Create number elements here
+            textInputOne.type = 'number'
+            textInputOne.value = obj[key]
+            if (textInputOne.value!== null && textInputOne.value!== ''){
+                verifyIcon.className = "far fa-check-circle"
+                verifyIcon.style.color = 'yellow'
+                verifyIcon.title = "Value seems OK!"
+                verifyIconSpan.appendChild(verifyIcon)
+            } else {
+                verifyIcon.className = "fas fa-exclamation-triangle"
+                verifyIcon.style.color = 'red'
+                verifyIcon.title = "Check the value!"
+                verifyIconSpan.appendChild(verifyIcon)
+            }
+            jsonKeyParagraph.appendChild(verifyIconSpan)
+            jsonKeyParagraph.appendChild(textInputOne)
+            jsonAllKeysParagraph.appendChild(jsonKeyParagraph)
+            jsonAllParagraphsKeeper.appendChild(jsonAllKeysParagraph)
+
             console.log(key+" ====>> "+obj[key] + "  Number")
     } else if (typeof obj[key] === "boolean"){
             // Create boolean elements here
+            textInputOne.type = 'boolean'
+            textInputOne.value = obj[key]
+            if (textInputOne.value!== null && textInputOne.value!== ''){
+                verifyIcon.className = "far fa-check-circle"
+                verifyIcon.style.color = 'yellow'
+                verifyIcon.title = "Value seems OK!"
+                verifyIconSpan.appendChild(verifyIcon)
+            } else {
+                verifyIcon.className = "fas fa-exclamation-triangle"
+                verifyIcon.style.color = 'red'
+                verifyIcon.title = "Check the value!"
+                verifyIconSpan.appendChild(verifyIcon)
+            }
+            jsonKeyParagraph.appendChild(verifyIconSpan)
+            jsonKeyParagraph.appendChild(textInputOne)
+            jsonAllKeysParagraph.appendChild(jsonKeyParagraph)
+            jsonAllParagraphsKeeper.appendChild(jsonAllKeysParagraph)
             console.log(key+" ====>> "+obj[key] + "  Boolean")
     } else if (typeof obj[key] === "string"){
             // Create text field here
+            textInputOne.type = 'string'
+            textInputOne.value = obj[key]
+            if (textInputOne.value!== null && textInputOne.value!== ''){
+                verifyIcon.className = "far fa-check-circle"
+                verifyIcon.style.color = 'yellow'
+                verifyIcon.title = "Value seems OK!"
+                verifyIconSpan.appendChild(verifyIcon)
+            } else {
+                verifyIcon.className = "fas fa-exclamation-triangle"
+                verifyIcon.style.color = 'red'
+                verifyIcon.title = "Check the value!"
+                verifyIconSpan.appendChild(verifyIcon)
+            }
+            jsonKeyParagraph.appendChild(verifyIconSpan)
+            jsonKeyParagraph.appendChild(textInputOne)
+            jsonAllKeysParagraph.appendChild(jsonKeyParagraph)
+            jsonAllParagraphsKeeper.appendChild(jsonAllKeysParagraph)
             console.log(key+" ====>> "+obj[key] + "  String")
     }
 

@@ -8,7 +8,7 @@
   "blackStatusBarStyle": true,
   "remoteNotification": {
     "pubdateKey": "123488",
-    "titleKey": "TeaserHeadline",
+    "titleKey": "",
     "subtitleKey": "TeaserText",
     "contentIdKey": "uuid"
   },
