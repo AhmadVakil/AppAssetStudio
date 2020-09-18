@@ -2,7 +2,7 @@
 <html>
 
         <head>
-                        <title>Infomaker</title>
+                        <title>Thesis</title>
                         <meta charset="utf-8">
                         <meta name="csrf-token" content="XYZ123">
                         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
@@ -43,16 +43,20 @@
                         <br>
 
                     </div>
+
+
                 <br>
 
-                                <div id="repo-buttons" style="display:none;">
+                                <div id="main-buttons" style="display:none;">
 
-                                        <button type="button" class="groupButtons" id="view-json" onclick="myFunction()"><i class="fa fa-cog" aria-hidden="true"></i> Edit Json Files</button>
+                                        <button type="button" class="groupButtons" id="editJsonFilesButton" onclick="editJsonFilesButton()"><i class="fa fa-cog" aria-hidden="true"></i> Edit Json Files</button>
                                         <button type="button" class="groupButtons" id="view-icon-picker" onclick="iconPicker()"><i class="fa fa-paint-brush" aria-hidden="true"></i> Change App Icon</button>
                                         <button type="button" class="groupButtons" id="view-handles" onclick="handles()"><i class="fa fa-paint-brush" aria-hidden="true"></i> Edit Handles Colors</button>
                                 </div>
-                        <hr>
-                    <h3 id="bigNotification" style="display:none;">Failed to load repositories!</h3>
+                    <div id="configFilesDiv" class="part" style="display:none;"></div>
+
+                    <h3 id="failedToLoadRepoNotification" style="display:none;">Failed to load repositories!</h3>
+                    <h3 id="selectRepoNotification" style="display:none;">Select a repository to continue.</h3>
 
 
 
@@ -87,11 +91,11 @@
                         <div id="canvas2"></div><br>
                     </div>
 
-                    <div id="global-json-changer" class="part" style="display:none;">
+                    <div id="jsonAllParagraphsKeeper" class="part">
                         <h3>Customize all Json files</h3>
                         Choose target configuration(s)
-                        <div id="jsonButtons"></div>
-                        <div id="config-viewer">
+
+                        <div id="jsonAllKeysParagraph" class="part">
 
                         </div>
 <!--                            <button type="button" class="groupButtons" id="app-design1" onclick="appDesignOne()"><i class="fa fa-paint-brush" aria-hidden="true"></i> App Design 1.1</button>
@@ -123,7 +127,7 @@
 -->
                     </div>
                    
-                    <button class="button" id="button">
+                    <button class="button" id="button" style="display:none;">
                                 Submit
                     </button>
 
@@ -133,25 +137,7 @@
 
                 </div>
 
-                <!--
-                <div class="phone-viewer">
-
-                                <div class="android">
-                                        <img src="image/Android-Phone.png" alt="Infomaker" id="logo">
-                                </div>
-                </div>
-        -->
-
-
-
-
-
-
-
-
-
 <div class="footer-part">
-    <hr>
     <a href="https://github.com/AhmadVakil"><i class="fab fa-github"><br> Follow me on Github</i></a>
 </div><br>
 

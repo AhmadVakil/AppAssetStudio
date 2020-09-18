@@ -267,6 +267,37 @@ var socket = io.connect('127.0.0.1:5001')
                 })
       })
 
+function validateColor(obj, key, textInputOne, textInputTwo, verifyIcon, verifyIconSpan){
+var RegExp = /^#[0-9A-F]{6}$/i;
+isHexColor = hex => typeof hex === 'string' && hex.length === 6 && !isNaN(Number('0x' + hex))
+                    if (RegExp.test(textInputOne.value)) {
+                            textInputTwo.value = textInputOne.value
+                            //textInputTwo.value = '#'+textInputOne.value
+                            verifyIcon.className = "far fa-check-circle"
+                            verifyIcon.style.color = 'yellow'
+                            verifyIcon.title = "Color seems OK"
+                            verifyIconSpan.appendChild(verifyIcon)
+                           // console.log(textInputTwo.value)
+                       } else if (isHexColor(textInputOne.value)) {
+                            textInputTwo.value = '#'+textInputOne.value
+                            verifyIcon.className = "far fa-check-circle"
+                            verifyIcon.style.color = 'yellow'
+                            verifyIcon.title = "Color seems OK"
+                            verifyIconSpan.appendChild(verifyIcon)
+                       } else {
+                            //alert('The color for '+ key +' seems like wrong!\n Please fix this in your configuration manually or use the color picker to fix it from.')
+                            //textInputOne.value=''
+                            verifyIcon.className = "fas fa-exclamation-triangle"
+                            verifyIcon.style.color = 'red'
+                            verifyIcon.title = "Check the color value!"
+                            verifyIconSpan.appendChild(verifyIcon)
+
+                       }
+
+
+
+}
+
 function createElements(obj, key) {
   /*if (key.toLowerCase().includes('color')) {
           //console.log(obj.key)
@@ -289,12 +320,24 @@ function createElements(obj, key) {
     var verifyIcon = document.createElement('i')
     jsonKeyParagraph.innerHTML = key+'<br>'
     jsonAllParagraphsKeeper.style.textAlign = 'center'
-    if (isHexColor(obj[key]) || RegExp.test(obj[key])) {
-            textInputOne.addEventListener('change', function(){
-            verifyIconSpan.innerHTML = ''
-                    if (RegExp.test(textInputOne.value)) {
+    verifyIconSpan.innerHTML = ''
+
+    if (isHexColor(obj[key]) || RegExp.test(obj[key]) || key.toLowerCase().includes('color')) {
+
+            // Create color elements here
+            console.log(key+" ====>> "+obj[key] + "  Color")
+            textInputOne.type='text'
+            textInputOne.id=obj[key]+'-hex'
+            textInputOne.style.width = '35%'
+            textInputOne.style.display = 'inline'
+            textInputTwo.type='color'
+            textInputTwo.id=obj[key]+'-picker'
+            textInputOne.value = obj[key]
+            validateColor(obj, key, textInputOne, textInputTwo, verifyIcon, verifyIconSpan)
+textInputOne.addEventListener('change', function(){
+if (RegExp.test(textInputOne.value)) {
                             textInputTwo.value = textInputOne.value
-                            textInputTwo.value = '#'+textInputOne.value
+                            //textInputTwo.value = '#'+textInputOne.value
                             verifyIcon.className = "far fa-check-circle"
                             verifyIcon.style.color = 'yellow'
                             verifyIcon.title = "Color seems OK"
@@ -308,26 +351,22 @@ function createElements(obj, key) {
                             verifyIconSpan.appendChild(verifyIcon)
                        } else {
                             //alert('The color for '+ key +' seems like wrong!\n Please fix this in your configuration manually or use the color picker to fix it from.')
-                            textInputOne.value=''
+                            //textInputOne.value=''
                             verifyIcon.className = "fas fa-exclamation-triangle"
                             verifyIcon.style.color = 'red'
                             verifyIcon.title = "Check the color value!"
                             verifyIconSpan.appendChild(verifyIcon)
 
                        }
-                    })
-                textInputTwo.addEventListener('change', function(){
+})
+ textInputTwo.addEventListener('change', function(){
                     textInputOne.value = textInputTwo.value
-                    //console.log(textInputTwo.value)
+                    textInputTwo.value = '#'+textInputOne.value
+                    verifyIcon.className = "far fa-check-circle"
+                    verifyIcon.style.color = 'yellow'
+                    verifyIcon.title = "Color seems OK"
+                    verifyIconSpan.appendChild(verifyIcon)
                 })
-            // Create color elements here
-            console.log(key+" ====>> "+obj[key] + "  Color")
-            textInputOne.type='text'
-            textInputOne.id=obj[key]+'-hex'
-            textInputOne.style.width = '35%'
-            textInputOne.style.display = 'inline'
-            textInputTwo.type='color'
-            textInputTwo.id=obj[key]+'-picker'
             jsonKeyParagraph.appendChild(verifyIconSpan)
             jsonKeyParagraph.appendChild(textInputOne)
             jsonKeyParagraph.appendChild(textInputTwo)

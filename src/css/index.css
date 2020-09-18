@@ -73,7 +73,7 @@
   color: black;
 }
 
-#repositories{
+#repositoriesDropDownMenu{
 width: auto;
 }
 
@@ -127,7 +127,7 @@ display: block;
     text-align: center;
 }
 
-#repo-buttons ul ul{
+#main-buttons ul ul{
 -webkit-transition: opacity 600ms, visibility 600ms;
 transition: opacity 600ms, visibility 600ms;
 }
@@ -160,6 +160,10 @@ text-align: center;
 }
 #resource-picker {
 
+}
+
+#jsonAllKeysParagraph {
+opacity:1;
 }
 
 .json-div{
