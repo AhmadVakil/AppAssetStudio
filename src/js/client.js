@@ -404,17 +404,21 @@ if (typeof obj[key] === 'object'  && isNaN(key)){
                 // Create number elements here
                 textInputOne.type = 'number'
                 textInputOne.value = obj[key]
-                if (textInputOne.value!== null && textInputOne.value!== ''){
-                    verifyIcon.className = "far fa-check-circle"
-                    verifyIcon.style.color = 'yellow'
-                    verifyIcon.title = "Value seems OK!"
-                    verifyIconSpan.appendChild(verifyIcon)
-                } else {
-                    verifyIcon.className = "fas fa-exclamation-triangle"
-                    verifyIcon.style.color = 'red'
-                    verifyIcon.title = "Check the value!"
-                    verifyIconSpan.appendChild(verifyIcon)
-                }
+                validateNumber(textInputOne, verifyIcon, verifyIconSpan)
+                textInputOne.addEventListener('change', function(){
+                           if (textInputOne.value === null || textInputOne.value === '' || typeof textInputOne === 'string'){
+                                           verifyIcon.className = "fas fa-exclamation-triangle"
+                                           verifyIcon.style.color = 'red'
+                                           verifyIcon.title = "Check the value!"
+                                           verifyIconSpan.appendChild(verifyIcon)
+                                        } else {
+                                            verifyIcon.className = "far fa-check-circle"
+                                            verifyIcon.style.color = 'yellow'
+                                            verifyIcon.title = "Value seems OK!"
+                                            verifyIconSpan.appendChild(verifyIcon)
+                                        }
+                })
+
                 jsonKeyParagraph.appendChild(verifyIconSpan)
                 jsonKeyParagraph.appendChild(textInputOne)
                 jsonAllKeysParagraph.appendChild(jsonKeyParagraph)
@@ -464,6 +468,20 @@ if (typeof obj[key] === 'object'  && isNaN(key)){
         }
       }
 
+}
+
+function validateNumber(textInputOne, verifyIcon, verifyIconSpan){
+        if (textInputOne.value === null || textInputOne.value === '' || typeof textInputOne === 'string'){
+           verifyIcon.className = "fas fa-exclamation-triangle"
+           verifyIcon.style.color = 'red'
+           verifyIcon.title = "Check the value!"
+           verifyIconSpan.appendChild(verifyIcon)
+        } else {
+            verifyIcon.className = "far fa-check-circle"
+            verifyIcon.style.color = 'yellow'
+            verifyIcon.title = "Value seems OK!"
+            verifyIconSpan.appendChild(verifyIcon)
+        }
 }
 
 function isHexColor (hex) {
@@ -568,6 +586,8 @@ socket.on('foundJson', function (file) {
               jsonAllKeysParagraph.innerHTML= '<br>Path to this configuration:<br>'
               jsonAllKeysParagraph.appendChild(filePathInput)
               jsonAllKeysParagraph.appendChild(tooltipDiv)
+              jsonAllKeysParagraph.appendChild(BR)
+
 
 
               //jsonFileButton.style.backgroundColor = 'red'
