@@ -276,6 +276,7 @@ isHexColor = hex => typeof hex === 'string' && hex.length === 6 && !isNaN(Number
                             //textInputTwo.value = '#'+textInputOne.value
                             verifyIcon.className = "far fa-check-circle"
                             verifyIcon.style.color = 'yellow'
+                            verifyIcon.style.color = 'yellow'
                             verifyIcon.title = "Color seems OK"
                             verifyIconSpan.appendChild(verifyIcon)
                            // console.log(textInputTwo.value)
@@ -314,7 +315,7 @@ function createElements(obj, key) {
     jsonKeyParagraph.id = obj[key]+'-p'
     //jsonKeyParagraph.className = 'json-div'
     //jsonKeyParagraph.innerHTML = key+'<br>'
-   // var fancyLine = document.createElement('hr')
+    var fancyLine = document.createElement('hr')
     var textInputOne= document.createElement('input')
     var textInputTwo= document.createElement('input')
     var verifyIconSpan = document.createElement('span')
@@ -323,12 +324,26 @@ function createElements(obj, key) {
     jsonKeyParagraph.innerHTML = key+'<br>'
     jsonAllParagraphsKeeper.style.textAlign = 'center'
     verifyIconSpan.innerHTML = ''
+    if (obj.length>0 && obj.length!==undefined){
+        jsonAllKeysParagraph.appendChild(fancyLine)
+        jsonAllParagraphsKeeper.appendChild(jsonAllKeysParagraph)
+   }
 if (typeof obj[key] === 'object'  && isNaN(key)){
         console.log('skipped')
         var objectName = document.createElement('h3')
+        var levelIcon = document.createElement('i')
+        levelIcon.className = 'fas fa-level-down-alt'
+        levelIcon.style.color = 'yellow'
+        levelIcon.style.fontSize = '25px'
+        levelIcon.style.margin = '10px'
+        //levelIcon.aria= true
             objectName.className = 'subSections'
             objectName.style.display = 'inline'
-            objectName.innerHTML = key+''
+            objectName.innerHTML = key
+            objectName.appendChild(levelIcon)
+
+
+
             //jsonKeyParagraph.appendChild(objectName)
             jsonAllKeysParagraph.appendChild(objectName)
             jsonAllParagraphsKeeper.appendChild(jsonAllKeysParagraph)
@@ -503,8 +518,58 @@ socket.on('foundJson', function (file) {
 
         jsonFileButton.addEventListener("click", function() {
               //console.log(jsonFileButton.id)
+
+
+              // input
+              var filePathInput = document.createElement('input')
+              filePathInput.type = 'text'
+              filePathInput.value = file.path
+              filePathInput.id = 'myInput'
+              filePathInput.style.width = '50%'
+              filePathInput.style.margin = '15px'
+
+              // Div
+              var tooltipDiv = document.createElement('div')
+              tooltipDiv.className = 'tooltip'
+
+              // Hint
+              var tooltiptext = document.createElement('span')
+              tooltiptext.className = 'tooltiptext'
+              tooltiptext.id = 'myTooltip'
+              tooltiptext.innerHTML = 'Copy to clipboard'
+
+              // Clipboard Icon
+              var clipboardIcon = document.createElement('i')
+              clipboardIcon.className = 'far fa-clipboard'
+
+              // Button
+              var copyToClipboardButton = document.createElement('button')
+
+              copyToClipboardButton.appendChild(tooltiptext)
+              copyToClipboardButton.appendChild(clipboardIcon)
+              tooltipDiv.appendChild(copyToClipboardButton)
+
+              copyToClipboardButton.addEventListener("mouseout", function(){
+                    var tooltip = document.getElementById("myTooltip");
+                    tooltip.innerHTML = "Copy to clipboard";
+              });
+
+              copyToClipboardButton.addEventListener("click", function(){
+                    var copyText = document.getElementById("myInput");
+                    copyText.select();
+                    copyText.setSelectionRange(0, 99999);
+                    document.execCommand("copy");
+                    var tooltip = document.getElementById("myTooltip");
+                    tooltip.innerHTML = "Copied: " + copyText.value;
+              });
+
               var jsonAllKeysParagraph= document.getElementById('jsonAllKeysParagraph')
-              jsonAllKeysParagraph.innerHTML= ''
+              //jsonAllKeysParagraph.innerHTML= '<br><br>Path to this file<br>'+file.path+'<br><br>'
+              jsonAllKeysParagraph.innerHTML= '<br>Path to this configuration:<br>'
+              jsonAllKeysParagraph.appendChild(filePathInput)
+              jsonAllKeysParagraph.appendChild(tooltipDiv)
+
+
               //jsonFileButton.style.backgroundColor = 'red'
               socket.emit('fetchConfigFile', { configPath : jsonFileButton.id });
         });

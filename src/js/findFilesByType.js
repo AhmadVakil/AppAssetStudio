@@ -29,14 +29,20 @@ if (isHexColor(obj[key]) || RegExp.test(obj[key])) {
 function getDeepKeys(obj) {
     var keys = [];
     for(var key in obj) {
-    checkTheType(obj, key)
+
+   if (obj.length+1 >= obj.length && obj.length!==undefined){
+                       console.log(key)
+                  } else {
+                   //objectName.innerHTML = key+'.'
+                  }
+    //checkTheType(obj, key)
     //if (key>=0){
     //  console.log('keyyyyy==================='+key)
    // }
-    if (typeof obj[key] === 'object' && isNaN(key)){
-       // console.log('skipped')
+    /*if (typeof obj[key] === 'object' && isNaN(key)){
+        //console.log('skipped')
         console.log(key)
-    }
+    }*/
 
     //var attr = JSON.parse(key)
 
@@ -45,8 +51,11 @@ function getDeepKeys(obj) {
         keys.push(key);
         if(typeof obj[key] === "object") {
             var subkeys = getDeepKeys(obj[key]);
+            //console.log(key)
             keys = keys.concat(subkeys.map(function(subkey) {
+                //console.log(subkey)
                 return key + "." + subkey;
+
             }));
         }
     }
