@@ -1,6 +1,8 @@
 var Jimp = require("jimp");
 var jsonfile = require('jsonfile')
 var path = require('path')
+//const io = require('socket.io')(server);
+
 
 //var http = require('http')
 var io  = require('socket.io').listen(5001)

@@ -308,6 +308,7 @@ function createElements(obj, key) {
     var jsonAllParagraphsKeeper= document.getElementById('jsonAllParagraphsKeeper')
     var jsonAllKeysParagraph= document.getElementById('jsonAllKeysParagraph')
     var jsonKeyParagraph = document.createElement('p')
+
     //jsonDiv.style.width = '50%'
     jsonKeyParagraph.style.textAlign = 'center'
     jsonKeyParagraph.id = obj[key]+'-p'
@@ -322,121 +323,131 @@ function createElements(obj, key) {
     jsonKeyParagraph.innerHTML = key+'<br>'
     jsonAllParagraphsKeeper.style.textAlign = 'center'
     verifyIconSpan.innerHTML = ''
+if (typeof obj[key] === 'object'  && isNaN(key)){
+        console.log('skipped')
+        var objectName = document.createElement('h3')
+            objectName.className = 'subSections'
+            objectName.style.display = 'inline'
+            objectName.innerHTML = key+''
+            //jsonKeyParagraph.appendChild(objectName)
+            jsonAllKeysParagraph.appendChild(objectName)
+            jsonAllParagraphsKeeper.appendChild(jsonAllKeysParagraph)
+    } else {
+        if (isHexColor(obj[key]) || RegExp.test(obj[key]) || key.toLowerCase().includes('color') && key.length) {
 
-    if (isHexColor(obj[key]) || RegExp.test(obj[key]) || key.toLowerCase().includes('color')) {
+                // Create color elements here
+                console.log(key+" ====>> "+obj[key] + "  Color")
+                textInputOne.type='text'
+                textInputOne.id=obj[key]+'-hex'
+                textInputOne.style.width = '35%'
+                textInputOne.style.display = 'inline'
+                textInputTwo.type='color'
+                textInputTwo.id=obj[key]+'-picker'
+                textInputOne.value = obj[key]
+                validateColor(obj, key, textInputOne, textInputTwo, verifyIcon, verifyIconSpan)
 
-            // Create color elements here
-            console.log(key+" ====>> "+obj[key] + "  Color")
-            textInputOne.type='text'
-            textInputOne.id=obj[key]+'-hex'
-            textInputOne.style.width = '35%'
-            textInputOne.style.display = 'inline'
-            textInputTwo.type='color'
-            textInputTwo.id=obj[key]+'-picker'
-            textInputOne.value = obj[key]
-            validateColor(obj, key, textInputOne, textInputTwo, verifyIcon, verifyIconSpan)
+                textInputOne.addEventListener('change', function(){
+                    if (RegExp.test(textInputOne.value)) {
+                        textInputTwo.value = textInputOne.value
+                        //textInputTwo.value = '#'+textInputOne.value
+                        verifyIcon.className = "far fa-check-circle"
+                        verifyIcon.style.color = 'yellow'
+                        verifyIcon.title = "Color seems OK"
+                        verifyIconSpan.appendChild(verifyIcon)
+                       // console.log(textInputTwo.value)
+                    } else if (isHexColor(textInputOne.value)) {
+                        textInputTwo.value = '#'+textInputOne.value
+                        verifyIcon.className = "far fa-check-circle"
+                        verifyIcon.style.color = 'yellow'
+                        verifyIcon.title = "Color seems OK"
+                        verifyIconSpan.appendChild(verifyIcon)
+                    } else {
+                        //alert('The color for '+ key +' seems like wrong!\n Please fix this in your configuration manually or use the color picker to fix it from.')
+                        //textInputOne.value=''
+                        verifyIcon.className = "fas fa-exclamation-triangle"
+                        verifyIcon.style.color = 'red'
+                        verifyIcon.title = "Check the color value!"
+                        verifyIconSpan.appendChild(verifyIcon)
+                    }
+                })
+                textInputTwo.addEventListener('change', function(){
+                        textInputOne.value = textInputTwo.value
+                        //textInputTwo.value = '#'+textInputOne.value
+                        verifyIcon.className = "far fa-check-circle"
+                        verifyIcon.style.color = 'yellow'
+                        verifyIcon.title = "Color seems OK"
+                        verifyIconSpan.appendChild(verifyIcon)
+                })
+                jsonKeyParagraph.appendChild(verifyIconSpan)
+                jsonKeyParagraph.appendChild(textInputOne)
+                jsonKeyParagraph.appendChild(textInputTwo)
 
-            textInputOne.addEventListener('change', function(){
-                if (RegExp.test(textInputOne.value)) {
-                    textInputTwo.value = textInputOne.value
-                    //textInputTwo.value = '#'+textInputOne.value
+                jsonAllKeysParagraph.appendChild(jsonKeyParagraph)
+                jsonAllParagraphsKeeper.appendChild(jsonAllKeysParagraph)
+                //jsonAllParagraphsKeeper.appendChild(fancyLine)
+        } else if (typeof obj[key] === "number"){
+                // Create number elements here
+                textInputOne.type = 'number'
+                textInputOne.value = obj[key]
+                if (textInputOne.value!== null && textInputOne.value!== ''){
                     verifyIcon.className = "far fa-check-circle"
                     verifyIcon.style.color = 'yellow'
-                    verifyIcon.title = "Color seems OK"
-                    verifyIconSpan.appendChild(verifyIcon)
-                   // console.log(textInputTwo.value)
-                } else if (isHexColor(textInputOne.value)) {
-                    textInputTwo.value = '#'+textInputOne.value
-                    verifyIcon.className = "far fa-check-circle"
-                    verifyIcon.style.color = 'yellow'
-                    verifyIcon.title = "Color seems OK"
+                    verifyIcon.title = "Value seems OK!"
                     verifyIconSpan.appendChild(verifyIcon)
                 } else {
-                    //alert('The color for '+ key +' seems like wrong!\n Please fix this in your configuration manually or use the color picker to fix it from.')
-                    //textInputOne.value=''
                     verifyIcon.className = "fas fa-exclamation-triangle"
                     verifyIcon.style.color = 'red'
-                    verifyIcon.title = "Check the color value!"
+                    verifyIcon.title = "Check the value!"
                     verifyIconSpan.appendChild(verifyIcon)
                 }
-            })
-            textInputTwo.addEventListener('change', function(){
-                    textInputOne.value = textInputTwo.value
-                    //textInputTwo.value = '#'+textInputOne.value
+                jsonKeyParagraph.appendChild(verifyIconSpan)
+                jsonKeyParagraph.appendChild(textInputOne)
+                jsonAllKeysParagraph.appendChild(jsonKeyParagraph)
+                jsonAllParagraphsKeeper.appendChild(jsonAllKeysParagraph)
+
+                console.log(key+" ====>> "+obj[key] + "  Number")
+        } else if (typeof obj[key] === "boolean"){
+                // Create boolean elements here
+                textInputOne.type = 'boolean'
+                textInputOne.value = obj[key]
+                if (textInputOne.value!== null && textInputOne.value!== ''){
                     verifyIcon.className = "far fa-check-circle"
                     verifyIcon.style.color = 'yellow'
-                    verifyIcon.title = "Color seems OK"
+                    verifyIcon.title = "Value seems OK!"
                     verifyIconSpan.appendChild(verifyIcon)
-            })
-            jsonKeyParagraph.appendChild(verifyIconSpan)
-            jsonKeyParagraph.appendChild(textInputOne)
-            jsonKeyParagraph.appendChild(textInputTwo)
-
-            jsonAllKeysParagraph.appendChild(jsonKeyParagraph)
-            jsonAllParagraphsKeeper.appendChild(jsonAllKeysParagraph)
-            //jsonAllParagraphsKeeper.appendChild(fancyLine)
-    } else if (typeof obj[key] === "number"){
-            // Create number elements here
-            textInputOne.type = 'number'
-            textInputOne.value = obj[key]
-            if (textInputOne.value!== null && textInputOne.value!== ''){
-                verifyIcon.className = "far fa-check-circle"
-                verifyIcon.style.color = 'yellow'
-                verifyIcon.title = "Value seems OK!"
-                verifyIconSpan.appendChild(verifyIcon)
-            } else {
-                verifyIcon.className = "fas fa-exclamation-triangle"
-                verifyIcon.style.color = 'red'
-                verifyIcon.title = "Check the value!"
-                verifyIconSpan.appendChild(verifyIcon)
-            }
-            jsonKeyParagraph.appendChild(verifyIconSpan)
-            jsonKeyParagraph.appendChild(textInputOne)
-            jsonAllKeysParagraph.appendChild(jsonKeyParagraph)
-            jsonAllParagraphsKeeper.appendChild(jsonAllKeysParagraph)
-
-            console.log(key+" ====>> "+obj[key] + "  Number")
-    } else if (typeof obj[key] === "boolean"){
-            // Create boolean elements here
-            textInputOne.type = 'boolean'
-            textInputOne.value = obj[key]
-            if (textInputOne.value!== null && textInputOne.value!== ''){
-                verifyIcon.className = "far fa-check-circle"
-                verifyIcon.style.color = 'yellow'
-                verifyIcon.title = "Value seems OK!"
-                verifyIconSpan.appendChild(verifyIcon)
-            } else {
-                verifyIcon.className = "fas fa-exclamation-triangle"
-                verifyIcon.style.color = 'red'
-                verifyIcon.title = "Check the value!"
-                verifyIconSpan.appendChild(verifyIcon)
-            }
-            jsonKeyParagraph.appendChild(verifyIconSpan)
-            jsonKeyParagraph.appendChild(textInputOne)
-            jsonAllKeysParagraph.appendChild(jsonKeyParagraph)
-            jsonAllParagraphsKeeper.appendChild(jsonAllKeysParagraph)
-            console.log(key+" ====>> "+obj[key] + "  Boolean")
-    } else if (typeof obj[key] === "string"){
-            // Create text field here
-            textInputOne.type = 'string'
-            textInputOne.value = obj[key]
-            if (textInputOne.value!== null && textInputOne.value!== ''){
-                verifyIcon.className = "far fa-check-circle"
-                verifyIcon.style.color = 'yellow'
-                verifyIcon.title = "Value seems OK!"
-                verifyIconSpan.appendChild(verifyIcon)
-            } else {
-                verifyIcon.className = "fas fa-exclamation-triangle"
-                verifyIcon.style.color = 'red'
-                verifyIcon.title = "Check the value!"
-                verifyIconSpan.appendChild(verifyIcon)
-            }
-            jsonKeyParagraph.appendChild(verifyIconSpan)
-            jsonKeyParagraph.appendChild(textInputOne)
-            jsonAllKeysParagraph.appendChild(jsonKeyParagraph)
-            jsonAllParagraphsKeeper.appendChild(jsonAllKeysParagraph)
-            console.log(key+" ====>> "+obj[key] + "  String")
-    }
+                } else {
+                    verifyIcon.className = "fas fa-exclamation-triangle"
+                    verifyIcon.style.color = 'red'
+                    verifyIcon.title = "Check the value!"
+                    verifyIconSpan.appendChild(verifyIcon)
+                }
+                jsonKeyParagraph.appendChild(verifyIconSpan)
+                jsonKeyParagraph.appendChild(textInputOne)
+                jsonAllKeysParagraph.appendChild(jsonKeyParagraph)
+                jsonAllParagraphsKeeper.appendChild(jsonAllKeysParagraph)
+                console.log(key+" ====>> "+obj[key] + "  Boolean")
+        } else if (typeof obj[key] === "string"){
+                // Create text field here
+                textInputOne.type = 'string'
+                textInputOne.value = obj[key]
+                if (textInputOne.value!== null && textInputOne.value!== ''){
+                    verifyIcon.className = "far fa-check-circle"
+                    verifyIcon.style.color = 'yellow'
+                    verifyIcon.title = "Value seems OK!"
+                    verifyIconSpan.appendChild(verifyIcon)
+                } else {
+                    verifyIcon.className = "fas fa-exclamation-triangle"
+                    verifyIcon.style.color = 'red'
+                    verifyIcon.title = "Check the value!"
+                    verifyIconSpan.appendChild(verifyIcon)
+                }
+                jsonKeyParagraph.appendChild(verifyIconSpan)
+                jsonKeyParagraph.appendChild(textInputOne)
+                jsonAllKeysParagraph.appendChild(jsonKeyParagraph)
+                jsonAllParagraphsKeeper.appendChild(jsonAllKeysParagraph)
+                console.log(key+" ====>> "+obj[key] + "  String")
+        }
+      }
 
 }
 

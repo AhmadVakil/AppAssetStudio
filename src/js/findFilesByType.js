@@ -12,16 +12,16 @@ var RegExp = /^#[0-9A-F]{6}$/i;
 
 if (isHexColor(obj[key]) || RegExp.test(obj[key])) {
         // Create color elements here
-        console.log(key+" ====>> "+obj[key] + "  Color")
+        //console.log(key+" ====>> "+obj[key] + "  Color")
 } else if (typeof obj[key] === "number"){
         // Create number elements here
-        console.log(key+" ====>> "+obj[key] + "  Number")
+        //console.log(key+" ====>> "+obj[key] + "  Number")
 } else if (typeof obj[key] === "boolean"){
         // Create boolean elements here
-        console.log(key+" ====>> "+obj[key] + "  Boolean")
+        //console.log(key+" ====>> "+obj[key] + "  Boolean")
 } else if (typeof obj[key] === "string"){
         // Create text field here
-        console.log(key+" ====>> "+obj[key] + "  String")
+        //console.log(key+" ====>> "+obj[key] + "  String")
 }
 
 }
@@ -30,6 +30,14 @@ function getDeepKeys(obj) {
     var keys = [];
     for(var key in obj) {
     checkTheType(obj, key)
+    //if (key>=0){
+    //  console.log('keyyyyy==================='+key)
+   // }
+    if (typeof obj[key] === 'object' && isNaN(key)){
+       // console.log('skipped')
+        console.log(key)
+    }
+
     //var attr = JSON.parse(key)
 
 
@@ -71,7 +79,7 @@ function fromDir(startPath,filter){
     };
 };
 
-//fromDir('Cloned_Git_Repositories/My-news-app','.json');
+fromDir('Cloned_Git_Repositories/My-news-app/Resources/Modules/shared/configuration/','.json');
 
 //console.log('astringNice'.toLowerCase().includes('nice')) //true
 
@@ -83,5 +91,5 @@ function isHexColor (hex) {
       && !isNaN(Number('0x' + hex))
 }
 
-console.log(isHexColor('ffffff'))
+//console.log(isHexColor('ffffff'))
 // or as arrow function (ES6+)
