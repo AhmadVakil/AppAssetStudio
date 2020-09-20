@@ -2,7 +2,33 @@
   position: relative;
   display: inline-block;
 }
+.restoreButtonEnabled {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 3px 3px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 10px 10px;
+  cursor: pointer;
+}
 
+.restoreButtonDisabled {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 3px 3px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 10px 10px;
+  opacity: 0.6;
+  cursor: not-allowed;
+  clicked: not-allowed;
+}
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 140px;
