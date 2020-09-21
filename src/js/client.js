@@ -1,6 +1,19 @@
 // var startButton = document.getElementById('start')
 // var ConvertButtonPage = document.getElementById('Convert')
 document.body.style.backgroundImage = 'url(../image/grey.jpg)'
+$(document).ready(function () {
+  //your code here
+  $('body').append('<div style=\'\' id=\'loadingDiv\'><div class=\'loader\'>Loading...</div></div>')
+  $(window).on('load', function () {
+    setTimeout(removeLoader, 500)
+  })
+  function removeLoader () {
+    $('#loadingDiv').fadeOut(500, function () {
+      $('#loadingDiv').remove()
+    })
+  }
+});
+
 let BR = document.createElement('BR')
 /* var childSection = document.createElement('div')
 childSection.style.margin = '25px'
