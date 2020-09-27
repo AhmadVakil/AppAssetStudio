@@ -1,5 +1,6 @@
 // var startButton = document.getElementById('start')
 // var ConvertButtonPage = document.getElementById('Convert')
+'use strict';
 document.body.style.backgroundImage = 'url(../image/grey.jpg)'
 $(document).ready(function () {
   //your code here
@@ -529,8 +530,89 @@ socket.on('foundJson', function (file) {
     socket.emit('fetchConfigFile', { configPath: jsonFileButton.id })
   })
 })
+
 socket.on('configData', function (configData) {
-  getDeepKeys(configData)
+    var mainView = document.getElementById('mainView')
+    mainView.style.display='block'
+
+    var jsonTextarea = document.getElementById('jsonTextarea')
+    jsonTextarea.value = JSON.stringify(configData)
+
+    // Create a new 'change' event
+    var event = new Event('change');
+
+    // Dispatch it.
+    jsonTextarea.dispatchEvent(event);
+
+     // jsonAllKeysParagraph.innerHTML =
+    /*'<div id="mainView" ng-controller="MainViewCtrl">'
+    +'<h2>JSONedit</h2>'
+    +'<div class="jsonView">'
+    +'<json child="jsonData" default-collapsed="false" type="object"></json>'
+    +'</div>'
+    +'<hr>'
+    +'<div>'
+    +'<textarea id="jsonTextarea" ng-model="jsonString"></textarea>'
+    +'<span class="red" ng-if="!wellFormed">JSON not well-formed!</span>'
+    +'</div>'
+    +'</div>'
+      */                                  /*
+
+
+
+*/
+    /*var mainView = document.createElement('div')
+    mainView.id = 'mainView'
+    mainView.controller = 'MainViewCtrl'
+
+    var fancyTitle = document.createElement('h2')
+    fancyTitle.innerHTML = 'JSONedit'
+
+    var jsonView = document.createElement('div')
+    jsonView.className = 'jsonView'
+
+    var fancyTitle = document.createElement('h2')
+
+    var json = document.createElement('json')
+    json.child = "jsonData"
+    json.collapsed = 'false'
+    json.type = 'object'
+
+    var textareaDiv = document.createElement('textareaDiv')
+
+    var textarea = document.createElement('textarea')
+    textarea.id = 'jsonTextarea'
+    textarea.model = 'jsonString'
+
+
+    textareaDiv.appendChild(textarea)
+    jsonView.appendChild(json)
+
+    mainView.appendChild(fancyTitle)
+    mainView.appendChild(jsonView)
+  var fancyLine = document.createElement('hr')
+
+    mainView.appendChild(fancyLine)
+    mainView.appendChild(textareaDiv)
+    jsonAllKeysParagraph.appendChild(mainView)
+    /*var spanArea = document.createElement('span')
+    spanArea.className = 'red'*/
+
+
+/*
+<div id="mainView" ng-controller="MainViewCtrl">
+  <h2>JSONedit</h2>
+  <div class="jsonView">
+    <json child="jsonData" default-collapsed="false" type="object"></json>
+  </div>
+  <hr>
+  <div>
+    <textarea id="jsonTextarea" ng-model="jsonString"></textarea>
+    <span class="red" ng-if="!wellFormed">JSON not well-formed!</span>
+  </div>
+</div>
+*/
+ // getDeepKeys(configData)
 })
 function sendFeedBack () {
   socket.emit('feedBack', { firstname: document.getElementById('firstname').value,

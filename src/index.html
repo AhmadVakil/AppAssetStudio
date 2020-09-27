@@ -8,14 +8,14 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body id="body">
-        
+
 
     <div id="taskbar">
         <img id="memoGameIcon" src="image/memoGame.png" onmouseover="bigger(this)" onmouseout="normal(this)">
         <img id="chatIcon" src="image/chat.png" onmouseover="bigger(this)" onmouseout="normal(this)">
         <img id="controlApp" src="image/control.ico" onmouseover="bigger(this)" onmouseout="normal(this)">
     </div>
-        
+
     <script src="js/app.js"></script>
     <script src="js/Memory-Game.js"></script>
     <script src="js/Chat-Application.js"></script>
@@ -26,137 +26,137 @@
 
 <html>
 
-        <head>
-                        <title>Thesis</title>
-                        <meta charset="utf-8">
-                        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-                        <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
-                        <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
-                        <script src="js/dropzone.js"></script>
-                        <script src="js/html2canvas.js"></script>
-                        <script src="js/html2canvas.min.js"></script>
-                        <script src="js/socket.io.js"></script>
-                        <link rel="stylesheet" type="text/css" href="css\index.css">
+<head>
+    <title>Thesis</title>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+    <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+    <script src="js/dropzone.js"></script>
+    <script src="js/html2canvas.js"></script>
+    <script src="js/html2canvas.min.js"></script>
+    <script src="js/socket.io.js"></script>
+    <link rel="stylesheet" type="text/css" href="css\index.css">
 
-        </head>
-
-
-        
-        
-        <body class="body">
-                
-        
-                <nav>
-                        <label for="drop" class="toggle" >Menu</label>
-                        <input type="checkbox" id="drop"/>
-                </nav>
-                   
-
-                <div class="section group" id="parentSection">
-                        <h1>
-                                <img src="image/infomaker-logo-black.jpg" alt="Mountain View" >
-                        </h1>
-                        
-                        
-                        <div class="col span_1_of_3">
-                        <div id="no-opac">
-
-                       
-                                <h1> Start New App Project </h1>
-                                <p1> Use this tool to create a new mobile application with: </p1><br/>
-                                        <ul>
-                                                <li>Structured files and folders. </li>
-                                                <li>Pre configured files. </li>
-                                                <li>Automatically Convert app icons and images to various sizes fast and easy. </li>
-                                                <li>And more... </li>
-                                        </ul>
-                                        <div class="button-holder">
-                                            <a class="button" id="start" href="Config-Changer.html"><span>Start </span></a>
-                                        </div>
-                                        
-                        </div>
-                        </div>
-
-                        <div class="col span_1_of_3" id="edit">
-                                <div id="no-opac">
-        
-                               
-                                        <h1> Edit Current Applications </h1>
-                                        <p1> Use this tool to edit already developed applications. </p1><br/>
-                                                <ul>
-                                                        <li>Edit configuration files. </li>
-                                                        <li>Change applications appearance, such as icons, fonts, colors, etc.  </li>
-                                                        
-                                                        <li>And more... </li>
-                                                </ul>
-                                                <div class="button-holder">
-                                                    <button class="button"><span>Edit </span></button>
-                                                </div>
-                                                
-                                </div>
-                                </div>
-
-                                <div class="col span_1_of_3" id="convert">
-                                        <div id="no-opac">
-                
-                                       
-                                                <h1> Convert Your Images Easily </h1>
-                                                <p1> Use this tool to convert your image icons into Android and iOS format. </p1><br/>
-                                                        <ul>
-                                                                <li>Step 1: Choose your image file </li>
-                                                                <li>Step 2: Press submit button </li>
-                                                                <li>Step 3: Receive your converted image on the server. </li>
-                                                                <li>Step 4: Server will convert it to different formats with different sizes.(Not Done Yet) </li>
-                                                                
-                                                        </ul>
-                                                        <div class="button-holder">
-                                                            <button class="button" id="Convert"><span>Convert </span></button>
-                                                        </div>
-                                                        Note: This module will be included into main algorithm.
-                                                        
-                                        </div>
-                                        </div>
-
-                                        <div class="col span_1_of_3" id="help">
-                                                <div id="no-opac">
-                        
-                                               
-                                                        <h1> Need help? </h1>
-                                                        <p1> Use this tool to get started with this webbased application. </p1><br/>
-                                                                <ul>
-                                                                        <li>Learn how to start a project. </li>
-                                                                        <li>Learn how to config all apps. </li>
-                                                                        <li>Learn more about configuration files. </li>
-                                                                        <li>Learn more about certificates. </li>
-                                                                        <li>Differences between Android and iOS applications. </li>
-                                                                        <li>And many more useful guidlines... </li>
-                                                                </ul>
-                                                                <div class="button-holder">
-                                                                    <button class="button"><span>Help </span></button>
-                                                                </div>
-                                                                
-                                                </div>
-                                                </div>
-
-                        
+</head>
 
 
-                                        
 
 
-                        
-
-                       
-                </div>
+<body class="body">
 
 
-                
+<nav>
+    <label for="drop" class="toggle" >Menu</label>
+    <input type="checkbox" id="drop"/>
+</nav>
+
+
+<div class="section group" id="parentSection">
+    <h1>
+        <img src="image/infomaker-logo-black.jpg" alt="Mountain View" >
+    </h1>
+
+
+    <div class="col span_1_of_3">
+        <div id="no-opac">
+
+
+            <h1> Start New App Project </h1>
+            <p1> Use this tool to create a new mobile application with: </p1><br/>
+            <ul>
+                <li>Structured files and folders. </li>
+                <li>Pre configured files. </li>
+                <li>Automatically Convert app icons and images to various sizes fast and easy. </li>
+                <li>And more... </li>
+            </ul>
+            <div class="button-holder">
+                <a class="button" id="start" href="Config-Changer.html"><span>Start </span></a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col span_1_of_3" id="edit">
+        <div id="no-opac">
+
+
+            <h1> Edit Current Applications </h1>
+            <p1> Use this tool to edit already developed applications. </p1><br/>
+            <ul>
+                <li>Edit configuration files. </li>
+                <li>Change applications appearance, such as icons, fonts, colors, etc.  </li>
+
+                <li>And more... </li>
+            </ul>
+            <div class="button-holder">
+                <button class="button"><span>Edit </span></button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col span_1_of_3" id="convert">
+        <div id="no-opac">
+
+
+            <h1> Convert Your Images Easily </h1>
+            <p1> Use this tool to convert your image icons into Android and iOS format. </p1><br/>
+            <ul>
+                <li>Step 1: Choose your image file </li>
+                <li>Step 2: Press submit button </li>
+                <li>Step 3: Receive your converted image on the server. </li>
+                <li>Step 4: Server will convert it to different formats with different sizes.(Not Done Yet) </li>
+
+            </ul>
+            <div class="button-holder">
+                <button class="button" id="Convert"><span>Convert </span></button>
+            </div>
+            Note: This module will be included into main algorithm.
+
+        </div>
+    </div>
+
+    <div class="col span_1_of_3" id="help">
+        <div id="no-opac">
+
+
+            <h1> Need help? </h1>
+            <p1> Use this tool to get started with this webbased application. </p1><br/>
+            <ul>
+                <li>Learn how to start a project. </li>
+                <li>Learn how to config all apps. </li>
+                <li>Learn more about configuration files. </li>
+                <li>Learn more about certificates. </li>
+                <li>Differences between Android and iOS applications. </li>
+                <li>And many more useful guidlines... </li>
+            </ul>
+            <div class="button-holder">
+                <button class="button"><span>Help </span></button>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
 <!--
                 <form>
-                        
+
                         <input type="file">
                         <input type="submit" class="button">
-                        
+
                 </form>
 -->
 
@@ -169,10 +169,10 @@
 
 
 
-                
-        </body>
-        <script src="js/require.js"></script>
-        <script src="js/app.js"></script>
-        <script src="js/delivery.js"></script>
-        
+
+</body>
+<script src="js/require.js"></script>
+<script src="js/app.js"></script>
+<script src="js/delivery.js"></script>
+
 </html>
