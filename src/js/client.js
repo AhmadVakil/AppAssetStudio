@@ -531,89 +531,41 @@ socket.on('foundJson', function (file) {
   })
 })
 
-socket.on('configData', function (configData) {
-    var mainView = document.getElementById('mainView')
-    mainView.style.display='block'
-
-    var jsonTextarea = document.getElementById('jsonTextarea')
-    jsonTextarea.value = JSON.stringify(configData)
-
-    // Create a new 'change' event
-    var event = new Event('change');
-
-    // Dispatch it.
-    jsonTextarea.dispatchEvent(event);
-
-     // jsonAllKeysParagraph.innerHTML =
-    /*'<div id="mainView" ng-controller="MainViewCtrl">'
-    +'<h2>JSONedit</h2>'
-    +'<div class="jsonView">'
-    +'<json child="jsonData" default-collapsed="false" type="object"></json>'
-    +'</div>'
-    +'<hr>'
-    +'<div>'
-    +'<textarea id="jsonTextarea" ng-model="jsonString"></textarea>'
-    +'<span class="red" ng-if="!wellFormed">JSON not well-formed!</span>'
-    +'</div>'
-    +'</div>'
-      */                                  /*
+var vt;
 
 
+  var container = document.getElementById("containerDiv");
+  var msg = document.getElementById("msg");
+  vt = new VTree(container);
+  var reader = new VTree.reader.Object();
 
-*/
-    /*var mainView = document.createElement('div')
-    mainView.id = 'mainView'
-    mainView.controller = 'MainViewCtrl'
+  function updateTree() {
+    var s = document.getElementById("jsonTextarea").value;
 
-    var fancyTitle = document.createElement('h2')
-    fancyTitle.innerHTML = 'JSONedit'
+    msg.innerHTML = '';
 
-    var jsonView = document.createElement('div')
-    jsonView.className = 'jsonView'
+    try {
+      var jsonData = JSON.parse(s);
+    } catch (e) {
+      msg.innerHTML = 'JSON parse error: ' + e.message;
+    }
 
-    var fancyTitle = document.createElement('h2')
+    var data = reader.read(jsonData);
 
-    var json = document.createElement('json')
-    json.child = "jsonData"
-    json.collapsed = 'false'
-    json.type = 'object'
+    vt.data(data)
+      .update();
+  }
 
-    var textareaDiv = document.createElement('textareaDiv')
+  function createSvgString() {
+    document.getElementById("svg-text").value = vt.createSvgString();
+  }
 
-    var textarea = document.createElement('textarea')
-    textarea.id = 'jsonTextarea'
-    textarea.model = 'jsonString'
-
-
-    textareaDiv.appendChild(textarea)
-    jsonView.appendChild(json)
-
-    mainView.appendChild(fancyTitle)
-    mainView.appendChild(jsonView)
-  var fancyLine = document.createElement('hr')
-
-    mainView.appendChild(fancyLine)
-    mainView.appendChild(textareaDiv)
-    jsonAllKeysParagraph.appendChild(mainView)
-    /*var spanArea = document.createElement('span')
-    spanArea.className = 'red'*/
+  document.getElementById("go-button").onclick = updateTree;
+  document.getElementById("svg-button").onclick = createSvgString;
 
 
-/*
-<div id="mainView" ng-controller="MainViewCtrl">
-  <h2>JSONedit</h2>
-  <div class="jsonView">
-    <json child="jsonData" default-collapsed="false" type="object"></json>
-  </div>
-  <hr>
-  <div>
-    <textarea id="jsonTextarea" ng-model="jsonString"></textarea>
-    <span class="red" ng-if="!wellFormed">JSON not well-formed!</span>
-  </div>
-</div>
-*/
- // getDeepKeys(configData)
-})
+
+
 function sendFeedBack () {
   socket.emit('feedBack', { firstname: document.getElementById('firstname').value,
     lastname: document.getElementById('lastname').value,
@@ -626,4 +578,20 @@ socket.on('feedbackSaved', function () {
   document.getElementById('feedback').value = ''
   document.getElementById('popup2').style.display = 'block'
   console.log('Feedback saved by the server')
+})
+
+
+socket.on('configData', function (configData) {
+    var mainView = document.getElementById('mainView')
+    mainView.style.display='block'
+
+    var jsonTextarea = document.getElementById('jsonTextarea')
+    jsonTextarea.value = JSON.stringify(configData)
+
+    // Create a new 'change' event
+    var event = new Event('change');
+
+    // Dispatch it.
+    jsonTextarea.dispatchEvent(event);
+    updateTree();
 })

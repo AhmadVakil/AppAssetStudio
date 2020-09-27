@@ -23,6 +23,10 @@
             <script src="js/JSONedit.js"></script>
             <link href="css/index.css" rel="stylesheet" type="text/css" />
             <link rel="stylesheet" type="text/css" href="css/index.css">
+            <link rel="stylesheet" href="css/vtree.css" type="text/css"/>
+
+            <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+            <script src="dist/vtree.js"></script>
         </head>
 
 
@@ -112,7 +116,7 @@
                             <h2>JSONedit</h2>
 
                             <div class="jsonView">
-                                <json child="jsonData" default-collapsed="false" type="object"></json>
+                                <json child="jsonData" default-collapsed="true" type="object"></json>
                             </div>
 
                             <hr>
@@ -120,6 +124,30 @@
                                 <textarea id="jsonTextarea" ng-model="jsonString"></textarea>
                                 <span class="red" ng-if="!wellFormed">JSON not well-formed!</span>
                             </div>
+
+                            <div class="graphContainer">
+
+                               <div style="margin-top: 1em;">
+                                    <input id="go-button" type="button" value="Visualize">
+                                </div>
+
+                                <div id="msg" style="color: red;"></div>
+
+                                <div id="containerDiv"></div>
+
+                                <div style="margin-top: 1em;">
+                                    <input id="svg-button" type="button" value="Get SVG String">
+                                </div>
+
+                                <div style="margin-top: 1em;">
+                                    <p>If you want to export the diagram as a svg file, copy the following text into a text editor and save the file with a .svg extension.</p>
+                                    <textarea id="svg-text" rows="6" cols="80"></textarea>
+                                </div>
+
+                                <p style="text-align: right;">Created Date: 2014-07-27, Modified Date: 2018-11-01</p>
+
+                            </div>
+
                         </div>
                     </div>
                    
