@@ -1,7 +1,7 @@
 // var startButton = document.getElementById('start')
 // var ConvertButtonPage = document.getElementById('Convert')
 'use strict';
-document.body.style.backgroundImage = 'url(../image/grey.jpg)'
+document.body.style.backgroundImage = 'url(../image/white.png)'
 $(document).ready(function () {
   //your code here
   $('body').append('<div style=\'\' id=\'loadingDiv\'><div class=\'loader\'>Loading...</div></div>')
@@ -163,7 +163,7 @@ socket.on('Repositories', function (data) {
   var resourceDiv = document.getElementById('resource-picker')
   if (data.length !== 0) {
     failedToLoadRepoNotification.style.display = 'none'
-    repoInfoText.innerHTML = 'Resource folder should be selected here, please select from the existing repositories'
+    repoInfoText.innerHTML = 'Select from existing resource directories'
     var repositoriesMenu = document.createElement('select')
     repositoriesMenu.addEventListener('change', myfunction2)
     repositoriesMenu.id = 'repositoriesDropDownMenu'
@@ -501,7 +501,7 @@ socket.on('foundJson', function (file) {
     var tooltiptext = document.createElement('span')
     tooltiptext.className = 'tooltiptext'
     tooltiptext.id = 'myTooltip'
-    tooltiptext.innerHTML = 'Copy to clipboard'
+    //tooltiptext.innerHTML = 'Copy to clipboard'
     // Clipboard Icon
     var clipboardIcon = document.createElement('i')
     clipboardIcon.className = 'far fa-clipboard'
@@ -512,7 +512,7 @@ socket.on('foundJson', function (file) {
     tooltipDiv.appendChild(copyToClipboardButton)
     copyToClipboardButton.addEventListener('mouseout', function () {
       var tooltip = document.getElementById('myTooltip')
-      tooltip.innerHTML = 'Copy to clipboard'
+      //tooltip.innerHTML = 'Copy to clipboard'
     })
     copyToClipboardButton.addEventListener('click', function () {
       var copyText = document.getElementById('myInput')
@@ -520,51 +520,46 @@ socket.on('foundJson', function (file) {
       copyText.setSelectionRange(0, 99999)
       document.execCommand('copy')
       var tooltip = document.getElementById('myTooltip')
-      tooltip.innerHTML = 'Copied: ' + copyText.value
+      //tooltip.innerHTML = 'Copied: ' + copyText.value
     })
     var jsonAllKeysParagraph = document.getElementById('jsonAllKeysParagraph')
     jsonAllKeysParagraph.innerHTML = '<br>Path to this configuration:<br>'
     jsonAllKeysParagraph.appendChild(filePathInput)
-    jsonAllKeysParagraph.appendChild(tooltipDiv)
+    jsonAllKeysParagraph.appendChild(copyToClipboardButton)
     jsonAllKeysParagraph.appendChild(BR)
     socket.emit('fetchConfigFile', { configPath: jsonFileButton.id })
   })
 })
 
-var vt;
+var vt
+var container = document.getElementById("containerDiv")
+var msg = document.getElementById("msg")
+vt = new VTree(container);
+var reader = new VTree.reader.Object()
 
+function updateTree() {
+  var s = document.getElementById("jsonTextarea").value
 
-  var container = document.getElementById("containerDiv");
-  var msg = document.getElementById("msg");
-  vt = new VTree(container);
-  var reader = new VTree.reader.Object();
+  msg.innerHTML = ''
 
-  function updateTree() {
-    var s = document.getElementById("jsonTextarea").value;
-
-    msg.innerHTML = '';
-
-    try {
-      var jsonData = JSON.parse(s);
-    } catch (e) {
-      msg.innerHTML = 'JSON parse error: ' + e.message;
-    }
-
-    var data = reader.read(jsonData);
-
-    vt.data(data)
-      .update();
+  try {
+    var jsonData = JSON.parse(s)
+  } catch (e) {
+    msg.innerHTML = 'JSON parse error: ' + e.message
   }
 
-  function createSvgString() {
-    document.getElementById("svg-text").value = vt.createSvgString();
-  }
+  var data = reader.read(jsonData)
 
-  document.getElementById("go-button").onclick = updateTree;
-  document.getElementById("svg-button").onclick = createSvgString;
+  vt.data(data)
+    .update()
+}
 
+function createSvgString() {
+  document.getElementById("svg-text").value = vt.createSvgString()
+}
 
-
+document.getElementById("go-button").onclick = updateTree
+document.getElementById("svg-button").onclick = createSvgString
 
 function sendFeedBack () {
   socket.emit('feedBack', { firstname: document.getElementById('firstname').value,
@@ -582,16 +577,16 @@ socket.on('feedbackSaved', function () {
 
 
 socket.on('configData', function (configData) {
-    var mainView = document.getElementById('mainView')
-    mainView.style.display='block'
+  var mainView = document.getElementById('mainView')
+  mainView.style.display='block'
 
-    var jsonTextarea = document.getElementById('jsonTextarea')
-    jsonTextarea.value = JSON.stringify(configData)
+  var jsonTextarea = document.getElementById('jsonTextarea')
+  jsonTextarea.value = JSON.stringify(configData)
 
-    // Create a new 'change' event
-    var event = new Event('change');
+  // Create a new 'change' event
+  var event = new Event('change');
 
-    // Dispatch it.
-    jsonTextarea.dispatchEvent(event);
-    updateTree();
+  // Dispatch it.
+  jsonTextarea.dispatchEvent(event)
+  updateTree()
 })

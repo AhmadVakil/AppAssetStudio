@@ -10,6 +10,7 @@
                        <!-- <script src="js/dropzone.js"></script>-->
 
                         <link rel="stylesheet" href="css/index.css">
+                        <link rel="stylesheet" href="css/styles.css">
                         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
                         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -21,8 +22,8 @@
 
             <script src="js/directives.js"></script>
             <script src="js/JSONedit.js"></script>
-            <link href="css/index.css" rel="stylesheet" type="text/css" />
-            <link rel="stylesheet" type="text/css" href="css/index.css">
+          <!--  <link href="css/index.css" rel="stylesheet" type="text/css" />
+            <link rel="stylesheet" type="text/css" href="css/index.css"> -->
             <link rel="stylesheet" href="css/vtree.css" type="text/css"/>
 
             <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
@@ -59,12 +60,12 @@
 
                 <br>
 
-                                <div id="main-buttons" style="display:none;">
+                    <div id="main-buttons" style="display:none;">
 
-                                        <button type="button" class="groupButtons" id="editJsonFilesButton" onclick="editJsonFilesButton()"><i class="fa fa-cog" aria-hidden="true"></i> Edit Json Files</button>
-                                        <button type="button" class="groupButtons" id="view-icon-picker" onclick="iconPicker()"><i class="fa fa-paint-brush" aria-hidden="true"></i> Change App Icon</button>
-                                        <button type="button" class="groupButtons" id="view-handles" onclick="handles()"><i class="fa fa-paint-brush" aria-hidden="true"></i> Edit Handles Colors</button>
-                                </div>
+                            <button type="button" class="groupButtons" id="editJsonFilesButton" onclick="editJsonFilesButton()"><i class="fa fa-cog" aria-hidden="true"></i> Edit Json Files</button>
+                            <button type="button" class="groupButtons" id="view-icon-picker" onclick="iconPicker()"><i class="fa fa-paint-brush" aria-hidden="true"></i> Change App Icon</button>
+                            <button type="button" class="groupButtons" id="view-handles" onclick="handles()"><i class="fa fa-paint-brush" aria-hidden="true"></i> Edit Handles Colors</button>
+                    </div>
                     <div id="configFilesDiv" class="part" style="display:none;"></div>
 
                     <h3 id="failedToLoadRepoNotification" style="display:none;">Failed to load repositories!</h3>
@@ -104,12 +105,12 @@
                     </div>
 
                     <div id="jsonAllParagraphsKeeper" class="part">
-                        <i class="fas fa-cogs"></i><i class="fas fa-plus"></i><i class="fas fa-paint-brush"></i><i class="fas fa-exchange-alt"></i><i class="fas fa-mobile-alt"></i>
                         <br>
-                        <h3>Customize all Json files</h3>
-                        Choose target configuration(s)<br><br>
+                        <span>Config Data Visualization<br>Select resource directory to visualize containing configuration files.</span>
+                        <br>
+                        <br>
 
-                        <div id="jsonAllKeysParagraph" class="part"">
+                        <div id="jsonAllKeysParagraph" class="part">
 
                         </div>
                         <div id="mainView" ng-controller="MainViewCtrl" style="display:none;">
@@ -137,15 +138,13 @@
                                 <div id="containerDiv"></div>
 
                                 <div style="margin-top: 1em;">
-                                    <input id="svg-button" type="button" value="Get SVG String">
+                                    <input id="svg-button" type="button" value="Convert to SVG">
                                 </div>
 
                                 <div style="margin-top: 1em;">
-                                    <p>If you want to export the diagram as a svg file, copy the following text into a text editor and save the file with a .svg extension.</p>
+                                    <span>Covert the diagram into SVG</span>
                                     <textarea id="svg-text" rows="6" cols="80"></textarea>
                                 </div>
-
-                                <p style="text-align: right;">Created Date: 2014-07-27, Modified Date: 2018-11-01</p>
 
                             </div>
 
@@ -167,7 +166,7 @@
 </div><br>
 
 <div class="box">
-  <a class="button" href="#popup1">    <i class="fas fa-bug"></i> Report bug or get help
+  <a class="button" href="#popup1"><i class="fas fa-bug"></i> Report bug or get help
   </a>
 </div>
 

@@ -1,3 +1,7 @@
+.body{
+    background-image: url("../image/white.png");
+}
+
 /* Loader starts here */
 .loader,
 .loader:after {
@@ -51,69 +55,7 @@
 
 }
 /* Loader end here */
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
-.restoreButtonEnabled {
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  padding: 3px 3px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 18px;
-  margin: 10px 10px;
-  cursor: pointer;
-}
 
-.restoreButtonDisabled {
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  padding: 3px 3px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 18px;
-  margin: 10px 10px;
-  opacity: 0.6;
-  cursor: not-allowed;
-  clicked: not-allowed;
-}
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 140px;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px;
-  position: absolute;
-  z-index: 1;
-  bottom: 150%;
-  left: 50%;
-  margin-left: -75px;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
-}
 
 .box {
   width: 40%;
@@ -192,9 +134,9 @@
 
 #repositoriesDropDownMenu{
 width: auto;
+color: black;
+margin-bottom: 10px;
 }
-
-
 
 @media screen and (max-width: 700px){
   .box{
@@ -254,29 +196,8 @@ ul li:hover ul {
   opacity: 1;
 }
 
-#drop-zone {
-    /*Sort of important*/
-    width: 300px;
-    /*Sort of important*/
-    height: 200px;
-    position:absolute;
-    left:50%;
-    top:100px;
-    margin-left:-150px;
-    border: 2px dashed rgba(0,0,0,.3);
-    border-radius: 20px;
-    font-family: Arial;
-    text-align: center;
-    position: relative;
-    line-height: 180px;
-    font-size: 20px;
-    color: rgba(0,0,0,.3);
-}
 .footer-part {
 text-align: center;
-}
-#resource-picker {
-
 }
 
 #jsonAllParagraphsKeeper {
@@ -309,26 +230,7 @@ background-color: white;
 
 }
 
-    #drop-zone input {
-        /*Important*/
-        position: absolute;
-        /*Important*/
-        cursor: pointer;
-        left: 0px;
-        top: 0px;
-        /*Important This is only comment out for demonstration purposes.
-        opacity:0; */
-    }
 
-    /*Important*/
-    #drop-zone.mouse-over {
-        border: 2px dashed rgba(0,0,0,.5);
-        color: rgba(0,0,0,.5);
-    }
-
-#head-logo{
-	background:url("../image/infomaker-logo-black.jpg") ;
-}
 .button-holder{
 	text-align: center;
 	
@@ -340,21 +242,21 @@ background-color: white;
 	border: none;
 	color: #FFFFFF;
 	text-align: center;
-	font-size: 28px;
+	font-size: 15px;
 	padding: 20px;
 	width: inherit;
 	transition: all 0.5s;
 	cursor: pointer;
 	margin: 5px;
-	box-shadow: 0px 0px 15px #ffffff;
+	box-shadow: 0px 0px 2px #ffffff;
 	margin-top: 50px;
   }
 
   .groupButtons {
 	border-radius: 4px;
-	background-color: #6484ec;
+	background-color: white;
 	border: none;
-	color: #FFFFFF;
+	color: black;
 	text-align: center;
 	font-size: 18px;
 	padding: 5px;
@@ -363,7 +265,8 @@ background-color: white;
 	cursor: pointer;
 	margin: 5px;
 	box-shadow: 0px 0px 3px #ffffff;
-	margin-top: 40px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	transition: all 2s;
   }
 
@@ -402,10 +305,7 @@ background-color: white;
     
 }
 
-#memoGameIcon{
-    transition: all 0.5s;
-    animation: fadein 2s;
-}
+
 
 .col:first-child {
 	 margin-left: 0;
@@ -427,7 +327,7 @@ background-color: white;
     zoom:1; /* For IE 6/7 */
     color: #050404;
     
-	background:url("../image/grey.jpg") ;
+
 	background-size: cover;
  	border-radius: 50px;
 	padding: 0% 0% 2% 7%;
@@ -489,12 +389,13 @@ background-color: rgb(63, 51, 60);
 	filter: alpha(opacity=80);
 	background-size: cover;
     color: rgb(255, 255, 255);
-	box-shadow: 0px 0px 20px #000000;
+	box-shadow: 0px 0px 5px #000000;
 	border-radius: 15px;
 	background-size: cover;
 	margin-left: 100px;
 	margin-right: 100px;
 	text-align: center;
+	background: black;
 }
 
 .wrapper{
@@ -517,29 +418,10 @@ background-color: rgb(63, 51, 60);
 	
 }
 
-#logo{
-	width: 30%;
-	height: 30%;
-	text-align: center;
-	
-}
-
-#logo-section{
-	text-align: center;
-	width: 100%;
-}
-
-.android{
-
-	text-align: center;
-
-}
 
 .parent-part{
 	text-align: center;
 }
-
-
 
 #help{
 	background-color: rgb(255, 0, 0);
@@ -1019,178 +901,4 @@ section{
 	vertical-align: top;
 	margin: 10px 2px 2px 2px;
 	box-shadow: 20px 0px 70px #B400FF;
-}
-
-/* JSON EDITOR OVERRIDES */
-
-#mainView {
-    margin: 30px auto;
-    width: 700px;
-}
-#jsonTextarea {
-    width: 700px;
-    height: 300px;
-}
-.red {
-    color: red;
-}
-
-
-/* JSON VIEW */
-
-/* striped background */
-.jsonView {
-    background-color: #f3f6fa;
-    background-image: linear-gradient(rgba(255, 255, 255, 1) 50%, transparent 50%, transparent);
-    background-size: 60px 60px;
-    padding: 30px 0 0 5px;
-    background-attachment: local;
-}
-/* inputs */
-.jsonView select.form-control {
-    margin: 0;
-    padding: 0;
-}
-.jsonView select.form-control, .jsonView input.form-control {
-    width: 100px;
-    display: inline;
-    height: 29px;
-    padding-left: 5px;
-}
-.jsonView input[type="text"] {
-    margin: 0;
-    border: 0;
-    background: none;
-}
-.jsonView input[type="checkbox"] {
-    position: absolute;
-}
-.jsonView input.keyinput {
-    font-weight: bold;
-}
-.jsonView input {
-    height: 30px;
-    margin: 0;
-    padding: 0;
-}
-.jsonView input[type="text"].addItemKeyInput, .jsonView input[type="text"].addItemValueInput {
-    border: 1px solid #ccc;
-    background: white;
-    margin-left: 0;
-}
-.jsonView .addItemKeyInput {
-    font-weight: bold;
-}
-
-/* chevrons */
-.jsonView .glyphicon-chevron-right, .jsonView .glyphicon-chevron-down {
-    float: left;
-    cursor: pointer;
-    position: relative;
-    top: 7px;
-    right: 22px;
-    margin-right: -15px;
-}
-.jsonView > json > .glyphicon-chevron-down {
-    display: none;
-}
-/* add and delete */
-.jsonView .addObjectItemBtn {
-    background-color: transparent;
-    border-color: transparent;
-    padding: 0;
-    border: 0;
-    height: 30px;
-    display: block;
-}
-.jsonView .addObjectItemBtn i {
-    display: block;
-}
-.jsonView .deleteKeyBtn, .jsonView .moveArrayItemBtn {
-    float: right;
-    margin-right: 10px;
-    position: relative;
-    top: 7px;
-    z-index: 99999999999999;
-    cursor: pointer;
-}
-
-/* basic layout */
-.jsonView .jsonObjectKey {
-    font-weight: bold;
-}
-.jsonContents {
-    margin-left: 25px;
-}
-.jsonView .block {
-    display: block;
-}
-.jsonView .jsonItemDesc {
-    font-family: Georgia, serif;
-    color: grey;
-    font-style: italic;
-    cursor: default;
-    line-height: 30px
-}
-.jsonView .objectDesc {
-    cursor: default;
-}
-/* first brace */
-.jsonView > json > .jsonItemDesc {
-    display: block;
-    float: left;
-    position: relative;
-    bottom: 25px;
-    height: 0;
-    width: 0;
-}
-
-/* array numbering */
-.jsonView ol.arrayOl {
-    margin: 0;
-    padding-left: 25px;
-}
-.jsonView ol.arrayOl > li > span > span > json > .glyphicon-chevron-down,
-.jsonView ol.arrayOl > li > span > span > json > .glyphicon-chevron-right {
-    left: -40px;
-}
-.jsonView ol.arrayOl li {
-    color: grey;
-    font-style: italic;
-    font-family: Georgia, serif;
-    list-style-type: decimal;
-    min-height: 30px;
-}
-.jsonView ol.arrayOl li.arrayItem > span > span > .glyphicon-chevron-right, .jsonView ol.arrayOl li.arrayItem > span > span > .glyphicon-chevron-down {
-    right: 30px;
-}
-.jsonView ol.arrayOl li input, .jsonView li select, .jsonView li button {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-style: normal;
-}
-.jsonView ol.arrayOl li *:not(.btn):not(.jsonItemDesc) {
-    color: black;
-}
-
-.jsonView li li {
-    list-style-type: lower-roman;
-}
-.jsonView li li li {
-    list-style-type: upper-roman;
-}
-.jsonView li li li li {
-    list-style-type: lower-latin;
-}
-.jsonView li li li li li {
-    list-style-type: upper-latin;
-}
-.jsonView li li li li li li {
-    list-style-type: lower-greek;
-}
-.jsonView li li li li li li li {
-    list-style-type: decimal;
-}
-.sortable-placeholder {
-    height: 20px;
-    display: block;
 }
