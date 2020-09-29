@@ -582,11 +582,29 @@ socket.on('configData', function (configData) {
 
   var jsonTextarea = document.getElementById('jsonTextarea')
   jsonTextarea.value = JSON.stringify(configData)
-
+  var saveJsonFileButton = document.getElementById('saveJsonFileButton')
+  jsonTextarea.addEventListener('change', function(){
+    if (jsonTextarea.value === configData){
+        saveJsonFileButton.disabled = true
+    } else {
+        saveJsonFileButton.disabled = false
+    }
+  })
   // Create a new 'change' event
   var event = new Event('change');
 
   // Dispatch it.
   jsonTextarea.dispatchEvent(event)
   updateTree()
+})
+
+function saveJsonFile(){
+    var jsonTextarea = document.getElementById('jsonTextarea').value
+    var pathToJson = document.getElementById('myInput').value
+    socket.emit('saveJsonFile', jsonTextarea)
+    socket.emit('pathToJson', pathToJson)
+}
+
+socket.on('jsonFileSaved', function(){
+   alert('Success!\nData has been received by the server.')
 })

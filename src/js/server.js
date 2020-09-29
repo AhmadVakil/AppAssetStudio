@@ -128,6 +128,23 @@ io.sockets.on('connection', function(socket){
                 })*/
 
      })
+
+     socket.on('saveJsonFile', function(jsonTextArea) {
+        console.log(typeof jsonTextArea)
+        // Nested function to write the file
+        socket.on('pathToJson', function(pathToJson) {
+            try {
+              fs.unlinkSync(pathToJson) //  Remove the file
+              //var json = JSON.stringify(jsonTextArea)
+              //fs.writeFile(pathToJson, json, 'utf8');
+              fs.writeFileSync(pathToJson, jsonTextArea);
+            } catch(err) {
+              console.error(err)
+            }
+        })
+        socket.emit('jsonFileSaved')
+
+     })
     var delivery = dl.listen(socket);
     //let sharedConfigJson = fs.readFileSync('Cloned_Git_Repositories/Customer-X/Resources/Modules/shared/configuration/global_config.json');
 

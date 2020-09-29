@@ -113,14 +113,20 @@
                         <div id="jsonAllKeysParagraph" class="part">
 
                         </div>
-                        <div id="mainView" ng-controller="MainViewCtrl" style="display:none;">
-                            <h2>JSONedit</h2>
 
+                        <div id="mainView" ng-controller="MainViewCtrl" style="display:none;">
+                            <div>
+                                <button type="button" class="groupButtons" id="saveJsonFileButton" onclick="saveJsonFile()" style="background:red; color:white;"><i class="far fa-save"></i> Save</button>
+                            </div>
+                            <h2>Configurations</h2>
                             <div class="jsonView">
                                 <json child="jsonData" default-collapsed="true" type="object"></json>
                             </div>
 
                             <hr>
+                            <div>
+                                <button type="button" class="groupButtons" id="saveJsonFileButton" onclick="saveJsonFile()" style="background:red; color:white;"><i class="far fa-save"></i> Save</button>
+                            </div>
                             <div>
                                 <textarea id="jsonTextarea" ng-model="jsonString"></textarea>
                                 <span class="red" ng-if="!wellFormed">JSON not well-formed!</span>
