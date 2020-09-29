@@ -188,7 +188,7 @@ angular.module('JSONedit', ['ui.sortable'])
                 + '<json ng-switch-when="Object" child="val" type="object" default-collapsed="defaultCollapsed"></json>'
                 + '<json ng-switch-when="Array" child="val" type="array" default-collapsed="defaultCollapsed"></json>'
                 + '<span ng-switch-when="Boolean" type="boolean">'
-                    + '<input type="checkbox" ng-model="val" ng-model-onblur ng-change="child[key] = val">'
+                    + '<input type="checkbox" ng-model="val" ng-model-onblur ng-change="child[key] = val" style="display:block; margin-top:0px;">'
                 + '</span>'
                 + '<span ng-switch-when="Number" type="number"><input type="text" ng-model="val" '
                     + 'placeholder="0" ng-model-onblur ng-change="child[key] = possibleNumber(val)"/>'
