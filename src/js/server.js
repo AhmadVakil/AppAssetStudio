@@ -30,36 +30,12 @@ const fs = require('fs');
 
 // Change depending on this Json file
 var Json_Configurator = 'config_changer.json'
-var Shared_Global_Configuration_Path/*
-jsonfile.readFile(Json_Configurator, function(err, obj) {
-
-    // Path for global config
-    Shared_Global_Configuration_Path = obj.path
-
-    // Edit global config
-    let file = editJsonFile(Shared_Global_Configuration_Path);
-
-    // Set a couple of fields
-    // obj.fields[2].jsonKeyPath is 'primaryColor'
-    file.set(obj.fields[0].jsonKeyPath, "true");
-
-    // Save the data to the disk
-    file.save();
-
-})
-*/
-
-
+var Shared_Global_Configuration_Path
 var gm = require('gm')
 var pixelColor
 var appIconName
 var text
-/*
-io.sockets.on('connection', function (socket){
 
-})
-
-*/
 
 function fromDir(startPath,filter, socket){
 
@@ -76,19 +52,7 @@ function fromDir(startPath,filter, socket){
                 fromDir(filePath,filter); //recurse
             } else if (filePath.indexOf(filter)>=0) {
                 console.log('-- found: ',filePath);
-
                 io.emit('foundJson', { path : filePath, name : path.basename(filePath)});
-                //console.log(filePath)
-                /*jsonfile.readFile(filePath, function(err, jsonFile) {
-                console.log("************************************ sent!")
-                       jsonFile["filePath"] = filePath
-                       jsonFile["fileName"] = path.basename(filePath)
-                       //console.log(jsonFile.filePath)
-                       //console.log(jsonFile.fileName)
-                       io.emit('CurrentConfigs', jsonFile);
-                       //getDeepKeys(jsonFile)
-                })*/
-
             };
         };
 };
@@ -96,9 +60,6 @@ function fromDir(startPath,filter, socket){
 io.sockets.on('connection', function(socket){
 
 
-    /*jsonfile.readFile(Json_Configurator+"", function(err, obj) {
-        socket.emit('configChanger', obj);
-    })*/
     socket.on('feedBack', function (obj) {
        var datetime = new Date();
        fs.appendFile('../feedbacks/feedbacks.log', 'Feedback----------------------' + datetime + '\n' +
@@ -120,13 +81,7 @@ io.sockets.on('connection', function(socket){
 
     })
     socket.on('openThisRepo', function (data) {
-                //fromDir = new fromDir(socket)
                 fromDir('Cloned_Git_Repositories/'+data.repoNames,'.json', socket)
-                //console.log(data.repoNames);
-                /*jsonfile.readFile('Cloned_Git_Repositories/'+data.repoNames+'/Resources/Modules/shared/configuration/global_config.json'+"", function(err, obj) {
-                          socket.emit('CurrentConfigs', obj);
-                })*/
-
      })
 
      socket.on('saveJsonFile', function(jsonTextArea) {
@@ -146,18 +101,12 @@ io.sockets.on('connection', function(socket){
 
      })
     var delivery = dl.listen(socket);
-    //let sharedConfigJson = fs.readFileSync('Cloned_Git_Repositories/Customer-X/Resources/Modules/shared/configuration/global_config.json');
 
 
 
     fs.readdir(testFolder, (err, files) => {
         socket.emit('Repositories', files)
       })
-
-      /*jsonfile.readFile('Cloned_Git_Repositories/Customer-X/Resources/Modules/shared/configuration/global_config.json'+"", function(err, obj) {
-          socket.emit('CurrentConfigs', obj);
-      })*/
-
 
 
     delivery.on('receive.success',function(file){
