@@ -18,6 +18,14 @@ module.exports = {
   devtool: 'cheap-eval-source-map',
   module: {
     rules: [
+    {
+          test: /\.jsx?$/,
+              loader: 'babel-loader',
+              exclude: /node_modules/,
+              query: {
+                  presets: ['@babel/preset-react']
+              }
+        },
       {
         // set up standard-loader as a preloader
         enforce: 'pre',
