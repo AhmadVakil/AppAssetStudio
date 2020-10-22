@@ -1,10 +1,5 @@
 // var startButton = document.getElementById('start')
 // var ConvertButtonPage = document.getElementById('Convert')
-import React from 'react'
-import AvatarEditor from 'react-avatar-editor'
-
-'use strict';
-
 document.body.style.backgroundImage = 'url(../image/white.png)'
 $(document).ready(function () {
   // your code here
@@ -612,21 +607,3 @@ function saveJsonFile(){
 socket.on('jsonFileSaved', function(){
    alert('Success!\nData has been received by the server.')
 })
-
-class MyEditor extends React.Component {
-  render() {
-    return (
-      <AvatarEditor
-        image="http://example.com/initialimage.jpg"
-        width={250}
-        height={250}
-        border={50}
-        color={[255, 255, 255, 0.6]} // RGBA
-        scale={1.2}
-        rotate={0}
-      />
-    )
-  }
-}
-
-export default MyEditor

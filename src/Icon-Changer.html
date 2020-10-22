@@ -2,18 +2,18 @@
 <html ng-app="JSONedit">
 
         <head>
-                        <title>Thesis</title>
-                        <meta charset="utf-8">
-                        <meta name="csrf-token" content="XYZ123">
-                        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
-                        <script src="http://malsup.github.com/jquery.form.js"></script>
-                       <!-- <script src="js/dropzone.js"></script>-->
+            <title>Thesis</title>
+            <meta charset="utf-8">
+            <meta name="csrf-token" content="XYZ123">
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+            <script src="http://malsup.github.com/jquery.form.js"></script>
+           <!-- <script src="js/dropzone.js"></script>-->
 
-                        <link rel="stylesheet" href="css/index.css">
-                        <link rel="stylesheet" href="css/styles.css">
-                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-                        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-                        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+            <link rel="stylesheet" href="css/index.css">
+            <link rel="stylesheet" href="css/styles.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+            <script src="https://kit.fontawesome.com/a076d05399.js"></script>
             <script src="bower_components/jquery/dist/jquery.min.js"></script>
             <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
             <script src="bower_components/angular/angular.min.js"></script>
@@ -22,7 +22,7 @@
 
             <script src="js/directives.js"></script>
             <script src="js/JSONedit.js"></script>
-          <!--  <link href="css/index.css" rel="stylesheet" type="text/css" />
+            <!--  <link href="css/index.css" rel="stylesheet" type="text/css" />
             <link rel="stylesheet" type="text/css" href="css/index.css"> -->
             <link rel="stylesheet" href="css/vtree.css" type="text/css"/>
 
@@ -38,34 +38,11 @@
             <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
         </head>
 
-        
-        
         <body>
 
-        <!-- Integrating image editor BEGINS-->
-
-
-        <!-- Integrating image editor ENDS -->
-
-
-              <!--  <div id="logo-section">
-                        <img src="image/infomaker-logo-black.png" alt="Infomaker" id="logo">
-                </div>
-
-                <nav>
-                        <label for="drop" class="toggle" >Menu</label>
-                        <input type="checkbox" id="drop"/>
-                </nav>
-        -->
         <div>
-                
-        
-                
-                  
-               
-                <div class="parent-part">
-
-                    <hr>
+             <div class="parent-part">
+                 <hr>
                     <div id="resource-picker" class="part">
                         <br>
 
@@ -75,7 +52,8 @@
                 <br>
 
                     <div id="main-buttons" style="display:none;">
-                         <button type="button" class="groupButtons" id="editJsonFilesButton" onclick="editJsonFilesButton()"><i class="fa fa-cog" aria-hidden="true"></i> Edit Json Files</button>
+                        <button type="button" class="groupButtons" id="view-icon-picker" onclick="iconPicker()"><i class="fa fa-paint-brush" aria-hidden="true"></i> Change App Icon</button>
+                        <button type="button" class="groupButtons" id="view-handles" onclick="handles()"><i class="fa fa-paint-brush" aria-hidden="true"></i> Edit Handles Colors</button>
                     </div>
                     <div id="configFilesDiv" class="part" style="display:none;"></div>
 
