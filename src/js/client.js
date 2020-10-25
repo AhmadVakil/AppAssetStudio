@@ -1,18 +1,7 @@
-// var startButton = document.getElementById('start')
-// var ConvertButtonPage = document.getElementById('Convert')
 document.body.style.backgroundImage = 'url(../image/white.png)'
-$(document).ready(function () {
-  // your code here
-  $('body').append('<div style=\'\' id=\'loadingDiv\'><div class=\'loader\'>Loading...</div></div>')
-  $(window).on('load', function () {
-    setTimeout(removeLoader, 500)
-  })
-  function removeLoader () {
-    $('#loadingDiv').fadeOut(500, function () {
-      $('#loadingDiv').remove()
-    })
-  }
-});
+
+
+
 
 let BR = document.createElement('BR')
 /* var childSection = document.createElement('div')
@@ -128,6 +117,7 @@ x.addEventListener('keypress', function (e) {
     console.log(x.value)
   }
 })
+
 var submit = document.getElementById('button')
 submit.innerHTML = 'Submit'
 submit.className = 'button'
@@ -559,21 +549,6 @@ function createSvgString() {
 
 document.getElementById("go-button").onclick = updateTree
 document.getElementById("svg-button").onclick = createSvgString
-
-function sendFeedBack () {
-  socket.emit('feedBack', { firstname: document.getElementById('firstname').value,
-    lastname: document.getElementById('lastname').value,
-    feedback: document.getElementById('feedback').value})
-}
-socket.on('feedbackSaved', function () {
-  document.getElementById('closeFeedback').click()
-  document.getElementById('firstname').value = ''
-  document.getElementById('lastname').value = ''
-  document.getElementById('feedback').value = ''
-  document.getElementById('popup2').style.display = 'block'
-  console.log('Feedback saved by the server')
-})
-
 
 socket.on('configData', function (configData) {
   var mainView = document.getElementById('mainView')

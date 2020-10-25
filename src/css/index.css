@@ -2,59 +2,6 @@
     background-image: url("../image/white.png");
 }
 
-/* Loader starts here */
-.loader,
-.loader:after {
-    border-radius: 50%;
-    width: 10em;
-    height: 10em;
-}
-.loader {
-    margin: 60px auto;
-    font-size: 10px;
-    position: relative;
-    text-indent: -9999em;
-    border-top: 1.1em solid rgba(255, 255, 255, 0.2);
-    border-right: 1.1em solid rgba(255, 255, 255, 0.2);
-    border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
-    border-left: 1.1em solid #ffffff;
-    -webkit-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-animation: load8 1.1s infinite linear;
-    animation: load8 1.1s infinite linear;
-}
-@-webkit-keyframes load8 {
-    0% {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
-}
-@keyframes load8 {
-    0% {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
-}
-#loadingDiv {
-    opacity:0.5;
-    position:absolute;;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background-color:#000;
-
-}
-/* Loader end here */
 
 
 .box {
@@ -392,10 +339,12 @@ background-color: rgb(63, 51, 60);
 	box-shadow: 0px 0px 5px #000000;
 	border-radius: 15px;
 	background-size: cover;
+	margin-top: 20px;
 	margin-left: 100px;
 	margin-right: 100px;
 	text-align: center;
 	background: black;
+
 }
 
 .wrapper{
@@ -452,8 +401,6 @@ background-color: rgb(63, 51, 60);
 	border-radius: 15px;
 	margin: 1%;
 }
-
-
 
 /*A GIF BANNER(HEADER)*/
 div#head {

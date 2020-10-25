@@ -7,11 +7,6 @@
     "android": "2.0.0-beta3",
     "ios": "2.0.0-beta3"
   },
-  
-  "applicationID": {
-    "android": "se.infomaker.demo",
-    "ios": "se.infomaker.iap.Demo"
-  },
   "applicationName": "Infomaker",
   "googleAnalyticsKey": "",
   "crashlyticsApiKey": "",
@@ -28,16 +23,16 @@
         "extension": "aar"
       },
       {
-        "group" : "se.infomaker.iap.pdf",
-        "name" : "pspdfkit-decoder",
-        "version" : "2.8.1-SNAPSHOT",
-        "extension" : "aar"
+        "group": "se.infomaker.iap.pdf",
+        "name": "pspdfkit-decoder",
+        "version": "2.8.1-SNAPSHOT",
+        "extension": "aar"
       },
       {
-        "group" : "se.infomaker.iap",
-        "name" : "myprofile",
-        "version" : "0.1.1",
-        "extension" : "aar"
+        "group": "se.infomaker.iap",
+        "name": "myprofile",
+        "version": "0.1.1",
+        "extension": "aar"
       }
     ],
     "ios": [
@@ -51,6 +46,9 @@
       }
     ]
   },
-  "signing": {
+  "signing": {},
+  "applicationI": {
+    "android": "se.infomaker.demo",
+    "ios": "se.infomaker.iap.Demo"
   }
 }

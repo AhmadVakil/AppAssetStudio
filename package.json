@@ -32,6 +32,7 @@
     "color": "^3.0.0",
     "colors": "^1.1.2",
     "commander": "^2.13.0",
+    "cropperjs": "^1.5.9",
     "debug": "^3.1.0",
     "delivery": "0.0.6",
     "easy-zip": "0.0.4",
