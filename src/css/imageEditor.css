@@ -10,13 +10,15 @@ body {
 
 .img-container {
     position: absolute;
-    width:325px;
-    height:50%;
-    top:41%;
+    width:400px;
+    height:400px;
+    border-radius: 5px;
+     /*height:50%;*/
+    top:385px;
     left:50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    border: 2px solid red;
+    border: 2px dotted red;
 }
 
 /*
@@ -28,28 +30,46 @@ align-items: center;
 */
 
 .image {
+   position:absolute;
+   left:0;
+   z-index:0;
    max-width:100%;
    max-height:100%;
 }
 
+.frame {
+   position:absolute;
+    left:0;
+    top:0%;
+    z-index:1;
+    max-width:100%;
+    max-height:100%;
+
+}
+
 .file-upload-section {
+   border-radius: 10px;
    margin: auto;
    margin-top: 5%;
    font-weight: bold;
-   width: 50%;
+   width: 25%;
+   height:28px;
    padding: 4px;
    color: white;
    text-align: center;
-   background: green;
+   padding:10px;
+   background: blue;
    cursor:pointer;
 }
-#foto-file { display:none; }
+#foto-file {
+    display:none;
+}
 
 .buttons-section {
     position: fixed;
     margin: auto;
-    top: 67%;
-    bottom:67%;
+    top: 600px;
+
     left: 25%;
     color: white;
     width: 50%;
@@ -66,23 +86,28 @@ align-items: center;
     float: right;
 }
 
-.buttons-table { width: 100%; }
+.buttons-table {
+    width: 100%;
+}
+
 .buttons-table td {
-padding: 3px; text-align: center;
+    padding: 3px; text-align: center;
 }
 .operation-btn {
-padding: 8px;
-border: 0;
-background: #201e1e;
-color: white;
-width: 100%;
-cursor: pointer;
-font-weight: bolder;
-box-shadow: 0 0.25rem 0.25rem rgba(0,0,0,0.2), 0 0 1rem rgba(0,0,0,0.2);
+    padding: 8px;
+    border: 0;
+    border-radius: 10px;
+    background: #201e1e;
+    color: white;
+    width: 100%;
+    height:50px;
+    cursor: pointer;
+    font-weight: bolder;
+    box-shadow: 0 0.25rem 0.25rem rgba(0,0,0,0.2), 0 0 1rem rgba(0,0,0,0.2);
 }
 
 .download-btn {
-    background: green;
+    background: red;
 }
 
 #color-picker, #colorize-color-picker {

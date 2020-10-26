@@ -106,8 +106,7 @@ io.sockets.on('connection', function(socket){
 
     fs.readdir(testFolder, (err, files) => {
         socket.emit('Repositories', files)
-      })
-
+    })
 
     delivery.on('receive.success',function(file){
       var params = file.params;
