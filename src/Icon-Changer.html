@@ -1,42 +1,19 @@
 <!DOCTYPE html>
-<html ng-app="JSONedit">
+<html>
 
         <head>
             <title>Thesis</title>
             <meta charset="utf-8">
-            <meta name="csrf-token" content="XYZ123">
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
-            <script src="http://malsup.github.com/jquery.form.js"></script>
 
             <link rel="stylesheet" href="css/imageEditor.css">
-            <link rel="stylesheet" type="text/css" href="css\loader.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-            <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-            <script src="bower_components/jquery/dist/jquery.min.js"></script>
-            <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
-            <script src="bower_components/angular/angular.min.js"></script>
-            <script src="bower_components/angular-ui-sortable/sortable.min.js"></script>
-            <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+            <link rel="stylesheet" type="text/css" href="css/loader.css">
 
-            <script src="js/directives.js"></script>
-            <script src="js/JSONedit.js"></script>
-            <!--  <link href="css/index.css" rel="stylesheet" type="text/css" />
-            <link rel="stylesheet" type="text/css" href="css/index.css"> -->
-            <link rel="stylesheet" href="css/vtree.css" type="text/css"/>
-
-            <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-            <script src="dist/vtree.js"></script>
-
-            <meta http-equiv="X-UA-Compatible" content="chrome=1">
-            <meta name="google-site-verification" content="ARDfocA3yAuCKhp9D9T4zYF_yU2ppg58qGK_VQO2iQc" />
-            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-            <script src="js/scale.fix.js"></script>
-            <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
             <script src="js/foto.min.js"></script>
+            <script src="js/imageEditor.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
         </head>
-
         <body>
         <div>
             <div class="file-upload-section" onclick="selectImage()">
@@ -51,7 +28,7 @@
                       <td> <button class="operation-btn" onclick="flipVertically()"> Flip </button> </td>
                       <td>
                          <button class="operation-btn">
-                            Rotate
+                             Rotate
                              <input type="range" id="rotate-range" value="0" min="0" max="360" onchange="rotate(this)">
                          </button>
                       </td>
@@ -98,122 +75,9 @@
                 </table>
             </div>
 
-            <script src="https://rawcdn.githack.com/kousik19/foto.js/d604b02c69b6f037875bc4a3050b85d776dc4659/foto.min.js"></script>
 
         </div>
-        <!--
-        <div>
-             <div class="parent-part">
-                 <hr>
-                    <div id="resource-picker" class="part">
-                        <br>
-                    </div>
-                <br>
-                    <div id="main-buttons" style="display:none;">
-                        <button type="button" class="groupButtons" id="view-icon-picker" onclick="iconPicker()"><i class="fa fa-paint-brush" aria-hidden="true"></i> Change App Icon</button>
-                        <button type="button" class="groupButtons" id="view-handles" onclick="handles()"><i class="fa fa-paint-brush" aria-hidden="true"></i> Edit Handles Colors</button>
-                    </div>
-                    <div id="configFilesDiv" class="part" style="display:none;"></div>
-                    <h3 id="failedToLoadRepoNotification" style="display:none;">Failed to load repositories!</h3>
-                    <h3 id="selectRepoNotification" style="display:none;">Select a repository to continue.</h3>
-                    <br>
-                    <div id="file-drop-part" class="part" style="display:none;">
-                        <br><br>
-                        <form>
-                            Choose you image file
-                            <div class="fallback">
-                                <input type="file" id="file">
-                            </div>
-                        </form>
-                        <br><br>
-                        Pick a frame:
-                        <select name="frame-picker" id="cars">
-                            <option value="round-square">Rounded Square</option>
-                            <option value="circle">Circle</option>
-                        </select>
-                        <br><br>
-                    </div>
 
-                    <div id="Color-changer-part" class="part" style="display:none;">
-                        <h3>Select Your Primary Cresource-pickerolor</h3>
-                        <hr>
-                        Paste your HEX color here to generate app handles and to change primary colors in configuration files. <br><br>
-                        <input id="colorTextInput" type="text"><br><br>
-                        Or click to pick a color:
-                        <input id="colorPicker" type="color"><br><br>
-                        <hr>
-                         Examples:
-                        <div id="canvas"></div>
-                        <div id="canvas2"></div><br>
-                    </div>
-
-                    <div id="jsonAllParagraphsKeeper" class="part">
-                        <br>
-                        <span>Config Data Visualization<br>Select resource directory to visualize containing configuration files.</span>
-                        <br>
-                        <br>
-
-                        <div id="jsonAllKeysParagraph" class="part">
-
-                        </div>
-
-                        <div id="mainView" ng-controller="MainViewCtrl" style="display:none;">
-                            <div>
-                                <button type="button" class="groupButtons" id="saveJsonFileButton" onclick="saveJsonFile()" style="background:red; color:white;"><i class="far fa-save"></i> Save</button>
-                            </div>
-                            <h2>Configurations</h2>
-                            <div class="jsonView">
-                                <json child="jsonData" default-collapsed="true" type="object"></json>
-                            </div>
-
-                            <hr>
-                            <div>
-                                <button type="button" class="groupButtons" id="saveJsonFileButton" onclick="saveJsonFile()" style="background:red; color:white;"><i class="far fa-save"></i> Save</button>
-                            </div>
-                            <div>
-                                <textarea id="jsonTextarea" ng-model="jsonString"></textarea>
-                                <span class="red" ng-if="!wellFormed">JSON not well-formed!</span>
-                            </div>
-
-                            <div class="graphContainer">
-
-                               <div style="margin-top: 1em;">
-                                    <input id="go-button" type="button" value="Visualize">
-                                   <br>
-                                </div>
-
-                                <div id="msg" style="color: red;"></div>
-
-                                <div id="containerDiv"></div>
-
-                                <div style="margin-top: 1em;">
-                                    <input id="svg-button" type="button" value="Convert to SVG">
-                                </div>
-
-                                <div style="margin-top: 1em;">
-                                    <span>Covert the diagram into SVG</span>
-                                    <textarea id="svg-text" rows="6" cols="80"></textarea>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <button class="button" id="button" style="display:none;">
-                                Submit
-                    </button>
-
-                </div>
-
-        </div>
-        -->
 
 </body>
-<script src="js/imageEditor.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-        <!--<script src="js/require.js"></script>-->
-<!--<script src="js/delivery.js"></script>-->
-        
 </html>

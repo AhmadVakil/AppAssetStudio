@@ -47,9 +47,8 @@ function rotate(elem) {
 }
 
 
-document.body.style.backgroundImage = 'url(../image/white.png)'
+// document.body.style.backgroundImage = 'url(../image/white.png)'
 $(document).ready(function () {
-  // your code here
   $('body').append('<div style=\'\' id=\'loadingDiv\'><div class=\'loader\'>Loading...</div></div>')
   $(window).on('load', function () {
     setTimeout(removeLoader, 500)
