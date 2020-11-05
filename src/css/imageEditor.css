@@ -8,13 +8,45 @@ body {
     background: 2e2b2b;
 }
 
-.img-container {
+.tooltip {
+  color: blue;
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+  cursor: help;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 350px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+  left: 50%;
+  margin-left: -60px;
+
+  /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+#img-container {
     position: absolute;
     width:400px;
     height:400px;
     border-radius: 5px;
      /*height:50%;*/
-    top:385px;
+    top:420px;
     left:50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -68,7 +100,7 @@ align-items: center;
 .buttons-section {
     position: fixed;
     margin: auto;
-    top: 600px;
+    top: 660px;
 
     left: 25%;
     color: white;

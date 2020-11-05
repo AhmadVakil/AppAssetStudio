@@ -4,7 +4,9 @@ window.onload = function() {
 }
 
 function selectImage() {
- document.getElementById("foto-file").click();
+  document.getElementById("foto-file").click();
+  document.getElementById("img-container").style.width = "400px";
+  document.getElementById("img-container").style.height = "400px";
 }
 
 function makeGrayScale() { foto.grayscale(); }
@@ -36,6 +38,11 @@ function makeTransparent() {
 
 function crop() {
     foto.cropSelected();
+    // Find a solution to fit the image with the border
+    document.getElementById("img-container").style.width = document.getElementById("foto-image").offsetWidth+"px";
+    document.getElementById("img-container").style.height = document.getElementById("foto-image").offsetHeight+"px";
+    console.log(document.getElementById("foto-image").offsetWidth)
+    // Delete until here if no solution found
 }
 
 function flipVertically() {

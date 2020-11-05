@@ -18,7 +18,7 @@
         <div>
             <div class="file-upload-section" onclick="selectImage()">
                 <input id="foto-file" type="file">
-                Select Image
+                Upload Image
             </div>
 
             <div class="upper-buttons-section">
@@ -34,8 +34,19 @@
                       </td>
                   </tr>
                 </table>
+                <p>
+                    For the best result ensure your uploading image is bigger than 800px*800px. Low quality image will result in low quality icons.
+                <span class="tooltip">Learn more
+                    <span class="tooltiptext">
+                        Requirements for the best result:<br>
+                        - Use <span style="color:yellow;">Firefox</span> with scale of <span style="color:yellow;">100%</span>.<br>
+                        - Use image with equal <span style="color:yellow;">width</span> and <span style="color:yellow;"> height</span>.<br>
+                        - Use the <span style="color:yellow;">Crop </span>tool first then apply the <span style="color:yellow;">Frame</span>.
+                    </span>
+                </span>
+                </p>
             </div>
-            <div class="img-container">
+            <div id="img-container">
                 <img id="foto-image" class="image" />
             </div>
             <div class="buttons-section">
@@ -70,7 +81,7 @@
                     </tr>
 
                     <tr>
-                        <td colspan="3"> <button class="operation-btn download-btn" onclick="download()"> Download </button> </td>
+                        <td colspan="3"> <button class="operation-btn download-btn" onclick="download()"> Export </button> </td>
                     </tr>
                 </table>
             </div>
