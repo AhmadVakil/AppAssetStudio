@@ -44,6 +44,8 @@ function crop() {
 function fitBorder() {
     document.getElementById("img-container").style.width = document.getElementById("foto-image").offsetWidth+"px";
     document.getElementById("img-container").style.height = document.getElementById("foto-image").offsetHeight+"px";
+    document.getElementById("img-container").style.borderRadius = document.getElementById("radius-amount").value+"px";
+    document.getElementById("foto-image").style.borderRadius = document.getElementById("radius-amount").value+"px";
 }
 
 function resetImage() {
