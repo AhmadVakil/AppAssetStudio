@@ -46,6 +46,14 @@ function fitBorder() {
     document.getElementById("img-container").style.height = document.getElementById("foto-image").offsetHeight+"px";
 }
 
+function resetImage() {
+    console.log("resetImage")
+}
+
+function closeImage() {
+    console.log("closeImage")
+}
+
 function updatesRadiusText(){
     document.getElementById("radius-range").addEventListener("input", function(){
         document.getElementById("radius-amount").value = this.value;
