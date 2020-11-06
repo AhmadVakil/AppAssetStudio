@@ -4,8 +4,9 @@
         <head>
             <title>Thesis</title>
             <meta charset="utf-8">
-            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
 
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
             <link rel="stylesheet" href="css/imageEditor.css">
             <link rel="stylesheet" type="text/css" href="css/loader.css">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -24,10 +25,10 @@
             <div class="upper-buttons-section">
                 <table class="buttons-table">
                   <tr>
-                      <td> <button class="operation-btn" onclick="crop()"> Crop </button> </td>
-                      <td> <button class="operation-btn" onclick="flipVertically()"> Flip </button> </td>
+                      <td> <button class="operation-btn-disabled" onclick="crop()"> Crop </button> </td>
+                      <td> <button class="operation-btn-disabled" onclick="flipVertically()"> Flip </button> </td>
                       <td>
-                         <button class="operation-btn">
+                         <button class="operation-btn-disabled">
                              Rotate
                              <input type="range" id="rotate-range" value="0" min="0" max="360" onchange="rotate(this)">
                          </button>
@@ -52,28 +53,40 @@
             <div class="buttons-section">
                 <table class="buttons-table">
                     <tr>
-                        <td> <button class="operation-btn" onclick="makeGrayScale()">Grayscale </button> </td>
-                        <td> <button class="operation-btn" onclick="makeBright()"> Brighter </button> </td>
-                        <td> <button class="operation-btn" onclick="makeDark()"> Darker </button> </td>
+                        <td colspan="3" class="radius-area" style="text-align:center;">
+                            Radius amount
+                            <input type="range" id="radius-range" min="0" max="360" onchange="updatesRadiusText()">
+                            <input type="text" id="radius-amount" onchange="updateRadiusRange()">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> <button id="apply-border" class="operation-btn-disabled" onclick="fitBorder()"><span id="blinker">Apply border </span></button> </td>
+                        <td> <button id="makeBright" class="operation-btn-disabled" onclick="makeBright()"> Reset Image </button> </td>
+                        <td> <button id="makeDark" class="operation-btn-disabled" onclick="makeDark()"> Close Image </button> </td>
+                    </tr>
+                    <tr>
+                        <td> <button id="makeGrayScale" class="operation-btn-disabled" onclick="makeGrayScale()">Grayscale </button> </td>
+                        <td> <button id="makeBright" class="operation-btn-disabled" onclick="makeBright()"> Brighter </button> </td>
+                        <td> <button id="makeDark" class="operation-btn-disabled" onclick="makeDark()"> Darker </button> </td>
                     </tr>
 
                     <tr>
-                        <td> <button class="operation-btn" onclick="makeBlur()"> Blur </button> </td>
-                        <td> <button class="operation-btn" onclick="makeEmboss()"> Emboss </button> </td>
-                        <td> <button class="operation-btn" onclick="makeSharp()"> Sharp </button> </td>
+                        <td> <button id="makeBlur" class="operation-btn-disabled" onclick="makeBlur()"> Blur </button> </td>
+                        <td> <button id="makeEmboss" class="operation-btn-disabled" onclick="makeEmboss()"> Emboss </button> </td>
+                        <td> <button id="makeSharp" class="operation-btn-disabled" onclick="makeSharp()"> Sharp </button> </td>
                     </tr>
 
                     <tr>
                         <td>
                             <input type="color" id="color-picker" value="#000000" oninput="makeColorize(this)" />
-                            <button class="operation-btn" onclick="openColorpicker()"> Colorize </button>
+                            <button id="openColorpicker" class="operation-btn-disabled" onclick="openColorpicker()"> Colorize </button>
                         </td>
                         <td>
                             <input type="color" id="colorize-color-picker" value="#000000" oninput="applyColorFilter(this)" />
-                            <button class="operation-btn" onclick="openColorizeColorPicker()"> Color Filter </button>
+                            <button id="openColorizeColorPicker" class="operation-btn-disabled" onclick="openColorizeColorPicker()"> Color Filter </button>
                         </td>
                         <td>
-                            <button class="operation-btn" onclick="makeTransparent()">
+                            <button id="makeTransparent" class="operation-btn-disabled" onclick="makeTransparent()">
                                 <div id="color-preview"></div>
                                 Transparent
                             </button>
@@ -81,7 +94,7 @@
                     </tr>
 
                     <tr>
-                        <td colspan="3"> <button class="operation-btn download-btn" onclick="download()"> Export </button> </td>
+                        <td colspan="3"> <button class="operation-btn-disabled download-btn" onclick="download()"> Export </button> </td>
                     </tr>
                 </table>
             </div>

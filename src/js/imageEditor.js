@@ -3,6 +3,7 @@ window.onload = function() {
  foto = new Foto();
 }
 
+
 function selectImage() {
   document.getElementById("foto-file").click();
   document.getElementById("img-container").style.width = "400px";
@@ -38,11 +39,23 @@ function makeTransparent() {
 
 function crop() {
     foto.cropSelected();
-    // Find a solution to fit the image with the border
+}
+
+function fitBorder() {
     document.getElementById("img-container").style.width = document.getElementById("foto-image").offsetWidth+"px";
     document.getElementById("img-container").style.height = document.getElementById("foto-image").offsetHeight+"px";
-    console.log(document.getElementById("foto-image").offsetWidth)
-    // Delete until here if no solution found
+}
+
+function updatesRadiusText(){
+    document.getElementById("radius-range").addEventListener("input", function(){
+        document.getElementById("radius-amount").value = this.value;
+    });
+}
+
+function updateRadiusRange(){
+    document.getElementById("radius-amount").addEventListener("input", function(){
+        document.getElementById("radius-range").value = this.value;
+    });
 }
 
 function flipVertically() {
