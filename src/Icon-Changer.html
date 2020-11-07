@@ -55,7 +55,7 @@
                     <tr>
                         <td colspan="3" class="radius-area" style="text-align:center;">
                             Radius amount
-                            <input type="range" id="radius-range" min="0" max="360" onchange="updatesRadiusText()">
+                            <input type="range" id="radius-range" min="0" max="10000" onchange="updatesRadiusText()">
                             <input type="text" id="radius-amount" onchange="updateRadiusRange()">
                         </td>
                     </tr>
@@ -69,13 +69,11 @@
                         <td> <button id="makeBright" onclick="makeBright()"> Brighter </button> </td>
                         <td> <button id="makeDark" onclick="makeDark()"> Darker </button> </td>
                     </tr>
-
                     <tr>
                         <td> <button id="makeBlur" onclick="makeBlur()"> Blur </button> </td>
                         <td> <button id="makeEmboss" onclick="makeEmboss()"> Emboss </button> </td>
                         <td> <button id="makeSharp" onclick="makeSharp()"> Sharp </button> </td>
                     </tr>
-
                     <tr>
                         <td>
                             <input type="color" id="color-picker" value="#000000" oninput="makeColorize(this)" />

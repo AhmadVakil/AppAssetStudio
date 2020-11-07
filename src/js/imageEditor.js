@@ -3,6 +3,9 @@ window.onload = function() {
  foto = new Foto();
 }
 
+if (!$.browser.mozilla) {
+    window.alert("We suggest using Firefox browser for the best result. Otherwise some functionality might not work so correctly.")
+}
 
 function selectImage() {
   document.getElementById("foto-file").click();

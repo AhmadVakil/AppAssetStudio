@@ -143,6 +143,10 @@ align-items: center;
     vertical-align: middle;
 }
 
+#rotate-image {
+    vertical-align: middle;
+}
+
 .blink_me {
   animation: blinker 2s linear infinite;
 }
