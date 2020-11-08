@@ -15,8 +15,8 @@
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
         </head>
-        <body>
-        <div>
+        <body id="body">
+        <div draggable="false">
             <div class="file-upload-section" onclick="selectImage()">
                 <input id="foto-file" type="file">
                 Upload Image
@@ -47,8 +47,8 @@
                 </span>
                 </p>
             </div>
-            <div id="img-container">
-                <img id="foto-image" class="image" />
+            <div id="img-container" draggable="false">
+                <img id="foto-image" class="image" draggable="false"/>
             </div>
             <div class="buttons-section">
                 <table class="buttons-table">
