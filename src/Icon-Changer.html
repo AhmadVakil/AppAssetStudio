@@ -50,18 +50,23 @@
             <div id="img-container" draggable="false">
                 <img id="foto-image" class="image" draggable="false"/>
             </div>
+
             <div class="buttons-section">
+                <div style="text-align:center;">
+                    <canvas id="can" ></canvas>
+
+                </div>
                 <table class="buttons-table">
                     <tr>
                         <td colspan="3" class="radius-area" style="text-align:center;">
                             Radius amount
-                            <input type="range" id="radius-range" min="0" max="10000" onchange="updatesRadiusText()">
+                            <input type="range" id="radius-range" min="0" max="500" onchange="updatesRadiusText()">
                             <input type="text" id="radius-amount" onchange="updateRadiusRange()">
                         </td>
                     </tr>
                     <tr>
                         <td> <button id="apply-border" onclick="fitBorder()"><span id="blinker">Apply border </span></button> </td>
-                        <td> <button id="reset-image" onclick="resetImage()"> Reset Image </button> </td>
+                        <td> <button id="reset-image" onclick="getTheIcon()"> Get Icon </button> </td>
                         <td> <button id="close-image" onclick="closeImage()"> Close Image </button> </td>
                     </tr>
                     <tr>
