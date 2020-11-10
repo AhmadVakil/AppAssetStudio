@@ -44,7 +44,7 @@ function crop() {
     foto.cropSelected();
 }
 
-function getTheIcon() {
+function viewIcon() {
     var img=document.getElementById("foto-image");
     var canvas=document.getElementById("can");
 
@@ -55,10 +55,10 @@ function getTheIcon() {
     ctx=canvas.getContext("2d");
 
     // Shadow & Glow
-    ctx.shadowOffsetX = 10;
-    ctx.shadowOffsetY = 10;
+    ctx.shadowOffsetX = 5;
+    ctx.shadowOffsetY = 5;
     ctx.shadowColor = 'black';
-    ctx.shadowBlur = 10;
+    ctx.shadowBlur = 5;
 
     // Fit my image into the canvas
     var scale = Math.min(canvas.width / img.width, canvas.height / img.height);
@@ -69,6 +69,7 @@ function getTheIcon() {
 
     // Get radius from my range and apply my changes
     var radius = document.getElementById("radius-range").value;
+
     ctx.save();
     ctx.globalCompositeOperation="destination-out";
     ctx.beginPath();
@@ -97,6 +98,11 @@ function getTheIcon() {
     ctx.fill();
     ctx.restore();
 }
+function saveIcon() {
+    var socket = io.connect('127.0.0.1:5001')
+    var imgBuffer = $('#can')[0].toDataURL();
+    socket.emit('imgBuffer', imgBuffer);
+}
 
 function fitBorder() {
     document.getElementById("img-container").style.width = document.getElementById("foto-image").offsetWidth+"px";
@@ -107,10 +113,6 @@ function fitBorder() {
 
 function resetImage() {
     console.log("resetImage")
-}
-
-function closeImage() {
-    console.log("closeImage")
 }
 
 function updatesRadiusText(){

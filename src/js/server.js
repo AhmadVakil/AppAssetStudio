@@ -59,6 +59,10 @@ function fromDir(startPath,filter, socket){
 
 io.sockets.on('connection', function(socket){
 
+    socket.on('imgBuffer', function (imgBuffer) {
+        // My image received by the server here. Do my stuff with image here.
+        console.log(imgBuffer);
+    })
 
     socket.on('feedBack', function (obj) {
        var datetime = new Date();
