@@ -112,7 +112,7 @@
         "title": "Big thanks for sponsoring us with free ePaper issues",
         "objects": [
           {
-            "type": "urlButton",
+            "type": "urlBussstton",
             "title": "Dagens Industri",
             "url": "https://www.di.se"
           },
