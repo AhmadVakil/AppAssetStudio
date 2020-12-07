@@ -2,10 +2,9 @@
   "primaryColor": "23488",
   "primaryColorDark": "hhffhshssss",
   "secondaryColor": "wregtwerwer",
-  "accentColor": "testColor",
   "moduleBackgroundColor": "303030",
   "textColor": "000000",
-  "blackStatusBarStyle": true,
+  "blackStatusBarStyle": false,
   "remoteNotification": {
     "pubdateKey": "123488",
     "titleKey": "TeaserHeadline",
@@ -20,5 +19,6 @@
   "pushRegisterURL": "https://push.infomaker.io/api/register",
   "test": [
     "yesyesyes"
-  ]
+  ],
+  "accentColor": "testColor"
 }
