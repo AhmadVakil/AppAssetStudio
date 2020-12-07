@@ -111,11 +111,8 @@ io.sockets.on('connection', function(socket){
             }
         })
         socket.emit('jsonFileSaved')
-
      })
     var delivery = dl.listen(socket);
-
-
 
     fs.readdir(testFolder, (err, files) => {
         socket.emit('Repositories', files)
@@ -136,40 +133,30 @@ io.sockets.on('connection', function(socket){
         };
       });
     });
-  });
-
-
-
-
+});
 
 var port = 8000;
 var http = require("http");
 var server = http.createServer();
 server.on('request', request);
 server.listen(port);
-console.log('RUNNING SERVER.....');
-console.log('SERVER IS ON NOW....... :)');
+console.log('SERVER IS UP...');
 function request(request, response) {
     var store = '';
     var object
 
-
-
-    request.on('data', function(data)
-    {
-
+    request.on('data', function(data) {
         store += data
         object = JSON.parse(store)
         console.log('Data Received!! We Proccess it now!')
     });
-    request.on('end', function()
-    {
+
+    request.on('end', function() {
         receivedColor = parseInt(object.colorShortHex)
         TargetRepoName = object.targetRepo
         console.log(TargetRepoName)
         transparentIconCreator()
         transparentIconCreator()
-
         var noTag = object.colorNoHashTag
         var moduleBackgroundColor = object.moduleBackgroundColor
         var primaryColorDark = object.primaryColorDark
@@ -178,141 +165,136 @@ function request(request, response) {
         var textColor = object.textColor
         transparentIconCreator()
 
+        function transparentIconCreator(){
+            //Create the background color with HEX code
+            Jimp.read("inputImages/yellow.png", function (err, mainBackground) {
+                if (err) throw err;
+                for (var i= 0 ; i< 800 ; i++){
+                    for(var j=0 ; j< 800 ; j++){
+                    mainBackground.setPixelColor(receivedColor, i ,j)
+                    }
+                }
+                a()
+                function a(){
+                    mainBackground.write("inputImages/yellow.png");
+                }
+            });
 
-function transparentIconCreator(){
-//Create the background color with HEX code
-Jimp.read("inputImages/yellow.png", function (err, mainBackground) {
-    if (err) throw err;
-    for (var i= 0 ; i< 800 ; i++){
-        for(var j=0 ; j< 800 ; j++){
-        mainBackground.setPixelColor(receivedColor, i ,j)
+            // Opening Close Handle PNG
+            Jimp.read("inputImages/close_overview_handle.png", function (err, small_handle) {
+                if (err) throw err;
+                small_handle.quality(100)
+                small_handle.resize(73, 39)
+
+                globalCloseHandle_Small = small_handle
+            });
+
+            Jimp.read("inputImages/close_overview_handle.png", function (err, medium_handle) {
+                if (err) throw err;
+                medium_handle.quality(100)
+                medium_handle.resize(146, 78)
+
+                globalCloseHandle_Medium = medium_handle
+            });
+
+            Jimp.read("inputImages/close_overview_handle.png", function (err, larg_handle) {
+                if (err) throw err;
+                larg_handle.quality(100)
+                larg_handle.resize(272, 136)
+
+                globalCloseHandle_Larg = larg_handle
+            });
+
+
+            // Mixing close handles with transparents backgrounds
+            Jimp.read("inputImages/yellow.png", function (err, transparentCloseIcon_Small) {
+                if (err) throw err;
+                transparentCloseIcon_Small.resize(88, 44)
+                     .quality(100)            // resize
+                     .opacity(0.5)
+                     .composite( globalCloseHandle_Small, 8, 3 )
+
+                     //iOS
+                     .write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/Modules/epaper/ios/close_overview_handle.png")
+
+                     //Android
+                     .write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/Modules/epaper/android/resources/icons/close_overview_handle.png")
+
+                     .flip(false, true)
+
+                     //iOS
+                     .write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/Modules/epaper/ios/issue_overview_handle.png")
+
+                     //Android
+                     .write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/Modules/epaper/android/resources/icons/issue_overview_handle.png");
+
+            });
+
+            Jimp.read("inputImages/yellow.png", function (err, transparentCloseIcon_Medium) {
+                if (err) throw err;
+                transparentCloseIcon_Medium.resize(176, 88)
+                     .quality(100)
+                     .opacity(0.5)          // resize
+                     .composite(globalCloseHandle_Medium, 16, 6)
+
+                     //iOS
+                     .write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/Modules/epaper/ios/close_overview_handle@2x.png")
+
+                     //Android
+                     .write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/Modules/epaper/android/resources/icons/close_overview_handle@2x.png")
+
+                     .flip(false, true)
+
+                     //iOS
+                     .write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/Modules/epaper/ios/issue_overview_handle@2x.png")
+
+                     //Android
+                     .write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/Modules/epaper/android/resources/icons/issue_overview_handle@2x.png");
+            });
+
+            Jimp.read("inputImages/yellow.png", function (err, transparentCloseIcon_Larg) {
+                if (err) throw err;
+                transparentCloseIcon_Larg.resize(264, 132)
+                     .quality(100)
+                     .opacity(0.5)          // resize
+                     .composite(globalCloseHandle_Larg, 0, 0)
+
+                     //iOS
+                     .write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/Modules/epaper/ios/close_overview_handle@3x.png")
+
+                     //Android
+                     .write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/Modules/epaper/android/resources/icons/close_overview_handle@3x.png")
+
+                     .flip(false, true)
+
+                     //iOS
+                     .write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/Modules/epaper/ios/issue_overview_handle@3x.png")
+
+                     //Android
+                     .write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/Modules/epaper/android/resources/icons/issue_overview_handle@3x.png");
+            });
         }
 
-    }
-    a()
-    function a(){
-        mainBackground.write("inputImages/yellow.png");
-    }
-});
+        let file = editJsonFile(`Cloned_Git_Repositories/`+TargetRepoName+`/Resources/Modules/shared/configuration/global_config.json`);
 
+        // Set a couple of fields
+        file.set("primaryColor", noTag);
+        file.set("moduleBackgroundColor", moduleBackgroundColor)
+        file.set("primaryColorDark",primaryColorDark)
+        file.set("secondaryColor",secondaryColor)
+        file.set("accentColor",accentColor)
+        file.set("textColor",textColor)
 
-// Opening Close Handle PNG
-Jimp.read("inputImages/close_overview_handle.png", function (err, small_handle) {
-    if (err) throw err;
-    small_handle.quality(100)
-    small_handle.resize(73, 39)
+        // Save the data to the disk
+        file.save();
 
-    globalCloseHandle_Small = small_handle
-});
+        // Reload it from the disk
+        file = editJsonFile(`jsOutput/gc.json`, {
+            autosave: true
+        });
 
-Jimp.read("inputImages/close_overview_handle.png", function (err, medium_handle) {
-    if (err) throw err;
-    medium_handle.quality(100)
-    medium_handle.resize(146, 78)
-
-    globalCloseHandle_Medium = medium_handle
-});
-
-Jimp.read("inputImages/close_overview_handle.png", function (err, larg_handle) {
-    if (err) throw err;
-    larg_handle.quality(100)
-    larg_handle.resize(272, 136)
-
-    globalCloseHandle_Larg = larg_handle
-});
-
-
-// Mixing close handles with transparents backgrounds
-Jimp.read("inputImages/yellow.png", function (err, transparentCloseIcon_Small) {
-    if (err) throw err;
-    transparentCloseIcon_Small.resize(88, 44)
-         .quality(100)            // resize
-         .opacity(0.5)
-         .composite( globalCloseHandle_Small, 8, 3 )
-
-         //iOS
-         .write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/Modules/epaper/ios/close_overview_handle.png")
-
-         //Android
-         .write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/Modules/epaper/android/resources/icons/close_overview_handle.png")
-
-         .flip(false, true)
-
-         //iOS
-         .write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/Modules/epaper/ios/issue_overview_handle.png")
-
-         //Android
-         .write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/Modules/epaper/android/resources/icons/issue_overview_handle.png");
-
-});
-
-Jimp.read("inputImages/yellow.png", function (err, transparentCloseIcon_Medium) {
-    if (err) throw err;
-    transparentCloseIcon_Medium.resize(176, 88)
-         .quality(100)
-         .opacity(0.5)          // resize
-         .composite(globalCloseHandle_Medium, 16, 6)
-
-         //iOS
-         .write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/Modules/epaper/ios/close_overview_handle@2x.png")
-
-         //Android
-         .write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/Modules/epaper/android/resources/icons/close_overview_handle@2x.png")
-
-         .flip(false, true)
-
-         //iOS
-         .write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/Modules/epaper/ios/issue_overview_handle@2x.png")
-
-         //Android
-         .write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/Modules/epaper/android/resources/icons/issue_overview_handle@2x.png");
-
-
-});
-
-Jimp.read("inputImages/yellow.png", function (err, transparentCloseIcon_Larg) {
-    if (err) throw err;
-    transparentCloseIcon_Larg.resize(264, 132)
-         .quality(100)
-         .opacity(0.5)          // resize
-         .composite(globalCloseHandle_Larg, 0, 0)
-
-         //iOS
-         .write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/Modules/epaper/ios/close_overview_handle@3x.png")
-
-         //Android
-         .write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/Modules/epaper/android/resources/icons/close_overview_handle@3x.png")
-
-         .flip(false, true)
-
-         //iOS
-         .write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/Modules/epaper/ios/issue_overview_handle@3x.png")
-
-         //Android
-         .write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/Modules/epaper/android/resources/icons/issue_overview_handle@3x.png");
-
-});
-}
-
-let file = editJsonFile(`Cloned_Git_Repositories/`+TargetRepoName+`/Resources/Modules/shared/configuration/global_config.json`);
-
-// Set a couple of fields
-file.set("primaryColor", noTag);
-file.set("moduleBackgroundColor", moduleBackgroundColor)
-file.set("primaryColorDark",primaryColorDark)
-file.set("secondaryColor",secondaryColor)
-file.set("accentColor",accentColor)
-file.set("textColor",textColor)
-
-// Save the data to the disk
-file.save();
-
-// Reload it from the disk
-file = editJsonFile(`jsOutput/gc.json`, {
-    autosave: true
-});
         response.setHeader("Content-Type", "text/json");
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.end(store)
-});
+   });
 }
