@@ -1,10 +1,6 @@
 var Jimp = require("jimp");
 var jsonfile = require('jsonfile')
 var path = require('path')
-//const io = require('socket.io')(server);
-
-
-//var http = require('http')
 var io  = require('socket.io').listen(5001)
 var dl  = require('delivery')
 const editJsonFile = require("edit-json-file");
@@ -172,9 +168,6 @@ function request(request, response) {
         TargetRepoName = object.targetRepo
         console.log(TargetRepoName)
         transparentIconCreator()
-        /*console.log(receivedColor);
-        console.log(object.color)
-        console.log(object.colorNoHashTag)*/
         transparentIconCreator()
 
         var noTag = object.colorNoHashTag
@@ -318,84 +311,8 @@ file.save();
 file = editJsonFile(`jsOutput/gc.json`, {
     autosave: true
 });
-/*********************************************************************************************************************************************** */
         response.setHeader("Content-Type", "text/json");
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.end(store)
-
-
-
-
 });
 }
-
-function changeAppIcon(){
- Jimp.read(appIconName, function (err, appIcon) {
-    if (err) throw err;
-
-    // Roman_Square_1.png
-    // infomaker.png
-    //Infomaker_Transparent_Text.png
-    Jimp.read("Image_Trimers/Roman_Square_1.png", function (err, masker) {
-        if (err) throw err;
-        masker.quality(100)
-        masker.resize(1024, 1024)
-        //masker.flip(false,true)
-        //globalMasker = masker
-    // IOS Icon
-    appIcon.resize(1024, 1024)
-    appIcon.write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/App Icon/ios/Icon.png")
-
-    appIcon.resize(1024, 1024)
-    for (var y=0; y<1024; y++){
-        for (var x=0; x<1024; x++){
-
-           pixelColor = masker.getPixelColor(x, y)
-           if (pixelColor > 0){
-            appIcon.setPixelColor(0xFFFFFF00, x, y)
-           }
-        }
-    }
-
-    appIcon.quality(100)
-
-    //Roman_Square_Shadow_Border.png
-    //No_Shadow.png
-    Jimp.read("Image_Shadows/Roman_Square_Shadow_Border.png", function (err, shadow) {
-        if (err) throw err;
-        shadow.quality(100)
-        shadow.resize(1024, 1024)
-        shadow.composite(appIcon, 0, 0)
-
-        // Just Testing
-        shadow.resize(1024 , 1024)
-        shadow.write("Cloned_Git_Repositories/"+TargetRepoName+"/test.png")
-
-
-        // Android mipmap-xxxhdpi
-        shadow.resize(192 , 192)
-        shadow.write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/App Icon/android/res/mipmap-xxxhdpi/ic_launcher.png")
-
-        // Android mipmap-xxhdpi
-        shadow.resize(144 , 144)
-        shadow.write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/App Icon/android/res/mipmap-xxhdpi/ic_launcher.png")
-
-        // Android mipmap-xhdpi
-        shadow.resize(96 , 96)
-        shadow.write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/App Icon/android/res/mipmap-xhdpi/ic_launcher.png")
-
-        // Android mipmap-hdpi
-        shadow.resize(72 , 72)
-        shadow.write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/App Icon/android/res/mipmap-hdpi/ic_launcher.png")
-
-        // Android mipmap-mdpi
-        shadow.resize(48 , 48)
-        shadow.write("Cloned_Git_Repositories/"+TargetRepoName+"/Resources/App Icon/android/res/mipmap-mdpi/ic_launcher.png")
-
-    })
-    //
-})
-
-})
-}
-

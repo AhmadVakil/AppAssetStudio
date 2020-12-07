@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
-
         <head>
-            <title>Thesis</title>
+            <title>App Image Editor</title>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-
+            <link rel="icon" type="image/png" href="image/icon-changer.png">
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
             <link rel="stylesheet" href="css/imageEditor.css">
             <link rel="stylesheet" type="text/css" href="css/loader.css">
@@ -14,7 +13,6 @@
             <script src="js/foto.min.js"></script>
             <script src="js/imageEditor.js"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
         </head>
         <body id="body">
         <div draggable="false">
@@ -22,7 +20,6 @@
                 <input id="foto-file" type="file">
                 Upload Image
             </div>
-
             <div class="upper-buttons-section">
                 <table class="buttons-table">
                   <tr>
@@ -38,24 +35,22 @@
                 </table>
                 <p>
                     For the best result ensure your uploading image is bigger than 800px*800px. Low quality image will result in low quality icons.
-                <span class="tooltip">Learn more
-                    <span class="tooltiptext">
-                        Requirements for the best result:<br>
-                        - Use <span style="color:yellow;">Firefox</span> with scale of <span style="color:yellow;">100%</span>.<br>
-                        - Use image with equal <span style="color:yellow;">width</span> and <span style="color:yellow;"> height</span>.<br>
-                        - Use the <span style="color:yellow;">Crop </span>tool first then apply the <span style="color:yellow;">Frame</span>.
+                    <span class="tooltip">Learn more
+                        <span class="tooltiptext">
+                            Requirements for the best result:<br>
+                            - Use <span style="color:yellow;">Firefox</span> with scale of <span style="color:yellow;">100%</span>.<br>
+                            - Use image with equal <span style="color:yellow;">width</span> and <span style="color:yellow;"> height</span>.<br>
+                            - Use the <span style="color:yellow;">Crop </span>tool first then apply the <span style="color:yellow;">Frame</span>.
+                        </span>
                     </span>
-                </span>
                 </p>
             </div>
             <div id="img-container" draggable="false">
                 <img id="foto-image" class="image" draggable="false"/>
             </div>
-
             <div class="buttons-section">
                 <div style="text-align:center;">
                     <canvas id="can" ></canvas>
-
                 </div>
                 <table class="buttons-table">
                     <tr>
@@ -96,16 +91,11 @@
                             </button>
                         </td>
                     </tr>
-
                     <tr>
                         <td colspan="3"> <button class="operation-btn-disabled download-btn" onclick="download()"> Export </button> </td>
                     </tr>
                 </table>
             </div>
-
-
         </div>
-
-
 </body>
 </html>
