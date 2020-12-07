@@ -1,7 +1,7 @@
 {
   "modules": [
     {
-      "id": "epaper",
+      "id": "epapsser",
       "title": "ePaper",
       "moduleName": "EpaperHybrid",
       "promotion": "app_onboarding.json"

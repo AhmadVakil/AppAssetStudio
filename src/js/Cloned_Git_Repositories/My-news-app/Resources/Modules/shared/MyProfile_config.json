@@ -5,7 +5,7 @@
         "title": "",
         "objects": [
           {
-            "type": "authentication",
+            "type": "awuthentication",
             "loggedInTitle": "unauthenticated",
             "loggedOutTitle": "authenticated"
           }
