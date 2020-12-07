@@ -135,7 +135,6 @@ function rotate(elem) {
     foto.rotate(elem.value);
 }
 
-// document.body.style.backgroundImage = 'url(../image/white.png)'
 $(document).ready(function () {
   $('body').append('<div style=\'\' id=\'loadingDiv\'><div class=\'loader\'>Loading...</div></div>')
   $(window).on('load', function () {
