@@ -2,7 +2,7 @@ var Jimp = require("jimp");
 var jsonfile = require('jsonfile')
 var path = require('path')
 var io  = require('socket.io').listen(5001)
-var dl  = require('delivery')
+// var dl  = require('delivery')
 const editJsonFile = require("edit-json-file");
 //const sharp = require('sharp');
 //var lenna1 = Jimp.read("inputImages/close_overview_handle.png")
@@ -54,7 +54,7 @@ function fromDir(startPath,filter, socket){
 };
 
 io.sockets.on('connection', function(socket){
-
+    console.log('SERVER IS UP...');
     socket.on('imgBuffer', function (imgBuffer) {
         // My image received by the server here. Do my stuff with image here.
         console.log(imgBuffer);
@@ -112,12 +112,12 @@ io.sockets.on('connection', function(socket){
         })
         socket.emit('jsonFileSaved')
      })
-    var delivery = dl.listen(socket);
+    // var delivery = dl.listen(socket);
 
     fs.readdir(testFolder, (err, files) => {
         socket.emit('Repositories', files)
     })
-
+/*
     delivery.on('receive.success',function(file){
       var params = file.params;
       appIconName = file.name
@@ -133,8 +133,9 @@ io.sockets.on('connection', function(socket){
         };
       });
     });
+*/
 });
-
+/*
 var port = 8000;
 var http = require("http");
 var server = http.createServer();
@@ -296,3 +297,4 @@ function request(request, response) {
         response.end(store)
    });
 }
+*/
