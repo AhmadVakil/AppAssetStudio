@@ -1,0 +1,11 @@
+{
+  "version": {
+    "android": 15,
+    "ios": 15
+  },
+  "appName": "Template",
+  "googleAnalyticsKey": "Template",
+  "description": "These configurations are template.",
+  "extraInfo": "You can add or delete data in this configuration file",
+  "Author": "John Doe"
+}
