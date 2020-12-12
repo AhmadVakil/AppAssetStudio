@@ -6,75 +6,71 @@
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-
     <link rel="stylesheet" type="text/css" href="css\index.css">
     <link rel="stylesheet" type="text/css" href="css\loader.css">
 </head>
 <body class="body">
-<div class="group">
-    <div class="col span_1_of_3">
-        <h1> Create New App Resource </h1>
-        <p> Use this tool to create a new mobile application resource data. Using this tool you can: </p><br><br>
-        <div class="button-holder" style="margin:15px;">
-            <a class="button" id="start" href="Config-Changer.html"><span>Create Resource </span></a>
+    <div class="group">
+        <div class="col span_1_of_3">
+            <h1> Create New App Resource </h1>
+            <p> Use this tool to create a new mobile application resource data. Using this tool you can: </p><br><br>
+            <div class="button-holder" style="margin:15px;">
+                <a class="button" id="start" href="Config-Changer.html"><span>Create Resource </span></a>
+            </div>
+        </div>
+        <div class="col span_1_of_3">
+            <h1> Edit Configs </h1>
+            <p> Use this tool to manipulate your available JSON configurations. Using this tool you can view, edit, visualize and convert your configs into diagrams. </p><br/>
+            <br>
+            <div class="button-holder" style="margin:15px;">
+                <a class="button" id="start" href="Config-Changer.html"><span>Edit Configs </span></a>
+            </div>
+        </div>
+        <div class="col span_1_of_3">
+            <h1> Edit Graphical Contents </h1>
+            <p> Use this tool to edit graphical contents of the mobile application resource data such as icon launchers. </p><br><br>
+            <div class="button-holder" style="margin:15px;">
+                <a class="button" id="start" href="Icon-Changer.html"><span>Edit Graphics</span></a>
+            </div>
+        </div>
+        <div class="col span_1_of_3">
+            <h1> Give us feedback </h1>
+            <p> Feel free to give us feedback or report a bug </p><br/>
+            <div class="button-holder" style="margin:15px;">
+                <a class="button" id="start" href="#popup1"><span><i class="fas fa-bug"></i> Report bug or get help </span></a>
+            </div>
         </div>
     </div>
-    <div class="col span_1_of_3">
-        <h1> Edit Configs </h1>
-        <p> Use this tool to manipulate your available JSON configurations. Using this tool you can view, edit, visualize and convert your configs into diagrams. </p><br/>
-        <br>
-        <div class="button-holder" style="margin:15px;">
-            <a class="button" id="start" href="Config-Changer.html"><span>Edit Configs </span></a>
-        </div>
-    </div>
-    <div class="col span_1_of_3">
-        <h1> Edit Graphical Contents </h1>
-        <p> Use this tool to edit graphical contents of the mobile application resource data such as icon launchers. </p><br><br>
-        <div class="button-holder" style="margin:15px;">
-            <a class="button" id="start" href="Icon-Changer.html"><span>Edit Graphics</span></a>
-        </div>
-    </div>
-    <div class="col span_1_of_3">
-        <h1> Give us feedback </h1>
-        <p> Feel free to give us feedback or report a bug </p><br/>
-        <div class="button-holder" style="margin:15px;">
-            <a class="button" id="start" href="#popup1"><span><i class="fas fa-bug"></i> Report bug or get help </span></a>
-        </div>
-    </div>
-</div>
-
-<div class="footer-part">
-    <a href="https://github.com/AhmadVakil"><i class="fab fa-github" style="color:black;"><br> Follow me on Github</i></a>
-</div><br>
-
-<div id="popup1" class="overlay">
-    <div class="popup">
-        <h2>Feedback</h2>
-        <a class="close" href="#">&times;</a>
-        <div class="content">
-            Most of the HTML elements in this web application created on the fly. Therefore, if you see a problem or a bug please report it here.
-            <div class="feedbackForm">
-                <div class="container" style="width:80%;">
-                    <input type="text" id="firstname" name="firstname" placeholder="Your name.." style="width:70%;">
-                    <input type="text" id="lastname" name="lastname" placeholder="Your last name.." style="width:70%;"><br><br>
-                    <textarea id="feedback" name="subject" placeholder="Write your feedback here.." style="height:200px; width:70%;"></textarea>
-                    <input type="submit" class="feedbackBtn" style="margin-left:30%; margin-right:30%;" value="Submit" onclick="sendFeedBack()">
+    <div class="footer-part">
+        <a href="https://github.com/AhmadVakil"><i class="fab fa-github" style="color:black;"><br> Follow me on Github</i></a>
+    </div><br>
+    <div id="popup1" class="overlay">
+        <div class="popup">
+            <h2>Feedback</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+                Most of the HTML elements in this web application created on the fly. Therefore, if you see a problem or a bug please report it here.
+                <div class="feedbackForm">
+                    <div class="container" style="width:80%;">
+                        <input type="text" id="firstname" name="firstname" placeholder="Your name.." style="width:70%;">
+                        <input type="text" id="lastname" name="lastname" placeholder="Your last name.." style="width:70%;"><br><br>
+                        <textarea id="feedback" name="subject" placeholder="Write your feedback here.." style="height:200px; width:70%;"></textarea>
+                        <input type="submit" class="feedbackBtn" style="margin-left:30%; margin-right:30%;" value="Submit" onclick="sendFeedBack()">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<a id="closeFeedback" href="#popup2"></a>
-<div id="popup2" class="overlay" style="display:none;">
-    <div class="popup">
-        <h2>Feedback Received</h2>
-        <a class="close" href="#">&times;</a>
-        <div class="content">
-            Thank you!<br>We have received your feedback!<br>You can close this window now.
+    <a id="closeFeedback" href="#popup2"></a>
+    <div id="popup2" class="overlay" style="display:none;">
+        <div class="popup">
+            <h2>Feedback Received</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+                Thank you!<br>We have received your feedback!<br>You can close this window now.
+            </div>
         </div>
     </div>
-</div>
 </body>
 <script src="js/loader.js"></script>
 <script src="js/feedback.js"></script>
