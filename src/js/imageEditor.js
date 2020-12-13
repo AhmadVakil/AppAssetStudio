@@ -4,7 +4,7 @@ window.onload = function() {
 }
 
 if (!$.browser.mozilla) {
-    window.alert("We suggest using Firefox browser for the best result. Otherwise some functionality might not work so correctly.")
+    window.alert("We suggest using Firefox browser for the best result. Otherwise some functionalities might not work.")
 }
 
 function selectImage() {
