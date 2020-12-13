@@ -3,18 +3,18 @@
 }
 
 .container {
-  margin:0 auto;
-  display: block;
-  width: 50%;
-  height: 50%;
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-  text-align: center;
+    margin:0 auto;
+    display: block;
+    width: 50%;
+    height: 50%;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
 }
 
 .footer-part {
-text-align: center;
+    text-align: center;
 }
 
 .feedbackBtn {
@@ -29,12 +29,12 @@ text-align: center;
 }
 
 @media screen and (max-width: 700px){
-  .box{
-    width: 70%;
-  }
-  .popup{
-    width: 70%;
-  }
+    .box{
+        width: 70%;
+    }
+    .popup{
+        width: 70%;
+    }
 }
 
 .feedbackForm{
@@ -42,55 +42,56 @@ text-align: center;
 }
 
 .overlay {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7);
-  transition: opacity 500ms;
-  visibility: hidden;
-  opacity: 0;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
 }
+
 .overlay:target {
-  visibility: visible;
-  opacity: 1;
+    visibility: visible;
+    opacity: 1;
 }
 
 .popup {
-  margin: 70px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 5px;
-  width: 20%;
-  position: relative;
-  transition: all 5s ease-in-out;
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 20%;
+    position: relative;
+    transition: all 5s ease-in-out;
 }
 
 .popup h2 {
-  margin-top: 0;
-  color: #333;
-  font-family: Tahoma, Arial, sans-serif;
+    margin-top: 0;
+    color: #333;
+    font-family: Tahoma, Arial, sans-serif;
 }
 
 .popup .close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  transition: all 200ms;
-  font-size: 30px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #333;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
 }
 .popup .close:hover {
-  color: #06D85F;
+    color: #06D85F;
 }
 
 .popup .content {
-  max-height: 30%;
-  overflow: auto;
-  color: black;
+    max-height: 30%;
+    overflow: auto;
+    color: black;
 }
 
 .button {
@@ -109,19 +110,18 @@ text-align: center;
 	margin-top: 50px;
 }
 
-
 .button {
-  font-size: 1em;
-  padding: 10px;
-  color: #fff;
-  border: 2px solid #06D85F;
-  border-radius: 20px/50px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.3s ease-out;
+    font-size: 1em;
+    padding: 10px;
+    color: #fff;
+    border: 2px solid #06D85F;
+    border-radius: 20px/50px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
 }
 .button:hover {
-  background: #06D85F;
+    background: #06D85F;
 }
 
 .button-holder{
@@ -135,14 +135,14 @@ text-align: center;
 	transition: 0.5s;
 }
 
-  .button span:after {
-	content: '\00bb';
-	position: absolute;
-	opacity: 0;
-	top: 0;
-	right: -20px;
-	transition: 0.5s;
-  }
+.button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
 
 .button:hover span {
 	padding-right: 25px;
@@ -153,32 +153,30 @@ text-align: center;
 	right: 0;
 }
 
-.span_1_of_3 {
+.grid-item {
 	background-color: rgb(63, 51, 60);
-	opacity: 0.8;
 	filter: alpha(opacity=80);
-
 	background-size: cover;
     color: rgb(255, 255, 255);
-    width: 28%;
-
+    margin: 20px;
 	box-shadow: 0px 0px 20px #000000;
-
 	border-radius: 15px;
-	margin: 1%;
+	padding: 20px;
+    font-size: 23px;
+    text-align: center;
+    transition: 1s;
 }
 
-
-.col {
-	display: block;
-	float:left;
-    margin: 1% 0% 5% 1.6%;
-    padding:  1% 1% 2% 1%;
-
+.grid-item:hover {
+    background-color: rgb(63, 00, 00);
 }
 
-.col:first-child {
-	 margin-left: 0;
+.grid-container {
+  display: grid;
+  opacity: 0.9;
+  grid-template-columns: auto auto auto;
+  background-color: #2196F3;
+  padding: 10px;
 }
 
 /*  GROUPING  */
@@ -195,11 +193,8 @@ text-align: center;
 .group {
     zoom:1; /* For IE 6/7 */
     color: #050404;
-
-
 	background-size: cover;
  	border-radius: 50px;
 	padding: 0% 0% 2% 7%;
 	margin: 2px;
-
 }
