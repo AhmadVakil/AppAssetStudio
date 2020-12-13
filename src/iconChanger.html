@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
         <head>
-            <title>App Image Editor</title>
+            <title>Icon Editor</title>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="icon" type="image/png" href="image/icon-changer.png">
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
-            <link rel="stylesheet" href="css/imageEditor.css">
+            <link rel="stylesheet" href="css/index.css">
             <link rel="stylesheet" type="text/css" href="css/loader.css">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
@@ -15,87 +15,26 @@
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         </head>
         <body id="body">
-        <div draggable="false">
-            <div class="file-upload-section" onclick="selectImage()">
-                <input id="foto-file" type="file">
-                Upload Image
-            </div>
-            <div class="upper-buttons-section">
-                <table class="buttons-table">
-                    <tr>
-                        <td> <button id="crop-image" onclick="crop()"> Crop </button> </td>
-                        <td> <button id="flip-image" onclick="flipVertically()"> Flip </button> </td>
-                        <td>
-                            <button id="rotate-image">
-                                 Rotate
-                                 <input type="range" id="rotate-range" value="0" min="0" max="360" onchange="rotate(this)">
-                            </button>
-                        </td>
-                    </tr>
-                </table>
-                <p>
-                    For the best result ensure your uploading image is bigger than 800px*800px. Low quality image will result in low quality icons.
-                    <span class="tooltip">Learn more
-                        <span class="tooltiptext">
-                            Requirements for the best result:<br>
-                            - Use <span style="color:yellow;">Firefox</span> with scale of <span style="color:yellow;">100%</span>.<br>
-                            - Use image with equal <span style="color:yellow;">width</span> and <span style="color:yellow;"> height</span>.<br>
-                            - Use the <span style="color:yellow;">Crop </span>tool first then apply the <span style="color:yellow;">Frame</span>.
-                        </span>
-                    </span>
-                </p>
-            </div>
-            <div id="img-container" draggable="false">
-                <img id="foto-image" class="image" draggable="false"/>
-            </div>
-            <div class="buttons-section">
-                <div style="text-align:center;">
-                    <canvas id="can" ></canvas>
+        <div class="grid-container" draggable="false">
+            <div class="grid-item">
+                Choose and upload image file to begin.
+                <div class="file-upload-section" onclick="selectImage()">
+                    <input id="foto-file" type="file">
+                    Upload Image
                 </div>
-                <table class="buttons-table">
-                    <tr>
-                        <td colspan="3" class="radius-area" style="text-align:center;">
-                            Radius amount
-                            <input type="range" id="radius-range" min="0" max="500" onchange="updatesRadiusText()">
-                            <input type="text" id="radius-amount" onchange="updateRadiusRange()">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td> <button id="apply-border" onclick="fitBorder()"><span id="blinker">Apply border </span></button> </td>
-                        <td> <button id="reset-image" onclick="viewIcon()"> Get Icon </button> </td>
-                        <td> <button id="close-image" onclick="saveIcon()"> Save Icon </button> </td>
-                    </tr>
-                    <tr>
-                        <td> <button id="makeGrayScale" onclick="makeGrayScale()">Grayscale </button> </td>
-                        <td> <button id="makeBright" onclick="makeBright()"> Brighter </button> </td>
-                        <td> <button id="makeDark" onclick="makeDark()"> Darker </button> </td>
-                    </tr>
-                    <tr>
-                        <td> <button id="makeBlur" onclick="makeBlur()"> Blur </button> </td>
-                        <td> <button id="makeEmboss" onclick="makeEmboss()"> Emboss </button> </td>
-                        <td> <button id="makeSharp" onclick="makeSharp()"> Sharp </button> </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="color" id="color-picker" value="#000000" oninput="makeColorize(this)" />
-                            <button id="openColorpicker" onclick="openColorpicker()"> Colorize </button>
-                        </td>
-                        <td>
-                            <input type="color" id="colorize-color-picker" value="#000000" oninput="applyColorFilter(this)" />
-                            <button id="openColorizeColorPicker" onclick="openColorizeColorPicker()"> Color Filter </button>
-                        </td>
-                        <td>
-                            <button id="makeTransparent" onclick="makeTransparent()">
-                                <div id="color-preview"></div>
-                                Transparent
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="3"> <button class="operation-btn-disabled download-btn" onclick="download()"> Export </button> </td>
-                    </tr>
-                </table>
             </div>
+            <div class="grid-item">
+                Choose and upload what you want to add on top.
+                <div class="file-upload-section" onclick="selectImage()">
+                    <input id="foto-file" type="file">
+                    Upload Image
+                </div>
+            </div>
+            <div class="grid-item">
+
+
+            </div>
+
         </div>
 </body>
 </html>
