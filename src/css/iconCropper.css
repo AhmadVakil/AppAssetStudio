@@ -165,6 +165,7 @@
     font-size: 23px;
     text-align: center;
     transition: 1s;
+    width: 80%;
 }
 
 .grid-item:hover {
@@ -174,7 +175,7 @@
 .grid-container {
   display: grid;
   opacity: 0.9;
-  grid-template-columns: 20 auto auto;
+  grid-template-columns: auto auto auto;
   background-color: #2196F3;
   padding: 10px;
 }
