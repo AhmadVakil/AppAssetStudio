@@ -2,6 +2,15 @@
     background-image: url("../image/white.png");
 }
 
+img{
+  max-width:180px;
+}
+
+input[type=file]{
+padding:10px;
+background:#2d2d2d;
+}
+
 .container {
     margin:0 auto;
     display: block;
@@ -169,7 +178,7 @@
 }
 
 .grid-item:hover {
-    background-color: rgb(63, 00, 00);
+    background-color: rgb(00, 00, 00);
 }
 
 .grid-container {

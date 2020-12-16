@@ -11,7 +11,7 @@
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
             <script src="js/foto.min.js"></script>
-            <script src="js/iconChanger.js"></script>
+            <script src="js/iconCropper.js"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         </head>
         <body id="body">
@@ -19,16 +19,17 @@
                 <div class="grid-item">
                     Choose and upload image file to begin.
                     <div class="file-upload-section" onclick="selectImage()">
-                        <input type="file">
+                        <input type='file' onchange="readURL(this);" />
                         Upload Image
+                    </div>
+                    <div class="grid-item">
+                        <label for="vol">Choose border radius</label>
+                        <input type="range" id="vol" name="vol" min="0" max="10" value="0" onchange="giveRadius(this);">
                     </div>
                 </div>
-                <div class="grid-item">
-                    Choose and upload image file to begin.
-                    <div class="file-upload-section" onclick="selectImage()">
-                        <input type="file">
-                        Upload Image
-                    </div>
+                <div class="grid-item" style="height:150px;">
+                    <label>Preview</label><br>
+                    <img id="blah" alt="your image" />
                 </div>
             </div>
         </body>
