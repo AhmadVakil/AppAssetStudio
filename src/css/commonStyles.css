@@ -65,9 +65,9 @@
 }
 
 .grid-container {
-  display: grid;
-  opacity: 0.9;
-  grid-template-columns: auto auto auto;
-  background-color: #2196F3;
-  padding: 10px;
+    display: grid;
+    opacity: 0.9;
+    grid-template-columns: auto auto auto;
+    background-color: #2196F3;
+    padding: 10px;
 }
