@@ -1,8 +1,0 @@
-{
-  "pushRegisterURL": "https://push.inrfomakrrer.io",
-  "pushApplication": {
-    "ios": ""
-  },
-  "pushTopic": "arn:aws:sns:eu-west-1:123123123123:InfomakerDemo",
-  "pdfLicenseKey": "117771"
-}
