@@ -11,10 +11,11 @@
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
             <script src="js/foto.min.js"></script>
-            <script src="js/iconCropper.js"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         </head>
         <body id="body">
+        <h3 id="failedToLoadRepoNotification" style="display:none;">Failed to load repositories!</h3>
+        <h3 id="selectRepoNotification" style="display:none;">Select a repository to continue.</h3>
             <div class="grid-container" draggable="false">
                 <div class="grid-item">
                     Choose and upload image file to begin.
@@ -23,14 +24,29 @@
                         Upload Image
                     </div>
                     <div class="grid-item">
-                        <label for="vol">Choose border radius</label>
-                        <input type="range" id="vol" name="vol" min="0" max="10" value="0" onchange="giveRadius(this);">
+                        <input type="checkbox" id="roundCorner">
+                        <label for="roundCorner"> Round Corner</label><br>
+                        <div id="roundCornerDiv" style="opacity:0.5; display:none;">
+                            <label for="vol">Radius amount</label><br>
+                            <input type="range" id="vol" name="vol" min="0" max="100" value="0" onchange="giveRadius(this);" disabled="true"><br>
+                            <input type="text" id="radiusTextValue" value="" disabled="true">
+                        </div>
+                        <hr>
+                        <input type="checkbox" id="dropShadow">
+                        <label for="dropShadow"> Drop Shadow</label><br>
+                    </div>
+                    <div id="resource-picker" class="part"><br></div>
+                    <div class="button-holder" style="margin:15px;">
+                        <a class="button" id="start" href="configChanger.html"><span>Submit </span></a>
                     </div>
                 </div>
-                <div class="grid-item" style="height:150px;">
-                    <label>Preview</label><br>
-                    <img id="blah" alt="your image" />
+                <div class="grid-item" id="imageView">
+                    <label>Image Preview</label><br>
+                    <img id="blah" alt="your image loads here"/>
                 </div>
+
             </div>
         </body>
+        <script src="js/iconCropper.js"></script>
+
 </html>
