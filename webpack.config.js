@@ -1,7 +1,7 @@
 var path = require('path')
 
 module.exports = {
-  entry: './src/js/config-changer.js',
+  entry: './src/js/configChanger.js',
   output: {
     filename: 'build.js',
     path: path.resolve(__dirname, 'dist')

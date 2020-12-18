@@ -2,7 +2,7 @@ var io  = require('socket.io').listen(5001)
 var jsonfile = require('jsonfile')
 var path = require('path')
 const fs = require('fs');
-const testFolder = './Cloned_Git_Repositories/';
+const testFolder = '../../local-storage/Cloned_Git_Repositories/';
 
 function log(activity){
     console.log(activity)
@@ -69,7 +69,7 @@ io.sockets.on('connection', function(socket){
 
     })
     socket.on('openThisRepo', function (data) {
-                fromDir('Cloned_Git_Repositories/'+data.repoNames,'.json', socket)
+                fromDir('../../local-storage/Cloned_Git_Repositories/'+data.repoNames,'.json', socket)
     })
 
     socket.on('saveJsonFile', function(jsonTextArea) {
