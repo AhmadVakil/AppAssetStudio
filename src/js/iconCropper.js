@@ -47,6 +47,11 @@ function giveRadius(range) {
      document.getElementById("radiusTextValue").value = range.value+"px";
 }
 
+function dropShadow(range) {
+     //document.getElementById("blah").style.borderRadius = range.value+"px";
+     document.getElementById("shadowTextValue").value = range.value+"px";
+}
+
 document.getElementById('roundCorner').addEventListener("change", function(){
   if (this.checked) {
     console.log("checked")
@@ -63,5 +68,23 @@ document.getElementById('roundCorner').addEventListener("change", function(){
     document.getElementById('radiusTextValue').disabled = true;
     document.getElementById('vol').disabled = true;
     document.getElementById('roundCornerDiv').style.opacity = 0.5;
+  }
+});
+
+document.getElementById('dropShadow').addEventListener("change", function(){
+  if (this.checked) {
+    console.log("checked")
+    document.getElementById('dropShadowDiv').style.display = "block";
+    document.getElementById('dropShadowDiv').style.opacity = 1;
+    document.getElementById('shadowTextValue').disabled = false;
+    document.getElementById('shadowVol').disabled = false;
+  } else {
+    console.log("unchecked")
+    document.getElementById('dropShadowDiv').style.display = "none";
+    document.getElementById('shadowTextValue').value = "0px";
+    document.getElementById('shadowVol').value = 0;
+    document.getElementById('shadowTextValue').disabled = true;
+    document.getElementById('shadowVol').disabled = true;
+    document.getElementById('dropShadowDiv').style.opacity = 0.5;
   }
 });

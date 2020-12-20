@@ -35,6 +35,11 @@
                         <hr>
                         <input type="checkbox" id="dropShadow">
                         <label for="dropShadow"> Drop Shadow</label><br>
+                        <div id="dropShadowDiv" style="opacity:0.5; display:none;">
+                            <label for="vol">Shadow amount</label><br>
+                            <input type="range" id="shadowVol" name="vol" min="0" max="100" value="0" onchange="dropShadow(this);" disabled="true"><br>
+                            <input type="text" id="shadowTextValue" value="" disabled="true">
+                        </div>
                     </div>
                     <div id="resource-picker" class="part"><br></div>
                     <div class="button-holder">
