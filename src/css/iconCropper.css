@@ -14,3 +14,10 @@ input[type=file]{
 #roundCornerDiv{
    transition: 1s opacity;
 }
+
+#repositoriesDropDownMenu{
+    width: auto;
+    height: 25px;
+    color: black;
+    margin-bottom: 10px;
+}

@@ -4,10 +4,16 @@ $(document).ready(function(){
     $('#formID input[type=checkbox]').attr('checked',false);
     document.getElementById('roundCorner').disabled = true;
     document.getElementById('dropShadow').disabled = true;
+    document.getElementById('iconCropperSubmitButton').disabled = true;
     document.getElementById('roundCorner').style.opacity = 0.5;
     document.getElementById('dropShadow').style.opacity = 0.5;
-    document.getElementById('dropShadowDiv').style.opacity = 0.5;
-    document.getElementById('radiusLabel').style.opacity = 0.5;
+    document.getElementById('dropShadowText').style.opacity = 0.5;
+    document.getElementById('roundCornerText').style.opacity = 0.5;
+    document.getElementById('iconCropperSubmitButton').style.display = "none";
+    document.getElementById('radiusTextValue').value = "Disabled";
+    document.getElementById('shadowTextValue').value = "Disabled";
+
+
     $('#readURL').val('');
 });
 
@@ -52,6 +58,11 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
         document.getElementById('roundCorner').disabled = false;
         document.getElementById('dropShadow').disabled = false;
+        document.getElementById('roundCorner').style.opacity = 1;
+        document.getElementById('dropShadow').style.opacity = 1;
+        document.getElementById('dropShadowText').style.opacity = 1;
+        document.getElementById('roundCornerText').style.opacity = 1;
+        document.getElementById('iconCropperSubmitButton').style.display = "inline-block";
 
     } else {
         document.getElementById('roundCorner').disabled = true;
@@ -72,13 +83,14 @@ function dropShadow(range) {
 document.getElementById('roundCorner').addEventListener("change", function(){
   if (this.checked) {
     console.log("checked")
+    document.getElementById('radiusTextValue').value = "0px";
     document.getElementById('roundCornerDiv').style.opacity = 1;
     document.getElementById('radiusTextValue').disabled = false;
     document.getElementById('vol').disabled = false;
 
   } else {
     console.log("unchecked")
-    document.getElementById('radiusTextValue').value = "0px";
+    document.getElementById('radiusTextValue').value = "Disabled";
     document.getElementById('vol').value = 0;
     document.getElementById('radiusTextValue').disabled = true;
     document.getElementById('vol').disabled = true;
@@ -89,12 +101,13 @@ document.getElementById('roundCorner').addEventListener("change", function(){
 document.getElementById('dropShadow').addEventListener("change", function(){
   if (this.checked) {
     console.log("checked")
+    document.getElementById('shadowTextValue').value = "0px";
     document.getElementById('dropShadowDiv').style.opacity = 1;
     document.getElementById('shadowTextValue').disabled = false;
     document.getElementById('shadowVol').disabled = false;
   } else {
     console.log("unchecked")
-    document.getElementById('shadowTextValue').value = "0px";
+    document.getElementById('shadowTextValue').value = "Disabled";
     document.getElementById('shadowVol').value = 0;
     document.getElementById('shadowTextValue').disabled = true;
     document.getElementById('shadowVol').disabled = true;
