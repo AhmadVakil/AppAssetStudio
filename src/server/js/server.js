@@ -51,16 +51,19 @@ fs.readFile('../configs/server-config.json', 'utf8', function (err, data) {
             //fs.writeFile('image.png', buf);
         })
         socket.on('feedBack', function (obj) {
-           var datetime = new Date();
-           const feedbacksDir = '../feedbacks'
-           fs.appendFile(config.feedbackPath, 'Feedback----------------------' + datetime + '\n' +
-                                                       'Firstname:' + obj.firstname + '\n' +
-                                                       'Lastname:' + obj.lastname + '\n' +
-                                                       'Feedback:' + obj.feedback + '\n\n', function (err) {
-             if (err) throw err;
-             console.log('Feedback Saved!');
-             socket.emit('feedbackSaved');
-           });
+            if (config.production) {
+                var datetime = new Date();
+                fs.appendFile(config.feedbackPath, 'Feedback----------------------' + datetime + '\n' +
+                                                           'Firstname:' + obj.firstname + '\n' +
+                                                           'Lastname:' + obj.lastname + '\n' +
+                                                           'Feedback:' + obj.feedback + '\n\n', function (err) {
+                    if (err) throw err;
+                    console.log('Feedback Saved!');
+                    socket.emit('feedbackSaved');
+                });
+            } else {
+                console.log("Warning! Production mode is off. Feedback received but not saved. \nIf this is production, immediately set production to true in server-config.json")
+            }
         })
         socket.on('fetchConfigFile', function (obj) {
               jsonfile.readFile(obj.configPath, function(err, configData) {
