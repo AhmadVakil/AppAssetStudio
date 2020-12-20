@@ -1,0 +1,9 @@
+{
+  "description": "This config file will be used by the server.js",
+  "serverVersion": 1.0,
+  "logPath": "../storage/logs/server-logs.log",
+  "feedbackPath": "../storage/feedbacks/feedbacks.log",
+  "framesPath": "../storage/images/crop-frames/",
+  "resourcesPath": "../storage/resources/",
+  "production": false
+}

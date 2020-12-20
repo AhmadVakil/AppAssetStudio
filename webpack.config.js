@@ -1,13 +1,13 @@
 var path = require('path')
 
 module.exports = {
-  entry: './src/js/configChanger.js',
+  entry: './src/client/js/configChanger.js',
   output: {
     filename: 'build.js',
     path: path.resolve(__dirname, 'dist')
   },
   devServer: {
-    contentBase: path.join(__dirname, 'src'),
+    contentBase: path.join(__dirname, 'src/client'),
     port: 4000,
     public: 'localhost:4000'
   },
