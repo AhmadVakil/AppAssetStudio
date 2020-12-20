@@ -9,6 +9,7 @@ $(document).ready(function(){
     document.getElementById('dropShadow').style.opacity = 0.5;
     document.getElementById('dropShadowText').style.opacity = 0.5;
     document.getElementById('roundCornerText').style.opacity = 0.5;
+    document.getElementById('iconSizesDiv').style.opacity = 0.5;
     document.getElementById('iconCropperSubmitButton').style.display = "none";
     document.getElementById('radiusTextValue').value = "Disabled";
     document.getElementById('shadowTextValue').value = "Disabled";
@@ -71,20 +72,7 @@ function readURL(input) {
         document.getElementById('xhdpiCheckbox').disabled = false;
         document.getElementById('xxhdpiCheckbox').disabled = false;
         document.getElementById('xxxhdpiCheckbox').disabled = false;
-
-        // Changing opacity amount of checkboxes and labels
-        document.getElementById('iOSCheckbox').style.opacity = 1;
-        document.getElementById('hdpiCheckbox').style.opacity = 1;
-        document.getElementById('mdpiCheckbox').style.opacity = 1;
-        document.getElementById('xhdpiCheckbox').style.opacity = 1;
-        document.getElementById('xxhdpiCheckbox').style.opacity = 1;
-        document.getElementById('xxxhdpiCheckbox').style.opacity = 1;
-        document.getElementById('iOSTextLabel').style.opacity = 1;
-        document.getElementById('hdpiTextLabel').style.opacity = 1;
-        document.getElementById('mdpiTextLabel').style.opacity = 1;
-        document.getElementById('xhdpiTextLabel').style.opacity = 1;
-        document.getElementById('xxhdpiTextLabel').style.opacity = 1;
-        document.getElementById('xxxhdpiTextLabel').style.opacity = 1;
+        document.getElementById('iconSizesDiv').style.opacity = 1;
 
     } else {
         document.getElementById('roundCorner').disabled = true;
