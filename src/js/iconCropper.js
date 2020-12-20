@@ -77,6 +77,7 @@ function readURL(input) {
     } else {
         document.getElementById('roundCorner').disabled = true;
         document.getElementById('dropShadow').disabled = true;
+
     }
 }
 
