@@ -12,8 +12,6 @@ $(document).ready(function(){
     document.getElementById('iconCropperSubmitButton').style.display = "none";
     document.getElementById('radiusTextValue').value = "Disabled";
     document.getElementById('shadowTextValue').value = "Disabled";
-
-
     $('#readURL').val('');
 });
 
@@ -56,6 +54,8 @@ function readURL(input) {
                 .attr('src', e.target.result);
         };
         reader.readAsDataURL(input.files[0]);
+
+        // Now our file is loaded into browser therefore we enable elements
         document.getElementById('roundCorner').disabled = false;
         document.getElementById('dropShadow').disabled = false;
         document.getElementById('roundCorner').style.opacity = 1;
@@ -63,6 +63,28 @@ function readURL(input) {
         document.getElementById('dropShadowText').style.opacity = 1;
         document.getElementById('roundCornerText').style.opacity = 1;
         document.getElementById('iconCropperSubmitButton').style.display = "inline-block";
+
+        // Enabling Checkboxes for icon sizes
+        document.getElementById('iOSCheckbox').disabled = false;
+        document.getElementById('hdpiCheckbox').disabled = false;
+        document.getElementById('mdpiCheckbox').disabled = false;
+        document.getElementById('xhdpiCheckbox').disabled = false;
+        document.getElementById('xxhdpiCheckbox').disabled = false;
+        document.getElementById('xxxhdpiCheckbox').disabled = false;
+
+        // Changing opacity amount of checkboxes and labels
+        document.getElementById('iOSCheckbox').style.opacity = 1;
+        document.getElementById('hdpiCheckbox').style.opacity = 1;
+        document.getElementById('mdpiCheckbox').style.opacity = 1;
+        document.getElementById('xhdpiCheckbox').style.opacity = 1;
+        document.getElementById('xxhdpiCheckbox').style.opacity = 1;
+        document.getElementById('xxxhdpiCheckbox').style.opacity = 1;
+        document.getElementById('iOSTextLabel').style.opacity = 1;
+        document.getElementById('hdpiTextLabel').style.opacity = 1;
+        document.getElementById('mdpiTextLabel').style.opacity = 1;
+        document.getElementById('xhdpiTextLabel').style.opacity = 1;
+        document.getElementById('xxhdpiTextLabel').style.opacity = 1;
+        document.getElementById('xxxhdpiTextLabel').style.opacity = 1;
 
     } else {
         document.getElementById('roundCorner').disabled = true;

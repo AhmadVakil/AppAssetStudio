@@ -20,7 +20,7 @@
             <div class="grid-container" draggable="false">
                 <div class="grid-item">
                     Choose and upload image file to begin.
-                    <div class="file-upload-section" onclick="selectImage()">
+                    <div class="file-upload-section">
                         <input type='file' id="readURL" onchange="readURL(this);" />
                         Upload Image
                     </div>
@@ -39,6 +39,16 @@
                             <label for="vol">Shadow amount</label><br>
                             <input type="range" id="shadowVol" name="vol" min="0" max="100" value="0" onchange="dropShadow(this);" disabled="true"><br>
                             <input type="text" id="shadowTextValue" value="" disabled="true">
+                        </div>
+                        <hr>
+                        <div id="iconSizesDiv" style="opacity:0.5;">
+                            Icon Sizes<br>
+                            <input type="checkbox" id="iOSCheckbox" disabled="true"><label id="iOSTextLabel">iOS</label><br>
+                            <input type="checkbox" id="hdpiCheckbox" disabled="true"><label id="hdpiTextLabel">hdpi</label><br>
+                            <input type="checkbox" id="mdpiCheckbox" disabled="true"><label id="mdpiTextLabel">mdpi</label><br>
+                            <input type="checkbox" id="xhdpiCheckbox" disabled="true"><label id="xhdpiTextLabel">xhdpi</label><br>
+                            <input type="checkbox" id="xxhdpiCheckbox" disabled="true"><label id="xxhdpiTextLabel">xxhdpi</label><br>
+                            <input type="checkbox" id="xxxhdpiCheckbox" disabled="true"><label id="xxxhdpiTextLabel">xxxhdpi</label><br>
                         </div>
                         <hr>
                         <div id="resource-picker" class="part"><br></div>
