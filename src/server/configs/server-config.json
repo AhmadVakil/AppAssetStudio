@@ -1,9 +1,16 @@
 {
   "description": "This config file will be used by the server.js",
+  "production": false,
+  "autoConfigSearch": "true",
   "serverVersion": 1.0,
   "logPath": "../storage/logs/server-logs.log",
   "feedbackPath": "../storage/feedbacks/feedbacks.log",
   "framesPath": "../storage/images/crop-frames/",
   "resourcesPath": "../storage/resources/",
-  "production": false
+  "pathToIosIcon": "Resources/App Icon/ios/Icon.png",
+  "pathToHdpi": "Resources/App Icon/android/res/mipmap-hdpi/ic_launcher.png",
+  "pathToMdpi": "Resources/App Icon/android/res/mipmap-mdpi/ic_launcher.png",
+  "pathToXHdpi": "Resources/App Icon/android/res/mipmap-xhdpi/ic_launcher.png",
+  "pathToXXHdpi": "Resources/App Icon/android/res/mipmap-xxhdpi/ic_launcher.png",
+  "pathToXXXHdpi": "Resources/App Icon/android/res/mipmap-xxxhdpi/ic_launcher.png"
 }
