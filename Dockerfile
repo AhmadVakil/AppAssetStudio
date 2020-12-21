@@ -1,13 +1,13 @@
 FROM node:12
 
 # Creating app directory
-WORKDIR /usr/src/app
+WORKDIR /
 
 # Install dependencies and wildcard(*) to copy both package-lock.json and package.json
 COPY package*.json ./
 
 # We have problem accessing sources, need double check
-COPY src/* ./
+COPY * /
 
 RUN npm install
 

@@ -3,10 +3,9 @@ var jsonfile = require('jsonfile')
 var path = require('path')
 const fs = require('fs');
 var config;
-fs.readFile('../configs/server-config.json', 'utf8', function (err, data) {
+fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data) {
     if (err) throw err;
     config = JSON.parse(data);
-
     function log(activity){
         console.log(activity)
         if (config.production) {
