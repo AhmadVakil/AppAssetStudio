@@ -1,0 +1,13 @@
+{
+  "description": "This config will be read by resicon.js",
+  "imagesPath": "../storage/images/",
+  "outputsPath": "../storage/outputs/",
+  "targetRepoName": "dummy-repo/",
+  "framesPath": "../storage/images/crop-frames/",
+  "pathToIosIcon": "Resources/App Icon/ios/Icon.png",
+  "pathToHdpi": "Resources/App Icon/android/res/mipmap-hdpi/ic_launcher.png",
+  "pathToMdpi": "Resources/App Icon/android/res/mipmap-mdpi/ic_launcher.png",
+  "pathToXHdpi": "Resources/App Icon/android/res/mipmap-xhdpi/ic_launcher.png",
+  "pathToXXHdpi": "Resources/App Icon/android/res/mipmap-xxhdpi/ic_launcher.png",
+  "pathToXXXHdpi": "Resources/App Icon/android/res/mipmap-xxxhdpi/ic_launcher.png"
+}

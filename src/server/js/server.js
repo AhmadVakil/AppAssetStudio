@@ -50,6 +50,9 @@ fs.readFile('../configs/server-config.json', 'utf8', function (err, data) {
             var buf = new Buffer(data, 'base64');
             //fs.writeFile('image.png', buf);
         })
+        socket.on('cropAndSaveImage', function (obj) {
+
+        })
         socket.on('feedBack', function (obj) {
             if (config.production) {
                 var datetime = new Date();
