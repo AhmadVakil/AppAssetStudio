@@ -124,6 +124,18 @@ document.getElementById('dropShadow').addEventListener("change", function(){
   }
 });
 
-document.getElementById('dropShadow').addEventListener("click", function(){
-    
+document.getElementById('iconCropperSubmitButton').addEventListener("click", function(){
+    var icDetails = {
+        borderRadiusAmount : document.getElementById('radiusTextValue').value,
+        shadowAmount : document.getElementById('shadowTextValue').value,
+        ios : document.getElementById("iOSCheckbox").checked ? true : false,
+        hdpi : document.getElementById("hdpiCheckbox").checked ? true : false,
+        mdpi : document.getElementById("mdpiCheckbox").checked ? true : false,
+        xhdpi : document.getElementById("xhdpiCheckbox").checked ? true : false,
+        xxhdpi : document.getElementById("xxhdpiCheckbox").checked ? true : false,
+        xxxhdpi : document.getElementById("xxxhdpiCheckbox").checked ? true : false,
+        repo : document.getElementById("repositoriesDropDownMenu").value
+
+    }
+    socket.emit('cropIcon', icDetails)
 })
