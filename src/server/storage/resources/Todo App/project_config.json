@@ -46,9 +46,5 @@
       }
     ]
   },
-  "signing": {},
-  "applicationI": {
-    "android": "se.infomaker.demo",
-    "ios": "se.infomaker.iap.Demo"
-  }
+  "signing": {}
 }
