@@ -28,7 +28,7 @@
                         <label for="roundCorner" id="roundCornerText"> Round Corner</label><br>
                         <div id="roundCornerDiv" style="opacity:0.5;">
                             <label for="vol">Radius amount</label><br>
-                            <input type="range" id="vol" name="vol" min="0" max="100" value="0" onchange="giveRadius(this);" disabled="true"><br>
+                            <input type="range" id="vol" name="vol" min="0" max="10" value="0" onchange="giveRadius(this);" disabled="true"><br>
                             <input type="text" id="radiusTextValue" value="" disabled="true">
                         </div>
                         <hr>
@@ -36,7 +36,7 @@
                         <label for="dropShadow" id="dropShadowText"> Drop Shadow</label><br>
                         <div id="dropShadowDiv" style="opacity:0.5;">
                             <label for="vol">Shadow amount</label><br>
-                            <input type="range" id="shadowVol" name="vol" min="0" max="100" value="0" onchange="dropShadow(this);" disabled="true"><br>
+                            <input type="range" id="shadowVol" name="vol" min="0" max="10" value="0" onchange="dropShadow(this);" disabled="true"><br>
                             <input type="text" id="shadowTextValue" value="" disabled="true">
                         </div>
                         <hr>
@@ -55,15 +55,12 @@
                             <a class="button" id="iconCropperSubmitButton" ><span>Submit </span></a>
                         </div>
                     </div>
-
                 </div>
                 <div class="grid-item" id="imageView">
                     <label>Image Preview</label><br>
                     <img id="blah" alt="your image loads here"/>
                 </div>
-
             </div>
         </body>
         <script src="js/iconCropper.js"></script>
-
 </html>

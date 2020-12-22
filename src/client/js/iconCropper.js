@@ -73,28 +73,26 @@ function readURL(input) {
         document.getElementById('xxhdpiCheckbox').disabled = false;
         document.getElementById('xxxhdpiCheckbox').disabled = false;
         document.getElementById('iconSizesDiv').style.opacity = 1;
-
     } else {
         document.getElementById('roundCorner').disabled = true;
         document.getElementById('dropShadow').disabled = true;
-
     }
 }
 
 function giveRadius(range) {
-     document.getElementById("blah").style.borderRadius = range.value+"px";
-     document.getElementById("radiusTextValue").value = range.value+"px";
+     document.getElementById("blah").style.borderRadius = range.value;
+     document.getElementById("radiusTextValue").value = range.value;
 }
 
 function dropShadow(range) {
-     document.getElementById("blah").style.borderRadius = range.value+"px";
-     document.getElementById("shadowTextValue").value = range.value+"px";
+     document.getElementById("blah").style.borderRadius = range.value;
+     document.getElementById("shadowTextValue").value = range.value;
 }
 
 document.getElementById('roundCorner').addEventListener("change", function(){
   if (this.checked) {
     console.log("checked")
-    document.getElementById('radiusTextValue').value = "0px";
+    document.getElementById('radiusTextValue').value = "0";
     document.getElementById('roundCornerDiv').style.opacity = 1;
     document.getElementById('radiusTextValue').disabled = false;
     document.getElementById('vol').disabled = false;
@@ -112,7 +110,7 @@ document.getElementById('roundCorner').addEventListener("change", function(){
 document.getElementById('dropShadow').addEventListener("change", function(){
   if (this.checked) {
     console.log("checked")
-    document.getElementById('shadowTextValue').value = "0px";
+    document.getElementById('shadowTextValue').value = "0";
     document.getElementById('dropShadowDiv').style.opacity = 1;
     document.getElementById('shadowTextValue').disabled = false;
     document.getElementById('shadowVol').disabled = false;
@@ -125,3 +123,7 @@ document.getElementById('dropShadow').addEventListener("change", function(){
     document.getElementById('dropShadowDiv').style.opacity = 0.5;
   }
 });
+
+document.getElementById('dropShadow').addEventListener("click", function(){
+    
+})

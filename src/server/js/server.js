@@ -13,7 +13,6 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
             if (!fs.existsSync(config.logPath)){
                 fs.mkdirSync(config.logPath);
             }
-
             fs.appendFile(config.logPath, '-- On ' + datetime + "\n" + activity,
             function (err) {
                 if (err) throw err;
