@@ -55,6 +55,7 @@ function readURL(input) {
                 .attr('src', e.target.result);
         };
         reader.readAsDataURL(input.files[0]);
+        //console.log($('#blah')[0].toDataURL());
 
         // Now our file is loaded into browser therefore we enable elements
         document.getElementById('roundCorner').disabled = false;
@@ -125,17 +126,28 @@ document.getElementById('dropShadow').addEventListener("change", function(){
 });
 
 document.getElementById('iconCropperSubmitButton').addEventListener("click", function(){
-    var icDetails = {
-        borderRadiusAmount : document.getElementById('radiusTextValue').value,
-        shadowAmount : document.getElementById('shadowTextValue').value,
-        ios : document.getElementById("iOSCheckbox").checked ? true : false,
-        hdpi : document.getElementById("hdpiCheckbox").checked ? true : false,
-        mdpi : document.getElementById("mdpiCheckbox").checked ? true : false,
-        xhdpi : document.getElementById("xhdpiCheckbox").checked ? true : false,
-        xxhdpi : document.getElementById("xxhdpiCheckbox").checked ? true : false,
-        xxxhdpi : document.getElementById("xxxhdpiCheckbox").checked ? true : false,
-        repo : document.getElementById("repositoriesDropDownMenu").value
-
+    const toBase64 = file => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+    });
+    async function sendIc() {
+        const file = document.getElementById("readURL").files[0];
+        var imgBuffer = (await toBase64(file))
+        var icDetails = {
+            borderRadiusAmount : document.getElementById('radiusTextValue').value,
+            shadowAmount : document.getElementById('shadowTextValue').value,
+            ios : document.getElementById("iOSCheckbox").checked,
+            hdpi : document.getElementById("hdpiCheckbox").checked,
+            mdpi : document.getElementById("mdpiCheckbox").checked,
+            xhdpi : document.getElementById("xhdpiCheckbox").checked,
+            xxhdpi : document.getElementById("xxhdpiCheckbox").checked,
+            xxxhdpi : document.getElementById("xxxhdpiCheckbox").checked,
+            repo : document.getElementById("repositoriesDropDownMenu").value,
+            imgBuffer : imgBuffer
+        }
+        socket.emit('cropIcon', icDetails)
     }
-    socket.emit('cropIcon', icDetails)
+    sendIc()
 })

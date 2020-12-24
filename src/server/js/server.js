@@ -41,10 +41,9 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
     io.sockets.on('connection', function(socket){
         log("CLIENT CONNECTION ESTABLISHED...\nWAITING FOR REQUESTS..." )
 
-        // Data received from iconCropper.js submit button as a json data (icDetails)
+        // Data received from client side
         socket.on('cropIcon', function (icDetails) {
-            // Console to verify data
-            console.log(icDetails.repo)
+            console.log(icDetails.imgBuffer)
         })
 
         socket.on('imgBuffer', function (imgBuffer) {
