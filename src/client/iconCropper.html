@@ -9,6 +9,7 @@
             <link rel="stylesheet" href="css/iconCropper.css">
             <link rel="stylesheet" href="css/commonStyles.css">
             <link rel="stylesheet" type="text/css" href="css/loader.css">
+            <script src="js/loader.js"></script>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
             <script src="js/foto.min.js"></script>
@@ -57,8 +58,11 @@
                     </div>
                 </div>
                 <div class="grid-item" id="imageView">
+                    <div class="button-holder">
+                        <a class="button" id="startNew" onclick="reset()"><span>Start New </span></a>
+                    </div>
                     <label>Image Preview</label><br>
-                    <img id="blah" alt="your image loads here"/><br>
+                    <img id="mainImgPreview"/><br>
                     iOS Icon<br>
                     <img id="ios"/><br>
                     xxxhdpi Icon<br>

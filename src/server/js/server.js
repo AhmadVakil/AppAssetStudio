@@ -133,8 +133,9 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                 })
             })
         })
-        socket.on('imgBuffer', function (imgBuffer) {
-            // instead of this 'imgBuffer', iconCrop should be used
+        socket.on('sendForCrop', function (imgBuffer) {
+            console.log(imgBuffer)
+            socket.emit('imgBuffer', imgBuffer);
         })
         socket.on('feedBack', function (obj) {
             if (config.production) {

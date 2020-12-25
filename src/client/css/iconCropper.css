@@ -13,9 +13,18 @@ input[type=file]{
 
 #repositoriesDropDownMenu{
     width: auto;
-    height: 25px;
     color: black;
     margin-bottom: 10px;
+}
+
+#mainImgPreview{
+    width:152px;
+    height:152px;
+}
+
+#ios{
+    width:152px;
+    height:152px;
 }
 
 #xxxhdpi{

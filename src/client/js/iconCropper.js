@@ -1,19 +1,54 @@
 var socket = io.connect('127.0.0.1:5001')
 
 $(document).ready(function(){
-    $('#formID input[type=checkbox]').attr('checked',false);
-    document.getElementById('roundCorner').disabled = true;
-    document.getElementById('dropShadow').disabled = true;
-    document.getElementById('iconCropperSubmitButton').disabled = true;
-    document.getElementById('roundCorner').style.opacity = 0.5;
-    document.getElementById('dropShadow').style.opacity = 0.5;
-    document.getElementById('dropShadowText').style.opacity = 0.5;
-    document.getElementById('roundCornerText').style.opacity = 0.5;
-    document.getElementById('iconSizesDiv').style.opacity = 0.5;
-    document.getElementById('iconCropperSubmitButton').style.display = "none";
-    document.getElementById('radiusTextValue').value = "Disabled";
-    document.getElementById('shadowTextValue').value = "Disabled";
-    $('#readURL').val('');
+    if (sessionStorage.getItem('imgBuffer') !== "") {
+        var imgBuffer = sessionStorage.getItem('imgBuffer')
+        $('#mainImgPreview').attr('src', imgBuffer);
+        $('#ios').attr('src', imgBuffer);
+        $('#xxxhdpi').attr('src', imgBuffer);
+        $('#xxhdpi').attr('src', imgBuffer);
+        $('#xhdpi').attr('src', imgBuffer);
+        $('#hdpi').attr('src', imgBuffer);
+        $('#mdpi').attr('src', imgBuffer);
+        document.getElementById('roundCorner').disabled = false;
+        document.getElementById('dropShadow').disabled = false;
+        document.getElementById('roundCorner').style.opacity = 1;
+        document.getElementById('dropShadow').style.opacity = 1;
+        document.getElementById('dropShadowText').style.opacity = 1;
+        document.getElementById('roundCornerText').style.opacity = 1;
+        document.getElementById('iconCropperSubmitButton').style.display = "inline-block";
+
+        // Enabling Checkboxes for icon sizes
+        document.getElementById('iOSCheckbox').disabled = false;
+        document.getElementById('hdpiCheckbox').disabled = false;
+        document.getElementById('mdpiCheckbox').disabled = false;
+        document.getElementById('xhdpiCheckbox').disabled = false;
+        document.getElementById('xxhdpiCheckbox').disabled = false;
+        document.getElementById('xxxhdpiCheckbox').disabled = false;
+        document.getElementById('iconSizesDiv').style.opacity = 1;
+    } else {
+        document.getElementById('roundCorner').disabled = true;
+        document.getElementById('dropShadow').disabled = true;
+        $('#formID input[type=checkbox]').attr('checked',false);
+            document.getElementById('roundCorner').disabled = true;
+            document.getElementById('roundCorner').checked = false;
+            document.getElementById('dropShadow').disabled = true;
+            document.getElementById('dropShadow').checked = false;
+            document.getElementById('iconCropperSubmitButton').disabled = true;
+            document.getElementById('roundCorner').style.opacity = 0.5;
+            document.getElementById('dropShadow').style.opacity = 0.5;
+            document.getElementById('dropShadowText').style.opacity = 0.5;
+            document.getElementById('roundCornerText').style.opacity = 0.5;
+            document.getElementById('iconSizesDiv').style.opacity = 0.5;
+            document.getElementById('iconCropperSubmitButton').style.display = "none";
+            document.getElementById('radiusTextValue').value = "Disabled";
+            document.getElementById('radiusTextValue').disabled = true;
+            document.getElementById('shadowTextValue').value = "Disabled";
+            document.getElementById('shadowTextValue').disabled = true;
+            $('#readURL').val('');
+    }
+
+
 });
 
 socket.on('Repositories', function (data) {
@@ -47,11 +82,16 @@ socket.on('Repositories', function (data) {
   }
 })
 
+socket.on('imgBuffer', function (imgBuffer) {
+    console.log(imgBuffer)
+})
+
+
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
-            $('#blah').attr('src', e.target.result);
+            $('#mainImgPreview').attr('src', e.target.result);
             $('#ios').attr('src', e.target.result);
             $('#xxxhdpi').attr('src', e.target.result);
             $('#xxhdpi').attr('src', e.target.result);
@@ -60,7 +100,7 @@ function readURL(input) {
             $('#mdpi').attr('src', e.target.result);
         };
         reader.readAsDataURL(input.files[0]);
-        //console.log($('#blah')[0].toDataURL());
+        //console.log($('#mainImgPreview')[0].toDataURL());
 
         // Now our file is loaded into browser therefore we enable elements
         document.getElementById('roundCorner').disabled = false;
@@ -86,7 +126,7 @@ function readURL(input) {
 }
 
 function giveRadius(range) {
-     document.getElementById("blah").style.borderRadius = range.value*10+"px";
+     document.getElementById("mainImgPreview").style.borderRadius = range.value*10+"px";
      document.getElementById("xxxhdpi").style.borderRadius = range.value*10+"px";
      document.getElementById("xxhdpi").style.borderRadius = range.value*7+"px";
      document.getElementById("xhdpi").style.borderRadius = range.value*5+"px";
@@ -96,7 +136,7 @@ function giveRadius(range) {
 }
 
 function dropShadow(range) {
-     document.getElementById("blah").style.boxShadow = "0px 0px "+range.value+"px black";
+     document.getElementById("mainImgPreview").style.boxShadow = "0px 0px "+range.value+"px black";
      document.getElementById("xxxhdpi").style.boxShadow = "0px 0px "+range.value+"px black";
      document.getElementById("xxhdpi").style.boxShadow = "0px 0px "+range.value+"px black";
      document.getElementById("xhdpi").style.boxShadow = "0px 0px "+range.value+"px black";
@@ -106,20 +146,26 @@ function dropShadow(range) {
 }
 
 document.getElementById('roundCorner').addEventListener("change", function(){
-  if (this.checked) {
-    console.log("checked")
-    document.getElementById('radiusTextValue').value = "0";
-    document.getElementById('roundCornerDiv').style.opacity = 1;
-    document.getElementById('radiusTextValue').disabled = false;
-    document.getElementById('vol').disabled = false;
-  } else {
-    console.log("unchecked")
-    document.getElementById('radiusTextValue').value = "Disabled";
-    document.getElementById('vol').value = 0;
-    document.getElementById('radiusTextValue').disabled = true;
-    document.getElementById('vol').disabled = true;
-    document.getElementById('roundCornerDiv').style.opacity = 0.5;
-  }
+    if (this.checked) {
+        console.log("checked")
+        document.getElementById('radiusTextValue').value = "0";
+        document.getElementById('roundCornerDiv').style.opacity = 1;
+        document.getElementById('radiusTextValue').disabled = false;
+        document.getElementById('vol').disabled = false;
+    } else {
+        console.log("unchecked")
+        document.getElementById('radiusTextValue').value = "Disabled";
+        document.getElementById('vol').value = 0;
+        document.getElementById('radiusTextValue').disabled = true;
+        document.getElementById('vol').disabled = true;
+        document.getElementById('roundCornerDiv').style.opacity = 0.5;
+        document.getElementById("mainImgPreview").style.borderRadius = "0px";
+        document.getElementById("xxxhdpi").style.borderRadius = "0px";
+        document.getElementById("xxhdpi").style.borderRadius = "0px";
+        document.getElementById("xhdpi").style.borderRadius = "0px";
+        document.getElementById("hdpi").style.borderRadius = "0px";
+        document.getElementById("mdpi").style.borderRadius = "0px";
+    }
 });
 
 document.getElementById('dropShadow').addEventListener("change", function(){
@@ -136,6 +182,12 @@ document.getElementById('dropShadow').addEventListener("change", function(){
     document.getElementById('shadowTextValue').disabled = true;
     document.getElementById('shadowVol').disabled = true;
     document.getElementById('dropShadowDiv').style.opacity = 0.5;
+    document.getElementById("mainImgPreview").style.boxShadow = "0px 0px 0px";
+    document.getElementById("xxxhdpi").style.boxShadow = "0px 0px 0px";
+    document.getElementById("xxhdpi").style.boxShadow = "0px 0px 0px";
+    document.getElementById("xhdpi").style.boxShadow = "0px 0px 0px";
+    document.getElementById("hdpi").style.boxShadow = "0px 0px 0px";
+    document.getElementById("mdpi").style.boxShadow = "0px 0px 0px";
   }
 });
 
@@ -166,3 +218,5 @@ document.getElementById('iconCropperSubmitButton').addEventListener("click", fun
     }
     sendIc()
 })
+
+

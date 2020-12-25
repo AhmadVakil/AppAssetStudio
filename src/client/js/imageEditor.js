@@ -1,3 +1,4 @@
+var socket = io.connect('127.0.0.1:5001')
 var foto;
 window.onload = function() {
  foto = new Foto();
@@ -99,10 +100,15 @@ function viewIcon() {
     ctx.restore();
 }
 function saveIcon() {
-    var socket = io.connect('127.0.0.1:5001')
     var imgBuffer = $('#can')[0].toDataURL();
-    socket.emit('imgBuffer', imgBuffer);
+    sessionStorage.setItem("imgBuffer", imgBuffer);
+    window.location.replace('iconCropper.html');
+    //socket.emit('sendForCrop', imgBuffer);
 }
+
+socket.on('imgBuffer', function (imgBuffer) {
+    console.log(imgBuffer)
+})
 
 function fitBorder() {
     document.getElementById("img-container").style.width = document.getElementById("foto-image").offsetWidth+"px";
