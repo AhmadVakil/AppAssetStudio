@@ -4,6 +4,7 @@
   "autoConfigSearch": "true",
   "serverVersion": 1.0,
   "logPath": "src/server/storage/logs/server-logs.log",
+  "uploadedImagesPath" : "src/server/storage/images/",
   "feedbackPath": "src/server/storage/feedbacks/feedbacks.log",
   "framesPath": "src/server/storage/images/crop-frames/",
   "resourcesPath": "src/server/storage/resources/",

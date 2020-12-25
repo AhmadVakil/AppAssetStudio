@@ -144,7 +144,7 @@ document.getElementById('iconCropperSubmitButton').addEventListener("click", fun
             xhdpi : document.getElementById("xhdpiCheckbox").checked,
             xxhdpi : document.getElementById("xxhdpiCheckbox").checked,
             xxxhdpi : document.getElementById("xxxhdpiCheckbox").checked,
-            repo : document.getElementById("repositoriesDropDownMenu").value,
+            repo : document.getElementById("repositoriesDropDownMenu").value+"/",
             imgBuffer : imgBuffer
         }
         socket.emit('cropIcon', icDetails)
