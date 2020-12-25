@@ -54,71 +54,77 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                     Jimp.read(Buffer.from((imagesJson[icDetails.borderRadiusAmount]).replace(/^data:image\/png;base64,/, ""), 'base64'), function (err, masker) {
                         masker.quality(100)
                         masker.resize(1024, 1024)
+                        appIcon.resize(1024, 1024)
 
                         // Creating iOS icon launcher
-                        appIcon.resize(1024, 1024).write(config.resourcesPath+icDetails.repo+config.pathToIosIcon)
+                        if (icDetails.ios) {
+                            appIcon.resize(1024, 1024).write(config.resourcesPath+icDetails.repo+config.pathToIosIcon)
+                        }
+
+                        // Iterating & removing pixels of appIcon based on the frame pixels
                         for (var y=0; y<1024; y++) {
                             for (var x=0; x<1024; x++) {
-                               pixelColor = masker.getPixelColor(x, y)
-                               if (pixelColor > 0) {
-                                   appIcon.setPixelColor(0xFFFFFF00, x, y)
-                               }
+                                pixelColor = masker.getPixelColor(x, y)
+                                if (pixelColor > 0) {
+                                    appIcon.setPixelColor(0xFFFFFF00, x, y)
+                                }
                             }
                         }
                         appIcon.quality(100)
                         appIcon.resize(1024, 1024)
-                        Jimp.read(config.uploadedImagesPath+"raw-background.png", function (err, transparentBg) {
+                        Jimp.read(Buffer.from((imagesJson.rawBg).replace(/^data:image\/png;base64,/, ""), 'base64'), function (err, transparentBg) {
                             var xxxhdpi, xxhdpi, xhdpi, mdpi, hdpi
                             xxxhdpi = xxhdpi = xhdpi = hdpi = mdpi = transparentBg
 
-                            // Creating all Android icon launchers
-                            xxxhdpi.resize(192, 192)
-                            appIcon.resize(152, 152)
-                            xxxhdpi.composite(appIcon, 20, 20)
-                            xxxhdpi.shadow({ opacity: 0.8, size: 1.0, blur: 5, x: 0, y: 0 })
-                            xxxhdpi.write(config.resourcesPath+icDetails.repo+config.pathToXXXHdpi)
-                            console.log("xxxhdpi created.")
-
-                            xxhdpi.resize(144, 144)
-                            appIcon.resize(114, 114)
-                            xxhdpi.composite(appIcon, 15, 15)
-                            xxhdpi.shadow({ opacity: 0.8, size: 1.0, blur: 5, x: 0, y: 0 })
-                            xxhdpi.write(config.resourcesPath+icDetails.repo+config.pathToXXHdpi)
-                            console.log("xxhdpi created.")
-
-                            xhdpi.resize(96, 96)
-                            appIcon.resize(76, 76)
-                            xhdpi.composite(appIcon, 10, 10)
-                            xhdpi.shadow({ opacity: 0.8, size: 1.0, blur: 5, x: 0, y: 0 })
-                            xhdpi.write(config.resourcesPath+icDetails.repo+config.pathToXHdpi)
-                            console.log("xhdpi created.")
-
-                            hdpi.resize(72, 72)
-                            appIcon.resize(56, 56)
-                            hdpi.composite(appIcon, 8, 8)
-                            hdpi.shadow({ opacity: 0.5, size: 1.0, blur: 1, x: 0, y: 0 })
-                            hdpi.write(config.resourcesPath+icDetails.repo+config.pathToHdpi)
-                            console.log("hdpi created.")
-
-                            mdpi.resize(48, 48)
-                            appIcon.resize(38, 38)
-                            mdpi.composite(appIcon, 5, 5)
-                            mdpi.shadow({ opacity: 0.5, size: 1.0, blur: 1, x: 0, y: 0 })
-                            mdpi.write(config.resourcesPath+icDetails.repo+config.pathToMdpi)
-                            console.log("mdpi created.")
-                            console.log('\x1b[33m%s\x1b[0m', "Completed! Icons cropped & saved in related directories!\n")
+                            // Creating all Android icon launchers based on requests
+                            if (icDetails.xxxhdpi) {
+                                xxxhdpi.resize(192, 192)
+                                appIcon.resize(152, 152)
+                                xxxhdpi.composite(appIcon, 20, 20)
+                                xxxhdpi.shadow({ opacity: 0.8, size: 1.0, blur: 5, x: 0, y: 0 })
+                                xxxhdpi.write(config.resourcesPath+icDetails.repo+config.pathToXXXHdpi)
+                                console.log("xxxhdpi created.")
+                            }
+                            if (icDetails.xxhdpi) {
+                                xxhdpi.resize(144, 144)
+                                appIcon.resize(114, 114)
+                                xxhdpi.composite(appIcon, 15, 15)
+                                xxhdpi.shadow({ opacity: 0.8, size: 1.0, blur: 5, x: 0, y: 0 })
+                                xxhdpi.write(config.resourcesPath+icDetails.repo+config.pathToXXHdpi)
+                                console.log("xxhdpi created.")
+                            }
+                            if (icDetails.xhdpi) {
+                                xhdpi.resize(96, 96)
+                                appIcon.resize(76, 76)
+                                xhdpi.composite(appIcon, 10, 10)
+                                xhdpi.shadow({ opacity: 0.8, size: 1.0, blur: 5, x: 0, y: 0 })
+                                xhdpi.write(config.resourcesPath+icDetails.repo+config.pathToXHdpi)
+                                console.log("xhdpi created.")
+                            }
+                            if (icDetails.hdpi) {
+                                hdpi.resize(72, 72)
+                                appIcon.resize(56, 56)
+                                hdpi.composite(appIcon, 8, 8)
+                                hdpi.shadow({ opacity: 0.5, size: 1.0, blur: 1, x: 0, y: 0 })
+                                hdpi.write(config.resourcesPath+icDetails.repo+config.pathToHdpi)
+                                console.log("hdpi created.")
+                            }
+                            if (icDetails.mdpi) {
+                                mdpi.resize(48, 48)
+                                appIcon.resize(38, 38)
+                                mdpi.composite(appIcon, 5, 5)
+                                mdpi.shadow({ opacity: 0.5, size: 1.0, blur: 1, x: 0, y: 0 })
+                                mdpi.write(config.resourcesPath+icDetails.repo+config.pathToMdpi)
+                                console.log("mdpi created.")
+                            }
+                            console.log('\x1b[33m%s\x1b[0m', "Completed! Icons requests processed!\n")
                         })
                     })
                 })
             })
         })
         socket.on('imgBuffer', function (imgBuffer) {
-            var img = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0"
-                + "NAAAAKElEQVQ4jWNgYGD4Twzu6FhFFGYYNXDUwGFpIAk2E4dHDRw1cDgaCAASFOffhEIO"
-                + "3gAAAABJRU5ErkJggg==";
-            var data = img.replace(/^data:image\/\w+;base64,/, "");
-            var buf = new Buffer(data, 'base64');
-            //fs.writeFile('image.png', buf);
+            // instead of this 'imgBuffer', iconCrop should be used
         })
         socket.on('feedBack', function (obj) {
             if (config.production) {
@@ -136,23 +142,21 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
             }
         })
         socket.on('fetchConfigFile', function (obj) {
-              jsonfile.readFile(obj.configPath, function(err, configData) {
-                  socket.emit('configData', configData);
-              })
-
+            jsonfile.readFile(obj.configPath, function(err, configData) {
+                socket.emit('configData', configData);
+            })
         })
         socket.on('openThisRepo', function (data) {
-              fromDir(config.resourcesPath+data.repoNames,'.json', socket)
+            fromDir(config.resourcesPath+data.repoNames,'.json', socket)
         })
-
         socket.on('saveJsonFile', function(jsonTextArea) {
             console.log(typeof jsonTextArea)
             socket.on('pathToJson', function(pathToJson) {
                 try {
-                  fs.unlinkSync(pathToJson) //  Remove the file
-                  fs.writeFileSync(pathToJson, jsonTextArea);
+                    fs.unlinkSync(pathToJson) //  Remove the file
+                    fs.writeFileSync(pathToJson, jsonTextArea);
                 } catch(err) {
-                  console.error(err)
+                    console.error(err)
                 }
             })
             socket.emit('jsonFileSaved')
