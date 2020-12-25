@@ -81,7 +81,9 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                                 xxxhdpi.resize(192, 192)
                                 appIcon.resize(152, 152)
                                 xxxhdpi.composite(appIcon, 20, 20)
-                                xxxhdpi.shadow({ opacity: 0.8, size: 1.0, blur: 5, x: 0, y: 0 })
+                                if (icDetails.dropShadow) {
+                                    xxxhdpi.shadow({ opacity: 0.8, size: 1.0, blur: 5, x: 0, y: 0 })
+                                }
                                 xxxhdpi.write(config.resourcesPath+icDetails.repo+config.pathToXXXHdpi)
                                 console.log("xxxhdpi created.")
                             }
@@ -89,7 +91,9 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                                 xxhdpi.resize(144, 144)
                                 appIcon.resize(114, 114)
                                 xxhdpi.composite(appIcon, 15, 15)
-                                xxhdpi.shadow({ opacity: 0.8, size: 1.0, blur: 5, x: 0, y: 0 })
+                                if (icDetails.dropShadow) {
+                                    xxhdpi.shadow({ opacity: 0.8, size: 1.0, blur: 5, x: 0, y: 0 })
+                                }
                                 xxhdpi.write(config.resourcesPath+icDetails.repo+config.pathToXXHdpi)
                                 console.log("xxhdpi created.")
                             }
@@ -97,7 +101,9 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                                 xhdpi.resize(96, 96)
                                 appIcon.resize(76, 76)
                                 xhdpi.composite(appIcon, 10, 10)
-                                xhdpi.shadow({ opacity: 0.8, size: 1.0, blur: 5, x: 0, y: 0 })
+                                if (icDetails.dropShadow) {
+                                    xhdpi.shadow({ opacity: 0.8, size: 1.0, blur: 5, x: 0, y: 0 })
+                                }
                                 xhdpi.write(config.resourcesPath+icDetails.repo+config.pathToXHdpi)
                                 console.log("xhdpi created.")
                             }
@@ -105,7 +111,9 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                                 hdpi.resize(72, 72)
                                 appIcon.resize(56, 56)
                                 hdpi.composite(appIcon, 8, 8)
-                                hdpi.shadow({ opacity: 0.5, size: 1.0, blur: 1, x: 0, y: 0 })
+                                if (icDetails.dropShadow) {
+                                    hdpi.shadow({ opacity: 0.5, size: 1.0, blur: 1, x: 0, y: 0 })
+                                }
                                 hdpi.write(config.resourcesPath+icDetails.repo+config.pathToHdpi)
                                 console.log("hdpi created.")
                             }
@@ -113,7 +121,9 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                                 mdpi.resize(48, 48)
                                 appIcon.resize(38, 38)
                                 mdpi.composite(appIcon, 5, 5)
-                                mdpi.shadow({ opacity: 0.5, size: 1.0, blur: 1, x: 0, y: 0 })
+                                if (icDetails.dropShadow) {
+                                    mdpi.shadow({ opacity: 0.5, size: 1.0, blur: 1, x: 0, y: 0 })
+                                }
                                 mdpi.write(config.resourcesPath+icDetails.repo+config.pathToMdpi)
                                 console.log("mdpi created.")
                             }

@@ -51,8 +51,13 @@ function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
-            $('#blah')
-                .attr('src', e.target.result);
+            $('#blah').attr('src', e.target.result);
+            $('#ios').attr('src', e.target.result);
+            $('#xxxhdpi').attr('src', e.target.result);
+            $('#xxhdpi').attr('src', e.target.result);
+            $('#xhdpi').attr('src', e.target.result);
+            $('#hdpi').attr('src', e.target.result);
+            $('#mdpi').attr('src', e.target.result);
         };
         reader.readAsDataURL(input.files[0]);
         //console.log($('#blah')[0].toDataURL());
@@ -81,12 +86,22 @@ function readURL(input) {
 }
 
 function giveRadius(range) {
-     document.getElementById("blah").style.borderRadius = range.value;
+     document.getElementById("blah").style.borderRadius = range.value*10+"px";
+     document.getElementById("xxxhdpi").style.borderRadius = range.value*10+"px";
+     document.getElementById("xxhdpi").style.borderRadius = range.value*7+"px";
+     document.getElementById("xhdpi").style.borderRadius = range.value*5+"px";
+     document.getElementById("hdpi").style.borderRadius = range.value*3+"px";
+     document.getElementById("mdpi").style.borderRadius = range.value*2+"px";
      document.getElementById("radiusTextValue").value = range.value;
 }
 
 function dropShadow(range) {
-     document.getElementById("blah").style.borderRadius = range.value;
+     document.getElementById("blah").style.boxShadow = "0px 0px "+range.value+"px black";
+     document.getElementById("xxxhdpi").style.boxShadow = "0px 0px "+range.value+"px black";
+     document.getElementById("xxhdpi").style.boxShadow = "0px 0px "+range.value+"px black";
+     document.getElementById("xhdpi").style.boxShadow = "0px 0px "+range.value+"px black";
+     document.getElementById("hdpi").style.boxShadow = "0px 0px "+range.value+"px black";
+     document.getElementById("mdpi").style.boxShadow = "0px 0px "+range.value+"px black";
      document.getElementById("shadowTextValue").value = range.value;
 }
 
@@ -97,7 +112,6 @@ document.getElementById('roundCorner').addEventListener("change", function(){
     document.getElementById('roundCornerDiv').style.opacity = 1;
     document.getElementById('radiusTextValue').disabled = false;
     document.getElementById('vol').disabled = false;
-
   } else {
     console.log("unchecked")
     document.getElementById('radiusTextValue').value = "Disabled";
@@ -137,6 +151,7 @@ document.getElementById('iconCropperSubmitButton').addEventListener("click", fun
         var imgBuffer = (await toBase64(file))
         var icDetails = {
             borderRadiusAmount : document.getElementById('radiusTextValue').value,
+            dropShadow : document.getElementById("dropShadow").checked,
             shadowAmount : document.getElementById('shadowTextValue').value,
             ios : document.getElementById("iOSCheckbox").checked,
             hdpi : document.getElementById("hdpiCheckbox").checked,
