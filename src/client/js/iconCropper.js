@@ -30,25 +30,23 @@ $(document).ready(function(){
         document.getElementById('roundCorner').disabled = true;
         document.getElementById('dropShadow').disabled = true;
         $('#formID input[type=checkbox]').attr('checked',false);
-            document.getElementById('roundCorner').disabled = true;
-            document.getElementById('roundCorner').checked = false;
-            document.getElementById('dropShadow').disabled = true;
-            document.getElementById('dropShadow').checked = false;
-            document.getElementById('iconCropperSubmitButton').disabled = true;
-            document.getElementById('roundCorner').style.opacity = 0.5;
-            document.getElementById('dropShadow').style.opacity = 0.5;
-            document.getElementById('dropShadowText').style.opacity = 0.5;
-            document.getElementById('roundCornerText').style.opacity = 0.5;
-            document.getElementById('iconSizesDiv').style.opacity = 0.5;
-            document.getElementById('iconCropperSubmitButton').style.display = "none";
-            document.getElementById('radiusTextValue').value = "Disabled";
-            document.getElementById('radiusTextValue').disabled = true;
-            document.getElementById('shadowTextValue').value = "Disabled";
-            document.getElementById('shadowTextValue').disabled = true;
-            $('#readURL').val('');
+        document.getElementById('roundCorner').disabled = true;
+        document.getElementById('roundCorner').checked = false;
+        document.getElementById('dropShadow').disabled = true;
+        document.getElementById('dropShadow').checked = false;
+        document.getElementById('iconCropperSubmitButton').disabled = true;
+        document.getElementById('roundCorner').style.opacity = 0.5;
+        document.getElementById('dropShadow').style.opacity = 0.5;
+        document.getElementById('dropShadowText').style.opacity = 0.5;
+        document.getElementById('roundCornerText').style.opacity = 0.5;
+        document.getElementById('iconSizesDiv').style.opacity = 0.5;
+        document.getElementById('iconCropperSubmitButton').style.display = "none";
+        document.getElementById('radiusTextValue').value = "Disabled";
+        document.getElementById('radiusTextValue').disabled = true;
+        document.getElementById('shadowTextValue').value = "Disabled";
+        document.getElementById('shadowTextValue').disabled = true;
+        $('#readURL').val('');
     }
-
-
 });
 
 socket.on('Repositories', function (data) {
@@ -218,5 +216,12 @@ document.getElementById('iconCropperSubmitButton').addEventListener("click", fun
     }
     sendIc()
 })
+
+function resetIcons(){
+    if (confirm('Do you want to delete your image?\nThis will delete your image from the browser.\n')) {
+        sessionStorage.setItem("imgBuffer", "");
+        location.reload();
+    }
+}
 
 
