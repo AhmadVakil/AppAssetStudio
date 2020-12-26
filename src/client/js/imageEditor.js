@@ -1,7 +1,9 @@
 var socket = io.connect('127.0.0.1:5001')
 var foto;
+var toolboxWindow = document.getElementById("toolboxWindow");
 window.onload = function() {
- foto = new Foto();
+    toolboxWindow.style.display = "none"
+    foto = new Foto();
 }
 
 function selectImage() {
@@ -99,12 +101,7 @@ function saveIcon() {
     var imgBuffer = $('#can')[0].toDataURL();
     sessionStorage.setItem("imgBuffer", imgBuffer);
     window.location.replace('iconCropper.html');
-    //socket.emit('sendForCrop', imgBuffer);
 }
-
-socket.on('imgBuffer', function (imgBuffer) {
-    console.log(imgBuffer)
-})
 
 function fitBorder() {
     document.getElementById("img-container").style.width = document.getElementById("foto-image").offsetWidth+"px";
@@ -148,7 +145,6 @@ $(document).ready(function () {
     })
   }
 });
-
 
 //Make the DIV element draggagle:
 dragElement(document.getElementById("toolboxWindow"));
@@ -195,10 +191,15 @@ function dragElement(elmnt) {
 }
 
 function openCloseToolBox() {
-  var x = document.getElementById("toolboxWindow");
-  if (x.style.display === "none") {
-    x.style.display = "block";
+
+  if (toolboxWindow.style.display === "none") {
+    toolboxWindow.style.display = "block";
   } else {
-    x.style.display = "none";
+    toolboxWindow.style.display = "none";
   }
+}
+
+function refreshToolboxView() {
+    fitBorder()
+    viewIcon()
 }

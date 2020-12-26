@@ -47,7 +47,7 @@
                 </p>
             </div>
             <div id="img-container" draggable="false">
-                <img id="foto-image" class="image" draggable="false"/>
+                <img id="foto-image" class="image" draggable="false" onchange="refreshToolboxView()" onload="refreshToolboxView()"/>
             </div>
             <div class="buttons-section" id="toolboxWindow">
                 <div id="toolboxWindowHeader"><i class="fas fa-arrows-alt"></i> Drag this toolbox to move. <button type="button" onclick="openCloseToolBox()" style="background:red; color:white; border-radius:5px; padding:2px; float:right;"> Hide Toolbox</button>
@@ -64,9 +64,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> <button id="apply-border" onclick="fitBorder()"><span id="blinker">Apply border </span></button> </td>
+                        <td> <button id="close-image" onclick="saveIcon()"><span id="blinker"> Create Icon Launchers </span></button> </td>
+                        <td> <button id="apply-border" onclick="fitBorder()"> Apply border </button> </td>
                         <td> <button id="reset-image" onclick="viewIcon()"> Extract Image </button> </td>
-                        <td> <button id="close-image" onclick="saveIcon()"> Convert to icon launcher </button> </td>
                     </tr>
                     <tr>
                         <td> <button id="makeGrayScale" onclick="makeGrayScale()">Grayscale </button> </td>
