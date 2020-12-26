@@ -151,7 +151,7 @@ $(document).ready(function () {
 
 
 //Make the DIV element draggagle:
-dragElement(document.getElementById("editorWindow"));
+dragElement(document.getElementById("toolboxWindow"));
 
 function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
@@ -195,7 +195,7 @@ function dragElement(elmnt) {
 }
 
 function openCloseToolBox() {
-  var x = document.getElementById("editorWindow");
+  var x = document.getElementById("toolboxWindow");
   if (x.style.display === "none") {
     x.style.display = "block";
   } else {
