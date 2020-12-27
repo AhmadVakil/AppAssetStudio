@@ -42,6 +42,33 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
     io.sockets.on('connection', function(socket){
         log("CLIENT CONNECTION ESTABLISHED...\nWAITING FOR REQUESTS..." )
 
+        socket.on('addImageOnBackground', function (imgBuffer) {
+            var bg
+            Jimp.read(Buffer.from((imgBuffer.backgroundImage).replace(/^data:image\/png;base64,/, ""), 'base64'), function (err, background) {
+                background.resize(1024, 1024)
+                bg = background
+                Jimp.read(Buffer.from((imgBuffer.opTopImage).replace(/^data:image\/png;base64,/, ""), 'base64'), function (err, onTopIcon) {
+                fs.readFile('src/server/configs/images.json', 'utf8', function (err, imagesJson) {
+                    if (err) throw err;
+                    imagesJson = JSON.parse(imagesJson)
+                    Jimp.read(Buffer.from((imagesJson["rawBg"]).replace(/^data:image\/png;base64,/, ""), 'base64'), function (err, rawBackground) {
+                        rawBackground.resize(1024, 1024)
+                        var x = 10
+                        var y = 10
+                        rawBackground.composite(onTopIcon, x, y).shadow({ opacity: 0.8, size: 1.0, blur: 5, x: 0, y: 0 })
+                        bg.composite(rawBackground, 0, 0)
+                        bg.getBase64(Jimp.AUTO, (err, res) => {
+                               console.log(res)
+                        })
+                    })
+                    })
+                })
+            })
+        })
+
+        socket.on('iconBackgroundImage', function (imgBuffer) {
+            socket.emit("iconUpdates", imgBuffer)
+        })
         // Image data received from client side
         socket.on('cropIcon', function (icDetails) {
             var base64Data = icDetails.imgBuffer.replace(/^data:image\/png;base64,/, "");

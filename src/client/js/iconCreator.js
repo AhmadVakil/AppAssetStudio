@@ -21,18 +21,50 @@ function uploadBackgroundImage(input) {
             sessionStorage.setItem("iconHasBackgroundColor", false);
             sessionStorage.setItem("iconHasBackgroundTransparent", false);
             sessionStorage.setItem("iconBackgroundImage", e.target.result);
-            $('#mainImgPreview').attr('src', e.target.result);
+            /*$('#mainImgPreview').attr('src', e.target.result);
             $('#ios').attr('src', e.target.result);
             $('#xxxhdpi').attr('src', e.target.result);
             $('#xxhdpi').attr('src', e.target.result);
             $('#xhdpi').attr('src', e.target.result);
             $('#hdpi').attr('src', e.target.result);
-            $('#mdpi').attr('src', e.target.result);
+            $('#mdpi').attr('src', e.target.result);*/
+            socket.emit("iconBackgroundImage", e.target.result)
         };
         sessionStorage.setItem("imgBuffer", "");
         reader.readAsDataURL(input.files[0]);
     }
 }
+
+function uploadOnTopImage(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            sessionStorage.setItem("iconHasBackgroundImage", true);
+            sessionStorage.setItem("iconHasBackgroundColor", false);
+            sessionStorage.setItem("iconHasBackgroundTransparent", false);
+            sessionStorage.setItem("onTopImage", e.target.result);
+            /*$('#mainImgPreview').attr('src', e.target.result);
+            $('#ios').attr('src', e.target.result);
+            $('#xxxhdpi').attr('src', e.target.result);
+            $('#xxhdpi').attr('src', e.target.result);
+            $('#xhdpi').attr('src', e.target.result);
+            $('#hdpi').attr('src', e.target.result);
+            $('#mdpi').attr('src', e.target.result);*/
+            var icDetails = {
+                backgroundImage: sessionStorage.getItem("iconBackgroundImage"),
+                opTopImage: sessionStorage.getItem("onTopImage")
+            }
+            socket.emit("addImageOnBackground", icDetails)
+        };
+        sessionStorage.setItem("imgBuffer", "");
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+socket.on('iconUpdates', function (imgBuffer) {
+    sessionStorage.setItem("imgBuffer", imgBuffer);
+    $('#mainImgPreview').attr('src', imgBuffer);
+})
 
 function imageBackground(radio) {
     if (radio.checked === true) {
