@@ -1,36 +1,78 @@
 <!DOCTYPE html>
 <html>
-        <head>
-            <title>Icon Editor</title>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <link rel="icon" type="image/png" href="image/icon-changer.png">
-            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
-            <link rel="stylesheet" href="css/resicons.css">
-            <link rel="stylesheet" href="css/commonStyles.css">
-            <link rel="stylesheet" type="text/css" href="css/loader.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-            <script src="js/foto.min.js"></script>
-            <script src="js/resicons.js"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        </head>
-        <body id="body">
-        <div class="grid-container" draggable="false">
-            <div class="grid-item">
-                Choose and upload image file to begin.
-                <div class="file-upload-section" onclick="selectImage()">
-                    <input id="foto-file" type="file">
-                    Upload Image
-                </div>
-            </div>
-            <div class="grid-item">
-                Choose and upload what you want to add on top.
-                <div class="file-upload-section" onclick="selectImage()">
-                    <input id="foto-file" type="file">
-                    Upload Image
-                </div>
-            </div>
+<head>
+    <title>Icon Editor</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="image/icon-changer.png">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+    <link rel="stylesheet" href="css/iconCropper.css">
+    <link rel="stylesheet" href="css/commonStyles.css">
+    <link rel="stylesheet" type="text/css" href="css/loader.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="js/loader.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script src="js/foto.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body id="body">
+<h3 id="failedToLoadRepoNotification" style="display:none;">Failed to load repositories!</h3>
+<h3 id="selectRepoNotification" style="display:none;">Select a repository to continue.</h3>
+<div class="grid-container" draggable="false">
+    <div class="grid-item">
+        <hr>
+        <h2>Step 1</h2>
+        Background
+        <hr>
+        <p>Please select the icon background</p>
+        <input type="radio" id="transparentBackground" name="background" value="transparentBackground" onchange="transparentBackground(this)" checked>
+        <label for="transparentBackground">Transparent Background (No Background)</label><br><br>
+
+        <input type="radio" id="imageBackground" name="background" value="imageBackground" onchange="imageBackground(this)">
+        <label for="imageBackground">Image Background</label><br>
+        <div class="file-upload-section">
+            <input type='file' id="uploadBackgroundImage" onchange="uploadBackgroundImage(this);" />
+        </div><br>
+
+        <input type="radio" id="colorBackground" name="background" value="colorBackground">
+        <label for="colorBackground">Color Background</label><br>
+        <label for="favcolor">Select your favorite color:</label>
+        <input type="color" id="favcolor" name="favcolor" value="#000000" onchange="colorBackground(this)"><br><br>
+
+        <hr>
+        <h2>Step 2</h2>
+        On top icon
+        <hr>
+        <hr>
+        <h2>Step 3</h2>
+        Submit to icon cropper
+        <hr>
+        <div class="button-holder">
+            <a class="button" id="sendToIconCropper" ><span>Submit </span></a>
         </div>
+    </div>
+    <div class="grid-item" id="imageView">
+        <div class="button-holder">
+            <button type="button" class="groupButtons" id="resetIcons" onclick="resetIcons()" style="background:red; color:white;"><i class="fas fa-trash-alt" aria-hidden="true"></i> Reset Icons</button>
+        </div>
+        <label>Image Preview</label><br>
+        <img id="mainImgPreview"/><br>
+        iOS Icon<br>
+        <img id="ios"/><br>
+        xxxhdpi Icon<br>
+        <img id="xxxhdpi" class="androidIcons"/><br>
+        xxhdpi Icon<br>
+        <img id="xxhdpi" class="androidIcons"/><br>
+        xhdpi Icon<br>
+        <img id="xhdpi" class="androidIcons"/><br>
+        hdpi Icon<br>
+        <img id="hdpi" class="androidIcons"/><br>
+        mdpi Icon<br>
+        <img id="mdpi" class="androidIcons"/><br>
+    </div>
+</div>
 </body>
+<script src="js/iconCreator.js"></script>
 </html>
