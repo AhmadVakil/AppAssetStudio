@@ -1,4 +1,5 @@
 var socket = io.connect('127.0.0.1:5001')
+
 $(document).ready(function(){
     if (sessionStorage.getItem('imgBuffer') !== "") {
         var imgBuffer = sessionStorage.getItem('imgBuffer')
