@@ -80,11 +80,6 @@ socket.on('Repositories', function (data) {
   }
 })
 
-socket.on('imgBuffer', function (imgBuffer) {
-    console.log(imgBuffer)
-})
-
-
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -97,6 +92,7 @@ function readURL(input) {
             $('#hdpi').attr('src', e.target.result);
             $('#mdpi').attr('src', e.target.result);
         };
+        sessionStorage.setItem("imgBuffer", "");
         reader.readAsDataURL(input.files[0]);
         //console.log($('#mainImgPreview')[0].toDataURL());
 
@@ -190,31 +186,45 @@ document.getElementById('dropShadow').addEventListener("change", function(){
 });
 
 document.getElementById('iconCropperSubmitButton').addEventListener("click", function(){
-    const toBase64 = file => new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-    });
-    async function sendIc() {
+    var ios, hdpi, mdpi, xhdpi, xxhdpi, xxxhdpi
+    ios = document.getElementById("iOSCheckbox").checked
+    hdpi = document.getElementById("hdpiCheckbox").checked
+    mdpi = document.getElementById("mdpiCheckbox").checked
+    xhdpi = document.getElementById("xhdpiCheckbox").checked
+    xxhdpi = document.getElementById("xxhdpiCheckbox").checked
+    xxxhdpi = document.getElementById("xxxhdpiCheckbox").checked
+    if (document.getElementById("repositoriesDropDownMenu").value === "Select resource or repository") {
+        alert("Please choose a resource");
+        document.getElementById("repositoriesDropDownMenu").style.backgroundColor = "red"
+    } else if (!(ios || hdpi || mdpi || xhdpi || xxhdpi || xxxhdpi)) {
+        alert("Please choose at least one size to proceed!");
+    } else {
+        const toBase64 = file => new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
         const file = document.getElementById("readURL").files[0];
-        var imgBuffer = (await toBase64(file))
-        var icDetails = {
-            borderRadiusAmount : document.getElementById('radiusTextValue').value,
-            dropShadow : document.getElementById("dropShadow").checked,
-            shadowAmount : document.getElementById('shadowTextValue').value,
-            ios : document.getElementById("iOSCheckbox").checked,
-            hdpi : document.getElementById("hdpiCheckbox").checked,
-            mdpi : document.getElementById("mdpiCheckbox").checked,
-            xhdpi : document.getElementById("xhdpiCheckbox").checked,
-            xxhdpi : document.getElementById("xxhdpiCheckbox").checked,
-            xxxhdpi : document.getElementById("xxxhdpiCheckbox").checked,
-            repo : document.getElementById("repositoriesDropDownMenu").value+"/",
-            imgBuffer : imgBuffer
-        }
-        socket.emit('cropIcon', icDetails)
+            async function sendIc() {
+                var imgBuffer = sessionStorage.getItem('imgBuffer') !== "" ? sessionStorage.getItem('imgBuffer') : (await toBase64(file))
+                var icDetails = {
+                    borderRadiusAmount : document.getElementById('radiusTextValue').value,
+                    dropShadow : document.getElementById("dropShadow").checked,
+                    shadowAmount : document.getElementById('shadowTextValue').value,
+                    ios : ios,
+                    hdpi : hdpi,
+                    mdpi : mdpi,
+                    xhdpi : xhdpi,
+                    xxhdpi : xxhdpi,
+                    xxxhdpi : xxxhdpi,
+                    repo : document.getElementById("repositoriesDropDownMenu").value+"/",
+                    imgBuffer : imgBuffer
+                }
+                socket.emit('cropIcon', icDetails)
+            }
+            sendIc()
     }
-    sendIc()
 })
 
 function resetIcons(){
@@ -223,5 +233,3 @@ function resetIcons(){
         location.reload();
     }
 }
-
-
