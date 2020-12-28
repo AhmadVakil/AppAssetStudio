@@ -1,7 +1,7 @@
 var socket = io.connect('127.0.0.1:5001')
 
 $(document).ready(function(){
-    if (sessionStorage.getItem('imgBuffer') !== "") {
+    /*if (sessionStorage.getItem('imgBuffer') !== "") {
         var imgBuffer = sessionStorage.getItem('imgBuffer')
         $('#mainImgPreview').attr('src', imgBuffer);
         $('#ios').attr('src', imgBuffer);
@@ -10,27 +10,17 @@ $(document).ready(function(){
         $('#xhdpi').attr('src', imgBuffer);
         $('#hdpi').attr('src', imgBuffer);
         $('#mdpi').attr('src', imgBuffer);
-    }
-});
+    }*/
+})
 
 function uploadBackgroundImage(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
-            sessionStorage.setItem("iconHasBackgroundImage", true);
-            sessionStorage.setItem("iconHasBackgroundColor", false);
-            sessionStorage.setItem("iconHasBackgroundTransparent", false);
             sessionStorage.setItem("iconBackgroundImage", e.target.result);
-            /*$('#mainImgPreview').attr('src', e.target.result);
-            $('#ios').attr('src', e.target.result);
-            $('#xxxhdpi').attr('src', e.target.result);
-            $('#xxhdpi').attr('src', e.target.result);
-            $('#xhdpi').attr('src', e.target.result);
-            $('#hdpi').attr('src', e.target.result);
-            $('#mdpi').attr('src', e.target.result);*/
-            socket.emit("iconBackgroundImage", e.target.result)
+            //socket.emit("iconBackgroundImage", e.target.result)
         };
-        sessionStorage.setItem("imgBuffer", "");
+        //sessionStorage.setItem("imgBuffer", "");
         reader.readAsDataURL(input.files[0]);
     }
 }
@@ -39,55 +29,64 @@ function uploadOnTopImage(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
-            sessionStorage.setItem("iconHasBackgroundImage", true);
-            sessionStorage.setItem("iconHasBackgroundColor", false);
-            sessionStorage.setItem("iconHasBackgroundTransparent", false);
             sessionStorage.setItem("onTopImage", e.target.result);
-            /*$('#mainImgPreview').attr('src', e.target.result);
-            $('#ios').attr('src', e.target.result);
-            $('#xxxhdpi').attr('src', e.target.result);
-            $('#xxhdpi').attr('src', e.target.result);
-            $('#xhdpi').attr('src', e.target.result);
-            $('#hdpi').attr('src', e.target.result);
-            $('#mdpi').attr('src', e.target.result);*/
+            //console.log(e.target.result)
             var icDetails = {
                 backgroundImage: sessionStorage.getItem("iconBackgroundImage"),
-                opTopImage: sessionStorage.getItem("onTopImage")
+                useBackgroundColor: false,
+                transparentBackground: false,
+                onTopImage: sessionStorage.getItem("onTopImage"),
+                scaleAmount: document.getElementById("scaleVol").value
             }
             socket.emit("addImageOnBackground", icDetails)
-        };
-        sessionStorage.setItem("imgBuffer", "");
+        }
+        //sessionStorage.setItem("imgBuffer", "");
         reader.readAsDataURL(input.files[0]);
     }
 }
 
+socket.on("loadingImage", function(msg) {
+    $('#mainImgPreview').attr('src', "../image/loading.gif");
+})
+
 socket.on('iconUpdates', function (imgBuffer) {
-    sessionStorage.setItem("imgBuffer", imgBuffer);
-    $('#mainImgPreview').attr('src', imgBuffer);
+  $('#mainImgPreview').attr('src', imgBuffer);
 })
 
 function imageBackground(radio) {
-    if (radio.checked === true) {
-        sessionStorage.setItem("iconHasBackgroundImage", true);
-        sessionStorage.setItem("iconHasBackgroundColor", false);
-        sessionStorage.setItem("iconHasBackgroundTransparent", false);
-    } else {
-        document.getElementById("uploadBackgroundImage").disabled = true
-    }
+   /* if (radio.checked) {
+        uploadOnTopImage(document.getElementById("uploadOnTopImage"))
+    }*/
+
 }
 
 function colorBackground(color) {
-    sessionStorage.setItem("iconHasBackgroundImage", false);
-    sessionStorage.setItem("iconHasBackgroundColor", true);
-    sessionStorage.setItem("iconHasBackgroundTransparent", false);
-    sessionStorage.setItem("iconBackgroundColor", color.value);
+console.log(document.getElementById("favcolor").value)
+    if (document.getElementById("colorBackground").checked) {
+        sessionStorage.setItem("iconBackgroundImage", "transparent");
+        var icDetails = {
+                backgroundImage: "transparent",
+                useBackgroundColor: true,
+                backgroundColor: document.getElementById("favcolor").value,
+                transparentBackground: false,
+                onTopImage: sessionStorage.getItem("onTopImage"),
+                scaleAmount: document.getElementById("scaleVol").value
+        }
+        socket.emit("addImageOnBackground", icDetails)
+    }
 }
 
 function transparentBackground(radio) {
-    if (radio.checked === true) {
-        sessionStorage.setItem("iconHasBackgroundImage", false);
-        sessionStorage.setItem("iconHasBackgroundColor", false);
-        sessionStorage.setItem("iconHasBackgroundTransparent", true);
+    if (radio.checked) {
+        sessionStorage.setItem("iconBackgroundImage", "transparent");
+        var icDetails = {
+                backgroundImage: "transparent",
+                useBackgroundColor: false,
+                transparentBackground: true,
+                onTopImage: sessionStorage.getItem("onTopImage"),
+                scaleAmount: document.getElementById("scaleVol").value
+            }
+            socket.emit("addImageOnBackground", icDetails)
     }
 }
 
@@ -100,4 +99,17 @@ function resetIcons(){
         sessionStorage.setItem("imgBuffer", "");
         location.reload();
     }
+}
+
+function scaleIcon(scaleAmount) {
+    document.getElementById("scaleAmountText").innerHTML = scaleAmount.value;
+    var icDetails = {
+        backgroundImage: document.getElementById("imageBackground").checked ? sessionStorage.getItem("iconBackgroundImage") : "transparent",
+        useBackgroundColor: document.getElementById("colorBackground").checked,
+        backgroundColor: document.getElementById("favcolor").value,
+        transparentBackground: document.getElementById("transparentBackground").checked,
+        onTopImage: sessionStorage.getItem("onTopImage"),
+        scaleAmount: document.getElementById("scaleVol").value
+    }
+    socket.emit("addImageOnBackground", icDetails)
 }

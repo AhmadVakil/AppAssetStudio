@@ -1,0 +1,70 @@
+img{
+    max-width:180px;
+}
+
+input[type=file]{
+    padding:10px;
+    background:#2d2d2d;
+}
+
+#dropShadowDiv, #roundCornerDiv, #iconSizesDiv{
+   transition: 1.5s opacity;
+}
+
+#repositoriesDropDownMenu{
+    width: auto;
+    color: black;
+    margin-bottom: 10px;
+}
+
+#mainImgPreview {
+    width:152px;
+    height:152px;
+    background: transparent url('../image/loading.gif') center no-repeat;
+    background-position: 50% 50%;
+}
+
+#ios{
+    width:152px;
+    height:152px;
+}
+
+#xxxhdpi{
+    width:152px;
+    height:152px;
+}
+#xxhdpi{
+    width:114px;
+    height:114px;
+}
+#xhdpi{
+    width:76px;
+    height:76px;
+}
+#hdpi{
+    width:56px;
+    height:56px;
+}
+#mdpi{
+    width:38px;
+    height:38px;
+}
+
+.groupButtons {
+	border-radius: 4px;
+	background-color: white;
+	border: none;
+	color: black;
+	text-align: center;
+	font-size: 18px;
+	padding: 5px;
+	width: inherit;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
+	box-shadow: 0px 0px 3px #ffffff;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	transition: all 2s;
+}
+

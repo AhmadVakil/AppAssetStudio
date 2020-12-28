@@ -176,7 +176,7 @@ fs.readFile('../configs/cli-config.json', 'utf8', function (err, data) {
                 }
                 cropQuestionOne()
             } else if (answer === "2") {
-                // Do you want background color for you icon
+                // Do you want background color for your icon
                 rl.question("\nChoose a background color for your icon or press return to use transparent\nThis color comes with alpha chanel which represent the amount of transparency.\nYou can simply Google your color and paste here.\nFormat is 0xRRBBGGAA, example 0x559910FF.\nEnter Color: ", function(bgColor) {
                     var bg
                     Jimp.read(config.imagesPath+"raw-background.png", function (err, rawBackground) {
@@ -200,7 +200,7 @@ fs.readFile('../configs/cli-config.json', 'utf8', function (err, data) {
                                         console.log("Scale amount is not valid! Default scale set to 0%.")
                                     }
                                     onTopIcon.resize(onTopIconScaleAmount/100*onTopIcon.bitmap.width + onTopIcon.bitmap.width,
-                                                                                                         onTopIconScaleAmount/100*onTopIcon.bitmap.height + onTopIcon.bitmap.height)
+                                                     onTopIconScaleAmount/100*onTopIcon.bitmap.height + onTopIcon.bitmap.height)
                                     var x = ( (bg.bitmap.width - onTopIcon.bitmap.width) / 2 )
                                     var y = ( (bg.bitmap.width - onTopIcon.bitmap.width) / 2 )
                                     rawBackground.composite(onTopIcon, x, y).shadow({ opacity: 0.8, size: 1.0, blur: 5, x: 0, y: 0 })

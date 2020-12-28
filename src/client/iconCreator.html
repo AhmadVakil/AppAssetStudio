@@ -36,7 +36,7 @@
             <input type='file' id="uploadBackgroundImage" onchange="uploadBackgroundImage(this);" />
         </div><br>
 
-        <input type="radio" id="colorBackground" name="background" value="colorBackground">
+        <input type="radio" id="colorBackground" name="background" value="colorBackground" onchange="colorBackground(this)">
         <label for="colorBackground">Color Background</label><br>
         <label for="favcolor">Select your favorite color:</label>
         <input type="color" id="favcolor" name="favcolor" value="#000000" onchange="colorBackground(this)"><br><br>
@@ -44,10 +44,15 @@
         <hr>
         <h2>Step 2</h2>
         On top icon
+
         <hr>
         <div class="file-upload-section">
             <input type='file' id="uploadOnTopImage" onchange="uploadOnTopImage(this);" />
         </div><br>
+        Scale
+        <input type="range" id="scaleVol" name="scaleVol" min="-99" max="99" value="0" onchange="scaleIcon(this);"><br>
+        <span id="scaleAmountText"></span>
+
         <hr>
         <h2>Step 3</h2>
         Submit to icon cropper
@@ -61,7 +66,7 @@
             <button type="button" class="groupButtons" id="resetIcons" onclick="resetIcons()" style="background:red; color:white;"><i class="fas fa-trash-alt" aria-hidden="true"></i> Reset Icons</button>
         </div>
         <label>Image Preview</label><br>
-        <img id="mainImgPreview"/><br>
+        <img id="mainImgPreview" class="androidIcons"/><br>
         iOS Icon<br>
         <img id="ios"/><br>
         xxxhdpi Icon<br>

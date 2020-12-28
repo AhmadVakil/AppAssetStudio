@@ -43,26 +43,40 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
         log("CLIENT CONNECTION ESTABLISHED...\nWAITING FOR REQUESTS..." )
 
         socket.on('addImageOnBackground', function (imgBuffer) {
+            socket.emit("loadingImage", ({msg: "Processing Image"}))
+            fs.readFile('src/server/configs/images.json', 'utf8', function (err, imagesJson) {
+            imagesJson = JSON.parse(imagesJson)
             var bg
-            Jimp.read(Buffer.from((imgBuffer.backgroundImage).replace(/^data:image\/png;base64,/, ""), 'base64'), function (err, background) {
+            var transparentBg = imgBuffer.transparentBackground || imgBuffer.useBackgroundColor  ? imagesJson["rawBg"] : imgBuffer.backgroundImage
+            Jimp.read(Buffer.from((transparentBg).replace(/^data:image\/png;base64,/, ""), 'base64'), function (err, background) {
                 background.resize(1024, 1024)
+                if (imgBuffer.useBackgroundColor) {
+                var bgColor = Jimp.cssColorToHex(imgBuffer.backgroundColor)
+                    for (var y=0; y<1024; y++) {
+                        for (var x=0; x<1024; x++) {
+                           background.setPixelColor(bgColor, x, y)
+                        }
+                    }
+                }
                 bg = background
-                Jimp.read(Buffer.from((imgBuffer.opTopImage).replace(/^data:image\/png;base64,/, ""), 'base64'), function (err, onTopIcon) {
-                fs.readFile('src/server/configs/images.json', 'utf8', function (err, imagesJson) {
+                Jimp.read(Buffer.from((imgBuffer.onTopImage).replace(/^data:image\/png;base64,/, ""), 'base64'), function (err, onTopIcon) {
+
                     if (err) throw err;
-                    imagesJson = JSON.parse(imagesJson)
+
                     Jimp.read(Buffer.from((imagesJson["rawBg"]).replace(/^data:image\/png;base64,/, ""), 'base64'), function (err, rawBackground) {
                         rawBackground.resize(1024, 1024)
-                        var x = 10
-                        var y = 10
+                        onTopIcon.resize(parseInt(imgBuffer.scaleAmount)/100*onTopIcon.bitmap.width + onTopIcon.bitmap.width,
+                                         parseInt(imgBuffer.scaleAmount)/100*onTopIcon.bitmap.height + onTopIcon.bitmap.height)
+                        var x = ( (bg.bitmap.width - onTopIcon.bitmap.width) / 2 )
+                        var y = ( (bg.bitmap.width - onTopIcon.bitmap.width) / 2 )
                         rawBackground.composite(onTopIcon, x, y).shadow({ opacity: 0.8, size: 1.0, blur: 5, x: 0, y: 0 })
                         bg.composite(rawBackground, 0, 0)
                         bg.getBase64(Jimp.AUTO, (err, res) => {
-                               console.log(res)
+                               socket.emit("iconUpdates", res)
                         })
                     })
-                    })
                 })
+            })
             })
         })
 
