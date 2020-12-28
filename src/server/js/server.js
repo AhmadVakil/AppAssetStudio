@@ -42,13 +42,13 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
     io.sockets.on('connection', function(socket){
         log("CLIENT CONNECTION ESTABLISHED...\nWAITING FOR REQUESTS..." )
 
-        socket.on('addImageOnBackground', function (imgBuffer) {
+        socket.on('manipulateIcon', function (imgBuffer) {
             socket.emit("loadingImage", ({msg: "Processing Image"}))
             fs.readFile('src/server/configs/images.json', 'utf8', function (err, imagesJson) {
             imagesJson = JSON.parse(imagesJson)
             var bg
-            var transparentBg = imgBuffer.transparentBackground || imgBuffer.useBackgroundColor  ? imagesJson["rawBg"] : imgBuffer.backgroundImage
-            Jimp.read(Buffer.from((transparentBg).replace(/^data:image\/png;base64,/, ""), 'base64'), function (err, background) {
+            var background = imgBuffer.transparentBackground || imgBuffer.useBackgroundColor || imgBuffer.backgroundImage === "transparent" ? imagesJson["rawBg"] : imgBuffer.backgroundImage
+            Jimp.read(Buffer.from((background).replace(/^data:image\/png;base64,/, ""), 'base64'), function (err, background) {
                 background.resize(1024, 1024)
                 if (imgBuffer.useBackgroundColor) {
                 var bgColor = Jimp.cssColorToHex(imgBuffer.backgroundColor)
@@ -59,10 +59,9 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                     }
                 }
                 bg = background
-                Jimp.read(Buffer.from((imgBuffer.onTopImage).replace(/^data:image\/png;base64,/, ""), 'base64'), function (err, onTopIcon) {
-
+                var onTopImage = imgBuffer.onTopImage === null ? imagesJson["rawBg"] : imgBuffer.onTopImage
+                Jimp.read(Buffer.from((onTopImage).replace(/^data:image\/png;base64,/, ""), 'base64'), function (err, onTopIcon) {
                     if (err) throw err;
-
                     Jimp.read(Buffer.from((imagesJson["rawBg"]).replace(/^data:image\/png;base64,/, ""), 'base64'), function (err, rawBackground) {
                         rawBackground.resize(1024, 1024)
                         onTopIcon.resize(parseInt(imgBuffer.scaleAmount)/100*onTopIcon.bitmap.width + onTopIcon.bitmap.width,
