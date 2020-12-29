@@ -120,7 +120,7 @@ function viewIcon() {
     ctx.arcTo(squareLength,squareLength,squareLength,90,radius);
     ctx.closePath();
     ctx.fill();
-    ctx.restore();
+    //ctx.restore();
 }
 
 function saveIcon() {

@@ -18,6 +18,31 @@
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         </head>
         <body id="body">
+        <h1><a href="index.html">Resicons</a></h1>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+            <a href="index.html">Create New Resource</a>
+            <a href="#">Save This Session</a>
+            <a href="#">Load Session</a>
+            <div class="dropdown">
+                <button class="dropbtn" style="color:yellow;">Edit Graphical Contents
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="iconCropper.html" style="color:red;"><strong><i class="fa fa-caret-right"> Icon Cropper</i></strong></a>
+                    <a href="iconCreator.html"> Icon Creator</a>
+                    <a href="imageEditor.html">Image Editor</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Edit Config Contents
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="configChanger.html">Configuration Editor</a>
+                </div>
+            </div>
+        </div>
         <h3 id="failedToLoadRepoNotification" style="display:none;">Failed to load repositories!</h3>
         <h3 id="selectRepoNotification" style="display:none;">Select a repository to continue.</h3>
             <div class="grid-container" draggable="false">
@@ -79,6 +104,7 @@
                     <img id="mdpi" class="androidIcons"/><br>
                 </div>
             </div>
+        <p><small>Designed & developed by <i><mark>Ahmadreza Vakilalroayayi</mark></i></small></p>
         </body>
         <script src="js/iconCropper.js"></script>
 </html>

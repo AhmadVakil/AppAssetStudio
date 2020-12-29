@@ -22,6 +22,7 @@ function uploadBackgroundImage(input) {
             var icDetails = {
                 backgroundImage: sessionStorage.getItem("iconBackgroundImage"),
                 useBackgroundColor: document.getElementById("colorBackground").checked,
+                backgroundColor: document.getElementById("favcolor").value,
                 transparentBackground: document.getElementById("transparentBackground").checked,
                 onTopImage: sessionStorage.getItem("onTopImage"),
                 scaleAmount: document.getElementById("scaleVol").value
@@ -42,6 +43,7 @@ function uploadOnTopImage(input) {
             var icDetails = {
                 backgroundImage: sessionStorage.getItem("iconBackgroundImage"),
                 useBackgroundColor: document.getElementById("colorBackground").checked,
+                backgroundColor: document.getElementById("favcolor").value,
                 transparentBackground: document.getElementById("transparentBackground").checked,
                 onTopImage: sessionStorage.getItem("onTopImage"),
                 scaleAmount: document.getElementById("scaleVol").value
