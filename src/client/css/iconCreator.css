@@ -20,7 +20,7 @@ input[type=file]{
 #mainImgPreview {
     width:152px;
     height:152px;
-    background: transparent url('../image/loading.gif') center no-repeat;
+    background: transparent url('../images/loading.gif') center no-repeat;
     background-position: 50% 50%;
 }
 

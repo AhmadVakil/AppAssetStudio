@@ -56,13 +56,13 @@ function uploadOnTopImage(input) {
 }
 
 socket.on("loadingImage", function(msg) {
-    $('#mainImgPreview').attr('src', "../image/loading.gif");
-    $('#ios').attr('src', "../image/loading.gif");
-    $('#xxxhdpi').attr('src', "../image/loading.gif");
-    $('#xxhdpi').attr('src', "../image/loading.gif");
-    $('#xhdpi').attr('src', "../image/loading.gif");
-    $('#hdpi').attr('src', "../image/loading.gif");
-    $('#mdpi').attr('src', "../image/loading.gif");
+    $('#mainImgPreview').attr('src', "../images/loading.gif");
+    $('#ios').attr('src', "../images/loading.gif");
+    $('#xxxhdpi').attr('src', "../images/loading.gif");
+    $('#xxhdpi').attr('src', "../images/loading.gif");
+    $('#xhdpi').attr('src', "../images/loading.gif");
+    $('#hdpi').attr('src', "../images/loading.gif");
+    $('#mdpi').attr('src', "../images/loading.gif");
 })
 
 socket.on('iconUpdates', function (finalResult) {
