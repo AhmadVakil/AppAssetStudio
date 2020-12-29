@@ -39,6 +39,7 @@ angular.module('ImageEditor')
 
             var link = document.createElement('a'),
                 data = this.getDataUrl(format, quality);
+                console.log(data)
 
             this.handleCallbacks(data, name);
 
