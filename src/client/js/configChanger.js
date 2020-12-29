@@ -1,4 +1,4 @@
-document.body.style.backgroundImage = 'url(../images/white.png)'
+document.body.style.backgroundImage = 'url(../images/viewport-bg.png)'
 var socket = io.connect('127.0.0.1:5001')
 var BR = document.createElement('BR')
 var editJsonFilesbutton = document.getElementById('editJsonFilesButton')
