@@ -82,13 +82,14 @@
         Submit to icon cropper
         <hr>
         <div class="button-holder">
-            <a class="button" id="sendToIconCropper" ><span>Submit </span></a>
+
         </div>
+        <a id="sendToIconCropper" ><button class="button"><span>Submit </span></button></a><br>
+
     </div>
     <div class="grid-item" id="imageView">
-        <div class="button-holder">
-            <button type="button" class="groupButtons" id="resetIcons" onclick="resetIcons()" style="background:red; color:white;"><i class="fas fa-trash-alt" aria-hidden="true"></i> Reset Icons</button>
-        </div>
+        <button onclick="resetIcons()" class="button"><i class="fas fa-trash-alt" aria-hidden="true"></i> Reset Icons</button><br>
+
         <label>Image Preview</label><br>
         <img id="mainImgPreview" class="androidIcons"/><br>
         iOS Icon<br>
@@ -105,7 +106,12 @@
         <img id="mdpi" class="androidIcons"/><br>
     </div>
 </div>
-<p><small>Designed & developed by <i><mark>Ahmadreza Vakilalroayayi</mark></i></small></p>
+    <div class="footer-grid">
+        <div class="footer-part">
+            <a href="https://github.com/AhmadVakil"><span><i class="fab fa-github"><br> Follow me on Github</i></span></a>
+        </div><br>
+        <p style="text-align:center;"><small>Designed & developed by <i><mark>Ahmadreza Vakilalroayayi</mark></i></small></p>
+    </div>
 </body>
 <script src="js/iconCreator.js"></script>
 </html>
