@@ -1,5 +1,6 @@
 var io  = require('socket.io').listen(5001)
 var jsonfile = require('jsonfile')
+var jsondir = require('jsondir');
 var Jimp = require("jimp");
 var path = require('path')
 const fs = require('fs');
@@ -200,6 +201,25 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
         socket.on('openThisRepo', function (data) {
             fromDir(config.resourcesPath+data.repoNames,'.json', socket)
         })
+        socket.on('openThisTemplate', function (data) {
+            fromDir(config.templateResourcesPath+data.repoNames,'.json', socket)
+        })
+        socket.on('mkdirRequest', function (data) {
+            var obj = JSON.parse(data)
+            socket.emit('verifyToProceed', obj)
+        })
+        socket.on('mkdirVerified', function (data, verify) {
+            if (verify.length<9 && verify === data["-path"]){
+                data["-path"] = config.resourcesPath+data["-path"]
+                jsondir.json2dir(data, function(err) {
+                    if (err) throw err;
+                })
+                socket.emit('templateCreated')
+            } else {
+                socket.emit('failedToCreateTemplate')
+            }
+
+        })
         socket.on('saveJsonFile', function(jsonTextArea) {
             console.log(typeof jsonTextArea)
             socket.on('pathToJson', function(pathToJson) {
@@ -214,6 +234,9 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
         })
         fs.readdir(config.resourcesPath, (err, files) => {
             socket.emit('Repositories', files)
+        })
+        fs.readdir(config.templateResourcesPath, (err, files) => {
+            socket.emit('templateResource', files)
         })
     });
 console.log("SERVER IS UP...")

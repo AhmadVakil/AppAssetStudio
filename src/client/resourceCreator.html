@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html ng-app="JSONedit">
+<head>
+    <title>App Config Editor</title>
+    <meta charset="utf-8">
+    <meta name="csrf-token" content="XYZ123">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+    <script src="http://malsup.github.com/jquery.form.js"></script>
+    <link rel="stylesheet" href="css/configChanger.css">
+    <link rel="stylesheet" type="text/css" href="css/loader.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+    <script
+            src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"
+            integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw="
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-sortable/0.19.0/sortable.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="js/directives.js"></script>
+    <script src="js/JSONedit.js"></script>
+    <link rel="stylesheet" href="css/vtree.css" type="text/css"/>
+    <link rel="icon" type="image/png" href="images/config-changer.png">
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="js/vtree.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="google-site-verification" content="ARDfocA3yAuCKhp9D9T4zYF_yU2ppg58qGK_VQO2iQc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body class="body">
+<div>
+    <div class="parent-part">
+        <hr>
+        <div id="resource-picker" class="part" onchange="editJsonFilesButton()"><br>
+        </div><br>
+        <div id="configFilesDiv" class="part" style="display:none;"></div>
+        <h3 id="failedToLoadRepoNotification" style="display:none;">Failed to load!</h3>
+        <h3 id="selectRepoNotification" style="display:none;">Select a template config to continue.</h3><br>
+        <div id="jsonAllParagraphsKeeper" class="part"><br>
+            <span>Template resource directory<br>The JSON configuration that appear here will be used to create directory structure.
+                which can be used as mobile app resource directory.<br>Value "-path" represent the name of directory. Feel free to edit the JSON data based on your requirements. "-d" means directory and "-content" together with its assigned value represent the file and its contents.</span><br><br>
+            <div id="jsonPathDiv" class="part">
+            </div>
+            <div id="mainView" ng-controller="MainViewCtrl" style="display:none;">
+                <div>
+                    <button type="button" class="groupButtons" id="saveJsonFileButton" onclick="createFromTemplate()" style="background:red; color:white;"><i class="far fa-save"></i> Save</button>
+                </div>
+                <h2>Configurations</h2>
+                <div class="jsonView">
+                    <json child="jsonData" default-collapsed="true" type="object"></json>
+                </div>
+                <hr>
+                <div>
+                    <button type="button" class="groupButtons" id="saveJsonFileButton" onclick="createFromTemplate()" style="background:red; color:white;"><i class="far fa-save"></i> Save</button>
+                </div>
+                <div>
+                    <textarea id="jsonTextarea" ng-model="jsonString"></textarea>
+                    <span class="red" ng-if="!wellFormed">JSON not well-formed!</span>
+                </div>
+                <div class="graphContainer">
+                    <div style="margin-top: 1em;">
+                        <input id="go-button" type="button" value="Visualize"><br>
+                    </div>
+                    <div id="msg" style="color: red;"></div>
+                    <div id="containerDiv"></div>
+                    <div style="margin-top: 1em;">
+                        <input id="svg-button" type="button" value="Convert to SVG">
+                    </div>
+                    <div style="margin-top: 1em;">
+                        <span>Covert the diagram into SVG</span>
+                        <textarea id="svg-text" rows="6" cols="80"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="js/loader.js"></script>
+<script src="js/resourceCreator.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</html>
