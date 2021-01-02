@@ -1,12 +1,10 @@
 FROM node:12
 
 # Creating app directory
-WORKDIR /
+WORKDIR /Demonstration/
 
 # Install dependencies and wildcard(*) to copy both package-lock.json and package.json
 COPY package*.json ./
-
-# We have problem accessing sources, need double check
 COPY * /
 
 RUN npm install
