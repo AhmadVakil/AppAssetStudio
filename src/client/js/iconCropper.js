@@ -118,7 +118,7 @@ function readURL(input) {
 }
 
 function giveRadius(range) {
-    document.getElementById("mainImgPreview").style.borderRadius = range.value*10+"px";
+    //document.getElementById("mainImgPreview").style.borderRadius = range.value*10+"px";
     document.getElementById("xxxhdpi").style.borderRadius = range.value*10+"px";
     document.getElementById("xxhdpi").style.borderRadius = range.value*7+"px";
     document.getElementById("xhdpi").style.borderRadius = range.value*5+"px";
@@ -128,7 +128,7 @@ function giveRadius(range) {
 }
 
 function dropShadow(range) {
-    document.getElementById("mainImgPreview").style.boxShadow = "0px 0px "+range.value+"px black";
+    //document.getElementById("mainImgPreview").style.boxShadow = "0px 0px "+range.value+"px black";
     document.getElementById("xxxhdpi").style.boxShadow = "0px 0px "+range.value+"px black";
     document.getElementById("xxhdpi").style.boxShadow = "0px 0px "+range.value+"px black";
     document.getElementById("xhdpi").style.boxShadow = "0px 0px "+range.value+"px black";

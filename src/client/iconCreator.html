@@ -46,8 +46,8 @@
 
 <div class="grid-container" draggable="false">
     <div class="grid-item">
-        <hr>
-        <h2>Step 1</h2>
+
+        <h4>Step 1</h4>
         Background
         <hr>
         <p>Please select the icon background</p>
@@ -55,18 +55,18 @@
         <label for="transparentBackground">Transparent Background (No Background)</label><br><br>
 
         <input type="radio" id="imageBackground" name="background" value="imageBackground" onchange="imageBackground(this)">
-        <label for="imageBackground">Image Background</label><br>
-        <div class="file-upload-section">
+        <label for="imageBackground">Image Background</label>
+
             <input type='file' id="uploadBackgroundImage" onchange="uploadBackgroundImage(this);" />
-        </div><br>
+        <br><br>
 
         <input type="radio" id="colorBackground" name="background" value="colorBackground" onchange="colorBackground(this)">
-        <label for="colorBackground">Color Background</label><br>
-        <label for="favcolor">Select your favorite color:</label>
+        <label for="colorBackground">Color Background - </label>
+        <label for="favcolor">Select background color:</label>
         <input type="color" id="favcolor" name="favcolor" value="#000000" onchange="colorBackground(this)"><br><br>
 
         <hr>
-        <h2>Step 2</h2>
+        <h4>Step 2</h4>
         On top icon
 
         <hr>
@@ -78,20 +78,20 @@
         <span id="scaleAmountText"></span>
 
         <hr>
-        <h2>Step 3</h2>
-        Submit to icon cropper
+        <h4>Step 3</h4>
+        Proceed to round corners, apply shadow, and save to resource
         <hr>
         <div class="button-holder">
 
         </div>
-        <a id="sendToIconCropper" ><button class="button"><span>Submit </span></button></a><br>
+        <a id="sendToIconCropper" ><button class="button"><span>Send to Icon Cropper </span></button></a><br>
 
     </div>
     <div class="grid-item" id="imageView">
         <button onclick="resetIcons()" class="button"><i class="fas fa-trash-alt" aria-hidden="true"></i> Reset Icons</button><br>
 
         <label>Image Preview</label><br>
-        <img id="mainImgPreview" class="androidIcons"/><br>
+        <!--<img id="mainImgPreview" class="androidIcons"/><br>-->
         iOS Icon<br>
         <img id="ios"/><br>
         xxxhdpi Icon<br>
