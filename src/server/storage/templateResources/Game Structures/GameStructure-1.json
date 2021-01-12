@@ -1,0 +1,36 @@
+{
+  "-path": "nameOfTheGame",
+  "assets": { "-type": "d" },
+  "bin": { "-type": "d" },
+  "java": { "-type": "d" },
+  "libs": { "-type": "d" },
+  "res": {
+    "drawable": { "-type": "d" },
+    "layout": {
+      "activity_main.xml": { "-content": "This is file content." }
+    },
+    "menu": {
+      "main.xml": { "-content": "This is file content." }
+    },
+    "mipmap": {
+      "mipmap-hdpi": { "ic_launcher.png": { "-content": "This is an image." } },
+      "mipmap-mdpi": { "ic_launcher.png": { "-content": "This is an image." } },
+      "mipmap-xhdpi": { "ic_launcher.png": { "-content": "This is an image." } },
+      "mipmap-xxhdpi": { "ic_launcher.png": { "-content": "This is an image." } },
+      "mipmap-xxxhdpi": { "ic_launcher.png": { "-content": "This is an image." } }
+    },
+    "values": {
+      "colors.xml": { "-content": "This is file content." },
+      "strings.xml": { "-content": "This is file content." },
+      "styles.xml": { "-content": "This is file content." }
+    }
+  },
+  "src": {
+    "main": {
+      "-type": "d"
+    }
+  },
+  "AndroidManifest.xml": { "-content": "This is file content." },
+  "config.json": { "-content": "This is file content." },
+  "project.json": { "-content": "This is file content." }
+}

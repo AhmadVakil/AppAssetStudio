@@ -53,16 +53,16 @@ socket.on('templateResource', function (data) {
   var failedToLoadRepoNotification = document.getElementById('failedToLoadRepoNotification')
   var selectRepoNotification = document.getElementById('selectRepoNotification')
   error.className = 'fas fa-exclamation-triangle'
-  repoInfoText.innerHTML = 'Its seems like there is no mobile application repository on the system. Please clone or contact your system administrator.<br><br>'
+  repoInfoText.innerHTML = 'Its seems like there is no directory structure on the system. Please clone, create, or contact your system administrator.<br><br>'
   var resourceDiv = document.getElementById('resource-picker')
   if (data.length !== 0) {
     failedToLoadRepoNotification.style.display = 'none'
-    repoInfoText.innerHTML = 'Select from existing resource directories'
+    repoInfoText.innerHTML = 'Select Directory Structure Category'
     var repositoriesMenu = document.createElement('select')
     repositoriesMenu.addEventListener('change', openRepo)
     repositoriesMenu.id = 'repositoriesDropDownMenu'
     var defaultOption = document.createElement('option')
-    defaultOption.innerHTML = 'Select Repository'
+    defaultOption.innerHTML = 'Select Structure Category'
     repositoriesMenu.appendChild(defaultOption)
     for (var i = 0; i < data.length; i++) {
       var tempOption = document.createElement('option')
