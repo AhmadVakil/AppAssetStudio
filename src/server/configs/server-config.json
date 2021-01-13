@@ -8,7 +8,7 @@
   "feedbackPath": "src/server/storage/feedbacks/feedbacks.log",
   "framesPath": "src/server/storage/images/crop-frames/",
   "resourcesPath": "src/server/storage/resources/",
-  "templateResourcesPath": "src/server/storage/templateResources/",
+  "templateResourcesPath": "src/server/storage/directoryStructures/",
   "pathToIosIcon": "Resources/App Icon/ios/Icon.png",
   "pathToHdpi": "Resources/App Icon/android/res/mipmap-hdpi/ic_launcher.png",
   "pathToMdpi": "Resources/App Icon/android/res/mipmap-mdpi/ic_launcher.png",
