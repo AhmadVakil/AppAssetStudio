@@ -45,21 +45,30 @@
         <h3 id="failedToLoadRepoNotification" style="display:none;">Failed to load!</h3>
         <h3 id="selectRepoNotification" style="display:none;">Select a template config to continue.</h3><br>
         <div id="jsonAllParagraphsKeeper" class="part"><br>
-            <span>Template resource directory<br>The JSON configuration that appear here will be used to create directory structure.
-                which can be used as mobile app resource directory.<br>Value "-path" represent the name of directory. Feel free to edit the JSON data based on your requirements. "-d" means directory and "-content" together with its assigned value represent the file and its contents.</span><br><br>
+            Edit and create directory structure.<br>The JSON configuration that appear here will be used to create directory structure.
+            <div class="popupHelp">Hover here for instructions.
+                <span class="popupHelptext">
+                    <span> Keys:</span>
+                    <br> <span>** The data that appear here is a JSON object that system converts to directory structure. </span>
+                    <br> <span> Use this tool to create directory structure. </span>
+                    <br> <span> "-path" represent the name of directory. </span>
+                    <br> <span> "-d" means empty directory. Assign this if you want an empty directory somewhere in your structure. </span>
+                    <br> <span> "-content" together with its assigned value represent the file and its contents. </span>
+                </span>
+            </div>
             <div id="jsonPathDiv" class="part">
             </div>
             <div id="mainView" ng-controller="MainViewCtrl" style="display:none;">
                 <div>
-                    <button type="button" class="groupButtons" id="saveJsonFileButton" onclick="createFromTemplate()" style="background:red; color:white;"><i class="far fa-save"></i> Save</button>
+                    <button type="button" class="groupButtons" id="saveJsonFileButton" onclick="createFromTemplate()" style="background:red; color:white;"><i class="fas fa-sitemap"></i> Create Directory Structure</button>
                 </div>
-                <h2>Configurations</h2>
+                <h2>Structure</h2>
                 <div class="jsonView">
                     <json child="jsonData" default-collapsed="true" type="object"></json>
                 </div>
                 <hr>
                 <div>
-                    <button type="button" class="groupButtons" id="saveJsonFileButton" onclick="createFromTemplate()" style="background:red; color:white;"><i class="far fa-save"></i> Save</button>
+                    <button type="button" class="groupButtons" id="saveJsonFileButton" onclick="createFromTemplate()" style="background:red; color:white;"><i class="fas fa-sitemap"></i> Create Directory Structure</button>
                 </div>
                 <div>
                     <textarea id="jsonTextarea" ng-model="jsonString"></textarea>
@@ -67,7 +76,7 @@
                 </div>
                 <div class="graphContainer">
                     <div style="margin-top: 1em;">
-                        <input id="go-button" type="button" value="Visualize"><br>
+                        <input id="go-button" type="button" value="Visualize The Structure"><br>
                     </div>
                     <div id="msg" style="color: red;"></div>
                     <div id="containerDiv"></div>

@@ -121,7 +121,7 @@ socket.on('foundJson', function (file) {
       var tooltip = document.getElementById('myTooltip')
     })
     var jsonPathDiv = document.getElementById('jsonPathDiv')
-    jsonPathDiv.innerHTML = '<br>Path to this configuration:<br>'
+    jsonPathDiv.innerHTML = '<br>Path to this structure:<br>'
     jsonPathDiv.appendChild(filePathInput)
     jsonPathDiv.appendChild(copyToClipboardButton)
     jsonPathDiv.appendChild(BR)

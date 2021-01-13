@@ -259,3 +259,32 @@
     height: 20px;
     display: block;
 }
+.popupHelp {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.popupHelp .popupHelptext {
+  visibility: hidden;
+  width: 500px;
+  background-color: black;
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 5px 0;
+  /* Position the popupHelp */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  right: 105%;
+  
+  /* Fade in popupHelp - takes 1 second to go from 0% to 100% opac: */
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.popupHelp:hover .popupHelptext {
+  visibility: visible;
+  opacity: 1;
+}
