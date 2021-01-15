@@ -9,10 +9,10 @@
   "framesPath": "src/server/storage/images/crop-frames/",
   "resourcesPath": "src/server/storage/resources/",
   "templateResourcesPath": "src/server/storage/directoryStructures/",
-  "pathToIosIcon": "Resources/App Icon/ios/Icon.png",
-  "pathToHdpi": "Resources/App Icon/android/res/mipmap-hdpi/ic_launcher.png",
-  "pathToMdpi": "Resources/App Icon/android/res/mipmap-mdpi/ic_launcher.png",
-  "pathToXHdpi": "Resources/App Icon/android/res/mipmap-xhdpi/ic_launcher.png",
-  "pathToXXHdpi": "Resources/App Icon/android/res/mipmap-xxhdpi/ic_launcher.png",
-  "pathToXXXHdpi": "Resources/App Icon/android/res/mipmap-xxxhdpi/ic_launcher.png"
+  "pathToIosIcon": "ios/AppIcon/Icon.png",
+  "pathToHdpi": "res/mipmap/mipmap-hdpi/ic_launcher.png",
+  "pathToMdpi": "res/mipmap/mipmap-mdpi/ic_launcher.png",
+  "pathToXHdpi": "res/mipmap/mipmap-xhdpi/ic_launcher.png",
+  "pathToXXHdpi": "res/mipmap/mipmap-xxhdpi/ic_launcher.png",
+  "pathToXXXHdpi": "res/mipmap/mipmap-xxxhdpi/ic_launcher.png"
 }

@@ -207,7 +207,7 @@ document.getElementById('iconCropperSubmitButton').addEventListener("click", fun
         });
         const file = document.getElementById("readURL").files[0];
         async function sendIc() {
-            var imgBuffer = sessionStorage.getItem('imgBuffer') !== "" ? sessionStorage.getItem('imgBuffer') : (await toBase64(file))
+            var imgBuffer = sessionStorage.getItem('imgBuffer') === "" ? (await toBase64(file)) : sessionStorage.getItem('imgBuffer')
             var icDetails = {
                 borderRadiusAmount : document.getElementById('radiusTextValue').value,
                 dropShadow : document.getElementById("dropShadow").checked,

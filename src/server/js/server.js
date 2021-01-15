@@ -91,6 +91,7 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
             fs.readFile('src/server/configs/images.json', 'utf8', function (err, imagesJson) {
                 if (err) throw err;
                 imagesJson = JSON.parse(imagesJson)
+                icDetails.borderRadiusAmount = icDetails.borderRadiusAmount === "Disabled" || icDetails.borderRadiusAmount === "" ? "0" : icDetails.borderRadiusAmount
                 Jimp.read(Buffer.from((icDetails.imgBuffer).replace(/^data:image\/png;base64,/, ""), 'base64'), function (err, appIcon) {
                     Jimp.read(Buffer.from((imagesJson[icDetails.borderRadiusAmount]).replace(/^data:image\/png;base64,/, ""), 'base64'), function (err, masker) {
                         masker.quality(100)
