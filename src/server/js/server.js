@@ -1,8 +1,8 @@
-var io  = require('socket.io').listen(5001)
-var jsonfile = require('jsonfile')
+var io  = require('socket.io').listen(5001);
+var jsonfile = require('jsonfile');
 var jsondir = require('jsondir');
 var Jimp = require("jimp");
-var path = require('path')
+var path = require('path');
 const fs = require('fs');
 var config;
 fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data) {
@@ -49,7 +49,8 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
             imagesJson = JSON.parse(imagesJson)
             var bg
             var background = imgBuffer.transparentBackground || imgBuffer.useBackgroundColor || imgBuffer.backgroundImage === "transparent" ? imagesJson["rawBg"] : imgBuffer.backgroundImage
-            Jimp.read(Buffer.from((background).replace(/^data:image\/png;base64,/, ""), 'base64'), function (err, background) {
+            background = background.substring(background.indexOf(",") + 1);
+            Jimp.read(Buffer.from((background), 'base64'), function (err, background) {
                 background.resize(1024, 1024)
                 if (imgBuffer.useBackgroundColor) {
                 var bgColor = Jimp.cssColorToHex(imgBuffer.backgroundColor)
@@ -61,7 +62,8 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                 }
                 bg = background
                 var onTopImage = imgBuffer.onTopImage === null ? imagesJson["rawBg"] : imgBuffer.onTopImage
-                Jimp.read(Buffer.from((onTopImage).replace(/^data:image\/png;base64,/, ""), 'base64'), function (err, onTopIcon) {
+                onTopImage = onTopImage.substring(onTopImage.indexOf(",") + 1);
+                Jimp.read(Buffer.from((onTopImage), 'base64'), function (err, onTopIcon) {
                     if (err) throw err;
                     Jimp.read(Buffer.from((imagesJson["rawBg"]).replace(/^data:image\/png;base64,/, ""), 'base64'), function (err, rawBackground) {
                         rawBackground.resize(1024, 1024)
@@ -85,6 +87,8 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
         })
         // Image data received from client side
         socket.on('cropIcon', function (icDetails) {
+            icDetails.imgBuffer = icDetails.imgBuffer.substring(icDetails.imgBuffer.indexOf(",") + 1);
+            console.log(icDetails.imgBuffer)
             var base64Data = icDetails.imgBuffer.replace(/^data:image\/png;base64,/, "");
             var datetime = new Date();
             var fileName = ("uploaded-"+datetime+".png").replace(/\s/g, '');
@@ -170,6 +174,7 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                                 console.log("mdpi created.")
                             }
                             console.log('\x1b[33m%s\x1b[0m', "Completed! Icons requests processed!\n")
+                            socket.emit('iconLaunchersCreated')
                         })
                     })
                 })

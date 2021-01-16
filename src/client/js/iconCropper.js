@@ -49,6 +49,10 @@ $(document).ready(function(){
     }
 });
 
+socket.on('iconLaunchersCreated', function () {
+  alert("Success!\nIcon Launcher(s) are created.");
+})
+
 socket.on('Repositories', function (data) {
     var repoInfoText = document.createElement('h4')
     var error = document.createElement('i')

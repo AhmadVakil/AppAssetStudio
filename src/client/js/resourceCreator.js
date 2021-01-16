@@ -173,7 +173,7 @@ function createFromTemplate(){
 }
 
 socket.on('verifyToProceed', function(obj){
-    var verifyQuestion = prompt("Please verify with typing "+obj["-path"]+" to proceed.");
+    var verifyQuestion = prompt("To proceed, please verify with retyping the mobile application name\nName of the app to create: "+obj["-path"]);
       if (verifyQuestion != null) {
         socket.emit('mkdirVerified', obj, verifyQuestion)
       }
