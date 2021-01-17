@@ -215,7 +215,9 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
             socket.emit('verifyToProceed', obj)
         })
         socket.on('mkdirVerified', function (data, verify) {
-            if (verify.length<9 && verify === data["-path"]){
+            if (verify.length<15 && verify === data["-path"]){
+                const shell = require('shelljs')
+                shell.exec('bash src/server/autoGitMakeRepo.sh '+data["-path"])
                 data["-path"] = config.resourcesPath+data["-path"]
                 jsondir.json2dir(data, function(err) {
                     if (err) throw err;
@@ -224,7 +226,6 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
             } else {
                 socket.emit('failedToCreateTemplate')
             }
-
         })
         socket.on('saveJsonFile', function(jsonTextArea) {
             console.log(typeof jsonTextArea)
