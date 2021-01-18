@@ -1,6 +1,6 @@
 var io  = require('socket.io').listen(5001);
 var jsonfile = require('jsonfile');
-var jsondir = require('jsondir');
+//var jsondir = require('jsondir');
 var Jimp = require("jimp");
 var path = require('path');
 const fs = require('fs');
@@ -219,9 +219,9 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                 const shell = require('shelljs')
                 shell.exec('bash src/server/autoGitMakeRepo.sh '+data["-path"])
                 data["-path"] = config.resourcesPath+data["-path"]
-                jsondir.json2dir(data, function(err) {
+                /*jsondir.json2dir(data, function(err) {
                     if (err) throw err;
-                })
+                })*/
                 socket.emit('templateCreated')
             } else {
                 socket.emit('failedToCreateTemplate')
