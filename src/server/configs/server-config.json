@@ -1,6 +1,9 @@
 {
   "description": "This config file will be used by the server.js",
   "production": false,
+  "linuxOS": true,
+  "initialGitRepo": false,
+  "pushToGitRepo": false,
   "autoConfigSearch": "true",
   "serverVersion": 1.0,
   "logPath": "src/server/storage/logs/server-logs.log",

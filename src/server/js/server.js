@@ -1,6 +1,5 @@
 var io  = require('socket.io').listen(5001);
 var jsonfile = require('jsonfile');
-//var jsondir = require('jsondir');
 var Jimp = require("jimp");
 var path = require('path');
 const fs = require('fs');
@@ -216,12 +215,26 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
         })
         socket.on('mkdirVerified', function (data, verify) {
             if (verify.length<15 && verify === data["-path"]){
+              if (config.linuxOS) {
                 const shell = require('shelljs')
-                shell.exec('bash src/server/autoGitMakeRepo.sh '+data["-path"])
+                var jsondir = require('jsondir');
+                if (config.initialGitRepo) {
+                  shell.exec('bash src/server/autoGitMakeRepo.sh '+data["-path"])
+                } else {
+                  socket.emit("gitFunctionalityDisabled", {msg: "Git functionality is disabled. It means only the directory structure is created and not the Git repository."})
+                }
                 data["-path"] = config.resourcesPath+data["-path"]
-                /*jsondir.json2dir(data, function(err) {
+                jsondir.json2dir(data, function(err) {
+                  if (err) throw err;
+                })
+              } else {
+                socket.emit("linuxOsDisabled", {msg: "Linux OS is not set to true."})
+              }
+
+              data["-path"] = config.resourcesPath+data["-path"]
+              /*jsondir.json2dir(data, function(err) {
                     if (err) throw err;
-                })*/
+              })*/
                 socket.emit('templateCreated')
             } else {
                 socket.emit('failedToCreateTemplate')
