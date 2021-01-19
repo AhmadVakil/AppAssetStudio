@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Icon Editor</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="images/icon-changer.png">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+    <link rel="stylesheet" href="css/iconCropper.css">
+    <link rel="stylesheet" href="css/commonStyles.css">
+    <link rel="stylesheet" type="text/css" href="css/loader.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="js/loader.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script src="js/foto.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body class="body">
+<h1><a href="index.html">Resicons</a></h1>
+<div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="index.html">Create New Resource</a>
+    <a href="#">Save This Session</a>
+    <a href="#">Load Session</a>
+    <div class="dropdown">
+        <button class="dropbtn" style="color:yellow;">Edit Graphical Contents
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="iconCropper.html">Icon Cropper</a>
+            <a href="iconCreator.html" style="color:red;"><strong><i class="fa fa-caret-right"> Icon Creator</i></strong></a>
+            <a href="imageEditor.html">Image Editor</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Edit Config Contents
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="configChanger.html">Configuration Editor</a>
+        </div>
+    </div>
+</div>
+
+<div class="grid-container" draggable="false">
+    <div class="grid-item" id="inAppIconsDetails" style="height:500px;">
+        <button onclick="createNewInAppIcons()">+</button>
+    </div>
+    <div class="grid-item" id="imageView">
+
+    </div>
+</div>
+<div class="footer-grid">
+    <div class="footer-part">
+        <a href="https://github.com/AhmadVakil"><span><i class="fab fa-github"><br> Follow me on Github</i></span></a>
+    </div><br>
+    <p style="text-align:center;"><small>Designed & developed by <i><mark>Ahmadreza Vakilalroayayi</mark></i></small></p>
+</div>
+</body>
+<script src="js/inAppIconCreator.js"></script>
+</html>
