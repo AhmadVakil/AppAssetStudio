@@ -80,22 +80,61 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
         })
 
         socket.on('inAppIconUpdateView', function (data) {
+          socket.emit("loadingImage", ({msg: "Processing Image"}))
             var background = imagesJson["rawBg"]
             background = background.substring(background.indexOf(",") + 1);
             Jimp.read(Buffer.from((background), 'base64'), function (err, background) {
-                var bgColor = Jimp.cssColorToHex(data.inAppIconBgColor)
+            var hexString = data.inAppIconOpacity.toString()
+                switch (hexString) {
+                  case "10":
+                    hexString = "A";
+                    break;
+                  case "11":
+                    hexString = "B";
+                    break;
+                  case "12":
+                     hexString = "C";
+                    break;
+                  case "13":
+                    hexString = "D";
+                    break;
+                  case "14":
+                    hexString = "E";
+                    break;
+                  case "15":
+                    hexString = "F";
+                    break;
+                }
+                var bgColor = Jimp.cssColorToHex(data.inAppIconBgColor+hexString+hexString)
                 for (var y=0; y<1024; y++) {
                     for (var x=0; x<1024; x++) {
                        background.setPixelColor(bgColor, x, y)
                     }
                 }
                 background.resize(parseInt(data.inAppIconWidth), parseInt(data.inAppIconHeight))
-                background.getBase64(Jimp.AUTO, (err, res) => {
-                   socket.emit("inAppIconUpdated", {
-                     result : res,
-                     inAppIconImgId : data.inAppIconImgId
-                   })
-                })
+                ////////////////
+                    Jimp.read(Buffer.from((imagesJson[data.inAppIconBorderRadius]).replace(/^data:image\/png;base64,/, ""), 'base64'), function (err, masker) {
+                        masker.quality(100)
+                        masker.resize(parseInt(data.inAppIconWidth), parseInt(data.inAppIconHeight))
+
+                        // Iterating & removing pixels of appIcon based on the frame pixels
+                        for (var y=0; y<parseInt(data.inAppIconHeight); y++) {
+                            for (var x=0; x<parseInt(data.inAppIconWidth); x++) {
+                                pixelColor = masker.getPixelColor(x, y)
+                                if (pixelColor > 0) {
+                                    background.setPixelColor(0xFFFFFF00, x, y)
+                                }
+                            }
+                        }
+                         background.getBase64(Jimp.AUTO, (err, result) => {
+                                           socket.emit("inAppIconUpdated", {
+                                             result : result
+                                           })
+                                        })
+
+                    })
+                //////////////////
+
             })
         })
 
