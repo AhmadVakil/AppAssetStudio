@@ -41,18 +41,17 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
 
     io.sockets.on('connection', function(socket){
         log("CLIENT CONNECTION ESTABLISHED...\nWAITING FOR REQUESTS..." )
-
+        fs.readFile('src/server/configs/images.json', 'utf8', function (err, imagesJson) {
+        imagesJson = JSON.parse(imagesJson)
         socket.on('manipulateIcon', function (imgBuffer) {
             socket.emit("loadingImage", ({msg: "Processing Image"}))
-            fs.readFile('src/server/configs/images.json', 'utf8', function (err, imagesJson) {
-            imagesJson = JSON.parse(imagesJson)
             var bg
             var background = imgBuffer.transparentBackground || imgBuffer.useBackgroundColor || imgBuffer.backgroundImage === "transparent" ? imagesJson["rawBg"] : imgBuffer.backgroundImage
             background = background.substring(background.indexOf(",") + 1);
             Jimp.read(Buffer.from((background), 'base64'), function (err, background) {
                 background.resize(1024, 1024)
                 if (imgBuffer.useBackgroundColor) {
-                var bgColor = Jimp.cssColorToHex(imgBuffer.backgroundColor)
+                    var bgColor = Jimp.cssColorToHex(imgBuffer.backgroundColor)
                     for (var y=0; y<1024; y++) {
                         for (var x=0; x<1024; x++) {
                            background.setPixelColor(bgColor, x, y)
@@ -78,12 +77,32 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                     })
                 })
             })
+        })
+
+        socket.on('inAppIconUpdateView', function (data) {
+            var background = imagesJson["rawBg"]
+            background = background.substring(background.indexOf(",") + 1);
+            Jimp.read(Buffer.from((background), 'base64'), function (err, background) {
+                var bgColor = Jimp.cssColorToHex(data.inAppIconBgColor)
+                for (var y=0; y<1024; y++) {
+                    for (var x=0; x<1024; x++) {
+                       background.setPixelColor(bgColor, x, y)
+                    }
+                }
+                background.resize(parseInt(data.inAppIconWidth), parseInt(data.inAppIconHeight))
+                background.getBase64(Jimp.AUTO, (err, res) => {
+                   socket.emit("inAppIconUpdated", {
+                     result : res,
+                     inAppIconImgId : data.inAppIconImgId
+                   })
+                })
             })
         })
 
         socket.on('iconBackgroundImage', function (imgBuffer) {
             socket.emit("iconUpdates", imgBuffer)
         })
+
         // Image data received from client side
         socket.on('cropIcon', function (icDetails) {
             icDetails.imgBuffer = icDetails.imgBuffer.substring(icDetails.imgBuffer.indexOf(",") + 1);
@@ -257,6 +276,7 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
         })
         fs.readdir(config.templateResourcesPath, (err, files) => {
             socket.emit('templateResource', files)
+        })
         })
     });
 console.log("SERVER IS UP...")

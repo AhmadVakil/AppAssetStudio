@@ -1,7 +1,7 @@
 {
   "description": "This config file will be used by the server.js",
   "production": false,
-  "linuxOS": true,
+  "linuxOS": false,
   "initialGitRepo": false,
   "pushToGitRepo": false,
   "autoConfigSearch": "true",

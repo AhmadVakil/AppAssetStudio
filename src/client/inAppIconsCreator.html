@@ -8,6 +8,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
     <link rel="stylesheet" href="css/iconCropper.css">
     <link rel="stylesheet" href="css/commonStyles.css">
+    <link rel="stylesheet" href="css/inAppIconCreator.css">
     <link rel="stylesheet" type="text/css" href="css/loader.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -46,6 +47,30 @@
 <div class="grid-container" draggable="false">
     <div class="grid-item" id="inAppIconsDetails" style="width:100%">
         <button onclick="createNewInAppIcons()"><i class="fas fa-plus-circle"></i></button><br><hr>
+        <section>
+            <span>Path </span>
+            <input type="text" id="inAppIconPath1" style="margin: 10px;" >
+            <span>Width </span>
+            <input type="number" id="inAppIconWidth1" onchange="inAppIconUpdateView(this)" max="150" min="20" value="20" style="width: 50px; height: 10px; margin: 10px;">
+            <span>Height </span>
+            <input type="number" id="inAppIconHeight1" onchange="inAppIconUpdateView()" max="150" min="20" value="20" style="width: 50px; height: 10px; margin: 10px;">
+            <span>Color </span>
+            <input type="color" id="inAppIconBgColor1" onchange="inAppIconUpdateView()" style="margin: 10px;">
+            <span>Opacity </span>
+0            <input type="number" id="inAppIconOpacity1" onchange="inAppIconUpdateView()" max="10" min="1" value="1" style="width: 50px; height: 10px; margin: 10px;"><br>
+            <span>Icon on top </span>
+            <input type="file" id="inAppIconOnTopIcon1" onchange="inAppIconUpdateView()">
+            <span>On top X </span>
+            <input type="number" id="inAppIconOnTopIconX1" onchange="inAppIconUpdateView()" max="99" min="0" value="0" style="width: 50px; height: 10px; margin: 10px;">
+            <span>On top Y </span>
+            <input type="number" id="inAppIconOnTopIconY1" onchange="inAppIconUpdateView()" max="99" min="0" value="0" style="width: 50px; height: 10px; margin: 10px;">
+            <span>On top scale </span>
+            <input type="number" id="inAppIconOnTopIconScale1" onchange="inAppIconUpdateView()" max="99" min="-99" value="0" style="width: 50px; height: 10px; margin: 10px;">
+            <span>Border radius </span>
+            <input type="number" id="inAppIconBorderRadius1" onchange="inAppIconUpdateView()" max="10" min="0" value="0" style="width: 50px; height: 10px; margin: 10px;"><br>
+            <img style="margin: 10px;" id="inAppIconImg1"><hr>
+        </section>
+
     </div>
 </div>
 <div class="footer-grid">
