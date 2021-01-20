@@ -93,7 +93,7 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                     hexString = "B";
                     break;
                   case "12":
-                     hexString = "C";
+                    hexString = "C";
                     break;
                   case "13":
                     hexString = "D";
@@ -126,11 +126,27 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                                 }
                             }
                         }
-                         background.getBase64(Jimp.AUTO, (err, result) => {
-                                           socket.emit("inAppIconUpdated", {
-                                             result : result
-                                           })
-                                        })
+                            bg = background
+                            var onTopImage = data.inAppIconOnTopIcon === null ? imagesJson["rawBg"] : data.inAppIconOnTopIcon
+                            onTopImage = onTopImage.substring(onTopImage.indexOf(",") + 1);
+                            Jimp.read(Buffer.from((onTopImage), 'base64'), function (err, onTopIcon) {
+                                if (err) throw err;
+                                Jimp.read(Buffer.from((imagesJson["rawBg"]).replace(/^data:image\/png;base64,/, ""), 'base64'), function (err, rawBackground) {
+                                    rawBackground.resize(parseInt(data.inAppIconWidth), parseInt(data.inAppIconHeight))
+                                    onTopIcon.resize(parseInt(data.inAppIconOnTopIconScale)/100*onTopIcon.bitmap.width + onTopIcon.bitmap.width,
+                                                     parseInt(data.inAppIconOnTopIconScale)/100*onTopIcon.bitmap.height + onTopIcon.bitmap.height)
+                                    var x = ( (bg.bitmap.width - onTopIcon.bitmap.width) / 2 )
+                                    var y = ( (bg.bitmap.width - onTopIcon.bitmap.width) / 2 )
+                                    rawBackground.composite(onTopIcon, parseInt(data.inAppIconOnTopIconX), parseInt(data.inAppIconOnTopIconY)).shadow({ opacity: 0.8, size: 1.0, blur: 5, x: 0, y: 0 })
+                                    bg.composite(rawBackground, 0, 0)
+                                    bg.getBase64(Jimp.AUTO, (err, result) => {
+                                       socket.emit("inAppIconUpdated", {
+                                          result : result
+                                      })
+                                    })
+                                })
+                            })
+
 
                     })
                 //////////////////

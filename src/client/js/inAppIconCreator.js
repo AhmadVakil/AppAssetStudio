@@ -7,7 +7,7 @@ function inAppIconUpdateView(){
       inAppIconHeight: document.getElementById("inAppIconHeight").value,
       inAppIconBgColor: document.getElementById("inAppIconBgColor").value,
       inAppIconOpacity: document.getElementById("inAppIconOpacity").value,
-      inAppIconOnTopIcon: document.getElementById("inAppIconOnTopIcon").value,
+      inAppIconOnTopIcon: sessionStorage.getItem("inAppIconOnTopIcon") === "" || sessionStorage.getItem("inAppIconOnTopIcon") === null ? null : sessionStorage.getItem("inAppIconOnTopIcon"),
       inAppIconOnTopIconX: document.getElementById("inAppIconOnTopIconX").value,
       inAppIconOnTopIconY: document.getElementById("inAppIconOnTopIconY").value,
       inAppIconOnTopIconScale: document.getElementById("inAppIconOnTopIconScale").value,
@@ -25,25 +25,14 @@ socket.on("inAppIconUpdated", function(data) {
   document.getElementById("inAppIconResultImg").src = data.result
 })
 
-
-
 function uploadOnTopImage(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
-            sessionStorage.setItem("onTopImage", e.target.result);
-            //console.log(e.target.result)
-            var icDetails = {
-                backgroundImage: sessionStorage.getItem("iconBackgroundImage"),
-                useBackgroundColor: document.getElementById("colorBackground").checked,
-                backgroundColor: document.getElementById("favcolor").value,
-                transparentBackground: document.getElementById("transparentBackground").checked,
-                onTopImage: sessionStorage.getItem("onTopImage"),
-                scaleAmount: document.getElementById("scaleVol").value
-            }
-            socket.emit("manipulateIcon", icDetails)
+            sessionStorage.setItem("inAppIconOnTopIcon", e.target.result);
+            inAppIconUpdateView()
         }
-        //sessionStorage.setItem("imgBuffer", "");
         reader.readAsDataURL(input.files[0]);
     }
+
 }
