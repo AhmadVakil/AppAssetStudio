@@ -12,6 +12,7 @@ function inAppIconUpdateView(){
       inAppIconOnTopIconY: document.getElementById("inAppIconOnTopIconY").value,
       inAppIconOnTopIconScale: document.getElementById("inAppIconOnTopIconScale").value,
       inAppIconOnTopOpacity: document.getElementById("inAppIconOnTopOpacity").value,
+      inAppIconOnTopColor: document.getElementById("inAppIconOnTopColor").value,
       inAppIconBorderRadius: document.getElementById("inAppIconBorderRadius").value
     })
 }
@@ -30,9 +31,88 @@ function uploadOnTopImage(input) {
         var reader = new FileReader();
         reader.onload = function (e) {
             sessionStorage.setItem("inAppIconOnTopIcon", e.target.result);
+                console.log(e.target.result)
+
             inAppIconUpdateView()
         }
         reader.readAsDataURL(input.files[0]);
     }
 
 }
+
+socket.on('Repositories', function (data) {
+    var repoInfoText = document.createElement('h4')
+    var error = document.createElement('i')
+    var failedToLoadRepoNotification = document.getElementById('failedToLoadRepoNotification')
+    var selectRepoNotification = document.getElementById('selectRepoNotification')
+    error.className = 'fas fa-exclamation-triangle'
+    repoInfoText.innerHTML = 'Its seems like there is no mobile application repository on the system.<br>'
+    var resourceDiv = document.getElementById('resource-picker')
+    if (data.length !== 0) {
+        failedToLoadRepoNotification.style.display = 'none'
+        repoInfoText.innerHTML = 'Available Resources'
+        var repositoriesMenu = document.createElement('select')
+        repositoriesMenu.id = 'repositoriesDropDownMenu'
+        var defaultOption = document.createElement('option')
+        defaultOption.innerHTML = 'Select resource or repository'
+        repositoriesMenu.appendChild(defaultOption)
+        for (var i = 0; i < data.length; i++) {
+            var tempOption = document.createElement('option')
+            tempOption.innerHTML = data[i]
+            repositoriesMenu.appendChild(tempOption)
+        }
+        resourceDiv.appendChild(repoInfoText)
+        resourceDiv.appendChild(repositoriesMenu)
+    } else {
+        failedToLoadRepoNotification.style.display = 'block'
+        resourceDiv.appendChild(error)
+        resourceDiv.appendChild(repoInfoText)
+    }
+})
+
+
+
+function getIconBase64(path) {
+    function toDataURL(url, callback) {
+      var xhr = new XMLHttpRequest();
+      xhr.onload = function() {
+        var reader = new FileReader();
+        reader.onloadend = function() {
+          callback(reader.result);
+        }
+        reader.readAsDataURL(xhr.response);
+      };
+      xhr.open('GET', url);
+      xhr.responseType = 'blob';
+      xhr.send();
+    }
+
+    toDataURL(path, function(dataUrl) {
+        sessionStorage.setItem("inAppIconOnTopIcon", dataUrl);
+        inAppIconUpdateView()
+        console.log('RESULT:', dataUrl)
+    })
+}
+
+
+var folder = "images/icons/";
+
+$.ajax({
+    url : folder,
+    success: function (data) {
+        $(data).find("a").attr("href", function (i, val) {
+            if( val.match(/\.(jpe?g|png|gif)$/) ) {
+
+                $(".form-image-clipart-list").append( "<img class='form-image-clipart-item' src='"+ val +"' style='height:35px; width:35px; margin:4px;' onclick='getIconBase64(this.src)'>" );
+            }
+        });
+    }
+});
+
+function clicked(){
+    console.log("clicked")
+}
+
+
+
+inAppIconUpdateView()

@@ -84,6 +84,7 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
             var background = imagesJson["rawBg"]
             background = background.substring(background.indexOf(",") + 1);
             Jimp.read(Buffer.from((background), 'base64'), function (err, background) {
+
             var hexString = data.inAppIconOpacity.toString()
                 switch (hexString) {
                   case "10":
@@ -105,6 +106,8 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                     hexString = "F";
                     break;
                 }
+/*
+                */
                 var bgColor = Jimp.cssColorToHex(data.inAppIconBgColor+hexString+hexString)
                 for (var y=0; y<1024; y++) {
                     for (var x=0; x<1024; x++) {
@@ -132,12 +135,44 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                             Jimp.read(Buffer.from((onTopImage), 'base64'), function (err, onTopIcon) {
                                 if (err) throw err;
                                 Jimp.read(Buffer.from((imagesJson["rawBg"]).replace(/^data:image\/png;base64,/, ""), 'base64'), function (err, rawBackground) {
+                                var onTopHexString = data.inAppIconOnTopOpacity.toString()
+                                                switch (onTopHexString) {
+                                                  case "10":
+                                                    onTopHexString = "A";
+                                                    break;
+                                                  case "11":
+                                                    onTopHexString = "B";
+                                                    break;
+                                                  case "12":
+                                                    onTopHexString = "C";
+                                                    break;
+                                                  case "13":
+                                                    onTopHexString = "D";
+                                                    break;
+                                                  case "14":
+                                                    onTopHexString = "E";
+                                                    break;
+                                                  case "15":
+                                                    onTopHexString = "F";
+                                                    break;
+                                                }
+                                                var onTopIconColor = Jimp.cssColorToHex(data.inAppIconOnTopColor+hexString+hexString)
+                                                for (var y=0; y<onTopIcon.bitmap.height; y++) {
+                                                    for (var x=0; x<onTopIcon.bitmap.width; x++) {
+                                                    pixelColor = onTopIcon.getPixelColor(x, y)
+                                                    if (pixelColor > 0) {
+                                                        onTopIcon.setPixelColor(onTopIconColor, x, y)
+                                                    }
+                                                    //background.setPixelColor(bgColor, x, y)
+                                                    }
+                                                }
                                     rawBackground.resize(parseInt(data.inAppIconWidth), parseInt(data.inAppIconHeight))
                                     onTopIcon.resize(parseInt(data.inAppIconOnTopIconScale)/100*onTopIcon.bitmap.width + onTopIcon.bitmap.width,
                                                      parseInt(data.inAppIconOnTopIconScale)/100*onTopIcon.bitmap.height + onTopIcon.bitmap.height)
                                     var x = ( (bg.bitmap.width - onTopIcon.bitmap.width) / 2 )
                                     var y = ( (bg.bitmap.width - onTopIcon.bitmap.width) / 2 )
-                                    rawBackground.composite(onTopIcon, parseInt(data.inAppIconOnTopIconX), parseInt(data.inAppIconOnTopIconY)).shadow({ opacity: 0.8, size: 1.0, blur: 5, x: 0, y: 0 })
+
+                                    rawBackground.composite(onTopIcon, parseInt(data.inAppIconOnTopIconX), parseInt(data.inAppIconOnTopIconY))//.shadow({ opacity: 0.8, size: 1.0, blur: 5, x: 0, y: 0 })
                                     bg.composite(rawBackground, 0, 0)
                                     bg.getBase64(Jimp.AUTO, (err, result) => {
                                        socket.emit("inAppIconUpdated", {

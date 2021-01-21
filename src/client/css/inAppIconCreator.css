@@ -1,3 +1,69 @@
 span{
     font-size: 18px;
 }
+.para {
+  margin:0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid red;
+  border-radius: 20px;
+  width: 200px;
+  height: 200px;
+  text-align:center;
+  background-image: url('../images/viewport-bg.png');
+}
+
+.icons {
+  margin:10px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid red;
+  border-radius: 5px;
+  width: 600px;
+  height: 200px;
+  text-align:center;
+
+}
+.form-image-clipart-list {
+    width: 600px;
+    height: 200px;
+    padding: 16px;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-align-content: flex-start;
+    align-content: flex-start;
+    box-sizing: border-box;
+    overflow-y: scroll;
+}
+.form-image-clipart-item {
+    font-weight: 400;
+    font-style: normal;
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-feature-settings: 'liga';
+    -moz-font-feature-settings: 'liga';
+    font-feature-settings: 'liga';
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    font-family: 'Material Icons';
+    font-size: 36px;
+    overflow: hidden;
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 50%;
+    color: rgba(0,0,0,.87);
+    transition: color .1s ease,background-color .1s ease,box-shadow .1s ease;
+}
