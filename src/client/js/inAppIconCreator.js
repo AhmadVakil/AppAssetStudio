@@ -116,3 +116,5 @@ function clicked(){
 
 
 inAppIconUpdateView()
+getIconBase64("/images/icons/missed-call-phone-receiver-with-left-arrow.png")
+document.getElementById("inAppIconOnTopColor").value = "#FFFF00";

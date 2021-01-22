@@ -156,22 +156,25 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                                                     onTopHexString = "F";
                                                     break;
                                                 }
-                                                var onTopIconColor = Jimp.cssColorToHex(data.inAppIconOnTopColor+hexString+hexString)
-                                                for (var y=0; y<onTopIcon.bitmap.height; y++) {
-                                                    for (var x=0; x<onTopIcon.bitmap.width; x++) {
-                                                    pixelColor = onTopIcon.getPixelColor(x, y)
-                                                    if (pixelColor > 0) {
-                                                        onTopIcon.setPixelColor(onTopIconColor, x, y)
-                                                    }
-                                                    //background.setPixelColor(bgColor, x, y)
-                                                    }
-                                                }
+
                                     rawBackground.resize(parseInt(data.inAppIconWidth), parseInt(data.inAppIconHeight))
                                     onTopIcon.resize(parseInt(data.inAppIconOnTopIconScale)/100*onTopIcon.bitmap.width + onTopIcon.bitmap.width,
                                                      parseInt(data.inAppIconOnTopIconScale)/100*onTopIcon.bitmap.height + onTopIcon.bitmap.height)
                                     var x = ( (bg.bitmap.width - onTopIcon.bitmap.width) / 2 )
                                     var y = ( (bg.bitmap.width - onTopIcon.bitmap.width) / 2 )
-
+                                    var onTopIconColor = Jimp.cssColorToHex(data.inAppIconOnTopColor+onTopHexString+onTopHexString)
+                                    console.log(typeof onTopIconColor)
+                                    for (var y=0; y<1024; y++) {
+                                        for (var x=0; x<1024; x++) {
+                                        pixelColor = onTopIcon.getPixelColor(x, y)
+                                         if (pixelColor > 0) {
+                                         //console.log("changed")
+                                            onTopIcon.setPixelColor(onTopIconColor, x, y)
+                                         } else {
+                                            //console.log("not changed")
+                                         }
+                                        }
+                                    }
                                     rawBackground.composite(onTopIcon, parseInt(data.inAppIconOnTopIconX), parseInt(data.inAppIconOnTopIconY))//.shadow({ opacity: 0.8, size: 1.0, blur: 5, x: 0, y: 0 })
                                     bg.composite(rawBackground, 0, 0)
                                     bg.getBase64(Jimp.AUTO, (err, result) => {
