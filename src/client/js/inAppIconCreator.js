@@ -70,8 +70,6 @@ socket.on('Repositories', function (data) {
     }
 })
 
-
-
 function getIconBase64(path) {
     function toDataURL(url, callback) {
       var xhr = new XMLHttpRequest();
@@ -112,8 +110,6 @@ $.ajax({
 function clicked(){
     console.log("clicked")
 }
-
-
 
 inAppIconUpdateView()
 getIconBase64("/images/icons/missed-call-phone-receiver-with-left-arrow.png")

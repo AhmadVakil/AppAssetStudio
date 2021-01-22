@@ -31,6 +31,7 @@
     }
   },
   "AndroidManifest.xml": { "-content": "This is file content." },
+  "ic_launcher-web.png": { "-content": "This is the Google Play Store icon." },
   "config.json": { "-content": "This is file content." },
   "project.json": { "-content": "This is file content." }
 }
