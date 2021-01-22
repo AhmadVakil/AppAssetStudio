@@ -167,12 +167,9 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                                     for (var y=0; y<1024; y++) {
                                         for (var x=0; x<1024; x++) {
                                         pixelColor = onTopIcon.getPixelColor(x, y)
-                                         if (pixelColor > 0) {
-                                         //console.log("changed")
-                                            onTopIcon.setPixelColor(onTopIconColor, x, y)
-                                         } else {
-                                            //console.log("not changed")
-                                         }
+                                             if (pixelColor > 0) {
+                                                onTopIcon.setPixelColor(onTopIconColor, x, y)
+                                             }
                                         }
                                     }
                                     rawBackground.composite(onTopIcon, parseInt(data.inAppIconOnTopIconX), parseInt(data.inAppIconOnTopIconY))//.shadow({ opacity: 0.8, size: 1.0, blur: 5, x: 0, y: 0 })
@@ -184,8 +181,6 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                                     })
                                 })
                             })
-
-
                     })
                 //////////////////
 
