@@ -45,7 +45,6 @@
     </div>
 </div>
 <div class="grid-container" draggable="false">
-
     <div class="grid-item" id="inAppIconsDetails" style="width:100%">
         <section>
             <div id="resource-picker" class="part"></div><br>
@@ -54,8 +53,6 @@
         </section>
         <hr>
         <section>
-            <span>Path </span>
-            <input type="text" id="inAppIconPath" value="res/drawable/" style="margin: 10px;" >
             <span>Width </span>
             <input type="number" id="inAppIconWidth" onchange="inAppIconUpdateView(this)" max="150" min="20" value="110" style="width: 50px; height: 10px; margin: 10px;">
             <span>Height </span>
@@ -66,13 +63,13 @@
             <input type="number" id="inAppIconOpacity" onchange="inAppIconUpdateView()" max="15" min="0" value="10" style="width: 50px; height: 10px; margin: 10px;">
             <span>Border radius </span>
             <input type="number" id="inAppIconBorderRadius" onchange="inAppIconUpdateView()" max="10" min="0" value="0" style="width: 50px; height: 10px; margin: 10px;"><br>
-            <span>On top X </span>
+            <span>Foreground X Pos </span>
             <input type="number" id="inAppIconOnTopIconX" onchange="inAppIconUpdateView()" max="99" min="0" value="31" style="width: 50px; height: 10px; margin: 10px;">
-            <span>On top Y </span>
+            <span>Foreground Y Pos </span>
             <input type="number" id="inAppIconOnTopIconY" onchange="inAppIconUpdateView()" max="99" min="0" value="4" style="width: 50px; height: 10px; margin: 10px;">
-            <span>On top scale </span>
+            <span>Foreground Size </span>
             <input type="number" id="inAppIconOnTopIconScale" onchange="inAppIconUpdateView()" max="99" min="-99" value="-90" style="width: 50px; height: 10px; margin: 10px;">
-            <span>On Top Opacity </span>
+            <span>Foreground Opacity </span>
             <input type="number" id="inAppIconOnTopOpacity" onchange="inAppIconUpdateView()" max="15" min="0" value="15" style="width: 50px; height: 10px; margin: 10px;"><br>
             <br>Changes appear here<br>
             <div class="para">
@@ -91,6 +88,8 @@
         </section>
         <section>
             <div>
+                <span>Path </span>
+                <input type="text" id="inAppIconPath" value="res/drawable/" style="margin: 10px;" ><br>
                 <span>Filename </span>
                 <input type="text" id="inAppIconFilename" value="missed-call.png" style="margin: 10px;" ><br>
                 <button type="button" class="groupButtons" id="saveJsonFileButton" onclick="saveJsonFile()" style="background:red; color:white;"><i class="far fa-save"></i> Save</button>
