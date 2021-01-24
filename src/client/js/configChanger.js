@@ -161,11 +161,11 @@ socket.on('configData', function (configData) {
   var jsonTextarea = document.getElementById('jsonTextarea')
   jsonTextarea.value = JSON.stringify(configData)
   var saveJsonFileButton = document.getElementById('saveJsonFileButton')
-  jsonTextarea.addEventListener('change', function(){
-    if (jsonTextarea.value === configData){
-        saveJsonFileButton.disabled = true
+  jsonTextarea.addEventListener('change', function() {
+    if (jsonTextarea.value === configData) {
+      saveJsonFileButton.disabled = true
     } else {
-        saveJsonFileButton.disabled = false
+      saveJsonFileButton.disabled = false
     }
   })
   var event = new Event('change');
@@ -173,13 +173,13 @@ socket.on('configData', function (configData) {
   updateTree()
 })
 
-function saveJsonFile(){
-    var jsonTextarea = document.getElementById('jsonTextarea').value
-    var pathToJson = document.getElementById('myInput').value
-    socket.emit('saveJsonFile', jsonTextarea)
-    socket.emit('pathToJson', pathToJson)
+function saveJsonFile() {
+  var jsonTextarea = document.getElementById('jsonTextarea').value
+  var pathToJson = document.getElementById('myInput').value
+  socket.emit('saveJsonFile', jsonTextarea)
+  socket.emit('pathToJson', pathToJson)
 }
 
-socket.on('jsonFileSaved', function(){
-   alert('Success!\nData has been received by the server.')
+socket.on('jsonFileSaved', function() {
+  alert('Success!\nData has been received by the server.')
 })

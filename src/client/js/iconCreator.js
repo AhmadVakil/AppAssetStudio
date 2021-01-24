@@ -56,13 +56,13 @@ function uploadOnTopImage(input) {
 }
 
 socket.on("loadingImage", function(msg) {
-    $('#mainImgPreview').attr('src', "../images/loading.gif");
-    $('#ios').attr('src', "../images/loading.gif");
-    $('#xxxhdpi').attr('src', "../images/loading.gif");
-    $('#xxhdpi').attr('src', "../images/loading.gif");
-    $('#xhdpi').attr('src', "../images/loading.gif");
-    $('#hdpi').attr('src', "../images/loading.gif");
-    $('#mdpi').attr('src', "../images/loading.gif");
+  $('#mainImgPreview').attr('src', "../images/loading.gif");
+  $('#ios').attr('src', "../images/loading.gif");
+  $('#xxxhdpi').attr('src', "../images/loading.gif");
+  $('#xxhdpi').attr('src', "../images/loading.gif");
+  $('#xhdpi').attr('src', "../images/loading.gif");
+  $('#hdpi').attr('src', "../images/loading.gif");
+  $('#mdpi').attr('src', "../images/loading.gif");
 })
 
 socket.on('iconUpdates', function (finalResult) {
@@ -77,61 +77,58 @@ socket.on('iconUpdates', function (finalResult) {
 })
 
 function imageBackground(radio) {
-   if (radio.checked) {
-        uploadBackgroundImage(document.getElementById("uploadBackgroundImage"))
-    }
-
+  if (radio.checked) {
+    uploadBackgroundImage(document.getElementById("uploadBackgroundImage"))
+  }
 }
 
 function colorBackground(color) {
-console.log(document.getElementById("favcolor").value)
-    if (document.getElementById("colorBackground").checked) {
-        sessionStorage.setItem("iconBackgroundImage", "transparent");
-        var icDetails = {
-                backgroundImage: "transparent",
-                useBackgroundColor: document.getElementById("colorBackground").checked,
-                backgroundColor: document.getElementById("favcolor").value,
-                transparentBackground: document.getElementById("transparentBackground").checked,
-                onTopImage: sessionStorage.getItem("onTopImage"),
-                scaleAmount: document.getElementById("scaleVol").value
-        }
-        socket.emit("manipulateIcon", icDetails)
+  if (document.getElementById("colorBackground").checked) {
+    sessionStorage.setItem("iconBackgroundImage", "transparent");
+    var icDetails = {
+      backgroundImage: "transparent",
+      useBackgroundColor: document.getElementById("colorBackground").checked,
+      backgroundColor: document.getElementById("favcolor").value,
+      transparentBackground: document.getElementById("transparentBackground").checked,
+      onTopImage: sessionStorage.getItem("onTopImage"),
+      scaleAmount: document.getElementById("scaleVol").value
     }
+    socket.emit("manipulateIcon", icDetails)
+  }
 }
 
 function transparentBackground(radio) {
-    console.log(sessionStorage.getItem("onTopImage"))
-    if (radio.checked ) {
-        var icDetails = {
-            useBackgroundColor: document.getElementById("colorBackground").checked,
-            transparentBackground: document.getElementById("transparentBackground").checked,
-            onTopImage: sessionStorage.getItem("onTopImage"),
-            scaleAmount: document.getElementById("scaleVol").value
-        }
-        socket.emit("manipulateIcon", icDetails)
+  if (radio.checked ) {
+    var icDetails = {
+      useBackgroundColor: document.getElementById("colorBackground").checked,
+      transparentBackground: document.getElementById("transparentBackground").checked,
+      onTopImage: sessionStorage.getItem("onTopImage"),
+      scaleAmount: document.getElementById("scaleVol").value
     }
+    socket.emit("manipulateIcon", icDetails)
+  }
 }
 
 document.getElementById('sendToIconCropper').addEventListener("click", function(){
-    window.location.replace('iconCropper.html');
+  window.location.replace('iconCropper.html');
 })
 
 function resetIcons(){
-    if (confirm('Do you want to delete your image?\nThis will delete your image from the browser.\n')) {
-        sessionStorage.setItem("imgBuffer", "");
-        location.reload();
-    }
+  if (confirm('Do you want to delete your image?\nThis will delete your image from the browser.\n')) {
+    sessionStorage.setItem("imgBuffer", "");
+    location.reload();
+  }
 }
 
 function scaleIcon(scaleAmount) {
-    document.getElementById("scaleAmountText").innerHTML = scaleAmount.value;
-    var icDetails = {
-        backgroundImage: document.getElementById("imageBackground").checked ? sessionStorage.getItem("iconBackgroundImage") : "transparent",
-        useBackgroundColor: document.getElementById("colorBackground").checked,
-        backgroundColor: document.getElementById("favcolor").value,
-        transparentBackground: document.getElementById("transparentBackground").checked,
-        onTopImage: sessionStorage.getItem("onTopImage"),
-        scaleAmount: document.getElementById("scaleVol").value
-    }
-    socket.emit("manipulateIcon", icDetails)
+  document.getElementById("scaleAmountText").innerHTML = scaleAmount.value;
+  var icDetails = {
+    backgroundImage: document.getElementById("imageBackground").checked ? sessionStorage.getItem("iconBackgroundImage") : "transparent",
+    useBackgroundColor: document.getElementById("colorBackground").checked,
+    backgroundColor: document.getElementById("favcolor").value,
+    transparentBackground: document.getElementById("transparentBackground").checked,
+    onTopImage: sessionStorage.getItem("onTopImage"),
+    scaleAmount: document.getElementById("scaleVol").value
+  }
+  socket.emit("manipulateIcon", icDetails)
 }
