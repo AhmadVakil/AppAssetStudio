@@ -1,12 +1,14 @@
 document.body.style.backgroundImage = 'url(../images/viewport-bg.png)'
-var socket = io.connect('127.0.0.1:5001')
-var BR = document.createElement('BR')
-var editJsonFilesbutton = document.getElementById('editJsonFilesButton')
-var repoName, configuration, vt
-var container = document.getElementById("containerDiv")
-var msg = document.getElementById("msg")
-vt = new VTree(container);
+const socket = io.connect('127.0.0.1:5001')
+const BR = document.createElement('BR')
+const editJsonFilesbutton = document.getElementById('editJsonFilesButton')
+var repoName
+var configuration
+var vt
+const container = document.getElementById('containerDiv')
+const msg = document.getElementById('msg')
 var reader = new VTree.reader.Object()
+vt = new VTree(container)
 
 function popUp () {
   var popup = document.getElementById('myPopup')
@@ -136,7 +138,7 @@ socket.on('foundJson', function (file) {
 })
 
 function updateTree() {
-  var s = document.getElementById("jsonTextarea").value
+  var s = document.getElementById('jsonTextarea').value
   msg.innerHTML = ''
   try {
     var jsonData = JSON.parse(s)
@@ -149,11 +151,11 @@ function updateTree() {
 }
 
 function createSvgString() {
-  document.getElementById("svg-text").value = vt.createSvgString()
+  document.getElementById('svg-text').value = vt.createSvgString()
 }
 
-document.getElementById("go-button").onclick = updateTree
-document.getElementById("svg-button").onclick = createSvgString
+document.getElementById('go-button').onclick = updateTree
+document.getElementById('svg-button').onclick = createSvgString
 
 socket.on('configData', function (configData) {
   var mainView = document.getElementById('mainView')
@@ -161,7 +163,7 @@ socket.on('configData', function (configData) {
   var jsonTextarea = document.getElementById('jsonTextarea')
   jsonTextarea.value = JSON.stringify(configData)
   var saveJsonFileButton = document.getElementById('saveJsonFileButton')
-  jsonTextarea.addEventListener('change', function() {
+  jsonTextarea.addEventListener('change', function () {
     if (jsonTextarea.value === configData) {
       saveJsonFileButton.disabled = true
     } else {
@@ -180,6 +182,6 @@ function saveJsonFile() {
   socket.emit('pathToJson', pathToJson)
 }
 
-socket.on('jsonFileSaved', function() {
+socket.on('jsonFileSaved', function () {
   alert('Success!\nData has been received by the server.')
 })

@@ -173,14 +173,14 @@ function createFromTemplate(){
 }
 
 socket.on('verifyToProceed', function(obj){
-    var verifyQuestion = prompt("To proceed, please verify with retyping the mobile application name\nName of the app to create: "+obj["-path"]);
+    var verifyQuestion = prompt("To proceed, please verify with retyping the mobile application repository name.\nName of the repository to create: "+obj["-path"]);
       if (verifyQuestion != null) {
         socket.emit('mkdirVerified', obj, verifyQuestion)
       }
 })
 socket.on('failedToCreateTemplate', function(){
-    alert('Failed to create template.\nConsult your admin.')
+    alert('Failed to create the repository.\nRefer to logs or consult with your admin.')
 })
 socket.on('templateCreated', function(){
-   alert('Success!\nTemplate is created.\nNow you can modify the template using other tools.')
+   alert('Success!\nMobile application repository is created.\nNow you can modify the repository using other tools.')
 })
