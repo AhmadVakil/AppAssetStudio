@@ -8,7 +8,6 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
   if (err) throw err;
   config = JSON.parse(data);
   function log(activity){
-    console.log(activity)
     if (config.production) {
       var datetime = new Date();
       if (!fs.existsSync(config.logPath)){
@@ -74,7 +73,7 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
               bg.composite(rawBackground, 0, 0)
               bg.getBase64(Jimp.AUTO, (err, res) => {
                 var elapsed = new Date().getTime() - start;
-                console.log("Icon launcher created automatically from scratch in: "+elapsed+" milliseconds")
+                console.log('\x1b[33m%s\x1b[0m', "Icon launcher created automatically from scratch in: "+elapsed+" milliseconds")
                 socket.emit("iconUpdates", res)
               })
             })
@@ -173,7 +172,7 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                 bg.composite(rawBackground, 0, 0)
                 bg.getBase64(Jimp.AUTO, (err, result) => {
                   var elapsed = new Date().getTime() - start;
-                  console.log("App buttons, notification icons, or toggle buttons created automatically in: "+elapsed+" milliseconds")
+                  console.log('\x1b[33m%s\x1b[0m', "App buttons, notification icon, \ntoggle button created automatically in: \n"+elapsed+" milliseconds")
                   socket.emit("inAppIconUpdated", {
                     result : result
                   })
@@ -191,7 +190,6 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
       socket.on('cropIcon', function (icDetails) {
         var start = new Date().getTime();
         icDetails.imgBuffer = icDetails.imgBuffer.substring(icDetails.imgBuffer.indexOf(",") + 1);
-        console.log(icDetails.imgBuffer)
         var base64Data = icDetails.imgBuffer.replace(/^data:image\/png;base64,/, "");
         var datetime = new Date();
         var fileName = ("uploaded-"+datetime+".png").replace(/\s/g, '');
@@ -231,7 +229,7 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                     xxxhdpi.shadow({ opacity: 0.8, size: 1.0, blur: 5, x: 0, y: 0 })
                   }
                   xxxhdpi.write(config.resourcesPath+icDetails.repo+config.pathToXXXHdpi)
-                  console.log("xxxhdpi created.")
+                  console.log('\x1b[34m%s\x1b[0m', "xxxhdpi created.")
                 }
                 if (icDetails.xxhdpi) {
                   xxhdpi.resize(144, 144)
@@ -241,7 +239,7 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                     xxhdpi.shadow({ opacity: 0.8, size: 1.0, blur: 5, x: 0, y: 0 })
                   }
                   xxhdpi.write(config.resourcesPath+icDetails.repo+config.pathToXXHdpi)
-                  console.log("xxhdpi created.")
+                  console.log('\x1b[34m%s\x1b[0m', "xxhdpi created.")
                 }
                 if (icDetails.xhdpi) {
                   xhdpi.resize(96, 96)
@@ -251,7 +249,7 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                     xhdpi.shadow({ opacity: 0.8, size: 1.0, blur: 5, x: 0, y: 0 })
                   }
                   xhdpi.write(config.resourcesPath+icDetails.repo+config.pathToXHdpi)
-                  console.log("xhdpi created.")
+                  console.log('\x1b[34m%s\x1b[0m', "xhdpi created.")
                 }
                 if (icDetails.hdpi) {
                   hdpi.resize(72, 72)
@@ -261,7 +259,7 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                     hdpi.shadow({ opacity: 0.5, size: 1.0, blur: 1, x: 0, y: 0 })
                   }
                   hdpi.write(config.resourcesPath+icDetails.repo+config.pathToHdpi)
-                  console.log("hdpi created.")
+                  console.log('\x1b[34m%s\x1b[0m', "hdpi created.")
                 }
                 if (icDetails.mdpi) {
                   mdpi.resize(48, 48)
@@ -271,11 +269,11 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                     mdpi.shadow({ opacity: 0.5, size: 1.0, blur: 1, x: 0, y: 0 })
                   }
                   mdpi.write(config.resourcesPath+icDetails.repo+config.pathToMdpi)
-                  console.log("mdpi created.")
+                  console.log('\x1b[34m%s\x1b[0m', "mdpi created.")
                 }
                 var elapsed = new Date().getTime() - start;
-                console.log("Mobile application icon launchers rounded, resized and saved automatically in: "+elapsed+" milliseconds")
-                console.log('\x1b[33m%s\x1b[0m', "Completed! Icons requests processed!\n")
+                console.log('\x1b[31m%s\x1b[0m', "Icons rounded, shadows added and changes pushed to its Git repository.")
+                console.log('\x1b[33m%s\x1b[0m', "Time taken: \n"+elapsed+" milliseconds")
                 socket.emit('iconLaunchersCreated')
               })
             })
@@ -335,7 +333,7 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
             socket.emit("linuxOsDisabled", {msg: "Linux OS is not set to true."})
           }
           var elapsed = new Date().getTime() - start;
-          console.log(timeNotificationText+elapsed+" milliseconds")
+          console.log('\x1b[33m%s\x1b[0m', timeNotificationText+elapsed+" milliseconds")
           socket.emit('templateCreated')
         } else {
             socket.emit('failedToCreateTemplate')
