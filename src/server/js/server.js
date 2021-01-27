@@ -44,6 +44,7 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
     fs.readFile('src/server/configs/images.json', 'utf8', function (err, imagesJson) {
       imagesJson = JSON.parse(imagesJson)
       socket.on('manipulateIcon', function (imgBuffer) {
+        var start = new Date().getTime();
         socket.emit("loadingImage", ({msg: "Processing Image"}))
         var bg
         var background = imgBuffer.transparentBackground || imgBuffer.useBackgroundColor || imgBuffer.backgroundImage === "transparent" ? imagesJson["rawBg"] : imgBuffer.backgroundImage
@@ -72,6 +73,8 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
               rawBackground.composite(onTopIcon, x, y).shadow({ opacity: 0.8, size: 1.0, blur: 5, x: 0, y: 0 })
               bg.composite(rawBackground, 0, 0)
               bg.getBase64(Jimp.AUTO, (err, res) => {
+                var elapsed = new Date().getTime() - start;
+                console.log("Icon launcher created automatically from scratch in: "+elapsed+" milliseconds")
                 socket.emit("iconUpdates", res)
               })
             })
@@ -79,6 +82,7 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
         })
       })
       socket.on('inAppIconUpdateView', function (data) {
+        var start = new Date().getTime();
         socket.emit("loadingImage", ({msg: "Processing Image"}))
         var background = imagesJson["rawBg"]
         background = background.substring(background.indexOf(",") + 1);
@@ -168,6 +172,8 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                 rawBackground.composite(onTopIcon, parseInt(data.inAppIconOnTopIconX), parseInt(data.inAppIconOnTopIconY))//.shadow({ opacity: 0.8, size: 1.0, blur: 5, x: 0, y: 0 })
                 bg.composite(rawBackground, 0, 0)
                 bg.getBase64(Jimp.AUTO, (err, result) => {
+                  var elapsed = new Date().getTime() - start;
+                  console.log("App buttons, notification icons, or toggle buttons created automatically in: "+elapsed+" milliseconds")
                   socket.emit("inAppIconUpdated", {
                     result : result
                   })
@@ -183,6 +189,7 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
 
       // Image data received from client side
       socket.on('cropIcon', function (icDetails) {
+        var start = new Date().getTime();
         icDetails.imgBuffer = icDetails.imgBuffer.substring(icDetails.imgBuffer.indexOf(",") + 1);
         console.log(icDetails.imgBuffer)
         var base64Data = icDetails.imgBuffer.replace(/^data:image\/png;base64,/, "");
@@ -266,6 +273,8 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                   mdpi.write(config.resourcesPath+icDetails.repo+config.pathToMdpi)
                   console.log("mdpi created.")
                 }
+                var elapsed = new Date().getTime() - start;
+                console.log("Mobile application icon launchers rounded, resized and saved automatically in: "+elapsed+" milliseconds")
                 console.log('\x1b[33m%s\x1b[0m', "Completed! Icons requests processed!\n")
                 socket.emit('iconLaunchersCreated')
               })
@@ -305,14 +314,18 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
         socket.emit('verifyToProceed', obj)
       })
       socket.on('mkdirVerified', function (data, verify) {
+        var start = new Date().getTime();
+        var timeNotificationText = ""
         if (verify.length<15 && verify === data["-path"]){
           if (config.linuxOS) {
             const shell = require('shelljs')
             var jsondir = require('jsondir');
             if (config.initialGitRepo) {
               shell.exec('bash src/server/autoGitMakeRepo.sh '+data["-path"])
+              timeNotificationText = "Git repository created, cloned with entire directory structure in "
             } else {
               socket.emit("gitFunctionalityDisabled", {msg: "Git functionality is disabled. It means only the directory structure is created and not the Git repository."})
+              timeNotificationText = "Directory structure created in "
             }
             data["-path"] = config.resourcesPath+data["-path"]
             jsondir.json2dir(data, function(err) {
@@ -321,6 +334,8 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
           } else {
             socket.emit("linuxOsDisabled", {msg: "Linux OS is not set to true."})
           }
+          var elapsed = new Date().getTime() - start;
+          console.log(timeNotificationText+elapsed+" milliseconds")
           socket.emit('templateCreated')
         } else {
             socket.emit('failedToCreateTemplate')
