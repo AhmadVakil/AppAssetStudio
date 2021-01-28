@@ -21,6 +21,8 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
   }
 
   function fromDir(startPath,filter, socket) {
+      var start = new Date().getTime();
+
     if (!fs.existsSync(startPath)){
       console.log("no dir ",startPath);
       return;
@@ -73,7 +75,8 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
               bg.composite(rawBackground, 0, 0)
               bg.getBase64(Jimp.AUTO, (err, res) => {
                 var elapsed = new Date().getTime() - start;
-                console.log('\x1b[33m%s\x1b[0m', "Icon launcher created automatically from scratch in: "+elapsed+" milliseconds")
+                console.log('\x1b[33m%s\x1b[0m', "Icon launcher created automatically from scratch")
+                console.log('\x1b[33m%s\x1b[0m', "Time taken: \n"+elapsed+" milliseconds")
                 socket.emit("iconUpdates", res)
               })
             })
@@ -172,7 +175,8 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
                 bg.composite(rawBackground, 0, 0)
                 bg.getBase64(Jimp.AUTO, (err, result) => {
                   var elapsed = new Date().getTime() - start;
-                  console.log('\x1b[33m%s\x1b[0m', "App buttons, notification icon, \ntoggle button created automatically in: \n"+elapsed+" milliseconds")
+                  console.log('\x1b[33m%s\x1b[0m', "App buttons, notification icon, \nor toggle button created automatically.")
+                  console.log('\x1b[33m%s\x1b[0m', "Time taken: \n"+elapsed+" milliseconds")
                   socket.emit("inAppIconUpdated", {
                     result : result
                   })
@@ -302,7 +306,17 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
         })
       })
       socket.on('openThisRepo', function (data) {
-        fromDir(config.resourcesPath+data.repoNames,'.json', socket)
+        var start = new Date().getTime();
+        ;(function(next) {
+        	fromDir(config.resourcesPath+data.repoNames,'.json', socket)
+          next()
+        }(function() {
+        	var elapsed = new Date().getTime() - start;
+          console.log('\x1b[31m%s\x1b[0m', "All configuration files fetched and send to the end-user.")
+          console.log('\x1b[33m%s\x1b[0m', "Time taken: \n"+elapsed+" milliseconds")
+        }))
+
+
       })
       socket.on('openThisTemplate', function (data) {
         fromDir(config.templateResourcesPath+data.repoNames,'.json', socket)
@@ -320,10 +334,10 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
             var jsondir = require('jsondir');
             if (config.initialGitRepo) {
               shell.exec('bash src/server/autoGitMakeRepo.sh '+data["-path"])
-              timeNotificationText = "Git repository created, cloned with entire directory structure in "
+              timeNotificationText = "Git repository created, cloned including directory structure and required files "
             } else {
               socket.emit("gitFunctionalityDisabled", {msg: "Git functionality is disabled. It means only the directory structure is created and not the Git repository."})
-              timeNotificationText = "Directory structure created in "
+              timeNotificationText = "Directory structure created just locally without the remote Git repository."
             }
             data["-path"] = config.resourcesPath+data["-path"]
             jsondir.json2dir(data, function(err) {
@@ -333,13 +347,15 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
             socket.emit("linuxOsDisabled", {msg: "Linux OS is not set to true."})
           }
           var elapsed = new Date().getTime() - start;
-          console.log('\x1b[33m%s\x1b[0m', timeNotificationText+elapsed+" milliseconds")
+          console.log('\x1b[33m%s\x1b[0m', timeNotificationText)
+          console.log('\x1b[33m%s\x1b[0m', "Time taken: \n"+elapsed+" milliseconds")
           socket.emit('templateCreated')
         } else {
             socket.emit('failedToCreateTemplate')
         }
       })
       socket.on('saveJsonFile', function(jsonTextArea) {
+        var start = new Date().getTime();
         console.log(typeof jsonTextArea)
         socket.on('pathToJson', function(pathToJson) {
           try {
@@ -350,6 +366,8 @@ fs.readFile('src/server/configs/server-config.json', 'utf8', function (err, data
           }
         })
         socket.emit('jsonFileSaved')
+        console.log('\x1b[33m%s\x1b[0m', "JSON configuration saved.")
+        console.log('\x1b[33m%s\x1b[0m', "Time taken: \n"+elapsed+" milliseconds")
       })
       fs.readdir(config.resourcesPath, (err, files) => {
         socket.emit('Repositories', files)
