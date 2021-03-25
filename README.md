@@ -32,7 +32,7 @@ We suggest using Linux because some integrated functionalities uses Unix-like op
 2-Clone the git repository in your local server.<br>
 3-Navigate to the folder that you have cloned.<br>
 4-Type the following commands in your command line:<br>
-5
+
 1. `npm install` wait for the npm to be installed.
 1. `node src/server/js/server.js` wait for the server to run.
 2. `npm start` start the web server on your local host. 
