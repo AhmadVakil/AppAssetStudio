@@ -7,15 +7,19 @@ A comprehensive tool to create and manipulate mobile application repository. Thi
 Using this tool you can perform the following.
 
 ### 1- Create directory structure and remote Git repository programmatically
-1- Create directory structure with remote Git repository for your mobile applications.<br>
-2- Perform all Git commands and push changes using just a GUI button.<br>
+<ul>
+    <li>Create directory structure with remote Git repository for your mobile applications.</li>
+    <li>Perform all Git commands and push changes using just a GUI button.</li>
+</ul>
 
 ### 2- Manipulate the directory structure and update remote Git repository
-1- Fetch all mobile application configuration files<br>
-2- Edit all fetched configuration files and save them back using GUI<br>
-3- Create launcher icons<br>
-4- Edit launcher icons<br>
-5- Create buttons, notification icons, generic icons, and action bar/tab icons<br>
+<ul>
+    <li>Find and provide all configuration files to the user.</li>
+    <li>User can edit any provided configuration file and save them back using GUI.</li>
+    <li>Create launcher icons.</li>
+    <li>Edit launcher icons.</li>
+    <li>Create buttons, notification icons, generic icons, and action bar/tab icons</li>
+</ul>
 
 ### 3- Deploy the mobile application automatically after each push to the store
 This is done using a template repository which I have provided <a href="https://github.com/AhmadVakil/AppAssetAutoDeploy">here</a>, I used <a href="https://fastlane.tools/">Fastlane</a> and also <a href="https://github.com/features/actions">GitHub Actions</a>. It means if you want your mobile application to be automatically deployed to the store, you can use the template for each of your mobile applications or you can configure your app repo with your own CI/CD tool. Currently, there are numerous tools which I preferred to use <a href="https://fastlane.tools/">Fastlane</a> 
@@ -54,6 +58,7 @@ Once you run the server you can use `npm start` and browse to [http://localhost:
     <li>iOS deployment</li>
     <li>Trigger autoGitPush.py to be first pop up as modal if there is something new Git status</li>
     <li>A solution for merge conflicts</li>
+    <li>Support for other type of configuration files rather than JSON, such as XML, etc. </li>
     <li>Improve README.md</li>
 </ul>
 
