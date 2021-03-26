@@ -1,5 +1,9 @@
 # App Asset Studio
-A comprehensive tool to manipulate mobile application repository. This is an automation tool which I have developed as a proof of concept for my thesis research and in order to demonstrate the idea of automating and simplifying tedious tasks while we are developing a mobile application. Using this tool you can:
+A comprehensive tool to manipulate mobile application repository. This is an automation tool which I have developed as a proof of concept for my thesis research and in order to demonstrate the idea of automating monotonous workflow. 
+
+<img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/home.png">
+
+Using this tool you can:
 
 #### 1- Create directory structure and remote Git repository programmatically
 1- Create directory structure for mobile application<br>
