@@ -1,10 +1,27 @@
 # App Asset Studio
-A comprehensive tool to create and manipulate mobile application repository. This is an automation tool which I have developed as a proof of concept for my thesis research and in order to demonstrate the idea of automating monotonous workflow.
+A comprehensive tool to create, manipulate, and deploy mobile applications. 
+This is an automation tool which I have developed as a proof of concept for 
+my thesis research and in order to demonstrate the idea of automating monotonous workflow. 
+
+## Background
+To deploy a mobile application numerous manual tasks has to be done. 
+Assume that you want to reskin your mobile application, hence you have to apply your changes manually. 
+These changes that I have mentioned can be changing the launcher icon, graphical buttons that you used in your app. 
+Using my tool you can create graphical contents for your mobile application and simplify this process. 
+
+Furthermore, it is also time-consuming if you want to find and edit a configuration file in your mobile application repository. 
+Assume that you don't know where your configuration file is located inside the mobile application repository. 
+Using this tool, the system will provide you all the available configuration files in a nice looking graphical user interface. 
+You can easily open, edit, and save your configuration files very quick and easy.
+
+Finally, you can use this tool to create directory structure for your mobile application and at the same time 
+the system will create a remote Git repository for you. 
+The system will also listen to your repositories, push your changes, and deploy your mobile application automatically. 
 
 <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/home.png">
 
 ## This tool has 3 main features
-Using this tool you can perform the following.
+Using this tool you can perform three main features.
 
 ### 1- Create directory structure and remote Git repository programmatically
 <ul>
