@@ -56,11 +56,10 @@ We suggest using Linux because some integrated functionalities uses Unix-like op
 2-Clone the git repository in your local server.<br>
 3-Navigate to the folder that you have cloned.<br>
 4-Type the following commands in your command line:<br>
-
-1. `npm install` wait for the npm to be installed.
-1. `node src/server/js/server.js` wait for the server to run.
-2. `npm start` start the web server on your local host. 
-3. Browse to [http://localhost:4000](http://localhost:4000)
+`npm install` wait for the npm to be installed.
+`node src/server/js/server.js` wait for the server to run.
+`npm start` start the web server on your local host. 
+Browse to: [http://localhost:4000](http://localhost:4000)
 
 ### Docker - Run the containerized server (Optional)
 Server listens to port `5001` so to containerize and publish the port of the server use the following commands.
@@ -73,8 +72,8 @@ Once you run the server you can use `npm start` and browse to [http://localhost:
 ## Todo
 <ul>
     <li>iOS deployment</li>
-    <li>Trigger autoGitPush.py to be first pop up as modal if there is something new Git status</li>
-    <li>A solution for merge conflicts</li>
+    <li>Trigger autoGitPush.py to first pop up as modal if there is something new Git status.</li>
+    <li>A fix merge conflicts.</li>
     <li>Support for other type of configuration files rather than JSON, such as XML, etc. </li>
     <li>Improve README.md</li>
 </ul>
