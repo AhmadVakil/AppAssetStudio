@@ -56,10 +56,10 @@ We suggest using Linux because some integrated functionalities uses Unix-like op
 2-Clone the git repository in your local server.<br>
 3-Navigate to the folder that you have cloned.<br>
 4-Type the following commands in your command line:<br>
-`npm install` wait for the npm to be installed.
-`node src/server/js/server.js` wait for the server to run.
-`npm start` start the web server on your local host. 
-Browse to: [http://localhost:4000](http://localhost:4000)
+`npm install` wait for the npm to be installed.<br>
+`node src/server/js/server.js` wait for the server to run.<br>
+`npm start` start the web server on your local host.<br>
+Browse to: [http://localhost:4000](http://localhost:4000)<br>
 
 ### Docker - Run the containerized server (Optional)
 Server listens to port `5001` so to containerize and publish the port of the server use the following commands.
