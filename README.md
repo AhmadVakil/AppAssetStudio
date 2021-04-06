@@ -20,7 +20,7 @@ Using my tool you can create graphical contents for your mobile application and 
 
 Furthermore, it is also time-consuming if you want to find and edit a configuration file in your mobile application repository. 
 Assume that you don't know where your configuration file is located inside the mobile application repository. 
-Using this tool, the system will provide you all the available configuration files in a nice looking graphical user interface. 
+Using this tool, the system will find and provide you all the available configuration files in a nice looking graphical user interface. 
 You can easily open, edit, and save your configuration files very quick and easy.
 
 Finally, you can use this tool to create directory structure for your mobile application and at the same time 
@@ -111,7 +111,7 @@ on the home page.
 <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/home-1.png"><br>
 
 <p>
-    On the next page, choose a category of the mobile application. You will see the following list which represents the available directory structures that you can choose from and generate.
+    On the next page, choose a category of the mobile application. You will see the following list which represents the available directory structures that you can choose from.
 </p>
 
 <p align="center">
@@ -167,9 +167,11 @@ then the system will show that folder as a category in the drop-down list to the
     <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/directory-structure-explained.png" width="600"><br>
     <br>That's it! If you prefer to manually create these files and folders then it will be tedious!
 </p>
-The JSON file you used to create the directory structure has some keys and pair values as following:
--path 
 
+The JSON file you used to create the directory structure has some keys and pair values as I describe them briefly here:<br>
+- `-path` The name of the mobile application root directory<br>
+- `-type` Define the type. For example, `"bin": { "-type": "d"}` will give you an empty directory called `bin` and `d` stands for directory. You can have more hierarchy under the `bin` which is totally up to you how you would like to have your structure.<br>
+- `-content` The content of the file. Can be anything you would like to store in the file, maybe a base64 image data, a text data, or even an encrypted data, etc.
 
 ## Todo
 <ul>
