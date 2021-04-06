@@ -97,17 +97,16 @@ I strongly suggest running this prototype on Linux environment because some inte
 </p>
 
 ### Prepare the system to create remote Git repository automatically
-<p>
-    If you want the system to create remote Git repository automatically then you have to 
-    update the system with your token. You can get your token from your Github account in 
-    Settings → Developer Settings → Generate new token. Then you can use it in autoGitMakeRepo.sh
-</p>
+
+If you want the system to create remote Git repository automatically then you have to 
+update the system with your token. You can get your token from your Github account in 
+`Settings → Developer Settings → Generate new token`. Then you can use your token in the Shell script called `autoGitMakeRepo.sh` located in the `server` directory.
 
 ### Create your directory structure and its remote Git repository
-<p> 
-    Once you started the server and client-side application of this prototype, 
-    click on the button "Create Repo & Resources" on the home page.
-</p>
+ 
+Once you started the server and client-side application of this prototype, 
+click on the button `Create Repo & Resources` on the home page.
+
 <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/home-1.png"><br>
 
 <p>
@@ -119,9 +118,16 @@ I strongly suggest running this prototype on Linux environment because some inte
 </p>
 
 ### Define your desired directory structure or new category (Optional)
-<p>
-    These directory structures are template directory structures that are saved as JSON files and the system will use them to create an actual directory structure. I used this trick to define the directory structure of mobile applications using a JSON hierarchy. So, the JSON hierarchy will be actually our directory structure. If you want to have your own customized directory structure, just take one of the JSON files that I have already included in the src/server/storage/directoryStructures/ and create your desired sample as you want in the respective category. To create a new category you just need to create a new folder in the mentioned path, then the system will show that folder as a category in the drop-down list to the end-user.
-</p>
+
+These directory structures are template directory structures that are saved as JSON files 
+and the system will use them to create an actual directory structure. I used this trick to 
+define the directory structure of mobile applications using a JSON hierarchy. 
+So, the JSON hierarchy will be actually our directory structure. 
+If you want to have your own customized directory structure, just take one of the JSON 
+files that I have already included in the `src/server/storage/directoryStructures/` 
+and create your desired sample as you want in the respective category. 
+To create a new category you just need to create a new folder in the mentioned path, 
+then the system will show that folder as a category in the drop-down list to the end-user.
 
 <p>
     This figure shows how you can create and define a new category with directory structures.
