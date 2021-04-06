@@ -84,6 +84,16 @@ Once you run the server you can use `npm start` and browse to [http://localhost:
 <p>I strongly suggest running this prototype on Linux environment because some integrated features are implemented using Unix-like commands. However, the configuration file of the server also has other values which you have to change depending on your operating system. If you are using Windows make sure to set some values to false, such as linuxOS, initialGitRepo, and pushToGitRepo but it is your challenge to get everything works if you prefer to use Windows.</p>
 
 <p>Now let's assume we want to create a new mobile application. The first thing we need is a directory structure for the mobile application that should be located in the mobile application repository and also a new remote Git repository for our mobile application. Once you started the server and client-side application of this prototype, click on the button "Create Repo & Resources" on the home page.</p>
+<img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/home-1.png"><br>
+
+<p>
+    On the next page, choose a category of the mobile application. You will see the following list which represents the available directory structures that you can choose from and generate.
+</p>
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/directory-structure-drop-down-menu.png" width="600"><br>
+</p>
+
 
 ## Todo
 <ul>
