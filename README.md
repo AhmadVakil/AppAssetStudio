@@ -199,7 +199,7 @@ as a drop-down list.
 
 Come back later, this README.md is updating...
 <p align="center">
-    <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/updating.gif" width="100">
+    <img src="https://github.com/AhmadVakil/AppAssetStudio/blob/master/tutorial/updating.gif?raw=true" width="100">
 </p>
 
 ## Todo
