@@ -108,6 +108,30 @@ Once you run the server you can use `npm start` and browse to [http://localhost:
     <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/create-directory-structure-category.png" width="600"><br>
 </p>
 
+<p>
+    After choosing the directory structure category, you will see its relative directory structures shown in the following figure.
+</p>
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/directory-structure-drop-down-menu-app.png" width="600"><br>
+</p>
+
+<p>
+    After choosing a structure, the JSON hierarchy (Directory structure) will be shown to the end-user. Thus, it is also possible to edit this JSON hierarchy on the front-end before using it as a directory structure.
+</p>
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/json-to-directory-structure.png" width="600"><br>
+</p>
+
+<p>
+    Once you click create the directory structure will be created with its remote Git repository. What we have done until now was to creating a completely new mobile application directory structure that can contains numerous files and directories. See the following figure to understand how does it works. We have the JSON hierarchy on the left and we get the directory structure on the right.
+</p>
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/directory-structure-explained.png" width="600"><br>
+    <br>That's it! If you prefer to manually create these files and folders then it will be tedious!
+</p>
 ## Todo
 <ul>
     <li>iOS deployment</li>
