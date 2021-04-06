@@ -84,7 +84,26 @@ Once you run the server you can use `npm start` and browse to [http://localhost:
 <p>I strongly suggest running this prototype on Linux environment because some integrated features are implemented using Unix-like commands. However, the configuration file of the server also has other values which you have to change depending on your operating system. If you are using Windows make sure to set some values to false, such as linuxOS, initialGitRepo, and pushToGitRepo but it is your challenge to get everything works if you prefer to use Windows.</p>
 
 #### Create a new directory structure & its remote Git repository
-<p>Now let's assume we want to create a new mobile application. The first thing we need is a directory structure for the mobile application that should be located in the mobile application repository and also a new remote Git repository for our mobile application. Once you started the server and client-side application of this prototype, click on the button "Create Repo & Resources" on the home page.</p>
+
+<p> 
+    Now let's assume we want to create a new mobile application. 
+    The first thing we need is a directory structure for the mobile application that should be 
+    located in the mobile application repository and also a new remote Git repository for our mobile 
+    application. 
+</p>
+
+##### Prepare the system to create remote Git repository automatically
+<p>
+    If you want the system to create remote Git repository automatically then you have to 
+    update the system with your token. You can get your token from your Github account in 
+    Settings → Developer Settings → Generate new token. Then you can use it in autoGitMakeRepo.sh
+</p>
+
+##### Create your directory structure and its remote Git repository
+<p> 
+    Once you started the server and client-side application of this prototype, 
+    click on the button "Create Repo & Resources" on the home page.
+</p>
 <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/home-1.png"><br>
 
 <p>
@@ -95,7 +114,7 @@ Once you run the server you can use `npm start` and browse to [http://localhost:
     <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/directory-structure-drop-down-menu.png" width="600"><br>
 </p>
 
-##### Create your own directory structure or category (Optional)
+##### Define your desired directory structure or category (Optional)
 <p>
     These directory structures are template directory structures that are saved as JSON files and the system will use them to create an actual directory structure. I used this trick to define the directory structure of mobile applications using a JSON hierarchy. So, the JSON hierarchy will be actually our directory structure. If you want to have your own customized directory structure, just take one of the JSON files that I have already included in the src/server/storage/directoryStructures/ and create your desired sample as you want in the respective category. To create a new category you just need to create a new folder in the mentioned path, then the system will show that folder as a category in the drop-down list to the end-user.
 </p>
@@ -132,6 +151,7 @@ Once you run the server you can use `npm start` and browse to [http://localhost:
     <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/directory-structure-explained.png" width="600"><br>
     <br>That's it! If you prefer to manually create these files and folders then it will be tedious!
 </p>
+
 ## Todo
 <ul>
     <li>iOS deployment</li>
