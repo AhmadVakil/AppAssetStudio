@@ -105,10 +105,13 @@ update the system with your token. You can get your token from your Github accou
 ### Create your directory structure and its remote Git repository
  
 Once you started the server and client-side application of this prototype, 
-click on the button <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/create-repo-and-resources-button.png" height="27"> 
+click on the button 
+<img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/create-repo-and-resources-button.png" height="27"> 
 on the home page.
 
-<img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/home-1.png"><br>
+<p align="center">
+    <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/home-1.png" width="600"><br>
+</p>
 
 <p>
     On the next page, choose a category of the mobile application. You will see the following list which represents the available directory structures that you can choose from.
@@ -155,7 +158,8 @@ then the system will show that folder as a category in the drop-down list to the
 </p>
 
 <p>
-    Once you click <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/create-button.png" height="27">
+    Once you click 
+    <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/create-button.png" height="27">
     the directory structure, the system will ask you to verify the name of the mobile application 
     and after you pass the name verification the directory structure will be created with its remote Git repository. 
     What we have done until now was to creating a completely new mobile application directory structure that can contains 
@@ -172,6 +176,31 @@ The JSON file you used to create the directory structure has some keys and pair 
 - `-path` The name of the mobile application root directory<br>
 - `-type` Define the type. For example, `"bin": { "-type": "d"}` will give you an empty directory called `bin` and `d` stands for directory. You can have more hierarchy under the `bin` which is totally up to you how you would like to have your structure.<br>
 - `-content` The content of the file. Can be anything you would like to store in the file, maybe a base64 image data, a text data, or even an encrypted data, etc.
+
+### Edit mobile applications configuration files
+The other magical feature of this prototype is that it can find all configuration files in your mobile application 
+repository and provide them to the end-user. In this case, you can easily click on your configuration file, edit it, 
+and save it. 
+
+On the home screen click on 
+<img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/edit-configs-button.png" height="27">
+to navigate to the related page.
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/home-2.png" width="600">
+</p>
+
+In the next page you can see your cloned or already created mobile application repositories with the previous feature
+as a drop-down list.
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/drop-down-menu-of-repositories.png" width="600">
+</p>
+
+Come back later, this README.md is updating...
+<p align="center">
+    <img src="https://i.pinimg.com/originals/ac/75/03/ac7503d8215fa3d18d7f8cae4f0bef02.gif" width="100">
+</p>
 
 ## Todo
 <ul>
