@@ -10,6 +10,7 @@ my thesis research and in order to demonstrate the idea of automating monotonous
 - [Docker - Run the containerized server (Optional)](#docker---run-the-containerized-server-optional)<br>
 - [How does it work? (Tutorial)](#how-does-it-work-tutorial)<br>
 - [Todo](#todo)<br>
+- [License](#license)<br>
 
 ## Background
 To deploy a mobile application numerous manual tasks has to be done. 
