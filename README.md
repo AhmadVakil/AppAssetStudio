@@ -80,7 +80,7 @@ Once you run the server you can use `npm start` and browse to [http://localhost:
 
 ## How does it work? (Tutorial)
 
-This tool looks for mobile application repositories in an already defined path. Even if you create a mobile application repository using this tool, it will be created in that already defined path as well. This path is defined in a configuration file that is used by the server `src\server\configs\server-config.json` in the pair value of the key resourcesPath.
+This software system simply search for any mobile application repositories in an already defined path and will provide them all to the end-user. Even if you create a mobile application repository using this system, it will be created in that already defined path as well. This path is defined in a configuration file that is used by the server `src\server\configs\server-config.json` in the pair value of the key `resourcesPath`.
 
 So, if you have a mobile application repository that you want to manipulate using this tool, you should have it cloned into the mentioned path.
 
@@ -160,7 +160,7 @@ then the system will show that folder as a category in the drop-down list to the
 <p>
     Once you click 
     <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/create-button.png" height="27">
-    the directory structure, the system will ask you to verify the name of the mobile application 
+    , the system will ask you to verify the name of the mobile application 
     and after you pass the name verification the directory structure will be created with its remote Git repository. 
     What we have done until now was to creating a completely new mobile application directory structure that can contains 
     numerous files and directories. See the following figure to understand how does it works. We have the JSON hierarchy on 
