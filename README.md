@@ -154,7 +154,8 @@ then the system will show that folder as a category in the drop-down list to the
 </p>
 
 <p>
-    Once you click create the directory structure, the system will ask you to verify the name of the mobile application 
+    Once you click <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/create-button.png" width="60">
+    the directory structure, the system will ask you to verify the name of the mobile application 
     and after you pass the name verification the directory structure will be created with its remote Git repository. 
     What we have done until now was to creating a completely new mobile application directory structure that can contains 
     numerous files and directories. See the following figure to understand how does it works. We have the JSON hierarchy on 
