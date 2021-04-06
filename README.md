@@ -72,7 +72,7 @@ $ docker run --publish 5001:5001 server
 ```
 Once you run the server you can use `npm start` and browse to [http://localhost:4000](http://localhost:4000)
 
-##How does it work? (Tutorial)
+## How does it work? (Tutorial)
 <p>This tool looks for mobile application repositories in an already defined path. Even if you create a mobile application repository using this tool, it will be created in that already defined path as well. This path is defined in a configuration file that is used by the server src\server\configs\server-config.json in the pair value of the key resourcesPath.</p>
 <p>So, if you have a mobile application repository that you want to manipulate using this tool, you should have it cloned into the mentioned path.</p>
 <p>I strongly suggest running this prototype on Linux environment because some integrated features are implemented using Unix-like commands. However, the configuration file of the server also has other values which you have to change depending on your operating system. If you are using Windows make sure to set some values to false, such as linuxOS, initialGitRepo, and pushToGitRepo but it is your challenge to get everything works if you prefer to use Windows.</p>
