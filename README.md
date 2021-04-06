@@ -105,7 +105,8 @@ update the system with your token. You can get your token from your Github accou
 ### Create your directory structure and its remote Git repository
  
 Once you started the server and client-side application of this prototype, 
-click on the button `Create Repo & Resources` on the home page.
+click on the button <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/create-repo-and-resources-button.png" height="27"> 
+on the home page.
 
 <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/home-1.png"><br>
 
@@ -154,7 +155,7 @@ then the system will show that folder as a category in the drop-down list to the
 </p>
 
 <p>
-    Once you click <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/create-button.png" width="65">
+    Once you click <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/create-button.png" height="27">
     the directory structure, the system will ask you to verify the name of the mobile application 
     and after you pass the name verification the directory structure will be created with its remote Git repository. 
     What we have done until now was to creating a completely new mobile application directory structure that can contains 
