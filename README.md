@@ -4,7 +4,12 @@ This is an automation tool which I have developed as a proof of concept for
 my thesis research and in order to demonstrate the idea of automating monotonous workflow. 
 
 ## TOC
-[How does it work?](#how-does-it-work-tutorial) 
+- [Background](#background)<br>
+- [Features](#this-tool-has-3-main-features)<br>
+- [Installation](#installation)<br>
+- [Docker - Run the containerized server (Optional)](#docker---run-the-containerized-server-optional)<br>
+- [How does it work? (Tutorial)](#how-does-it-work-tutorial)<br>
+- [Todo](#todo)<br>
 
 ## Background
 To deploy a mobile application numerous manual tasks has to be done. 
