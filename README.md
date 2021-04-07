@@ -102,7 +102,9 @@ If you want the system to create remote Git repository automatically then you ha
 update the system with your token. You can get your token from your Github account in 
 `Settings → Developer Settings → Generate new token`. Then you can use your token in the Shell script called `autoGitMakeRepo.sh` located in the `server` directory.
 
-### Create your directory structure and its remote Git repository
+<hr>
+
+## Create your directory structure and its remote Git repository
  
 Once you started the server and client-side application of this prototype, 
 click on the button 
@@ -176,6 +178,8 @@ The JSON file you used to create the directory structure has some keys and pair 
 - `-path` The name of the mobile application root directory<br>
 - `-type` Define the type. For example, `"bin": { "-type": "d"}` will give you an empty directory called `bin` and `d` stands for directory. You can have more hierarchy under the `bin` which is totally up to you how you would like to have your structure.<br>
 - `-content` The content of the file. Can be anything you would like to store in the file, maybe a base64 image data, a text data, or even an encrypted data, etc.
+
+<hr>
 
 ### Edit mobile applications configuration files
 The other magical feature of this prototype is that it can find all configuration files in your mobile application 
