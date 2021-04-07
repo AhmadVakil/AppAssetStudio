@@ -273,7 +273,7 @@ In the next page you can apply radius amount to the corners of you launcher icon
 mobile applications repository.
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/icon-cropper.png" width="600">
+    <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/icon-cropper.png" width="600"><br>
     Once done, click on
     <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/save-to-app-resource.png" height="28"> 
     and your launcher icons will be save into your chosen mobile app repository.
