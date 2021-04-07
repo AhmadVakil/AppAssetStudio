@@ -213,7 +213,13 @@ we can see its actual path.
     <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/config-path.png" width="600">
 </p>
 
-Next the configuration file will be show for edit.
+Next the configuration file will be provided, so the user can touch it.
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/config-file.png" width="600">
+</p>
+
+This is actually a JSON configuration file that is collapsible. We can change, and overwrite them directly. 
 
 
 
