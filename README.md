@@ -251,6 +251,8 @@ Figures are screenshots from each scope separately.
 
 ## Create & edit launcher icons
 
+Using this prototype you can edit or change launcher icons of a mobile application or a mobile game.
+The system will create all launcher icons for you in different mipmap sizes ver quick.<br>
 From the home page click on the button
 <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/resicons-button.png" height="28"> 
 <p align="center">
@@ -266,7 +268,16 @@ Here you can choose a background and foreground layer as a first step to create 
 There are also some properties that you can modify such as scale and transparent background.<br>
 Once you are done click on 
 <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/send-to-icon-cropper-button.png" height="28"> 
-to got to next step and round the icon corners.
+to got to next step and round the icon corners.<br>
+In the next page you can apply radius amount to the corners of you launcher icon and save it directly into your
+mobile applications repository.
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/icon-cropper.png" width="600">
+    Once done, click on
+    <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/save-to-app-resource.png" height="28"> 
+    and your launcher icons will be save into your chosen mobile app repository.
+</p>
 
 <hr>
 Come back later, this README.md is updating...
