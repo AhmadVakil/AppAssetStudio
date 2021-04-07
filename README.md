@@ -276,7 +276,15 @@ mobile applications repository.
     <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/icon-cropper.png" width="600"><br>
     Once done, click on
     <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/save-to-app-resource.png" height="28"> 
-    and your launcher icons will be save into your chosen mobile app repository.
+    and your launcher icons will be saved into your chosen mobile application repository.
+</p>
+
+This part of the prototype also has an integrated image editor which you can use to create or edit a launcher icon.
+It can be helpful for quick edit and save.
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/image-editor.png" width="600">
+    Once done editing, click the link `SEND TO ICON CROPPER` in the up right corner to round corners and save into different sizes.
 </p>
 
 <hr>
