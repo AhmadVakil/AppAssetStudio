@@ -288,6 +288,15 @@ It can be helpful for quick edit and save.
 </p>
 
 Once done editing, click the link `SEND TO ICON CROPPER` in the up right corner to round corners and save into different sizes.
+<hr>
+
+## Create graphical contents
+Using this tool you can easily create buttons, notification icon, etc. and save them into your mobile application 
+repository.
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/app-buttons.png" width="600"><br>
+</p>
 
 <hr>
 Come back later, this README.md is updating...
