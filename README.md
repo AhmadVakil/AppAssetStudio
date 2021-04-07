@@ -9,6 +9,7 @@ my thesis research and in order to demonstrate the idea of automating monotonous
 - [Installation](#installation)<br>
 - [Docker - Run the containerized server (Optional)](#docker---run-the-containerized-server-optional)<br>
 - [How does it work? (Tutorial)](#how-does-it-work-tutorial)<br>
+-- [Create a new directory structure & its remote Git repository](#create-a-new-directory-structure--its-remote-git-repository)<br>
 - [Todo](#todo)<br>
 - [License](#license)<br>
 
@@ -80,14 +81,21 @@ Once you run the server you can use `npm start` and browse to [http://localhost:
 
 ## How does it work? (Tutorial)
 
-This software system simply search for any mobile application repositories in an already defined path and will provide them all to the end-user. Even if you create a mobile application repository using this system, it will be created in that already defined path as well. This path is defined in a configuration file that is used by the server `src\server\configs\server-config.json` in the pair value of the key `resourcesPath`.
+This software system simply search for any mobile application repositories in an already defined path and will provide them all to the end-user for manipulation. Even if you create a mobile application repository using this system, it will be created in that already defined path as well. This path is defined in a configuration file that is used by the server `src\server\configs\server-config.json` in the pair value of the key `resourcesPath`.
 
 So, if you have a mobile application repository that you want to manipulate using this tool, you should have it cloned into the mentioned path.
 
 I strongly suggest running this prototype on Linux environment because some integrated features are implemented using Unix-like commands. However, the configuration file of the server also has other values which you have to change depending on your operating system. If you are using Windows make sure to set some values to false, such as `linuxOS`, `initialGitRepo`, and `pushToGitRepo` but it is your challenge to get everything works if you prefer to use Windows.
 
+### Authorize the system to create remote Git repository automatically
 
-### Create a new directory structure & its remote Git repository
+If you want the system to create remote Git repository automatically then you have to 
+update the system with your token. You can get your token from your Github account in 
+`Settings → Developer Settings → Generate new token`. Then you can use your token in the Shell script called `autoGitMakeRepo.sh` located in the `server` directory.
+
+<hr>
+
+## Create a new mobile app repo & its directory structure
 
 <p> 
     Now let's assume we want to create a new mobile application. 
@@ -96,16 +104,6 @@ I strongly suggest running this prototype on Linux environment because some inte
     application. 
 </p>
 
-### Prepare the system to create remote Git repository automatically
-
-If you want the system to create remote Git repository automatically then you have to 
-update the system with your token. You can get your token from your Github account in 
-`Settings → Developer Settings → Generate new token`. Then you can use your token in the Shell script called `autoGitMakeRepo.sh` located in the `server` directory.
-
-<hr>
-
-## Create your directory structure and its remote Git repository
- 
 Once you started the server and client-side application of this prototype, 
 click on the button 
 <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/create-repo-and-resources-button.png" height="27"> 
