@@ -234,6 +234,7 @@ The text format of the JSON file will be also provided in case if the user prefe
     <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/config-as-string.png" width="600">
 </p>
 
+Finally, the diagram that I have mentioned recently can be also converted into SVG image.
 
 
 <hr>
