@@ -219,7 +219,10 @@ Next the configuration file will be provided, so the user can touch it.
     <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/config-file.png" width="600">
 </p>
 
-This is actually a JSON configuration file that is collapsible. We can change, and overwrite them directly. 
+This is actually a JSON configuration file that is collapsible. 
+We can easily manipulate, delete keys or values, add new keys or values, and overwrite them back directly. 
+This solution makes the JSON file easy to read and to understand, 
+we can even visualize it and convert our JSON file into a nice looking diagram. 
 
 
 
