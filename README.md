@@ -263,10 +263,10 @@ Then you will be redirected to a page where you can create launcher icons.
 </p>
 
 Here you can choose a background and foreground layer as a first step to create a launcher icon. 
-There are also some properties that you can modify such as scale and transparent background.
+There are also some properties that you can modify such as scale and transparent background.<br>
 Once you are done click on 
-<img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/resicons-button.png" height="28"> 
-
+<img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/send-to-icon-cropper-button.png" height="28"> 
+to got to next step and round the icon corners.
 
 <hr>
 Come back later, this README.md is updating...
