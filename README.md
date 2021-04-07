@@ -213,6 +213,10 @@ we can see its actual path.
     <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/config-path.png" width="600">
 </p>
 
+Next the configuration file will be show for edit.
+
+
+
 <hr>
 Come back later, this README.md is updating...
 <p align="center">
