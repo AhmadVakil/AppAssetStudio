@@ -9,7 +9,11 @@ my thesis research and in order to demonstrate the idea of automating monotonous
 - [Installation](#installation)<br>
 - [Docker - Run the containerized server (Optional)](#docker---run-the-containerized-server-optional)<br>
 - [How does it work? (Tutorial)](#how-does-it-work-tutorial)<br>
--- [Create a new directory structure & its remote Git repository](#create-a-new-directory-structure--its-remote-git-repository)<br>
+-- [Create a new mobile app repo & its directory structure](#create-a-new-mobile-app-repo--its-directory-structure)<br>
+-- [Define your desired directory structure or new category (Optional)](#define-your-desired-directory-structure-or-new-category-optional)<br>
+-- [Edit mobile applications configuration files](#edit-mobile-applications-configuration-files)<br>
+-- [Create & edit launcher icons](#create--edit-launcher-icons)<br>
+-- [Create graphical contents](#create-graphical-contents)<br>
 - [Todo](#todo)<br>
 - [License](#license)<br>
 
