@@ -236,6 +236,14 @@ The text format of the JSON file will be also provided in case if the user prefe
 
 Finally, the diagram that I have mentioned recently can be also converted into SVG image.
 
+<p align="center">
+    <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/config-as-svg-image.png" width="600">
+</p>
+
+Note that, when you run the prototype, you will have all the functionalities in one web page. 
+Figures are screenshots from each scope separately.
+
+<hr>
 
 <hr>
 Come back later, this README.md is updating...
