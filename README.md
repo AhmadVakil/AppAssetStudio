@@ -300,12 +300,6 @@ repository.
     <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/create-buttons.png" width="600"><br>
 </p>
 
-<hr>
-Come back later, this README.md is updating...
-<p align="center">
-    <img src="https://github.com/AhmadVakil/AppAssetStudio/blob/master/tutorial/updating.gif?raw=true" width="100">
-</p>
-
 ## Todo
 <ul>
     <li>iOS deployment</li>
@@ -315,5 +309,5 @@ Come back later, this README.md is updating...
     <li>Improve README.md</li>
 </ul>
 
-# License
+## License
 NOTE THAT YOU ARE NOT ALLOWED TO USE THIS PROTOTYPE FOR COMMERCIAL PURPOSE AND IS ONLY FOR EDUCATIONAL PURPOSES. THERE IS NO GUARANTY, AND THE SOFTWARE IS AS IT IS. 
