@@ -224,7 +224,9 @@ We can easily manipulate, delete keys or values, add new keys or values, and ove
 This solution makes the JSON file easy to read and to understand, 
 we can even visualize it and convert our JSON file into a nice looking diagram. 
 
-
+<p align="center">
+    <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/config-diagram.png" width="600">
+</p>
 
 <hr>
 Come back later, this README.md is updating...
