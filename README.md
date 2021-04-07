@@ -230,6 +230,12 @@ we can even visualize it and convert our JSON file into a nice looking diagram.
 
 The text format of the JSON file will be also provided in case if the user prefer to use or edit it as text.
 
+<p align="center">
+    <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/config-as-string.png" width="600">
+</p>
+
+
+
 <hr>
 Come back later, this README.md is updating...
 <p align="center">
