@@ -181,7 +181,7 @@ The JSON file you used to create the directory structure has some keys and pair 
 
 <hr>
 
-### Edit mobile applications configuration files
+## Edit mobile applications configuration files
 The other magical feature of this prototype is that it can find all configuration files in your mobile application 
 repository and provide them to the end-user. In this case, you can easily click on your configuration file, edit it, 
 and save it. 
@@ -248,6 +248,25 @@ Note that, when you run the prototype, you will have all the functionalities in 
 Figures are screenshots from each scope separately.
 
 <hr>
+
+## Create & edit launcher icons
+
+From the home page click on the button
+<img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/resicons-button.png" height="28"> 
+<p align="center">
+    <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/home-3.png" width="600">
+</p>
+
+Then you will be redirected to a page where you can create launcher icons.
+<p align="center">
+    <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/icon-creator.png" width="600">
+</p>
+
+Here you can choose a background and foreground layer as a first step to create a launcher icon. 
+There are also some properties that you can modify such as scale and transparent background.
+Once you are done click on 
+<img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/resicons-button.png" height="28"> 
+
 
 <hr>
 Come back later, this README.md is updating...
