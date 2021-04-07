@@ -285,6 +285,7 @@ It can be helpful for quick edit and save.
 <p align="center">
     <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/image-editor.png" width="600"><br>
 </p>
+
 Once done editing, click the link `SEND TO ICON CROPPER` in the up right corner to round corners and save into different sizes.
 
 <hr>
