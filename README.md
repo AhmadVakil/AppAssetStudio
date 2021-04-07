@@ -190,13 +190,30 @@ to navigate to the related page.
     <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/home-2.png" width="600">
 </p>
 
-In the next page you can see your cloned or already created mobile application repositories with the previous feature
-as a drop-down list.
+In the next page you can see your cloned or already created mobile application repositories as a drop-down list.
 
 <p align="center">
     <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/drop-down-menu-of-repositories.png" width="600">
 </p>
 
+Now let's assume you have chosen the Todo app from the available repositories, 
+then the system will provide you all the available configuration files in that repository. 
+No matter where the config file is located, the system will recursively fetch and provide them 
+to the end-user. Following image represents the configuration files of Todo App which are 
+`project_config.json`, `config.json`, and `configuration.json`.
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/edit-config-data.png" width="600">
+</p>
+
+Each of these configuration files are located in different paths, thus after choosing a configuration file
+we can see its actual path.
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/config-path.png" width="600">
+</p>
+
+<hr>
 Come back later, this README.md is updating...
 <p align="center">
     <img src="https://github.com/AhmadVakil/AppAssetStudio/blob/master/tutorial/updating.gif?raw=true" width="100">
