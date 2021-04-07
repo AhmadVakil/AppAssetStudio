@@ -295,7 +295,7 @@ Using this tool you can easily create buttons, notification icon, etc. and save 
 repository.
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/app-buttons.png" width="600"><br>
+    <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/create-buttons.png" width="600"><br>
 </p>
 
 <hr>
