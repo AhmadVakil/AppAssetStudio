@@ -283,7 +283,7 @@ Once done, click on
 and your launcher icons will be saved into your chosen mobile application repository.<br>
 
 This part of the prototype also has an integrated image editor which you can use to create or edit a launcher icon.
-It can be helpful for quick edit and save.
+It can be helpful for a quick edit and save.
 
 <p align="center">
     <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/image-editor.png" width="600"><br>
@@ -296,7 +296,13 @@ Once done editing, click the link `SEND TO ICON CROPPER` in the up right corner 
 Using this tool you can easily create buttons, notification icon, etc. and save them into your mobile application 
 repository.<br>
 On the home page click on 
-<img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/save-to-app-resource.png" height="28"> 
+<img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/edit-graphics-button.png" height="28"> 
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/home-4.png" width="600"><br>
+</p>
+
+In the next page, you can create your button and such stuff using already included clipart which you can change it later in the code.
 
 <p align="center">
     <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/create-buttons.png" width="600"><br>
