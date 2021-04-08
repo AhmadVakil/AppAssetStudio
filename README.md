@@ -294,7 +294,9 @@ Once done editing, click the link `SEND TO ICON CROPPER` in the up right corner 
 
 ## Create graphical contents
 Using this tool you can easily create buttons, notification icon, etc. and save them into your mobile application 
-repository.
+repository.<br>
+On the home page click on 
+<img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/save-to-app-resource.png" height="28"> 
 
 <p align="center">
     <img src="https://raw.githubusercontent.com/AhmadVakil/AppAssetStudio/master/tutorial/create-buttons.png" width="600"><br>
@@ -304,7 +306,7 @@ repository.
 <ul>
     <li>iOS deployment</li>
     <li>Trigger autoGitPush.py to first pop up as modal if there is something new Git status.</li>
-    <li>A fix merge conflicts.</li>
+    <li>A fix for merge conflicts.</li>
     <li>Support for other type of configuration files rather than JSON, such as XML, etc. </li>
     <li>Improve README.md</li>
 </ul>
